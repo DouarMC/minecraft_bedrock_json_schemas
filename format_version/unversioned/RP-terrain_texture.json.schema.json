@@ -1,0 +1,102 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "description": "Ce fichier sert à créer des références de textures pour les Blocs. \n Type: `Object`",
+    "type": "object",
+    "required": ["texture_name", "resource_pack_name", "padding", "num_mip_levels", "texture_data"],
+    "properties": {
+        "resource_pack_name": {
+            "description": "Le nom du resource pack auquel ce fichier est associé. \n Type: `String`",
+            "type": "string"
+        },
+        "texture_name": {
+            "description": "Le type d'appliquement de Textures. \n Type: `String`",
+            "const": "atlas.terrain"
+        },
+        "padding": {
+            "description": "Empêcher les textures de déborder visuellement les unes dans les autres. \n Type: `Number`",
+            "type": "number",
+            "default": 8
+        },
+        "num_mip_levels": {
+            "description": "Qualité de la texture vue de loin ou sous un angle. \n Type: `Number`",
+            "type": "number",
+            "default": 4
+        },
+        "texture_data": {
+            "description": "L'inscription de short-name de Textures. \n Type: `Object`",
+            "type": "object",
+            "additionalProperties": {
+                "type": "object",
+                "properties": {
+                    "textures": {
+                        "description": "La/les texture(s) à spécifier. \n Type: `String | Object | (String | Object)[]`",
+                        "oneOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "object",
+                                "oneOf": [
+                                    {
+                                        "required": ["path"],
+                                        "properties": {
+                                            "path": {
+                                                "description": "Le chemin d'accès de la Texture. \n Type: `String`",
+                                                "type": "string"
+                                            },
+                                            "overlay_color": {
+                                                "description": "La couleur à ajouté sur la texture. \n Type: `String`",
+                                                "type": "string",
+                                                "pattern": "^#([A-Fa-f0-9]{6})$"
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "required": ["variations"],
+                                        "properties": {
+                                            "variations": {
+                                                "description": "Définit les dofférentes variations de textures pour cette référece. \n Type: `Object[]`",
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "path": {
+                                                            "description": "Le chemin d'accès de la Texture. \n Type: `String`",
+                                                            "type": "string"
+                                                        },
+                                                        "overlay_color": {
+                                                            "description": "La couleur à ajouté sur la texture. \n Type: `String`",
+                                                            "type": "string",
+                                                            "pattern": "^#([A-Fa-f0-9]{6})$"
+                                                        },
+                                                        "weight": {
+                                                            "description": "Le poids de la variation. \n Type: `Number`",
+                                                            "type": "number"
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "array",
+                                "items": {
+                                    "oneOf": [
+                                        {
+                                            "$ref": "#/properties/texture_data/additionalProperties/properties/textures/oneOf/0"
+                                        },
+                                        {
+                                            "$ref": "#/properties/texture_data/additionalProperties/properties/textures/oneOf/1"
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    }
+                }
+            }
+        }
+    }
+}

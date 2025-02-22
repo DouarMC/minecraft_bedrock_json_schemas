@@ -1,0 +1,680 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "description": "Ce fichier sert à créer un Item. \nType: `Object`",
+    "type": "object",
+    "required": ["format_version", "minecraft:item"],
+    "properties": {
+        "format_version": {
+            "description": "La version du Format à utiliser. \nType: `String`",
+            "enum": ["1.20.20"]
+        },
+        "minecraft:item": {
+            "description": "Contient toute la définition de l'Item. \nType: `Object`",
+            "type": "object",
+            "required": ["description"],
+            "properties": {
+                "description": {
+                    "description": "Contient les propeiétés de descriptions de l'Item. \nType: `Object`",
+                    "type": "object",
+                    "required": ["identifier"],
+                    "properties": {
+                        "identifier": {
+                            "description": "L'identifiant de l'Item. \nType: `String`",
+                            "type": "string",
+                            "pattern": "^[a-zA-Z0-9_]+:[a-zA-Z0-9_]+$"
+                        },
+                        "menu_category": {
+                            "description": "Définit les informations sur la localisation de l'Item dans l'inventaire créatif ou commande. \n Type: Object",
+                            "type": "object",
+                            "properties": {
+                                "category": {
+                                    "description": "La catégorie de l'inventaire créatif ou commande dans laquelle le Bloc sera placé. \n Type: String",
+                                    "default": "none",
+                                    "type": "string",
+                                    "enum": ["construction", "nature", "equipment", "items", "none"]
+                                },
+                                "group": {
+                                    "description": "Le groupe d'items du menu créatif où l'Item sera placé. \n Type: String",
+                                    "maxLength": 256,
+                                    "type": "string",
+                                    "oneOf": [
+                                        {
+                                            "$ref": "../../common.schema.json#/definitions/vanilla_item_groups_id"
+                                        },
+                                        {
+                                            "not": {
+                                                "$ref": "../../common.schema.json#/definitions/vanilla_item_groups_id"
+                                            }
+                                        }
+                                    ]
+                                },
+                                "is_hidden_in_commands": {
+                                    "description": "Définit si l'Item est caché dans les commandes. \n Type: Boolean",
+                                    "default": false,
+                                    "type": "boolean"
+                                }
+                            }
+                        }
+                    }
+                },
+                "components": {
+                    "description": "Tous les composants de l'Item. \nType: `Object`",
+                    "type": "object",
+                    "required": ["minecraft:icon"],
+                    "properties": {
+                        "minecraft:allow_off_hand": {
+                            "description": "Définit si cet Item peut s'équipper dans la main gauche. \n Type: (Boolean | Object)",
+                            "default": false,
+                            "oneOf": [
+                                {
+                                    "type": "boolean"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "value": {
+                                            "description": "La valeur de l'option. \n Type: Boolean",
+                                            "default": false,
+                                            "type": "boolean"
+                                        }
+                                    }
+                                }
+                            ]
+                        },
+                        "minecraft:block_placer": {
+                            "description": "Permet de placer un bloc lors de l'utilisation de l'Item. \nType: `Object`",
+                            "type": "object",
+                            "required": ["block"],
+                            "properties": {
+                                "block": {
+                                    "description": "Le bloc à placer. \nType: `String`",
+                                    "type": "string"
+                                },
+                                "use_on": {
+                                    "description": "Liste des blocs sur lesquels le bloc peut être placé. \nType: `BlockDescriptor[]` \nNote: Si cette propriété n'est pas défini ou laissé vide, tous les blocs sont acceptés.",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                    }
+                                }
+                            }
+                        },
+                        "minecraft:can_destroy_in_creative": {
+                            "description": "Définit si le joueur peut casser des blocs avec cet Item en mode Créatif. \nType: `Boolean | Object`",
+                            "default": true,
+                            "oneOf": [
+                                {
+                                    "type": "boolean"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "value": {
+                                            "description": "Définit si le joueur peut casser des blocs avec cet Item en mode Créatif. \nType: `Boolean`",
+                                            "type": "boolean"
+                                        }
+                                    }
+                                }
+                            ]
+                        },
+                        "minecraft:cooldown": {
+                            "description": "Définit le temps de recharge de réutilisation de l'Item. \nType: `Object`",
+                            "type": "object",
+                            "required": ["category", "duration"],
+                            "properties": {
+                                "category": {
+                                    "description": "Tous les items avec cette catégorie devront attendre avant de pouvoir être réutilisés. \nType: `String`",
+                                    "type": "string",
+                                    "oneOf": [
+                                        {
+                                            "$ref": "../../common.schema.json#/definitions/vanilla_cooldown_categories_id"
+                                        },
+                                        {
+                                            "not": {
+                                                "$ref": "../../common.schema.json#/definitions/vanilla_cooldown_categories_id"
+                                            }
+                                        }
+                                    ]
+                                },
+                                "duration": {
+                                    "description": "Le temps de recharge de réutilisation de l'Item. \nType: `Number`",
+                                    "type": "number"
+                                }
+                            }
+                        },
+                        "minecraft:damage": {
+                            "description": "Le nombre de dégâts supplémentaires qu'infligera cet Item. \n Type: (Integer | Object)",
+                            "oneOf": [
+                                {
+                                    "type": "integer",
+                                    "minimum": 0
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "value": {
+                                            "description": "La valeur de dégâts supplémentaires. \n Type: Integer",
+                                            "type": "integer",
+                                            "minimum": 0
+                                        }
+                                    }
+                                }
+                            ]
+                        },
+                        "minecraft:digger": {
+                            "description": "Apporte des changements de vitesses de rapidé de cassage de blocs. \n Type: Object",
+                            "type": "object",
+                            "properties": {
+                                "destroy_speeds": {
+                                    "description": "La liste de blocs impactés par la vitesse de cassage de blocs. \n Type: Object[]",
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "block": {
+                                                "description": "Le bloc impacté par la vitesse de cassage de blocs. \nType: `BlockDescriptor`",
+                                                "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                            },
+                                            "speed": {
+                                                "description": "Le multiplicateur de vitesse appliqué au cassage de blocs. \nType: `Integer`",
+                                                "type": "integer"
+                                            }
+                                        }
+                                    }
+                                },
+                                "use_efficiency": {
+                                    "description": "Définit si l'item subbira l'effet de l'enchantement efficacité. \nType: `Boolean`",
+                                    "type": "boolean"
+                                }
+                            }
+                        },
+                        "minecraft:display_name": {
+                            "description": "Définit le nom de l'Item. \nType: `Object`",
+                            "type": "object",
+                            "required": ["value"],
+                            "properties": {
+                                "value": {
+                                    "description": "Le nom de l'Item. \nType: `Localization_String`",
+                                    "type": "string"
+                                }
+                            }
+                        },
+                        "minecraft:durability": {
+                            "description": "Définit la durabilité de l'Item. \nType: `Object`",
+                            "type": "object",
+                            "required": ["max_durability"],
+                            "properties": {
+                                "damage_chance": {
+                                    "description": "Le pourcentage de chance que l'Item soit endommagé. \nType: `Integer | Object`",
+                                    "default": 100,
+                                    "oneOf": [
+                                        {
+                                            "type": "integer"
+                                        },
+                                        {
+                                            "type": "object",
+                                            "properties": {
+                                                "max": {
+                                                    "description": "Le pourcentage maximum de chance que l'Item soit endommagé. \nType: `Integer`",
+                                                    "type": "integer"
+                                                },
+                                                "min": {
+                                                    "description": "Le pourcentage minimum de chance que l'Item soit endommagé. \nType: `Integer`",
+                                                    "type": "integer"
+                                                }
+                                            }
+                                        }
+                                    ]
+                                },
+                                "max_durability": {
+                                    "description": "La durabilité maximale de l'Item. \nType: `Integer`",
+                                    "type": "integer",
+                                    "minimum": 0
+                                }
+                            }
+                        },
+                        "minecraft:entity_placer": {
+                            "description": "Permet de placer une entité lors de l'utilisation de l'Item. \nType: `Object`",
+                            "type": "object",
+                            "required": ["entity"],
+                            "properties": {
+                                "dispense_on": {
+                                    "description": "Liste des blocs sur lesquels l'entité peut être placée avec un distributeur. \nType: `BlockDescriptor[]` \nNote: Si cette propriété n'est pas défini ou laissé vide, tous les blocs sont acceptés.",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                    }
+                                },
+                                "entity": {
+                                    "description": "L'entité à placer. \nType: `String`",
+                                    "type": "string"
+                                },
+                                "use_on": {
+                                    "description": "Liste des blocs sur lesquels l'entité peut être placée. \nType: `BlockDescriptor[]` \nNote: Si cette propriété n'est pas défini ou laissé vide, tous les blocs sont acceptés.",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                    }
+                                }
+                            }
+                        },
+                        "minecraft:fuel": {
+                            "description": "Permet de définir si l'Item est un combustible. \nType: `Object`",
+                            "type": "object",
+                            "required": ["duration"],
+                            "properties": {
+                                "duration": {
+                                    "description": "La durée de combustion de l'Item. \nType: `Number`",
+                                    "type": "number",
+                                    "minimum": 0.05
+                                }
+                            }
+                        },
+                        "minecraft:glint": {
+                            "description": "Définit si cet Item a l'effet d'enchantemnt sur son icône. \nType: (Boolean | Object)",
+                            "default": false,
+                            "oneOf": [
+                                {
+                                    "type": "boolean"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "value": {
+                                            "description": "La valeur de l'option. \n Type: Boolean",
+                                            "default": false,
+                                            "type": "boolean"
+                                        }
+                                    }
+                                }
+                            ]
+                        },
+                        "minecraft:hover_text_color": {
+                            "description": "Définit la couleur du texte de l'Item. \nType: `String | Object`",
+                            "oneOf": [
+                                {
+                                    "type": "string"
+                                },
+                                {
+                                    "type": "object",
+                                    "required": ["value"],
+                                    "properties": {
+                                        "value": {
+                                            "description": "La couleur du texte de l'Item. \nType: `String`",
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            ]
+                        },
+                        "minecraft:hand_equipped": {
+                            "description": "Définit si cet Item est rendu comme un outil dans la main. \n Type: (Boolean | Object)",
+                            "default": false,
+                            "oneOf": [
+                                {
+                                    "type": "boolean"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "value": {
+                                            "description": "La valeur de l'option. \n Type: Boolean",
+                                            "default": false,
+                                            "type": "boolean"
+                                        }
+                                    }
+                                }
+                            ]
+                        },
+                        "minecraft:icon": {
+                            "description": "Définit la texture qui sera utilisé pour l'icône de l'Item. \nType: `String | Object` \nNote: La texture ici est une référence qui doit être définie dans un fichier 'item_texture.json'.",
+                            "oneOf": [
+                                {
+                                    "type": "string"
+                                },
+                                {
+                                    "type": "object",
+                                    "required": ["texture"],
+                                    "properties": {
+                                        "texture": {
+                                            "description": "La texture de l'Item. \nType: `String`",
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            ]
+                        },
+                        "minecraft:liquid_clipped": {
+                            "description": "Définit si cet Item peut intéragir avec un bloc liquide. \n Type: (Boolean | Object)",
+                            "oneOf": [
+                                {
+                                    "type": "boolean"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "value": {
+                                            "description": "La valeur de l'option. \n Type: Boolean",
+                                            "type": "boolean"
+                                        }
+                                    }
+                                }
+                            ]
+                        },
+                        "minecraft:max_stack_size": {
+                            "description": "Définit la taille maximale de la pile de l'Item. \nType: `Integer | Object`",
+                            "default": 64,
+                            "oneOf": [
+                                {
+                                    "type": "integer",
+                                    "minimum": 1,
+                                    "maximum": 64
+                                },
+                                {
+                                    "type": "object",
+                                    "required": ["value"],
+                                    "properties": {
+                                        "value": {
+                                            "description": "La taille maximale de la pile de l'Item. \nType: `Integer`",
+                                            "type": "integer",
+                                            "minimum": 1,
+                                            "maximum": 64
+                                        }
+                                    }
+                                }
+                            ]
+                        },
+                        "minecraft:projectile": {
+                            "description": "Permet à l'Item d'être utilisé comme projectile. \nType: `Object`",
+                            "type": "object",
+                            "properties": {
+                                "minimum_critical_power": {
+                                    "description": "Combien de temps vous devez charger un projectile pour qu'il frappe de manière critique. \nType: `Number`",
+                                    "type": "number"
+                                },
+                                "projectile_entity": {
+                                    "description": "L'entité à tirer en tant que projectile. \nType: `String`",
+                                    "type": "string"
+                                }
+                            }
+                        },
+                        "minecraft:record": {
+                            "description": "Permet à l'Item d'être un disque de musique. \nType: `Object`",
+                            "type": "object",
+                            "properties": {
+                                "comparator_signal": {
+                                    "description": "La force du signal du comparateur quand cet Item est utilisé dans un jukbox. \nType: `Integer`",
+                                    "default": 1,
+                                    "type": "integer",
+                                    "minimum": 1,
+                                    "maximum": 13
+                                },
+                                "duration": {
+                                    "description": "La durée du son en secondes. \nType: `Number`",
+                                    "type": "number"
+                                },
+                                "sound_event": {
+                                    "description": "L'événement sonore à jouer quand cet Item est utilisé dans un jukebox. \nType: `String`",
+                                    "type": "string"
+                                }
+                            }
+                        },
+                        "minecraft:repairable": {
+                            "description": "Définit les items qui peuvent être utilisés pour réparer cet Item. \nType: `Object`",
+                            "type": "object",
+                            "properties": {
+                                "repair_items": {
+                                    "description": "Les items qui peuvent être utilisés pour réparer cet Item. \nType: `ItemDescriptor[] | Object[]`",
+                                    "type": "array",
+                                    "items": {
+                                        "oneOf": [
+                                            {
+                                                "$ref": "../../common.schema.json#/definitions/item_descriptor"
+                                            },
+                                            {
+                                                "type": "object",
+                                                "properties": {
+                                                    "items": {
+                                                        "description": "Les items qui peuvent être utilisés pour réparer cet Item. \nType: `ItemDescriptor[]`",
+                                                        "type": "array",
+                                                        "items": {
+                                                            "$ref": "../../common.schema.json#/definitions/item_descriptor"
+                                                        }
+                                                    },
+                                                    "repair_amount": {
+                                                        "description": "De combien de durabilité l'Item est réparé. \nType: `Molang`",
+                                                        "oneOf": [
+                                                            {
+                                                                "type": "string"
+                                                            },
+                                                            {
+                                                                "type": "number"
+                                                            }
+                                                        ]
+                                                    }
+                                                }
+                                            }
+                                        ]
+                                    }
+                                }
+                            }
+                        },
+                        "minecraft:shooter": {
+                            "description": "Transforme cet Item comme tireur. \n Type: Object \n Note : L'item doit avoir le composant 'minecraft:use_modifiers' pour fonctionner.",
+                            "type": "object",
+                            "properties": {
+                                "ammunition": {
+                                    "description": "Définie les items qui serviront de munitions. \n Type: Object[]",
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "item": {
+                                                "description": "Le type d'Item qui servira de munitions. \n Type: `String | Object`",
+                                                "oneOf": [
+                                                    {
+                                                        "type": "string"
+                                                    },
+                                                    {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "item": {
+                                                                "description": "L'identifiant de l'item. \n Type: String",
+                                                                "type": "string"
+                                                            },
+                                                            "tag": {
+                                                                "description": "L'identifiant du tag des items qui peuvent être utilisés dans ce contexte. \n Type: `String | Molang String`",
+                                                                "type": "string",
+                                                                "oneOf": [
+                                                                    {
+                                                                        "$ref": "../../common.schema.json#/definitions/vanilla_item_tags_id"
+                                                                    },
+                                                                    {
+                                                                        "not": {
+                                                                            "$ref": "../../common.schema.json#/definitions/vanilla_item_tags_id"
+                                                                        }
+                                                                    }
+                                                                ]
+                                                            },
+                                                            "data": {
+                                                                "description": "La donnée de l'item. \n Type: Integer",
+                                                                "type": "integer"
+                                                            }
+                                                        }
+                                                    }
+                                                ]
+                                            },
+                                            "use_offhand": {
+                                                "description": "Définie si les munitions se trouvant dans la main gauche seront utilisés. \n Type: Boolean",
+                                                "default": false,
+                                                "type": "boolean"
+                                            },
+                                            "search_inventory": {
+                                                "description": "Définie si la recherche de munitions se fera dans l'inventaire. \n Type: Boolean",
+                                                "default": false,
+                                                "type": "boolean"
+                                            },
+                                            "use_in_creative": {
+                                                "description": "Définie si les munitions sont utilisés quand le joueur est en créatif. \n Type: Boolean",
+                                                "default": false,
+                                                "type": "boolean"
+                                            }
+                                        }
+                                    }
+                                },
+                                "max_draw_duration": {
+                                    "description": "Définie combien de temps l'arme peut être dégainée avant de se relâcher automatiquement. \n Type: Number",
+                                    "default": 0.0,
+                                    "type": "number"
+                                },
+                                "scale_power_by_draw_duration": {
+                                    "description": "Augmente la puissance en fonction de la durée de consommation ? \n Type: Boolean",
+                                    "default": false,
+                                    "type": "boolean"
+                                },
+                                "charge_on_draw": {
+                                    "description": "Définit si l'item est compté comme chargé lorsqu'il est tiré. \n Type: Boolean",
+                                    "default": false,
+                                    "type": "boolean"
+                                }
+                            }
+                        },
+                        "minecraft:should_despawn": {
+                            "description": "Définie si l'Item disparaitra quand il flotte depuis trop longtemps dans l'air. \n Type: (Boolean | Object)",
+                            "oneOf": [
+                                {
+                                    "type": "boolean"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "value": {
+                                            "description": "La valeur de l'option. \n Type: Boolean",
+                                            "type": "boolean"
+                                        }
+                                    }
+                                }
+                            ]
+                        },
+                        "minecraft:stacked_by_data": {
+                            "description": "Définie si ce type d'Item se stack par data. \n Type: (Boolean | Object)",
+                            "oneOf": [
+                                {
+                                    "type": "boolean"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "value": {
+                                            "description": "La valeur de l'option. \n Type: Boolean",
+                                            "type": "boolean"
+                                        }
+                                    }
+                                }
+                            ]
+                        },
+                        "minecraft:throwable": {
+                            "description": "Définit cet item comme étant lançable. \n Type: Object",
+                            "type": "object",
+                            "properties": {
+                                "do_swing_animation": {
+                                    "description": "Définit si l'animation de swing est joué quand cet Item est lancé. \n Type: Boolean",
+                                    "default": false,
+                                    "type": "boolean"
+                                },
+                                "launch_power_scale": {
+                                    "description": "L'échelle à laquelle la puissance du lancer augmente. \n Type: Number",
+                                    "default": 1.0,
+                                    "type": "number"
+                                },
+                                "max_draw_duration": {
+                                    "description": "La durée maximale pour dessiner un objet jetable. \n Type: Number",
+                                    "default": 0.0,
+                                    "type": "number"
+                                },
+                                "max_launch_power": {
+                                    "description": "La puissance maximale pour lancer l'objet jetable. \n Type: Number",
+                                    "default": 1.0,
+                                    "type": "number"
+                                },
+                                "min_draw_duration": {
+                                    "description": "La durée minimale pour dessiner un objet jetable. \n Type: Number",
+                                    "default": 0.0,
+                                    "type": "number"
+                                },
+                                "scale_power_by_draw_duration": {
+                                    "description": "Si la puissance du lancer augmente ou non avec la durée chargée. \n Type: Boolean",
+                                    "default": false,
+                                    "type": "boolean"
+                                }
+                            }
+                        },
+                        "minecraft:use_animation": {
+                            "description": "Définit quel animation jouer quand cet Item est train de se faire utiliser. \n Type: (String | Object)",
+                            "oneOf": [
+                                {
+                                    "type": "string",
+                                    "enum": ["block","bow","brush","camera","crossbow","drink","eat","none","spear","spyglass"]
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "value": {
+                                            "description": "La valeur de l'option. \n Type: String",
+                                            "type": "string",
+                                            "$ref": "#/properties/minecraft:item/properties/components/properties/minecraft:use_animation/oneOf/0/enum"
+                                        }
+                                    }
+                                }
+                            ]
+                        },
+                        "minecraft:use_duration": {
+                            "description": "Définit la durée d'utilisation de l'Item. \nType: `Number | Object`",
+                            "oneOf": [
+                                {
+                                    "type": "number"
+                                },
+                                {
+                                    "type": "object",
+                                    "required": ["value"],
+                                    "properties": {
+                                        "value": {
+                                            "description": "La durée d'utilisation de l'Item. \nType: `Number`",
+                                            "type": "number"
+                                        }
+                                    }
+                                }
+                            ]
+                        },
+                        "minecraft:wearable": {
+                            "description": "Rend cet Item equippable dans certains slots d'inventaire. \nType: Object",
+                            "type": "object",
+                            "properties": {
+                                "dispensable": {
+                                    "description": "Définit si cet item peut être équipé par un distributeur. \n Type: Boolean",
+                                    "type": "boolean"
+                                },
+                                "protection": {
+                                    "description": "Combien de point de protection donnera cet item. \n Type: Integer",
+                                    "default": 0,
+                                    "type": "integer"
+                                },
+                                "slot": {
+                                    "description": "Dans quel slots cet item pourra y être placé. \n Type: String",
+                                    "type": "string",
+                                    "enum": [
+                                        "slot.armor.chest",
+                                        "slot.armor.feet",
+                                        "slot.armor.head",
+                                        "slot.armor.legs",
+                                        "slot.weapon.offhand"
+                                    ]                                    
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,45 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "required": ["geometry", "serialize_name", "localization_name", "skins"],
+    "properties": {
+        "geometry": {
+            "description": "Le Modèle pour tous les Skins.",
+            "const": "geometry.json"
+        },
+        "serialize_name": {
+            "description": "Le nom du pack de Skins dans le Marketplace.",
+            "type": "string"
+        },
+        "localization_name": {
+            "description": "L'ID du pack de Skins dans le Marketplace.",
+            "type": "string"
+        },
+        "skins": {
+            "description": "Les propriétés de chaque Skin.",
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "localization_name": {
+                        "description": "Le nom traduisable du Skin.",
+                        "type": "string"
+                    },
+                    "geometry": {
+                        "description": "Le modèle du Skin.",
+                        "type": "string",
+                        "enum": ["geometry.humanoid.custom", "geometry.humanoid.customSlim"]
+                    },
+                    "texture": {
+                        "description": "La texture du Skin.",
+                        "type": "string"
+                    },
+                    "type": {
+                        "description": "Si le Skin est gratuit ou payant.",
+                        "const": "free"
+                    }
+                }
+            }
+        }
+    }
+}

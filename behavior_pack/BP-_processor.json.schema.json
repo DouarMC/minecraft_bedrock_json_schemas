@@ -1,0 +1,140 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "required": ["format_version", "minecraft:processor_list"],
+    "properties": {
+        "format_version": {
+            "description": "La version du Format à utiliser.",
+            "type": "string",
+            "pattern": "^\\d+\\.\\d+\\.\\d+$"
+        },
+        "minecraft:processor_list": {
+            "description": "Contient une liste de processors à appliquer à la structure. Chaque processor définit une série de règles pour modifier les blocs d'une Structure Template au moment de la génération du monde.",
+            "type": "object",
+            "required": ["description", "processors"],
+            "properties": {
+                "description": {
+                    "description": "Description de la liste de processors.",
+                    "type": "object",
+                    "required": ["identifier"],
+                    "properties": {
+                        "identifier": {
+                            "description": "L'identifiant de la liste de processors.",
+                            "type": "string"
+                        }
+                    }
+                },
+                "processors": {
+                    "description": "Liste des processors appliqués à chaque bloc. Actuellement, seul le type minecraft:rule est pris en charge. Chaque processor contient une ou plusieurs règles de remplacement de blocs.",
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "processor_type": {
+                                "description": "Le type de processor à appliquer.",
+                                "type": "string",
+                                "enum": ["minecraft:rule"]
+                            },
+                            "rules": {
+                                "description": "Liste des règles de remplacement de blocs. Chaque règle contient des predicates et un output state.",
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "distance_predicate": {
+                                            "description": "Un filtre évalué sur la position mondiale du bloc placé et l'origine de la structure Jigsaw."
+                                        },
+                                        "input_predicate": {
+                                            "description": "Applique le filtre au type de bloc présent dans le Structure Template.",
+                                            "properties": {
+                                                "predicate_type": {
+                                                    "description": "Le type de prédicat à appliquer.",
+                                                    "type": "string",
+                                                    "enum": ["minecraft:block_match", "minecraft:random_block_match", "minecraft:always_true"]
+                                                },
+                                                "block": {
+                                                    "description": "Le type de bloc à filtrer.",
+                                                    "type": "string"
+                                                },
+                                                "probability": {
+                                                    "description": "La probabilité que le prédicat soit évalué comme vrai.",
+                                                    "type": "number"
+                                                }
+                                            }
+                                        },
+                                        "location_predicate": {
+                                            "description": "Applique le filtre à la position du bloc dans le monde."
+                                        },
+                                        "position_predicate": {
+                                            "description": "Applique le filtre à la position du bloc dans la structure.",
+                                            "properties": {
+                                                "predicate_type": {
+                                                    "description": "Le type de prédicat à appliquer.",
+                                                    "type": "string",
+                                                    "enum": ["minecraft:archeology_block_loot"]
+                                                },
+                                                "limit": {
+                                                    "description": "Limite.",
+                                                    "type": "integer"
+                                                },
+                                                "loot_table": {
+                                                    "description": "Le chemin d'accès au fichier de table de butin à ajouter.",
+                                                    "type": "string"
+                                                },
+                                                "block_mappping": {
+                                                    "description": "Mapping de blocs.",
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "key": {
+                                                                "description": "Clé.",
+                                                                "type": "string"
+                                                            },
+                                                            "value": {
+                                                                "description": "Valeur.",
+                                                                "type": "string"
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        "block_entity_modifier": {
+                                            "description": "Modificateur de blocs 'entités'.",
+                                            "type": "object",
+                                            "properties": {
+                                                "type": {
+                                                    "description": "Le type de modificateur à appliquer.",
+                                                    "type": "string",
+                                                    "enum": ["minecraft:append_loot"]
+                                                },
+                                                "loot_table": {
+                                                    "description": "Le chemin d'accès au fichier de table de butin à ajouter.",
+                                                    "type": "string"
+                                                }
+                                            }
+                                        },
+                                        "output_state": {
+                                            "description": "Définit le bloc de sortie à placer à la place du bloc filtré.",
+                                            "properties": {
+                                                "name": {
+                                                    "description": "Le type de bloc de sortie.",
+                                                    "type": "string"
+                                                },
+                                                "states": {
+                                                    "description": "Les états du bloc de sortie.",
+                                                    "type": "object"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

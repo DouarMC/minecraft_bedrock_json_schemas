@@ -1,0 +1,610 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "description": "[EXEPERIMENTALE]: Custom Biomes \nCe fichier sert à définir un Biome. \nType: `Object`",
+    "type": "object",
+    "required": ["format_version", "minecraft:biome"],
+    "properties": {
+        "format_version": {
+            "description": "La version du format à utiliser. \nType: `String`",
+            "type": "string",
+            "enum": [
+                "1.20.60", "1.20.70", "1.20.80", "1.21.0", "1.21.10", "1.21.20", "1.21.30", "1.21.40", "1.21.50", "1.21.60"
+            ]
+        },
+        "minecraft:biome": {
+            "description": "Contient la définition du Biome. \nType: `Object`",
+            "type": "object",
+            "required": ["description", "components"],
+            "properties": {
+                "description": {
+                    "description": "Contient les propriétés de description du Biome. \nType: `Object`",
+                    "type": "object",
+                    "required": ["identifier"],
+                    "properties": {
+                        "identifier": {
+                            "description": "L'identifiant du Biome. \nType: `String`",
+                            "type": "string",
+                            "$ref": "../../common.schema.json#/definitions/vanilla_biomes_id"
+                        }
+                    }
+                },
+                "components": {
+                    "description": "Contient les composants du Biome. \nType: `Object`",
+                    "type": "object",
+                    "properties": {
+                        "minecraft:capped_surface": {
+                            "description": "Génère une surface sur les blocs avec des blocs non solides au-dessus ou en dessous. \nType: `Object`",
+                            "type": "object",
+                            "required": ["floor_materials", "ceiling_materials", "sea_material", "foundation_material"],
+                            "properties": {
+                                "beach_material": {
+                                    "description": "Matériaux utilisés pour décorer la surface près du niveau de la mer. \nType: `BlockDescriptor`",
+                                    "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                },
+                                "floor_materials": {
+                                    "description": "Matériaux utilisés pour la surface du sol. \nType: `BlockDescriptor[]`",
+                                    "type": "array",
+                                    "minItems": 1,
+                                    "items": {
+                                        "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                    }
+                                },
+                                "ceiling_materials": {
+                                    "description": "Matériaux utilisés pour la surface du plafond. \nType: `BlockDescriptor[]`",
+                                    "type": "array",
+                                    "minItems": 1,
+                                    "items": {
+                                        "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                    }
+                                },
+                                "foundation_material": {
+                                    "description": "Matériaux utilisés pour remplacer les blocs solides qui ne sont pas des blocs de surface. \nType: `BlockDescriptor`",
+                                    "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                },
+                                "sea_material": {
+                                    "description": "Matériaux utilisés pour remplacer les blocs d'air sous le niveau de la mer. \nType: `BlockDescriptor`",
+                                    "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                }
+                            }
+                        },
+                        "minecraft:climate": {
+                            "description": "Définit la temprature, l'humidité, les précipitations et similaires. Les Biomes sans ce composant auront des valeurs par défaut. \nType: `Object`",
+                            "type": "object",
+                            "properties": {
+                                "blue_spores": {
+                                    "description": "Densité des visuels de précipitations de spores bleues. \nType: `Number`",
+                                    "type": "number"
+                                },
+                                "downfall": {
+                                    "description": "Quantité que les précipitations affectent les couleurs et les changements de blocs. \nType: `Number`",
+                                    "type": "number"
+                                },
+                                "snow_accumulation": {
+                                    "description": "Quantité minimum et maximum de niveau de couche de neige, chaque multiple de 0.125 est une autre couche de neige. \nType: `Number[2]`",
+                                    "type": "array",
+                                    "minItems": 2,
+                                    "maxItems": 2,
+                                    "items": {
+                                        "type": "number"
+                                    }
+                                },
+                                "white_ash": {
+                                    "description": "Densité des visuels de précipitations de cendres blanches. \nType: `Number`",
+                                    "type": "number"
+                                },
+                                "temperature": {
+                                    "description": "La temperature affecte une variété de choses visuelles et comportementales, y compris le placement de la neige et de la glace, le séchage de l'éponge et la couleur du ciel. \nType: `Number`",
+                                    "type": "number"
+                                },
+                                "red_spores": {
+                                    "description": "Densité des visuels de précipitations de spores rouges. \nType: `Number`",
+                                    "type": "number"
+                                },
+                                "ash": {
+                                    "description": "Densité des visuels de précipitations de cendres. \nType: `Number`",
+                                    "type": "number"
+                                }
+                            }
+                        },
+                        "minecraft:creature_spawn_probability": {
+                            "description": "Définit la probabilité que les créatures apparaissent dans le Biome lorsqu'un chunk est généré. \nType: `Object`",
+                            "type": "object",
+                            "properties": {
+                                "probability": {
+                                    "description": "Probabilité entre [0.0, 0.75] que les créatures apparaissent dans le Biome lorsqu'un chunk est généré. \nType: `Number`",
+                                    "type": "number",
+                                    "minimum": 0.0,
+                                    "maximum": 0.75
+                                }
+                            }
+                        },
+                        "minecraft:frozen_ocean_surface": {
+                            "description": "Similaire à overworld_surface. Ajoute des icebergs. \nType: `Object`",
+                            "type": "object",
+                            "required": ["sea_floor_depth", "mid_material", "sea_floor_material", "foundation_material", "top_material", "sea_material"],
+                            "properties": {
+                                "mid_material": {
+                                    "description": "Controle le type de bloc utilisé dans une couche sous la surface de ce biome. \nType: `BlockDescriptor`",
+                                    "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                },
+                                "sea_floor_depth": {
+                                    "description": "Contrôle à quelle profondeur sous le niveau mondial des eaux le fond de l'océan devrait se produire. \nType: `Integer`",
+                                    "type": "integer"
+                                },
+                                "sea_floor_material": {
+                                    "description": "Contrôle le type de bloc utilisé comme sol pour les étendues d'eau dans ce biome. \nType: `BlockDescriptor`",
+                                    "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                },
+                                "sea_material": {
+                                    "description": "Contrôle le type de bloc utilisé pour les étendues d'eau dans ce biome. \nType: `BlockDescriptor`",
+                                    "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                },
+                                "top_material": {
+                                    "description": "Contrôle le type de bloc utilisé pour la surface de ce biome. \nType: `BlockDescriptor`",
+                                    "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                },
+                                "foundation_material": {
+                                    "description": "Contrôle le type de bloc utilisé profondément sous terre dans ce biome. \nType: `BlockDescriptor`",
+                                    "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                }
+                            }
+                        },
+                        "minecraft:mesa_surface": {
+                            "description": "Similaire à overworld_surface. Ajoute des strates colorées et des piliers optionnels. \nType: `Object`",
+                            "type": "object",
+                            "required": ["mid_material", "sea_floor_depth", "sea_floor_material", "hard_clay_material", "sea_material", "top_material", "foundation_material", "clay_material", "bryce_pillars", "has_forest"],
+                            "properties": {
+                                "sea_floor_depth": {
+                                    "description": "Contrôle à quelle profondeur sous le niveau mondial des eaux le fond de l'océan devrait se produire. \nType: `Integer`",
+                                    "type": "integer"
+                                },
+                                "mid_material": {
+                                    "description": "Contrôle le type de bloc utilisé dans une couche sous la surface de ce biome. \nType: `BlockDescriptor`",
+                                    "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                },
+                                "sea_floor_material": {
+                                    "description": "Contrôle le type de bloc utilisé comme sol pour les étendues d'eau dans ce biome. \nType: `BlockDescriptor`",
+                                    "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                },
+                                "foundation_material": {
+                                    "description": "Contrôle le type de bloc utilisé profondément sous terre dans ce biome. \nType: `BlockDescriptor`",
+                                    "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                },
+                                "top_material": {
+                                    "description": "Contrôle le type de bloc utilisé pour la surface de ce biome. \nType: `BlockDescriptor`",
+                                    "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                },
+                                "sea_material": {
+                                    "description": "Contrôle le type de bloc utilisé pour les étendues d'eau dans ce biome. \nType: `BlockDescriptor`",
+                                    "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                },
+                                "hard_clay_material": {
+                                    "description": "L'argile durcie à utiliser. \nType: `BlockDescriptor`",
+                                    "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                },
+                                "clay_material": {
+                                    "description": "L'argile de base à utiliser. \nType: `BlockDescriptor`",
+                                    "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                },
+                                "bryce_pillars": {
+                                    "description": "Si la mesa se génère avec des piliers. \nType: `Boolean`",
+                                    "type": "boolean"
+                                },
+                                "has_forest": {
+                                    "description": "Place de la terre grossière et de l'herbe à haute altitude. \nType: `Boolean`",
+                                    "type": "boolean"
+                                }
+                            }
+                        },
+                        "minecraft:mountain_parameters": {
+                            "description": "Paramètres de bruit utilisés pour générer le terrain de montagne dans l'Overworld. \nType: `Object`",
+                            "type": "object",
+                            "properties": {
+                                "steep_material_adjustment": {
+                                    "description": "Définit le matériau de surface pour les pentes raides. \nType: `Object`",
+                                    "type": "object",
+                                    "properties": {
+                                        "material": {
+                                            "description": "Le matériau de surface pour les pentes raides. \nType: `BlockDescriptor`",
+                                            "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                        },
+                                        "east_slopes": {
+                                            "description": "Activer pour les pentes orientées à l'est. \nType: `Boolean`",
+                                            "type": "boolean"
+                                        },
+                                        "north_slopes": {
+                                            "description": "Activer pour les pentes orientées au nord. \nType: `Boolean`",
+                                            "type": "boolean"
+                                        },
+                                        "south_slopes": {
+                                            "description": "Activer pour les pentes orientées au sud. \nType: `Boolean`",
+                                            "type": "boolean"
+                                        },
+                                        "west_slopes": {
+                                            "description": "Activer pour les pentes orientées à l'ouest. \nType: `Boolean`",
+                                            "type": "boolean"
+                                        }
+                                    }
+                                },
+                                "top_slide": {
+                                    "description": "Contrôle la diminution de la densité qui se produit au sommet du monde pour empêcher le terrain d'atteindre trop haut. \nType: `Object`",
+                                    "type": "object",
+                                    "required": ["enabled"],
+                                    "properties": {
+                                        "enabled": {
+                                            "description": "Si false, le top slide sera désactivé. Si true, les autres paramètres seront pris en compte. \nType: `Boolean`",
+                                            "type": "boolean"
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "minecraft:multinoise_generation_rules": {
+                            "description": "Contrôle comment ce biome est instancié (et potentiellement modifié) lors de la génération du monde du Nether. \nType: `Object`",
+                            "type": "object",
+                            "properties": {
+                                "target_weirdness": {
+                                    "description": "Weirdness avec lequel ce biome devrait être généré, par rapport aux autres biomes. \nType: `Number`",
+                                    "type": "number"
+                                },
+                                "target_temperature": {
+                                    "description": "Température avec laquelle ce biome devrait être généré, par rapport aux autres biomes. \nType: `Number`",
+                                    "type": "number"
+                                },
+                                "target_humidity": {
+                                    "description": "Humidité avec laquelle ce biome devrait être généré, par rapport aux autres biomes. \nType: `Number`",
+                                    "type": "number"
+                                },
+                                "target_altitude": {
+                                    "description": "Altitude avec laquelle ce biome devrait être généré, par rapport aux autres biomes. \nType: `Number`",
+                                    "type": "number"
+                                },
+                                "weight": {
+                                    "description": "Poids avec lequel ce biome devrait être généré, par rapport aux autres biomes. \nType: `Number`",
+                                    "type": "number"
+                                }
+                            }
+                        },
+                        "minecraft:overworld_generation_rules": {
+                            "description": "Définit comment ce Biome est instancié (et potentiellement modifié) lors de la génération du monde de l'overworld. \nType: `Object`",
+                            "type": "object",
+                            "properties": {
+                                "mutate_transformation": {
+                                    "description": "Quel Biome utiliser pour convertir en Biome muté. \nType: `String | (String | Array)[]` \nNote: Peut être juste le nom de chaîne d'un Biome, ou un tableau de n'importe quelle taille. Si un tableau, chaque entrée peut être une chaîne de nom de Biome, ou un tableau de taille 2, où la première entrée est un nom de Biome et la deuxième entrée est un entier positif représentant comment ce Biome est pondéré par rapport aux autres entrées. Si aucun poids n'est fourni, un poids de 1 est utilisé.",
+                                    "oneOf": [
+                                        {
+                                            "type": "string"
+                                        },
+                                        {
+                                            "type": "array",
+                                            "items": {
+                                                "oneOf": [
+                                                    {
+                                                        "type": "string"
+                                                    },
+                                                    {
+                                                        "type": "array",
+                                                        "minItems": 2,
+                                                        "maxItems": 2,
+                                                        "items": [
+                                                            {
+                                                                "type": "string"
+                                                            },
+                                                            {
+                                                                "default": 1,
+                                                                "type": "integer",
+                                                                "minimum": 0
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    ]
+                                },
+                                "hills_transformation": {
+                                    "description": "Quel Biome utiliser pour convertir en Biome de collines. \nType: `String | (String | Array)[]` \nNote: Peut être juste le nom de chaîne d'un Biome, ou un tableau de n'importe quelle taille. Si un tableau, chaque entrée peut être une chaîne de nom de Biome, ou un tableau de taille 2, où la première entrée est un nom de Biome et la deuxième entrée est un entier positif représentant comment ce Biome est pondéré par rapport aux autres entrées. Si aucun poids n'est fourni, un poids de 1 est utilisé.",
+                                    "oneOf": [
+                                        {
+                                            "type": "string"
+                                        },
+                                        {
+                                            "type": "array",
+                                            "items": {
+                                                "oneOf": [
+                                                    {
+                                                        "type": "string"
+                                                    },
+                                                    {
+                                                        "type": "array",
+                                                        "minItems": 2,
+                                                        "maxItems": 2,
+                                                        "items": [
+                                                            {
+                                                                "type": "string"
+                                                            },
+                                                            {
+                                                                "default": 1,
+                                                                "type": "integer",
+                                                                "minimum": 0
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    ]
+                                },
+                                "generate_for_climates": {
+                                    "description": "Contrôle les catégories de climat de génération de monde pour lesquelles ce Biome peut apparaître. Un seul Biome peut être associé à plusieurs catégories avec des pondérations différentes. \nType: `Array[]` \nNote: Un tableau de n'importe quelle taille. Chaque entrée doit être un tableau de taille 2, où la première entrée est une chaîne de catégorie de climat ('medium', 'warm', 'lukewarm', 'cold', ou 'frozen'), et la deuxième entrée est un entier positif représentant comment ce Biome est pondéré par rapport aux autres entrées. Si aucun poids n'est fourni, un poids de 1 est utilisé.",
+                                    "type": "array",
+                                    "items": {
+                                        "type": "array",
+                                        "minItems": 2,
+                                        "maxItems": 2,
+                                        "items": [
+                                            {
+                                                "type": "string",
+                                                "enum": ["medium", "warm", "lukewarm", "cold", "frozen"]
+                                            },
+                                            {
+                                                "default": 1,
+                                                "type": "integer",
+                                                "minimum": 0
+                                            }
+                                        ]
+                                    }
+                                },
+                                "river_transformation": {
+                                    "description": "Quel Biome utiliser pour convertir en Biome de rivière. \nType: `String | (String | Array)[]` \nNote: Peut être juste le nom de chaîne d'un Biome, ou un tableau de n'importe quelle taille. Si un tableau, chaque entrée peut être une chaîne de nom de Biome, ou un tableau de taille 2, où la première entrée est un nom de Biome et la deuxième entrée est un entier positif représentant comment ce Biome est pondéré par rapport aux autres entrées. Si aucun poids n'est fourni, un poids de 1 est utilisé.",
+                                    "oneOf": [
+                                        {
+                                            "type": "string"
+                                        },
+                                        {
+                                            "type": "array",
+                                            "items": {
+                                                "oneOf": [
+                                                    {
+                                                        "type": "string"
+                                                    },
+                                                    {
+                                                        "type": "array",
+                                                        "minItems": 2,
+                                                        "maxItems": 2,
+                                                        "items": [
+                                                            {
+                                                                "type": "string"
+                                                            },
+                                                            {
+                                                                "default": 1,
+                                                                "type": "integer",
+                                                                "minimum": 0
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    ]
+                                },
+                                "shore_transformation": {
+                                    "description": "Quel Biome utiliser pour convertir en Biome d'océan. \nType: `String | (String | Array)[]` \nNote: Peut être juste le nom de chaîne d'un Biome, ou un tableau de n'importe quelle taille. Si un tableau, chaque entrée peut être une chaîne de nom de Biome, ou un tableau de taille 2, où la première entrée est un nom de Biome et la deuxième entrée est un entier positif représentant comment ce Biome est pondéré par rapport aux autres entrées. Si aucun poids n'est fourni, un poids de 1 est utilisé.",
+                                    "oneOf": [
+                                        {
+                                            "type": "string"
+                                        },
+                                        {
+                                            "type": "array",
+                                            "items": {
+                                                "oneOf": [
+                                                    {
+                                                        "type": "string"
+                                                    },
+                                                    {
+                                                        "type": "array",
+                                                        "minItems": 2,
+                                                        "maxItems": 2,
+                                                        "items": [
+                                                            {
+                                                                "type": "string"
+                                                            },
+                                                            {
+                                                                "default": 1,
+                                                                "type": "integer",
+                                                                "minimum": 0
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        },
+                        "minecraft:overworld_height": {
+                            "description": "Définit les paramètres de bruit qui influencent la hauteur du terrain dans l'Overworld. \nType: `Object`",
+                            "type": "object",
+                            "properties": {
+                                "noise_type": {
+                                    "description": "Définit un préréglage basé sur un paramètre intégré plutôt que d'utiliser manuellement noise_params. \nType: `String`",
+                                    "type": "string",
+                                    "enum": [
+                                        "default", "default_mutated", "river", "ocean", "deep_ocean", "lowlands", "taiga", "mountains", "highlands", "extreme", "less_extreme", "beach", "stone_beach", "mushroom", "swamp"
+                                    ]
+                                },
+                                "noise_params": {
+                                    "description": "La première valeur est la profondeur - plus négative signifie plus profond sous l'eau, tandis que plus positive signifie plus haut. La deuxième valeur est l'échelle, qui affecte la façon dont le bruit change lorsqu'il se déplace de la surface. \nType: `Number[2]`",
+                                    "type": "array",
+                                    "minItems": 2,
+                                    "maxItems": 2,
+                                    "items": {
+                                        "type": "number"
+                                    }
+                                }
+                            }
+                        },
+                        "minecraft:surface_material_adjustments": {
+                            "description": "Spécifie des modifications de détail fin aux blocs utilisés dans la génération de terrain (basée sur une fonction de bruit). \nType: `Object`",
+                            "type": "object",
+                            "properties": {
+                                "adjustments": {
+                                    "description": "Toutes les modifications qui correspondent aux valeurs de bruit de la colonne seront appliquées dans l'ordre indiqué. \nType: `Object[]`",
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "required": ["materials"],
+                                        "properties": {
+                                            "materials": {
+                                                "description": "Les blocs spécifiques utilisés pour cet ajustement de surface. \nType: `Object[]`",
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "sea_material": {
+                                                            "description": "Contrôle le type de bloc utilisé dans les étendues d'eau de ce biome lorsque cet ajustement est actif. \nType: `BlockDescriptor`",
+                                                            "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                                        },
+                                                        "foundation_material": {
+                                                            "description": "Contrôle le type de bloc utilisé profondément sous terre dans ce biome lorsque cet ajustement est actif. \nType: `BlockDescriptor`",
+                                                            "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                                        },
+                                                        "top_material": {
+                                                            "description": "Contrôle le type de bloc utilisé pour la surface de ce biome lorsque cet ajustement est actif. \nType: `BlockDescriptor`",
+                                                            "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                                        },
+                                                        "mid_material": {
+                                                            "description": "Contrôle le type de bloc utilisé dans une couche sous la surface de ce biome lorsque cet ajustement est actif. \nType: `BlockDescriptor`",
+                                                            "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                                        },
+                                                        "sea_floor_material": {
+                                                            "description": "Contrôle le type de bloc utilisé comme sol pour les étendues d'eau dans ce biome lorsque cet ajustement est actif. \nType: `BlockDescriptor`",
+                                                            "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "noise_range": {
+                                                "description": "Définit une plage de valeurs de bruit [min, max] pour lesquelles cet ajustement doit être appliqué. \nType: `Number[2]`",
+                                                "type": "array",
+                                                "minItems": 2,
+                                                "maxItems": 2,
+                                                "items": {
+                                                    "type": "number"
+                                                }
+                                            },
+                                            "height_range": {
+                                                "description": "Définit une plage de valeurs de hauteur [min, max] pour lesquelles cet ajustement doit être appliqué. \nType: `(Number | Boolean | String)[2]`",
+                                                "type": "array",
+                                                "minItems": 2,
+                                                "maxItems": 2,
+                                                "items": {
+                                                    "oneOf": [
+                                                        {
+                                                            "type": "number"
+                                                        },
+                                                        {
+                                                            "type": "boolean"
+                                                        },
+                                                        {
+                                                            "type": "string"
+                                                        }
+                                                    ]
+                                                }
+                                            },
+                                            "noise_frequency_scale": {
+                                                "description": "L'échelle pour multiplier par la position lors de l'accès à la valeur de bruit pour les ajustements de matériaux. \nType: `Number`",
+                                                "type": "number"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "minecraft:surface_parameters": {
+                            "description": "Contrôle les blocs utilisés pour la génération de terrain par défaut de l'Overworld. \nType: `Object`",
+                            "type": "object",
+                            "required": ["sea_floor_depth", "mid_material", "sea_floor_material", "foundation_material", "top_material"," sea_material"],
+                            "properties": {
+                                "sea_floor_depth": {
+                                    "description": "Contrôle à quelle profondeur sous le niveau mondial des eaux le fond de l'océan devrait se produire. \nType: `Integer`",
+                                    "type": "integer"
+                                },
+                                "mid_material": {
+                                    "description": "Contrôle le type de bloc utilisé dans une couche sous la surface de ce biome. \nType: `BlockDescriptor`",
+                                    "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                },
+                                "sea_floor_material": {
+                                    "description": "Contrôle le type de bloc utilisé comme sol pour les étendues d'eau dans ce biome. \nType: `BlockDescriptor`",
+                                    "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                },
+                                "sea_material": {
+                                    "description": "Contrôle le type de bloc utilisé pour les étendues d'eau dans ce biome. \nType: `BlockDescriptor`",
+                                    "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                },
+                                "top_material": {
+                                    "description": "Contrôle le type de bloc utilisé pour la surface de ce biome. \nType: `BlockDescriptor`",
+                                    "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                },
+                                "foundation_material": {
+                                    "description": "Contrôle le type de bloc utilisé profondément sous terre dans ce biome. \nType: `BlockDescriptor`",
+                                    "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                }
+                            }
+                        },
+                        "minecraft:swamp_surface": {
+                            "description": "Similaire à overworld_surface. Ajoute des détails de surface de marais. \nType: `Object`",
+                            "type": "object",
+                            "required": ["sea_floor_depth", "mid_material", "sea_floor_material", "foundation_material", "top_material", "sea_material"],
+                            "properties": {
+                                "mid_material": {
+                                    "description": "Contrôle le type de bloc utilisé dans une couche sous la surface de ce biome. \nType: `BlockDescriptor`",
+                                    "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                },
+                                "sea_floor_depth": {
+                                    "description": "Contrôle à quelle profondeur sous le niveau mondial des eaux le fond de l'océan devrait se produire. \nType: `Integer`",
+                                    "type": "integer"
+                                },
+                                "sea_floor_material": {
+                                    "description": "Contrôle le type de bloc utilisé comme sol pour les étendues d'eau dans ce biome. \nType: `BlockDescriptor`",
+                                    "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                },
+                                "sea_material": {
+                                    "description": "Contrôle le type de bloc utilisé pour les étendues d'eau dans ce biome. \nType: `BlockDescriptor`",
+                                    "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                },
+                                "top_material": {
+                                    "description": "Contrôle le type de bloc utilisé pour la surface de ce biome. \nType: `BlockDescriptor`",
+                                    "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                },
+                                "foundation_material": {
+                                    "description": "Contrôle le type de bloc utilisé profondément sous terre dans ce biome. \nType: `BlockDescriptor`",
+                                    "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                }
+                            }
+                        },
+                        "minecraft:tags": {
+                            "description": "Attache des tags de chaîne arbitraires à ce Biome. \nType: `Object`",
+                            "type": "object",
+                            "required": ["tags"],
+                            "properties": {
+                                "tags": {
+                                    "description": "Les tags de chaîne arbitraires à attacher à ce Biome. \nType: `String[]`",
+                                    "type": "array",
+                                    "items": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        },
+                        "minecraft:the_end_surface": {
+                            "description": "Utilise la génération de terrain par défaut de Minecraft End. \nType: `Object`",
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

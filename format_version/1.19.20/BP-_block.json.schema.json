@@ -1,0 +1,172 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "description": "Ce fichier sert à créer un bloc personnalisé. \n Type: Object",
+    "type": "object",
+    "required": ["format_version", "minecraft:block"],
+    "properties": {
+        "format_version": {
+            "description": "La version du Format à utiliser. \n Type: String",
+            "type": "string",
+            "enum": ["1.19.20", "1.19.30"]
+        },
+        "minecraft:block": {
+            "description": "Contient toute la définition du Bloc. \n Type: Object",
+            "type": "object",
+            "required": ["description"],
+            "properties": {
+                "description": {
+                    "description": "Contient les propeiétés de Descriptions du Bloc. \n Type: Object",
+                    "type": "object",
+                    "required": ["identifier"],
+                    "properties": {
+                        "identifier": {
+                            "description": "L'identifiant du Bloc. \n Type: String",
+                            "type": "string",
+                            "pattern": "^[a-zA-Z0-9_]+:[a-zA-Z0-9_]+$"
+                        },
+                        "menu_category": {
+                            "description": "Définit les informations sur la localisation du Bloc dans l'inventaire créatif ou commande. \n Type: Object",
+                            "type": "object",
+                            "properties": {
+                                "category": {
+                                    "description": "La catégorie de l'inventaire créatif ou commande dans laquelle le Bloc sera placé. \n Type: String",
+                                    "default": "none",
+                                    "type": "string",
+                                    "enum": ["construction", "nature", "equipment", "items", "none"]
+                                },
+                                "group": {
+                                    "description": "Le groupe d'items du menu créatif où le Bloc sera placé. \n Type: String",
+                                    "maxLength": 256,
+                                    "type": "string",
+                                    "oneOf": [
+                                        {
+                                            "$ref": "../../common.schema.json#/definitions/vanilla_item_groups_id"
+                                        },
+                                        {
+                                            "not": {
+                                                "$ref": "../../common.schema.json#/definitions/vanilla_item_groups_id"
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                "components": {
+                    "description": "Contients les composants du Bloc. \n Type: Object",
+                    "type": "object",
+                    "properties": {
+                        "minecraft:destructible_by_mining": {
+                            "description": "Définit les propriétés de destruction par minage pour ce bloc. Si défini sur true, le bloc aura le temps de destruction par défaut. Si défini sur false, ce bloc est indestructible par minage. \nType: `Boolean | Object`",
+                            "default": true,
+                            "oneOf": [
+                                {
+                                    "type": "boolean"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "seconds_to_destroy": {
+                                            "description": "Définit le nombre de secondes qu'il faut pour détruire le bloc avec l'équipement de base. \nType: Number",
+                                            "default": 0.0,
+                                            "type": "number"
+                                        }
+                                    }
+                                }
+                            ]
+                        },
+                        "minecraft:destructible_by_explosion": {
+                            "description": "Définit les propriétés de destruction par explosion pour ce bloc. Si défini sur true, le bloc aura la résistance à l'explosion par défaut. Si défini sur false, ce bloc est indestructible par explosion. Si le composant est omis, le bloc aura la résistance à l'explosion par défaut. \nType: `Boolean | Object`",
+                            "default": true,
+                            "oneOf": [
+                                {
+                                    "type": "boolean"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "explosion_resistance": {
+                                            "description": "Définit la résistance à l'explosion du bloc. \nType: Number",
+                                            "default": 0.0,
+                                            "type": "number"
+                                        }
+                                    }
+                                }
+                            ]
+                        },
+                        "minecraft:flammable": {
+                            "description": "Définit les propriétés inflammables pour ce bloc. Si défini sur true, les valeurs par défaut sont utilisées. Si défini sur false, ce bloc ne pourra pas prendre feu. Si ce composant est omis, le bloc ne pourra pas prendre feu naturellement à partir des voisins ou de la lave, mais il peut toujours être directement allumé, et ce feu pourra se propager aux blocs voisins. \nType: `Boolean | Object`",
+                            "oneOf": [
+                                {
+                                    "type": "boolean"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "catch_chance_modifier": {
+                                            "description": "Un modificateur affectant la chance que ce bloc prenne feu lorsqu'il est à côté d'un feu. Les valeurs sont supérieures ou égales à 0, un nombre plus élevé signifiant une probabilité plus élevée de prendre feu. La valeur par défaut de 5 est la même que celle des Planches. \nType: Integer",
+                                            "default": 5,
+                                            "type": "integer",
+                                            "minimum": 0
+                                        },
+                                        "destroy_chance_modifier": {
+                                            "description": "Un modificateur affectant la chance que ce bloc soit détruit par les flammes lorsqu'il est en feu. Les valeurs sont supérieures ou égales à 0, un nombre plus élevé signifiant une probabilité plus élevée d'être détruit par le feu. La valeur par défaut de 20 est la même que celle des Planches. \nType: Integer",
+                                            "default": 20,
+                                            "type": "integer",
+                                            "minimum": 0
+                                        }
+                                    }
+                                }
+                            ]
+                        },
+                        "minecraft:friction": {
+                            "description": "Définit la friction pour ce bloc. La friction affecte les mouvements des entités lorsqu'elles marchent sur le bloc. \n Type: `Number`",
+                            "default": 0.4,
+                            "type": "number",
+                            "minimum": 0.0,
+                            "maximum": 0.9
+                        },
+                        "minecraft:light_dampening": {
+                            "description": "Définit la quantité de lumière absorbée par le bloc. \n Type: `Integer`",
+                            "default": 15,
+                            "type": "integer",
+                            "minimum": 0,
+                            "maximum": 15
+                        },
+                        "minecraft:light_emission": {
+                            "description": "Définit la quantité de lumière émise par le bloc. \n Type: `Integer`",
+                            "default": 0,
+                            "type": "integer",
+                            "minimum": 0,
+                            "maximum": 15
+                        },
+                        "minecraft:loot": {
+                            "description": "Définit le Loot Table utilisé lorsque le bloc est cassé. \n Type: `String`",
+                            "type": "string"
+                        },
+                        "minecraft:map_color": {
+                            "description": "Définit la couleur du bloc sur une carte. \n Type: `String | Integer[3]`",
+                            "oneOf": [
+                                {
+                                    "type": "string",
+                                    "pattern": "^#[0-9a-fA-F]{6}$"
+                                },
+                                {
+                                    "type": "array",
+                                    "minItems": 3,
+                                    "maxItems": 3,
+                                    "items": {
+                                        "type": "integer",
+                                        "minimum": 0,
+                                        "maximum": 255
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

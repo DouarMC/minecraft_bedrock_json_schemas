@@ -1,0 +1,71 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "required": ["format_version", "minecraft:template_pool"],
+    "properties": {
+        "format_version": {
+            "description": "La version du Format à utiliser.",
+            "type": "string",
+            "pattern": "^\\d+\\.\\d+\\.\\d+$"
+        },
+        "minecraft:template_pool": {
+            "description": "La clé principale contenant la définition du Template Pool.",
+            "type": "object",
+            "required": ["description"],
+            "properties": {
+                "description": {
+                    "description": "La description du Template Pool.",
+                    "type": "object",
+                    "required": ["identifier"],
+                    "properties": {
+                        "identifier": {
+                            "description": "L'identifiant.",
+                            "type": "string"
+                        }
+                    }
+                },
+                "elements": {
+                    "description": "Une liste d'éléments individuels définissant les modèles et leurs propriétés.",
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "element": {
+                                "description": "Chaque élément correspond à un modèle de structure unique avec des règles de placement.",
+                                "type": "object",
+                                "properties": {
+                                    "element_type": {
+                                        "description": "Le type de l'élément.",
+                                        "type": "string",
+                                        "enum": ["minecraft:single_pool_element"]
+                                    },
+                                    "location": {
+                                        "description": "Chemin d'accès au fichier de modèle de structure (Structure Template) dans le dossier structures du Behavior Pack.",
+                                        "type": "string"
+                                    },
+                                    "processors": {
+                                        "description": "Identifiant de la liste de processeurs à appliquer lors du placement de la structure. Ces processeurs modifient les blocs du modèle en fonction de règles spécifiques.",
+                                        "type": "string"
+                                    },
+                                    "projection": {
+                                        "description": "Spécifie comment la structure doit être ajustée par rapport au terrain.",
+                                        "type": "string",
+                                        "enum": ["minecraft:rigid", "minecraft:terrain_matching"]
+                                    }
+                                }
+                            },
+                            "weight": {
+                                "description": "Poids de probabilité pour cet élément. Les poids déterminent la fréquence de sélection de l’élément par rapport aux autres dans le même pool.",
+                                "type": "integer"
+                            },
+                            "fallback": {
+                                "description": "Définit un Template Pool de secours à utiliser si aucun élément du pool principal ne peut être placé correctement.",
+                                "type": "string"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

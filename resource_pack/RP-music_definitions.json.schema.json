@@ -1,0 +1,5 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "description": "Ce fichier sert à gérer quand et la façon dont les musiques sont joués. \nType: `Object`",
+    "$ref": "../format_version/unversioned/RP-music_definitions.json.schema.json"
+}

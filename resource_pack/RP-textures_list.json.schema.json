@@ -1,0 +1,5 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "description": "Ce fichier sert à lister les textures utilisées dans ce Resource Pack. \n Type: `(Path String)[]`",
+    "$ref": "../format_version/unversioned/RP-textures_list.json.schema.json"
+}

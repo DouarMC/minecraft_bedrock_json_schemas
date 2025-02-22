@@ -1,0 +1,34 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "required": ["format_version", "particle_effect"],
+    "properties": {
+        "format_version": {"$ref": "#/definitions/format_version-def"},
+    },
+
+
+    "definitions": {
+        "format_version-def": {"type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$", "description": "La version du Format à utiliser."},
+        "particle_effect-def": {"type": "object", "required": ["identifier"], "description": "Contient toute la définition de la Particule."},
+
+        "description-def": {"type": "object", "required": ["identifier"], "description": "Contient les propeiétés de Descriptions du Bloc.", "properties": {
+            "identifier": {"type": "string", "description": "L'identifiant de la Particule."},
+            "basic_render_parameters": {"type": "object", "description": "Contient les paramètres de bases de rendu de la Particule.", "properties": {
+                "material": {"description": "Le materiel utilisé.", "anyOf": [
+                    {"type": "string", "enum": ["particles_alpha", "particles_blend", "particles_add"]},
+                    {"type": "string"}
+                ]},
+                "texture": {"type": "string", "description": "La texture pour la Particule."}
+            }}
+        }},
+
+        "components-def": {"type": "object", "description": "La liste des components de cet Effet de Particule.", "properties": {
+            "minecraft:emitter_local_space": {"type": "object", "description": "Ce composant précise le référentiel de l'émetteur. S'applique uniquement lorsque l'émetteur est attaché à une entité. Lorsque la « position » est vraie, les particules simuleront dans l'espace des entités, sinon elles simuleront dans l'espace mondial. La rotation fonctionne de la même manière pour la rotation. La valeur par défaut est false pour les deux, ce qui fait que les particules émettent par rapport à l'émetteur, puis simulent indépendamment de l'émetteur. Notez que rotation = true et position = false sont une option non valide. La vitesse ajoutera la vitesse de l'émetteur à la vitesse initiale des particules.", "properties": {
+                "position": {"type": "boolean"},
+                "rotation": {"type": "boolean"},
+                "velocity": {"type": "boolean"}
+            }},
+            "minecraft:emitter_initialization": {"type": "object", "description": ""}
+        }}
+    }
+}

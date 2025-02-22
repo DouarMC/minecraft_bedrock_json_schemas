@@ -1,0 +1,1708 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "definitions": {
+        "vanilla_biomes_id": {
+            "$comment": "Liste des identifiants des biomes vanilla.",
+            "enum": [
+                "bamboo_jungle", "bamboo_jungle_hills", "basalt_deltas", "beach", "birch_forest", "birch_forest_hills", "birch_forest_hills_mutated", "birch_forest_mutated", "cherry_grove", "cold_beach", "cold_ocean", "cold_taiga", "cold_taiga_hills", "cold_taiga_mutated", "crimson_forest", "deep_cold_ocean", "deep_dark", "deep_frozen_ocean", "deep_lukewarm_ocean", "deep_ocean", "deep_warm_ocean", "desert", "desert_hills", "desert_mutated", "dripstone_caves", "extreme_hills", "extreme_hills_edge", "extreme_hills_mutated", "extreme_hills_plus_trees", "extreme_hills_plus_trees_mutated", "flower_forest", "forest", "forest_hills", "frozen_ocean", "frozen_peaks", "frozen_river", "grove", "hell", "ice_mountains", "ice_plains", "ice_plains_spikes", "jagged_peaks", "jungle", "jungle_edge", "jungle_edge_mutated", "jungle_hills", "jungle_mutated", "legacy_frozen_ocean", "lukewarm_ocean", "lush_caves", "mangrove_swamp", "meadow", "mega_taiga", "mega_taiga_hills", "mesa", "mesa_bryce", "mesa_plateau", "mesa_plateau_mutated", "mesa_plateau_stone", "mesa_plateau_stone_mutated", "mushroom_island", "mushroom_island_shore", "ocean", "pale_garden", "plains", "redwood_taiga_hills_mutated", "redwood_taiga_mutated", "river", "roofed_forest", "roofed_forest_mutated", "savanna", "savanna_mutated", "savanna_plateau", "savanna_plateau_mutated", "snowy_slopes", "soulsand_valley", "stone_beach", "stony_peaks", "sunflower_plains", "swampland", "swampland_mutated", "taiga", "taiga_hills", "taiga_mutated", "the_end", "warm_ocean", "warped_forest"
+            ]
+        },
+        "vanille_camera_presets_id": {
+            "$comment": "Liste des identifiants des presets de Camera vanilla.",
+            "enum": [
+                "minecraft:first_person", "minecraft:fixed_boom", "minecraft:follow_orbit", "minecraft:free", "minecraft:third_person", "minecraft:third_person_front"
+            ]
+        },
+        "vanilla_item_groups_id": {
+            "$comment": "Liste des identifiants des groupes d'items vanilla.",
+            "enum": [
+                "itemGroup.name.anvil", "itemGroup.name.arrow", "itemGroup.name.axe", "itemGroup.name.banner", "itemGroup.name.banner_pattern", "itemGroup.name.bed",
+                "itemGroup.name.boat", "itemGroup.name.boots", "itemGroup.name.buttons", "itemGroup.name.candles", "itemGroup.name.chalkboard", "itemGroup.name.chest",
+                "itemGroup.name.chestboat", "itemGroup.name.chestplate", "itemGroup.name.concrete", "itemGroup.name.concretePowder", "itemGroup.name.cookedFood", "itemGroup.name.copper",
+                "itemGroup.name.coral", "itemGroup.name.coral_decorations", "itemGroup.name.crop", "itemGroup.name.door", "itemGroup.name.dye", "itemGroup.name.enchantedBook",
+                "itemGroup.name.fence", "itemGroup.name.fenceGate", "itemGroup.name.firework", "itemGroup.name.fireworkStars", "itemGroup.name.flower", "itemGroup.name.glass",
+                "itemGroup.name.glassPane", "itemGroup.name.glazedTerracotta", "itemGroup.name.goatHorn", "itemGroup.name.grass", "itemGroup.name.hanging_sign", "itemGroup.name.helmet",
+                "itemGroup.name.hoe", "itemGroup.name.horseArmor", "itemGroup.name.leaves", "itemGroup.name.leggings", "itemGroup.name.lingeringPotion", "itemGroup.name.log",
+                "itemGroup.name.minecart", "itemGroup.name.miscFood", "itemGroup.name.mobEgg", "itemGroup.name.monsterStoneEgg", "itemGroup.name.mushroom", "itemGroup.name.netherWartBlock",
+                "itemGroup.name.ore", "itemGroup.name.permission", "itemGroup.name.pickaxe", "itemGroup.name.planks", "itemGroup.name.potion", "itemGroup.name.potterySherds",
+                "itemGroup.name.pressurePlate", "itemGroup.name.rail", "itemGroup.name.rawFood", "itemGroup.name.record", "itemGroup.name.sandstone", "itemGroup.name.sapling",
+                "itemGroup.name.sculk", "itemGroup.name.seed", "itemGroup.name.shovel", "itemGroup.name.shulkerBox", "itemGroup.name.sign", "itemGroup.name.skull",
+                "itemGroup.name.slab", "itemGroup.name.smithing_templates", "itemGroup.name.splashPotion", "itemGroup.name.stainedClay", "itemGroup.name.stairs", "itemGroup.name.stone",
+                "itemGroup.name.stoneBrick", "itemGroup.name.sword", "itemGroup.name.trapdoor", "itemGroup.name.walls", "itemGroup.name.wood", "itemGroup.name.wool",
+                "itemGroup.name.woolCarpet"
+            ]
+        },
+        "vanilla_item_groups_id_with_namespace": {
+            "$comment": "Liste des identifiants des groupes d'items vanilla avec namespace.",
+            "enum": [
+                "mminecraft:itemGroup.name.anvil", "minecraft:itemGroup.name.arrow", "minecraft:itemGroup.name.axe", "minecraft:itemGroup.name.banner", "minecraft:itemGroup.name.banner_pattern", "minecraft:itemGroup.name.bed",
+                "minecraft:itemGroup.name.boat", "minecraft:itemGroup.name.boots", "minecraft:itemGroup.name.buttons", "minecraft:itemGroup.name.candles", "minecraft:itemGroup.name.chalkboard", "minecraft:itemGroup.name.chest",
+                "minecraft:itemGroup.name.chestboat", "minecraft:itemGroup.name.chestplate", "minecraft:itemGroup.name.concrete", "minecraft:itemGroup.name.concretePowder", "minecraft:itemGroup.name.cookedFood", "minecraft:itemGroup.name.copper",
+                "minecraft:itemGroup.name.coral", "minecraft:itemGroup.name.coral_decorations", "minecraft:itemGroup.name.crop", "minecraft:itemGroup.name.door", "minecraft:itemGroup.name.dye", "minecraft:itemGroup.name.enchantedBook",
+                "minecraft:itemGroup.name.fence", "minecraft:itemGroup.name.fenceGate", "minecraft:itemGroup.name.firework", "minecraft:itemGroup.name.fireworkStars", "minecraft:itemGroup.name.flower", "minecraft:itemGroup.name.glass",
+                "minecraft:itemGroup.name.glassPane", "minecraft:itemGroup.name.glazedTerracotta", "minecraft:itemGroup.name.goatHorn", "minecraft:itemGroup.name.grass", "minecraft:itemGroup.name.hanging_sign", "minecraft:itemGroup.name.helmet",
+                "minecraft:itemGroup.name.hoe", "minecraft:itemGroup.name.horseArmor", "minecraft:itemGroup.name.leaves", "minecraft:itemGroup.name.leggings", "minecraft:itemGroup.name.lingeringPotion", "minecraft:itemGroup.name.log",
+                "minecraft:itemGroup.name.minecart", "minecraft:itemGroup.name.miscFood", "minecraft:itemGroup.name.mobEgg", "minecraft:itemGroup.name.monsterStoneEgg", "minecraft:itemGroup.name.mushroom", "minecraft:itemGroup.name.netherWartBlock",
+                "minecraft:itemGroup.name.ore", "minecraft:itemGroup.name.permission", "minecraft:itemGroup.name.pickaxe", "minecraft:itemGroup.name.planks", "minecraft:itemGroup.name.potion", "minecraft:itemGroup.name.potterySherds",
+                "minecraft:itemGroup.name.pressurePlate", "minecraft:itemGroup.name.rail", "minecraft:itemGroup.name.rawFood", "minecraft:itemGroup.name.record", "minecraft:itemGroup.name.sandstone", "minecraft:itemGroup.name.sapling",
+                "minecraft:itemGroup.name.sculk", "minecraft:itemGroup.name.seed", "minecraft:itemGroup.name.shovel", "minecraft:itemGroup.name.shulkerBox", "minecraft:itemGroup.name.sign", "minecraft:itemGroup.name.skull",
+                "minecraft:itemGroup.name.slab", "minecraft:itemGroup.name.smithing_templates", "minecraft:itemGroup.name.splashPotion", "minecraft:itemGroup.name.stainedClay", "minecraft:itemGroup.name.stairs", "minecraft:itemGroup.name.stone",
+                "minecraft:itemGroup.name.stoneBrick", "minecraft:itemGroup.name.sword", "minecraft:itemGroup.name.trapdoor", "minecraft:itemGroup.name.walls", "minecraft:itemGroup.name.wood", "minecraft:itemGroup.name.wool",
+                "minecraft:itemGroup.name.woolCarpet"
+            ]
+        },
+        "vanilla_cooldown_categories_id": {
+            "$comment": "Liste des identifiants des catégories de cooldown vanilla.",
+            "enum": [
+                "minecraft:chorusfruit", "minecraft:ender_pearl", "minecraft:goat_horn", "minecraft:shield", "minecraft:wind_charge"
+            ]
+        },
+        "entity_damage_causes_id": {
+            "$comment": "Listes des causes de dégâts possibles.",
+            "enum": [
+                "all", "anvil", "block_explosion", "campfire", "charging", "contact", "drowning", "entity_attack", "entity_explosion", "fall", "falling_block", "fire", "fire_tick", "fireworks", "fly_into_wall", "freezing",
+                "lava", "lightning", "mace_smash", "magic", "magma", "none", "override", "piston", "projectile", "ram_attack", "self_destruct", "sonic_boom", "soul_campfire", "stalactite", "stalagmite", "starve", "suffocation", "temperature", "thorns", 
+                "void", "wither"
+            ]
+        },
+        "vanilla_item_tags_id": {
+            "$comment": "Liste des identifiants des tags d'items.",
+            "enum": [
+                "minecraft:is_armor", "minecraft:arrow", "minecraft:banner", "minecraft:boat", "minecraft:boats", "minecraft:bookshelf_books", "minecraft:chainmail_tier", "minecraft:chest_boat", "minecraft:coals", "minecraft:is_cooked", "minecraft:crimson_stems", "minecraft:decorated_pot_sherds", "minecraft:diamond_tier", "minecraft:digger", "minecraft:door", "minecraft:is_fish", "minecraft:is_food", "minecraft:golden_tier", "minecraft:hanging_actor", "minecraft:hanging_sign", "minecraft:is_axe", "minecraft:is_hoe", "minecraft:horse_armor", "minecraft:iron_tier", "minecraft:leather_tier", "minecraft:lectern_books", "minecraft:logs", "minecraft:logs_that_burn", "minecraft:mangrove_logs", "minecraft:is_meat", "minecraft:is_minecart", "minecraft:music_disc", "minecraft:netherite_tier", "minecraft:is_pickaxe", "minecraft:piglin_loved", "minecraft:piglin_repellents", "minecraft:planks", "minecraft:sand", "minecraft:is_shovel", "minecraft:sign", "minecraft:soul_fire_base_blocks", "minecraft:spawn_egg", "minecraft:stone_bricks", "minecraft:stone_crafting_materials", "minecraft:stone_tier", "minecraft:stone_tool_materials", "minecraft:is_sword", "minecraft:is_tool", "minecraft:is_trident", "minecraft:trim_materials", "minecraft:trim_templates", "minecraft:trimmable_armors", "minecraft:transformable_items", "minecraft:transform_materials", "minecraft:transform_templates", "minecraft:vibration_damper", "minecraft:warped_stems", "minecraft:wooden_slabs", "minecraft:wooden_tier", "minecraft:wool", "minecraft:is_shears"
+            ]
+        },
+        "vanilla_block_models_id": {
+            "$comment": "Liste des identifiants des modèles de blocs vanilla.",
+            "enum": ["minecraft:geometry.full_block", "minecraft:geometry.cross"]
+        },
+        "enchantments_id": {
+            "$comment": "Liste des identifiants des enchantements.",
+            "enum": [
+                "aqua_affinity", "bane_of_arthropods", "binding", "blast_protection", "infinity", "breach", "channeling", "density",
+                "depth_strider", "efficiency", "feather_falling", "fire_aspect", "fire_protection", "flame", "fortune", "frost_walker",
+                "impaling", "knockback", "looting", "loyalty", "luck_of_the_sea", "lure", "mending", "multishot", "piercing", "power",
+                "projectile_protection", "protection", "punch", "quick_charge", "respiration", "riptide", "sharpness", "silk_touch",
+                "smite", "soul_speed", "swift_sneak", "thorns", "unbreaking", "vanishing", "wind_burst"
+            ]
+        },
+        "potion_effects_id": {
+            "$comment": "Liste des identifiants des effets de potions.",
+            "enum": [
+                "water", "mundane", "long_mundane", "thick", "awkward", "nightvision", "long_nightvision", "invisibility", "long_invisibility", 
+                "leaping", "long_leaping", "strong_leaping", "fire_resistance", "long_fire_resistance", "swiftness", "long_swiftness", "strong_swiftness", 
+                "slowness", "long_slowness", "strong_slowness", "water_breathing", "long_water_breathing", "healing", "strong_healing", "harming", 
+                "strong_harming", "poison", "long_poison", "strong_poison", "regeneration", "long_regeneration", "strong_regeneration", "strength", 
+                "long_strength", "strong_strength", "weakness", "long_weakness", "wither", "turtle_master", "long_turtle_master", "strong_turtle_master", 
+                "slow_falling", "long_slow_falling", "wind_charged", "weaving", "oozing", "infested"
+            ]
+        },
+        "armor_trim_materials": {
+            "$comment": "Liste des différents matériaux qui peuvent être utilisés pour les personalisations d'armures.",
+            "enum": [
+                "amethyst", "copper", "diamond", "emerald", "gold", "iron", "lapis", "netherite", "resin", "quartz", "redstone"
+            ]
+        },
+        "armor_trim_patterns": {
+            "$comment": "Liste des différents motifs qui peuvent être utilisés pour les personalisations d'armures.",
+            "enum": [
+                "sentry", "vex", "wild", "coast", "dune", "wayfinder", "raiser", "shaper", "host", "ward", "silence", "tide", "snout",
+                "rib", "eye", "spire", "flow", "bolt"
+            ]
+        },
+        "built_in_entity_events": {
+            "$comment": "Liste des événements intégrés pour les entités.",
+            "enum": [
+                "minecraft:entity_born", "minecraft:entity_spawned", "minecraft:entity_transformed", "minecraft:on_prime"
+            ]
+        },
+        "minecraft_filter": {
+            "$comment": "Définit un filtre Minecraft.",
+            "type": "object",
+            "properties": {
+                "AND": {
+                    "description": "Evalue tous les tests du groupe, tous doivent passer pour que le groupe passe. \nType: `Object[]`",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/minecraft_filter"
+                    }
+                },
+                "NOT": {
+                    "description": "Evalue tous les tests du groupe, tous doivent échouer pour que le groupe passe. \nType: `Object[]`",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/minecraft_filter"
+                    }
+                },
+                "OR": {
+                    "description": "Evalue tous les tests du groupe, un ou plusieurs doivent passer pour que le groupe passe. \nType: `Object[]`",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/minecraft_filter"
+                    }
+                },
+                "all": {
+                    "description": "Evalue tous les tests du groupe, tous doivent passer pour que le groupe passe. \nType: `Object[]`",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/minecraft_filter"
+                    }
+                },
+                "all_of": {
+                    "description": "Evalue tous les tests du groupe, tous doivent passer pour que le groupe passe. \nType: `Object[]`",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/minecraft_filter"
+                    }
+                },
+                "any": {
+                    "description": "Evalue tous les tests du groupe, un ou plusieurs doivent passer pour que le groupe passe. \nType: `Object[]`",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/minecraft_filter"
+                    }
+                },
+                "any_of": {
+                    "description": "Evalue tous les tests du groupe, un ou plusieurs doivent passer pour que le groupe passe. \nType: `Object[]`",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/minecraft_filter"
+                    }
+                },
+                "none_of": {
+                    "description": "Evalue tous les tests du groupe, tous doivent échouer pour que le groupe passe. \nType: `Object[]`",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/minecraft_filter"
+                    }
+                },
+                "test": {
+                    "description": "Le test à effectuer. \nType: `String`",
+                    "type": "string",
+                    "enum": [
+                        "actor_health", "all_slots_empty", "any_slot_empty", "bool_property", "clock_time", "distance_to_nearest_player", "enum_property", "float_property", "has_ability", "has_biome_tag", "has_component", "has_container_open", "has_damage", "has_damaged_equipment", "has_equipment", "has_mob_effect", "has_nametag", "has_property", "has_ranged_weapon", "has_silk_touch", "has_tag", "has_target", "has_trade_supply", "home_distance", "hourly_clock_time", "in_block","in_caravan", "in_clouds", "in_contact_with_water", "in_lava", "in_nether", "in_overworld", "in_water", "in_water_or_rain", "inactivity_timer", "int_property", "is_altitude", "is_avoiding_mobs", "is_baby", "is_biome", "is_block", "is_bound_to_creaking_heart", "is_brightness", "is_climbing", "is_color", "is_daytime", "is_difficulty", "is_family", "is_game_rule", "is_humid", "is_immobile", "is_in_village", "is_leashed", "is_leashed_to", "is_mark_variant", "is_missing_health", "is_moving", "is_navigating", "is_owner", "is_panicking", "is_persistent", "is_raider", "is_riding", "is_sitting", "is_skin_id", "is_sleeping", "is_sneak_held", "is_sneaking", "is_snow_covered", "is_sprinting", "is_target", "is_temperature_type", "is_temperature_value", "is_underground", "is_underwater", "is_variant", "is_visible", "is_waterlogged", "light_level", "moon_intensity", "moon_phase", "on_fire", "on_ground", "on_hot_block", "on_ladder", "owner_distance", "random_chance", "rider_count", "surface_mob", "taking_fire_damage", "target_distance", "trusts", "was_last_hurt_by", "weather", "weather_at_position"
+                    ]
+                },
+                "subject": {
+                    "description": "Le sujet du test. \nType: `String`",
+                    "default": "self",
+                    "type": "string",
+                    "enum": ["block", "damager", "other", "parent", "player", "self", "target"]
+                },
+                "operator": {
+                    "description": "L'opérateur de comparaison. \nType: `String`",
+                    "default": "==",
+                    "type": "string",
+                    "enum": ["!=", "<", "<=", "<>", "=", "==", ">", ">=", "equals", "not"]
+                }
+            },
+            "dependencies": {
+                "test": {
+                    "oneOf": [
+                        {
+                            "required": ["value"],
+                            "properties": {
+                                "test": {
+                                    "description": "Teste la vie du sujet. \nType: `String`",
+                                    "type": "string",
+                                    "const": "actor_health"
+                                },
+                                "value": {
+                                    "description": "La valeur à comparer. \nType: `Integer`",
+                                    "type": "integer"
+                                }
+                            }
+                        },
+                        {
+                            "properties": {
+                                "test": {
+                                    "description": "Renvoie vrai lorsque l'emplacement d'équipement désigné pour l'entité sujet est complètement vide. \nType: `String`",
+                                    "type": "string",
+                                    "const": "all_slots_empty"
+                                },
+                                "value": {
+                                    "description": "L'emplacement d'équipement à tester. \nType: `String`",
+                                    "default": "any",
+                                    "type": "string",
+                                    "enum": ["any", "armor", "body", "feet", "hand", "head", "inventory", "leg", "torso"]
+                                }
+                            }
+                        },
+                        {
+                            "properties": {
+                                "test": {
+                                    "description": "Renvoie vrai lorsque l'emplacement d'équipement désigné pour l'entité sujet est vide. \nType: `String`",
+                                    "type": "string",
+                                    "const": "any_slot_empty"
+                                },
+                                "value": {
+                                    "description": "L'emplacement d'équipement à tester. \nType: `String`",
+                                    "default": "any",
+                                    "type": "string",
+                                    "enum": ["any", "armor", "body", "feet", "hand", "head", "inventory", "leg", "torso"]
+                                }
+                            }
+                        },
+                        {
+                            "required": ["domain"],
+                            "properties": {
+                                "test": {
+                                    "description": "Teste si une propriété booléenne spécifique correpond à la valeur fourni. \nType: `String`",
+                                    "type": "string",
+                                    "const": "bool_property"
+                                },
+                                "domain": {
+                                    "description": "Le domaine de la propriété à tester. \nType: `String`",
+                                    "type": "string",
+                                    "pattern": "^[a-zA-Z0-9_]+:[a-zA-Z0-9_]+$"
+                                },
+                                "value": {
+                                    "description": "La valeur à comparer. \nType: `Boolean`",
+                                    "default": true,
+                                    "type": "boolean"
+                                }
+                            }
+                        },
+                        {
+                            "required": ["value"],
+                            "properties": {
+                                "test": {
+                                    "description": "Teste l'heure actuelle du monde. \nType: `String`",
+                                    "type": "string",
+                                    "const": "clock_time"
+                                },
+                                "value": {
+                                    "description": "L'heure à comparer. \nType: `Integer`",
+                                    "type": "integer",
+                                    "minimum": 0.0,
+                                    "maximum": 1.0
+                                }
+                            }
+                        },
+                        {
+                            "required": ["value"],
+                            "properties": {
+                                "test": {
+                                    "description": "Teste la distance entre le sujet et le joueur le plus proche. \nType: `String`",
+                                    "type": "string",
+                                    "const": "distance_to_nearest_player"
+                                },
+                                "value": {
+                                    "description": "La distance à comparer. \nType: `Number`",
+                                    "type": "number"
+                                }
+                            }
+                        },
+                        {
+                            "required": ["domain", "value"],
+                            "properties": {
+                                "test": {
+                                    "description": "Teste si une propriété enum spécifique correpond à la valeur fourni. \nType: `String`",
+                                    "type": "string",
+                                    "const": "enum_property"
+                                },
+                                "domain": {
+                                    "description": "Le domaine de la propriété à tester. \nType: `String`",
+                                    "type": "string",
+                                    "pattern": "^[a-zA-Z0-9_]+:[a-zA-Z0-9_]+$"
+                                },
+                                "value": {
+                                    "description": "La valeur à comparer. \nType: `String`",
+                                    "type": "string"
+                                }
+                            }
+                        },
+                        {
+                            "required": ["value", "domain"],
+                            "properties": {
+                                "test": {
+                                    "description": "Teste si le valeur d'une propriété float spécifique correpond à la valeur fourni. \nType: `String`",
+                                    "type": "string",
+                                    "const": "float_property"
+                                },
+                                "value": {
+                                    "description": "Le nom du composant à tester. \nType: `String`",
+                                    "type": "string"
+                                },
+                                "domain": {
+                                    "description": "Le domaine de la propriété à tester. \nType: `String`",
+                                    "type": "string",
+                                    "pattern": "^[a-zA-Z0-9_]+:[a-zA-Z0-9_]+$"
+                                }
+                            }
+                        },
+                        {
+                            "required": ["value"],
+                            "properties": {
+                                "test": {
+                                    "description": "Teste si le sujet possède une capacité spécifique. \nType: `String`",
+                                    "type": "string",
+                                    "const": "has_ability"
+                                },
+                                "value": {
+                                    "description": "Le nom de la capacité à tester. \nType: `String`",
+                                    "type": "string",
+                                    "enum": ["flyspeed", "flying", "instabuild", "invulnerable", "lightning", "mayfly", "mute", "noclip", "walkspeed", "worldbuilder"]
+                                }
+                            }
+                        },
+                        {
+                            "required": ["value"],
+                            "properties": {
+                                "test": {
+                                    "description": "Teste si le biome du sujet possède un tag spécifique. \nType: `String`",
+                                    "type": "string",
+                                    "const": "has_biome_tag"
+                                },
+                                "value": {
+                                    "description": "Le tag du biome à tester. \nType: `String`",
+                                    "type": "string"
+                                }
+                            }
+                        },
+                        {
+                            "required": ["value"],
+                            "properties": {
+                                "test": {
+                                    "description": "Teste si le sujet possède un composant spécifique. \nType: `String`",
+                                    "type": "string",
+                                    "const": "has_component"
+                                },
+                                "value": {
+                                    "description": "Le nom du composant à tester. \nType: `String`",
+                                    "type": "string"
+                                }
+                            }
+                        },
+                        {
+                            "properties": {
+                                "test": {
+                                    "description": "Teste si le joueur a ouvert un conteneur. \nType: `String`",
+                                    "type": "string",
+                                    "const": "has_container_open"
+                                },
+                                "value": {
+                                    "description": "Vrai ou faux. \nType: `Boolean`",
+                                    "default": true,
+                                    "type": "boolean"
+                                }
+                            }
+                        },
+                        {
+                            "required": ["value"],
+                            "properties": {
+                                "test": {
+                                    "description": "Teste si le sujet reçoit un type de dégâts spécifique. \nType: `String`",
+                                    "type": "string",
+                                    "const": "has_damage"
+                                },
+                                "value": {
+                                    "description": "Le type de dégâts à tester. \nType: `String`",
+                                    "type": "string",
+                                    "$ref": "#/definitions/entity_damage_causes_id"
+                                }
+                            }
+                        },
+                        {
+                            "required": ["value"],
+                            "properties": {
+                                "test": {
+                                    "description": "Teste de la présence d'un item nommé endommagé dans l'emplacement désigné de l'entité sujet. \nType: `String`",
+                                    "type": "string",
+                                    "const": "has_damaged_equipment"
+                                },
+                                "value": {
+                                    "description": "L'équipement à tester. \nType: `String`",
+                                    "type": "string"
+                                },
+                                "domain": {
+                                    "description": "L'emplacement de l'équipement à tester. \nType: `String`",
+                                    "default": "any",
+                                    "type": "string",
+                                    "enum": ["any", "armor", "body", "feet", "hand", "head", "inventory", "leg", "torso"]
+                                }
+                            }
+                        },
+                        {
+                            "required": ["value"],
+                            "properties": {
+                                "test": {
+                                    "description": "Teste si le sujet possède un équipement spécifique. \nType: `String`",
+                                    "type": "string",
+                                    "const": "has_equipment"
+                                },
+                                "domain": {
+                                    "description": "Le domaine est utilisé pour tester où se trouve l'équipement. \nType: `String`",
+                                    "default": "any",
+                                    "type": "string",
+                                    "enum": ["any", "armor", "body", "feet", "hand", "head", "inventory", "leg", "torso"]
+                                },
+                                "value": {
+                                    "description": "L'item à tester. \nType: `String`",
+                                    "type": "string"
+                                }
+                            }
+                        },
+                        {
+                            "properties": {
+                                "test": {
+                                    "description": "Teste si le sujet possède un effet de potion spécifique. \nType: `String`",
+                                    "type": "string",
+                                    "const": "has_mob_effect"
+                                },
+                                "value": {
+                                    "description": "L'effet de potion à tester. \nType: `String`",
+                                    "type": "string",
+                                    "$ref": "#/definitions/potion_effects_id"
+                                }
+                            }
+                        },
+                        {
+                            "properties": {
+                                "test": {
+                                    "description": "Teste si le sujet possède une étiquette de nom spécifique. \nType: `String`",
+                                    "type": "string",
+                                    "const": "has_nametag"
+                                },
+                                "value": {
+                                    "description": "L'étiquette de nom à tester. \nType: `String`",
+                                    "type": "string"
+                                }
+                            }
+                        },
+                        {
+                            "required": ["value"],
+                            "properties": {
+                                "test": {
+                                    "description": "Teste si le sujet possède une propriété spécifique. \nType: `String`",
+                                    "type": "string",
+                                    "const": "has_property"
+                                },
+                                "value": {
+                                    "description": "La valeur à comparer. \nType: `String`",
+                                    "type": "string",
+                                    "pattern": "^[a-zA-Z0-9_]+:[a-zA-Z0-9_]+$"
+                                }
+                            }
+                        },
+                        {
+                            "properties": {
+                                "test": {
+                                    "description": "Renvoie vrai lorsque le sujet tient une arme à distance comme un arc ou une arbalète. \nType: `String`",
+                                    "type": "string",
+                                    "const": "has_ranged_weapon"
+                                },
+                                "value": {
+                                    "description": "Vrai ou faux. \nType: `Boolean`",
+                                    "default": true,
+                                    "type": "boolean"
+                                }
+                            }
+                        },
+                        {
+                            "properties": {
+                                "test": {
+                                    "description": "Teste si le sujet tient dans la main un item avec l'enchantement délicatesse.. \nType: `String`",
+                                    "type": "string",
+                                    "const": "has_silk_touch"
+                                },
+                                "value": {
+                                    "description": "Vrai ou faux. \nType: `Boolean`",
+                                    "default": true,
+                                    "type": "boolean"
+                                }
+                            }
+                        },
+                        {
+                            "properties": {
+                                "test": {
+                                    "description": "Teste si le sujet possède un tag spécifique. \nType: `String`",
+                                    "type": "string",
+                                    "const": "has_tag"
+                                },
+                                "value": {
+                                    "description": "Le tag à tester. \nType: `String`",
+                                    "type": "string"
+                                }
+                            }
+                        },
+                        {
+                            "properties": {
+                                "test": {
+                                    "description": "Teste si le sujet possède une cible valide. \nType: `String`",
+                                    "type": "string",
+                                    "const": "has_target"
+                                },
+                                "value": {
+                                    "description": "Vrai ou faux. \nType: `Boolean`",
+                                    "default": true,
+                                    "type": "boolean"
+                                }
+                            }
+                        },
+                        {
+                            "properties": {
+                                "test": {
+                                    "description": "Teste si la cible dispose encore d'un stock commercial. Renverra false si la cible ne peut pas faire l'objet d'un échange. \nType: `String`",
+                                    "type": "string",
+                                    "const": "has_trade_supply"
+                                },
+                                "value": {
+                                    "description": "Vrai ou faux. \nType: `Boolean`",
+                                    "default": true,
+                                    "type": "boolean"
+                                }
+                            }
+                        },
+                        {
+                            "required": ["value"],
+                            "properties": {
+                                "test": {
+                                    "description": "Teste la distance entre le sujet et son domicile. Renvoie faux si le sujet n'a pas de domicile ou si son domicile est dans une dimension différente. \nType: `String`",
+                                    "type": "string",
+                                    "const": "home_distance"
+                                },
+                                "value": {
+                                    "description": "La distance à comparer. \nType: `Number`",
+                                    "type": "number"
+                                }
+                            }
+                        },
+                        {
+                            "required": ["value"],
+                            "properties": {
+                                "test": {
+                                    "description": "Compare l'heure actuelle du monde avec une valeur entière dans la plage [0, 24000]. \nType: `String`",
+                                    "type": "string",
+                                    "const": "hourly_clock_time"
+                                },
+                                "value": {
+                                    "description": "L'heure à comparer. \nType: `Integer`",
+                                    "type": "integer",
+                                    "minimum": 0,
+                                    "maximum": 24000
+                                }
+                            }
+                        },
+                        {
+                            "properties": {
+                                "test": {
+                                    "description": "Renvoie vrai lorsque le sujet est à l'intérieur d'un bloc spécifié. \nType: `String`",
+                                    "type": "string",
+                                    "const": "in_block"
+                                },
+                                "value": {
+                                    "description": "Le nom du bloc à tester. \nType: `String`",
+                                    "type": "string"
+                                }
+                            }
+                        },
+                        {
+                            "properties": {
+                                "test": {
+                                    "description": "Renvoie vrai lorsque le sujet est dans une caravane. \nType: `String`",
+                                    "type": "string",
+                                    "const": "in_caravan"
+                                },
+                                "value": {
+                                    "description": "Vrai ou faux. \nType: `Boolean`",
+                                    "default": true,
+                                    "type": "boolean"
+                                }
+                            }
+                        },
+                        {
+                            "properties": {
+                                "test": {
+                                    "description": "Renvoie vrai lorsque le sujet est dans les nuages. \nType: `String`",
+                                    "type": "string",
+                                    "const": "in_clouds"
+                                },
+                                "value": {
+                                    "description": "Vrai ou faux. \nType: `Boolean`",
+                                    "default": true,
+                                    "type": "boolean"
+                                }
+                            }
+                        },
+                        {
+                            "properties": {
+                                "test": {
+                                    "description": "Renvoie vrai lorsque le sujet est en contact avec de l'eau. \nType: `String`",
+                                    "type": "string",
+                                    "const": "in_contact_with_water"
+                                },
+                                "value": {
+                                    "description": "Vrai ou faux. \nType: `Boolean`",
+                                    "default": true,
+                                    "type": "boolean"
+                                }
+                            }
+                        },
+                        {
+                            "properties": {
+                                "test": {
+                                    "description": "Renvoie vrai lorsque le sujet est dans la lave. \nType: `String`",
+                                    "type": "string",
+                                    "const": "in_lava"
+                                },
+                                "value": {
+                                    "description": "Vrai ou faux. \nType: `Boolean`",
+                                    "default": true,
+                                    "type": "boolean"
+                                }
+                            }
+                        },
+                        {
+                            "properties": {
+                                "test": {
+                                    "description": "Renvoie vrai lorsque le sujet est dans le Nether. \nType: `String`",
+                                    "type": "string",
+                                    "const": "in_nether"
+                                },
+                                "value": {
+                                    "description": "Vrai ou faux. \nType: `Boolean`",
+                                    "default": true,
+                                    "type": "boolean"
+                                }
+                            }
+                        },
+                        {
+                            "properties": {
+                                "test": {
+                                    "description": "Renvoie vrai lorsque le sujet est dans l'Overworld. \nType: `String`",
+                                    "type": "string",
+                                    "const": "in_overworld"
+                                },
+                                "value": {
+                                    "description": "Vrai ou faux. \nType: `Boolean`",
+                                    "default": true,
+                                    "type": "boolean"
+                                }
+                            }
+                        },
+                        {
+                            "properties": {
+                                "test": {
+                                    "description": "Renvoie vrai lorsque le sujet est dans l'eau. \nType: `String`",
+                                    "type": "string",
+                                    "const": "in_water"
+                                },
+                                "value": {
+                                    "description": "Vrai ou faux. \nType: `Boolean`",
+                                    "default": true,
+                                    "type": "boolean"
+                                }
+                            }
+                        },
+                        {
+                            "properties": {
+                                "test": {
+                                    "description": "Renvoie vrai lorsque le sujet est dans l'eau ou sous la pluie. \nType: `String`",
+                                    "type": "string",
+                                    "const": "in_water_or_rain"
+                                },
+                                "value": {
+                                    "description": "Vrai ou faux. \nType: `Boolean`",
+                                    "default": true,
+                                    "type": "boolean"
+                                }
+                            }
+                        },
+                        {
+                            "required": ["value"],
+                            "properties": {
+                                "test": {
+                                    "description": "Teste si la durée d'inactivité du sujet a atteint la valeur spécifiée. \nType: `String`",
+                                    "type": "string",
+                                    "const": "inactivity_timer"
+                                },
+                                "value": {
+                                    "description": "La durée d'inactivité à comparer. \nType: `Integer`",
+                                    "type": "integer"
+                                }
+                            }
+                        },
+                        {
+                            "required": ["value", "domain"],
+                            "properties": {
+                                "test": {
+                                    "description": "Teste si la valeur d'une propriété entière spécifique correpond à la valeur fourni. \nType: `String`",
+                                    "type": "string",
+                                    "const": "int_property"
+                                },
+                                "value": {
+                                    "description": "La valeur à comparer. \nType: `Integer`",
+                                    "type": "integer"
+                                },
+                                "domain": {
+                                    "description": "Le domaine de la propriété à tester. \nType: `String`",
+                                    "type": "string",
+                                    "pattern": "^[a-zA-Z0-9_]+:[a-zA-Z0-9_]+$"
+                                }
+                            }
+                        },
+                        {
+                            "required": ["value"],
+                            "properties": {
+                                "test": {
+                                    "description": "Teste l'altitude actuelle du sujet. 0 = élévation du bedrock. \nType: `String`",
+                                    "type": "string",
+                                    "const": "is_altitude"
+                                },
+                                "value": {
+                                    "description": "L'altitude à comparer. \nType: `Integer`",
+                                    "type": "integer"
+                                }
+                            }
+                        },
+                        {
+                            "properties": {
+                                "test": {
+                                    "description": "Renvoie vrai si le sujet fuit d'autres entités. \nType: `String`",
+                                    "type": "string",
+                                    "const": "is_avoiding_mobs"
+                                },
+                                "value": {
+                                    "description": "Vrai ou faux. \nType: `Boolean`",
+                                    "default": true,
+                                    "type": "boolean"
+                                }
+                            }
+                        },
+                        {
+                            "properties": {
+                                "test": {
+                                    "description": "Renvoie vrai si le sujet est un bébé. \nType: `String`",
+                                    "type": "string",
+                                    "const": "is_baby"
+                                },
+                                "value": {
+                                    "description": "Vrai ou faux. \nType: `Boolean`",
+                                    "default": true,
+                                    "type": "boolean"
+                                }
+                            }
+                        },
+                        {
+                            "required": ["value"],
+                            "properties": {
+                                "test": {
+                                    "description": "Teste si le biome du sujet correspond à un biome spécifique. \nType: `String`",
+                                    "type": "string",
+                                    "const": "is_biome"
+                                },
+                                "value": {
+                                    "description": "Le biome à tester. \nType: `String`",
+                                    "type": "string"
+                                }
+                            }
+                        },
+                        {
+                            "required": ["value"],
+                            "properties": {
+                                "test": {
+                                    "description": "Renvoie vrai lorsque le bloc a le nom donné. \nType: `String`",
+                                    "type": "string",
+                                    "const": "is_block"
+                                },
+                                "value": {
+                                    "description": "Le nom du bloc à tester. \nType: `String`",
+                                    "type": "string"
+                                }
+                            }
+                        },
+                        {
+                            "properties": {
+                                "test": {
+                                    "description": "Teste si le bloc de coeur de Creaking qui a fait apparaitre le sujet Creaking existe toujours. \nType: `String`",
+                                    "type": "string",
+                                    "const": "is_bound_to_creaking_heart"
+                                },
+                                "value": {
+                                    "description": "Vrai ou faux. \nType: `Boolean`",
+                                    "default": true,
+                                    "type": "boolean"
+                                }
+                            }
+                        },
+                        {
+                            "required": ["value"],
+                            "properties": {
+                                "test": {
+                                    "description": "Teste la luminosité actuelle. \nType: `String`",
+                                    "type": "string",
+                                    "const": "is_brightness"
+                                },
+                                "value": {
+                                    "description": "La luminosité à comparer. \nType: `Number`",
+                                    "type": "number",
+                                    "minimum": 0.0,
+                                    "maximum": 1.0
+                                }
+                            }
+                        },
+                        {
+                            "properties": {
+                                "test": {
+                                    "description": "Renvoie vrai si le sujet est en train de grimper. \nType: `String`",
+                                    "type": "string",
+                                    "const": "is_climbing"
+                                },
+                                "value": {
+                                    "description": "Vrai ou faux. \nType: `Boolean`",
+                                    "default": true,
+                                    "type": "boolean"
+                                }
+                            }
+                        },
+                        {
+                            "required": ["value"],
+                            "properties": {
+                                "test": {
+                                    "description": "Renvoie vrai si le sujet est de la couleur spécifiée. \nType: `String`",
+                                    "type": "string",
+                                    "const": "is_color"
+                                },
+                                "value": {
+                                    "description": "La couleur à tester. \nType: `String`",
+                                    "type": "string",
+                                    "enum": [
+                                        "black", "blue", "brown", "cyan", "gray", "green", "light_blue", "light_green", "magenta", "orange",
+                                        "pink", "purple", "red", "silver", "white", "yellow"
+                                    ]
+                                }
+                            }
+                        },
+                        {
+                            "properties": {
+                                "test": {
+                                    "description": "Renvoie vrai pendant les heures de jour. \nType: `String`",
+                                    "type": "string",
+                                    "const": "is_daytime"
+                                },
+                                "value": {
+                                    "description": "Vrai ou faux. \nType: `Boolean`",
+                                    "default": true,
+                                    "type": "boolean"
+                                }
+                            }
+                        },
+                        {
+                            "required": ["value"],
+                            "properties": {
+                                "test": {
+                                    "description": "Teste le niveau de difficulté actuel. \nType: `String`",
+                                    "type": "string",
+                                    "const": "is_difficulty"
+                                },
+                                "value": {
+                                    "description": "Le niveau de difficulté à comparer. \nType: `String`",
+                                    "type": "string",
+                                    "enum": ["easy", "hard", "normal", "peaceful"]
+                                }
+                            }
+                        },
+                        {
+                            "required": ["value"],
+                            "properties": {
+                                "test": {
+                                    "description": "Teste si le sujet est de la famille spécifiée. \nType: `String`",
+                                    "type": "string",
+                                    "const": "is_family"
+                                },
+                                "value": {
+                                    "description": "La famille à tester. \nType: `String`",
+                                    "type": "string"
+                                }
+                            }
+                        },
+                        {
+                            "required": ["domain"],
+                            "properties": {
+                                "test": {
+                                    "description": "Teste si une règle de jeu spécifique est active. \nType: `String`",
+                                    "type": "string",
+                                    "const": "is_game_rule"
+                                },
+                                "domain": {
+                                    "description": "Le nom de la règle de jeu à tester. \nType: `String`",
+                                    "type": "string"
+                                },
+                                "value": {
+                                    "description": "La valeur à comparer. \nType: `Boolean`",
+                                    "type": "boolean"
+                                }
+                            }
+                        },
+                        {
+                            "properties": {
+                                "test": {
+                                    "description": "Teste si le sujet est dans une zone avec de l'humidié. \nType: `String`",
+                                    "type": "string",
+                                    "const": "is_humid"
+                                },
+                                "value": {
+                                    "description": "Vrai ou faux. \nType: `Boolean`",
+                                    "default": true,
+                                    "type": "boolean"
+                                }
+                            }
+                        },
+                        {
+                            "properties": {
+                                "test": {
+                                    "description": "Renvoie vrai si l'entité sujet est immobile. Une entité est immobile si elle manque d'objectifs d'IA, vient de changer de dimension ou si c'est un mob et qu'elle n'a pas de santé. \nType: `String`",
+                                    "type": "string",
+                                    "const": "is_immobile"
+                                },
+                                "value": {
+                                    "description": "Vrai ou faux. \nType: `Boolean`",
+                                    "default": true,
+                                    "type": "boolean"
+                                }
+                            }
+                        },
+                        {
+                            "properties": {
+                                "test": {
+                                    "description": "Teste si le sujet se trouve à l'intérieur des limites d'un village. \nType: `String`",
+                                    "type": "string",
+                                    "const": "is_in_village"
+                                },
+                                "value": {
+                                    "description": "Vrai ou faux. \nType: `Boolean`",
+                                    "default": true,
+                                    "type": "boolean"
+                                }
+                            }
+                        },
+                        {
+                            "properties": {
+                                "test": {
+                                    "description": "Renvoie vrai si le sujet est attaché. \nType: `String`",
+                                    "type": "string",
+                                    "const": "is_leashed"
+                                },
+                                "value": {
+                                    "description": "Vrai ou faux. \nType: `Boolean`",
+                                    "default": true,
+                                    "type": "boolean"
+                                }
+                            }
+                        },
+                        {
+                            "properties": {
+                                "test": {
+                                    "description": "Renvoie vrai si le sujet est attaché à l'entité appelante de l'événement. \nType: `String`",
+                                    "type": "string",
+                                    "const": "is_leashed_to"
+                                },
+                                "value": {
+                                    "description": "Vrai ou faux. \nType: `Boolean`",
+                                    "default": true,
+                                    "type": "boolean"
+                                }
+                            }
+                        },
+                        {
+                            "required": ["value"],
+                            "properties": {
+                                "test": {
+                                    "description": "Renvoie vrai si l'entité sujet est la variante de marque fournie. \nType: `String`",
+                                    "type": "string",
+                                    "const": "is_mark_variant"
+                                },
+                                "value": {
+                                    "description": "La variante de marque à tester. \nType: `Integer`",
+                                    "type": "integer"
+                                }
+                            }
+                        },
+                        {
+                            "properties": {
+                                "test": {
+                                    "description": "Teste si le sujet n'a pas toute sa santé. \nType: `String`",
+                                    "type": "string",
+                                    "const": "is_missing_health"
+                                },
+                                "value": {
+                                    "description": "Vrai ou faux. \nType: `Boolean`",
+                                    "default": true,
+                                    "type": "boolean"
+                                }
+                            }
+                        },
+                        {
+                            "properties": {
+                                "test": {
+                                    "description": "Renvoie vrai si le sujet est en mouvement. \nType: `String`",
+                                    "type": "string",
+                                    "const": "is_moving"
+                                },
+                                "value": {
+                                    "description": "Vrai ou faux. \nType: `Boolean`",
+                                    "default": true,
+                                    "type": "boolean"
+                                }
+                            }
+                        },
+                        {
+                            "properties": {
+                                "test": {
+                                    "description": "Renvoie vrai si le sujet est actuellement en train de calculer un chemin. Nécessite un composant navigation. \nType: `String`",
+                                    "type": "string",
+                                    "const": "is_navigating"
+                                },
+                                "value": {
+                                    "description": "Vrai ou faux. \nType: `Boolean`",
+                                    "default": true,
+                                    "type": "boolean"
+                                }
+                            }
+                        },
+                        {
+                            "properties": {
+                                "test": {
+                                    "description": "Renvoie vrai si l'entité sujet est le propriétaire de l'entité appelante de l'événement. \nType: `String`",
+                                    "type": "string",
+                                    "const": "is_owner"
+                                },
+                                "value": {
+                                    "description": "Vrai ou faux. \nType: `Boolean`",
+                                    "default": true,
+                                    "type": "boolean"
+                                }
+                            }
+                        },
+                        {
+                            "properties": {
+                                "test": {
+                                    "description": "Teste si le sujet est en train de paniquer. \nType: `String`",
+                                    "type": "string",
+                                    "const": "is_panicking"
+                                },
+                                "value": {
+                                    "description": "Vrai ou faux. \nType: `Boolean`",
+                                    "default": true,
+                                    "type": "boolean"
+                                }
+                            }
+                        },
+                        {
+                            "properties": {
+                                "test": {
+                                    "description": "Teste si la persistance du sujet correspond à la valeur booléenne fournie. \nType: `String`",
+                                    "type": "string",
+                                    "const": "is_persistent"
+                                },
+                                "value": {
+                                    "description": "Vrai ou faux. \nType: `Boolean`",
+                                    "default": true,
+                                    "type": "boolean"
+                                }
+                            }
+                        },
+                        {
+                            "properties": {
+                                "test": {
+                                    "description": "Teste si le sujet est un pillard. \nType: `String`",
+                                    "type": "string",
+                                    "const": "is_raider"
+                                },
+                                "value": {
+                                    "description": "Vrai ou faux. \nType: `Boolean`",
+                                    "default": true,
+                                    "type": "boolean"
+                                }
+                            }
+                        },
+                        {
+                            "properties": {
+                                "test": {
+                                    "description": "Teste si le sujet est en train de chevaucher une entité. \nType: `String`",
+                                    "type": "string",
+                                    "const": "is_riding"
+                                },
+                                "value": {
+                                    "description": "Vrai ou faux. \nType: `Boolean`",
+                                    "default": true,
+                                    "type": "boolean"
+                                }
+                            }
+                        },
+                        {
+                            "properties": {
+                                "test": {
+                                    "description": "Teste si le sujet est assis. \nType: `String`",
+                                    "type": "string",
+                                    "const": "is_sitting"
+                                },
+                                "value": {
+                                    "description": "Vrai ou faux. \nType: `Boolean`",
+                                    "default": true,
+                                    "type": "boolean"
+                                }
+                            }
+                        },
+                        {
+                            "required": ["value"],
+                            "properties": {
+                                "test": {
+                                    "description": "Renvoie vrai si l'entité sujet est le numéro d'identifiant de skin fourni. \nType: `String`",
+                                    "type": "string",
+                                    "const": "is_skin_id"
+                                },
+                                "value": {
+                                    "description": "Le numéro d'identifiant de skin à tester. \nType: `Integer`",
+                                    "type": "integer"
+                                }
+                            }
+                        },
+                        {
+                            "properties": {
+                                "test": {
+                                    "description": "Teste si le sujet est en train de dormir. \nType: `String`",
+                                    "type": "string",
+                                    "const": "is_sleeping"
+                                },
+                                "value": {
+                                    "description": "Vrai ou faux. \nType: `Boolean`",
+                                    "default": true,
+                                    "type": "boolean"
+                                }
+                            }
+                        },
+                        {
+                            "properties": {
+                                "test": {
+                                    "description": "Renvoie vrai si l'entité sujet a l'entrée de sneak maintenue. \nType: `String`",
+                                    "type": "string",
+                                    "const": "is_sneak_held"
+                                },
+                                "value": {
+                                    "description": "Vrai ou faux. \nType: `Boolean`",
+                                    "default": true,
+                                    "type": "boolean"
+                                }
+                            }
+                        },
+                        {
+                            "properties": {
+                                "test": {
+                                    "description": "Renvoie vrai si l'entité sujet est en train de sneak. \nType: `String`",
+                                    "type": "string",
+                                    "const": "is_sneaking"
+                                },
+                                "value": {
+                                    "description": "Vrai ou faux. \nType: `Boolean`",
+                                    "default": true,
+                                    "type": "boolean"
+                                }
+                            }
+                        },
+                        {
+                            "properties": {
+                                "test": {
+                                    "description": "Renvoie vrai si le sujet est dans une zone avec de la neige. \nType: `String`",
+                                    "type": "string",
+                                    "const": "is_snow_covered"
+                                },
+                                "value": {
+                                    "description": "Vrai ou faux. \nType: `Boolean`",
+                                    "default": true,
+                                    "type": "boolean"
+                                }
+                            }
+                        },
+                        {
+                            "properties": {
+                                "test": {
+                                    "description": "Renvoie vrai si le sujet est en train de sprinter. \nType: `String`",
+                                    "type": "string",
+                                    "const": "is_sprinting"
+                                },
+                                "value": {
+                                    "description": "Vrai ou faux. \nType: `Boolean`",
+                                    "default": true,
+                                    "type": "boolean"
+                                }
+                            }
+                        },
+                        {
+                            "properties": {
+                                "test": {
+                                    "description": "Renvoie vrai si l'entité sujet est la cible de l'entité appelante de l'événement. \nType: `String`",
+                                    "type": "string",
+                                    "const": "is_target"
+                                },
+                                "value": {
+                                    "description": "Vrai ou faux. \nType: `Boolean`",
+                                    "default": true,
+                                    "type": "boolean"
+                                }
+                            }
+                        },
+                        {
+                            "required": ["value"],
+                            "properties": {
+                                "test": {
+                                    "description": "Teste si le biome du sujet est de la catégorie de température spécifiée. \nType: `String`",
+                                    "type": "string",
+                                    "const": "is_temperature_type"
+                                },
+                                "value": {
+                                    "description": "La catégorie de température à tester. \nType: `String`",
+                                    "type": "string",
+                                    "enum": ["cold", "mild", "ocean", "warm"]
+                                }
+                            }
+                        },
+                        {
+                            "required": ["value"],
+                            "properties": {
+                                "test": {
+                                    "description": "Teste la température actuelle par rapport à une valeur donnée dans la plage (0.0, 1.0) où 0.0f est la température la plus froide et 1.0f est la plus chaude. \nType: `String`",
+                                    "type": "string",
+                                    "const": "is_temperature_value"
+                                },
+                                "value": {
+                                    "description": "La température à comparer. \nType: `Number`",
+                                    "type": "number",
+                                    "minimum": 0.0,
+                                    "maximum": 1.0
+                                }
+                            }
+                        },
+                        {
+                            "properties": {
+                                "test": {
+                                    "description": "Renvoie vrai si l'entité sujet est sous terre. Une entité est considérée comme étant sous terre s'il y a des blocs non solides au-dessus d'elle. \nType: `String`",
+                                    "type": "string",
+                                    "const": "is_underground"
+                                },
+                                "value": {
+                                    "description": "Vrai ou faux. \nType: `Boolean`",
+                                    "default": true,
+                                    "type": "boolean"
+                                }
+                            }
+                        },
+                        {
+                            "properties": {
+                                "test": {
+                                    "description": "Renvoie vrai si l'entité sujet est sous l'eau. Une entité est considérée comme étant sous l'eau si elle est complètement submergée dans des blocs d'eau. \nType: `String`",
+                                    "type": "string",
+                                    "const": "is_underwater"
+                                },
+                                "value": {
+                                    "description": "Vrai ou faux. \nType: `Boolean`",
+                                    "default": true,
+                                    "type": "boolean"
+                                }
+                            }
+                        },
+                        {
+                            "required": ["value"],
+                            "properties": {
+                                "test": {
+                                    "description": "Renvoie vrai si l'entité sujet est la variante fournie. \nType: `String`",
+                                    "type": "string",
+                                    "const": "is_variant"
+                                },
+                                "value": {
+                                    "description": "La variante à tester. \nType: `Integer`",
+                                    "type": "integer"
+                                }
+                            }
+                        },
+                        {
+                            "properties": {
+                                "test": {
+                                    "description": "Renvoie vrai si l'entité sujet est visible. \nType: `String`",
+                                    "type": "string",
+                                    "const": "is_visible"
+                                },
+                                "value": {
+                                    "description": "Vrai ou faux. \nType: `Boolean`",
+                                    "default": true,
+                                    "type": "boolean"
+                                }
+                            }
+                        },
+                        {
+                            "required": ["value"],
+                            "properties": {
+                                "test": {
+                                    "description": "Renvoie vrai si le bloc sujet est submergé dans l'eau. \nType: `String`",
+                                    "type": "string",
+                                    "const": "is_waterlogged"
+                                },
+                                "value": {
+                                    "description": "Vrai ou faux. \nType: `Boolean`",
+                                    "type": "boolean"
+                                }
+                            }
+                        },
+                        {
+                            "required": ["value"],
+                            "properties": {
+                                "test": {
+                                    "description": "Teste si le mob est en dehors de la plage de niveau de lumière spécifiée (0, 16). \nType: `String`",
+                                    "type": "string",
+                                    "const": "light_level"
+                                },
+                                "value": {
+                                    "description": "Le niveau de lumière à comparer. \nType: `Integer`",
+                                    "type": "integer",
+                                    "minimum": 0,
+                                    "maximum": 16
+                                }
+                            }
+                        },
+                        {
+                            "required": ["value"],
+                            "properties": {
+                                "test": {
+                                    "description": "Compare l'intensité actuelle de la lune avec une valeur flottante dans la plage (0.0, 1.0). \nType: `String`",
+                                    "type": "string",
+                                    "const": "moon_intensity"
+                                },
+                                "value": {
+                                    "description": "L'intensité de la lune à comparer. \nType: `Number`",
+                                    "type": "number",
+                                    "minimum": 0.0,
+                                    "maximum": 1.0
+                                }
+                            }
+                        },
+                        {
+                            "required": ["value"],
+                            "properties": {
+                                "test": {
+                                    "description": "Compare la phase de la lune actuelle avec une valeur entière dans la plage (0, 7). \nType: `String`",
+                                    "type": "string",
+                                    "const": "moon_phase"
+                                },
+                                "value": {
+                                    "description": "La phase de la lune à comparer. \nType: `Integer`",
+                                    "type": "integer",
+                                    "minimum": 0,
+                                    "maximum": 7
+                                }
+                            }
+                        },
+                        {
+                            "properties": {
+                                "test": {
+                                    "description": "Renvoie vrai si le sujet est en feu. \nType: `String`",
+                                    "type": "string",
+                                    "const": "on_fire"
+                                },
+                                "value": {
+                                    "description": "Vrai ou faux. \nType: `Boolean`",
+                                    "default": true,
+                                    "type": "boolean"
+                                }
+                            }
+                        },
+                        {
+                            "properties": {
+                                "test": {
+                                    "description": "Renvoie vrai si l'entité sujet est au sol. \nType: `String`",
+                                    "type": "string",
+                                    "const": "on_ground"
+                                },
+                                "value": {
+                                    "description": "Vrai ou faux. \nType: `Boolean`",
+                                    "default": true,
+                                    "type": "boolean"
+                                }
+                            }
+                        },
+                        {
+                            "properties": {
+                                "test": {
+                                    "description": "Renvoie vrai si le sujet est sur un bloc chaud. \nType: `String`",
+                                    "type": "string",
+                                    "const": "on_hot_block"
+                                },
+                                "value": {
+                                    "description": "Vrai ou faux. \nType: `Boolean`",
+                                    "default": true,
+                                    "type": "boolean"
+                                }
+                            }
+                        },
+                        {
+                            "properties": {
+                                "test": {
+                                    "description": "Renvoie vrai si le sujet est sur une échelle. \nType: `String`",
+                                    "type": "string",
+                                    "const": "on_ladder"
+                                },
+                                "value": {
+                                    "description": "Vrai ou faux. \nType: `Boolean`",
+                                    "default": true,
+                                    "type": "boolean"
+                                }
+                            }
+                        },
+                        {
+                            "required": ["value"],
+                            "properties": {
+                                "test": {
+                                    "description": "Teste la distance entre le sujet et son propriétaire. Renvoie faux s'il n'y a pas de propriétaire. \nType: `String`",
+                                    "type": "string",
+                                    "const": "owner_distance"
+                                },
+                                "value": {
+                                    "description": "La distance à comparer. \nType: `Number`",
+                                    "type": "number"
+                                }
+                            }
+                        },
+                        {
+                            "required": ["value"],
+                            "properties": {
+                                "test": {
+                                    "description": "Renvoie vrai si le hasard aléatoire roule 0 sur une plage maximale spécifiée.",
+                                    "type": "string",
+                                    "const": "random_chance"
+                                },
+                                "value": {
+                                    "description": "La plage maximale pour le hasard aléatoire. \nType: `Integer`",
+                                    "type": "integer"
+                                }
+                            }
+                        },
+                        {
+                            "required": ["value"],
+                            "properties": {
+                                "test": {
+                                    "description": "Renvoie le nombre de passagers sur cette entité. \nType: `String`",
+                                    "type": "string",
+                                    "const": "rider_count"
+                                },
+                                "value": {
+                                    "description": "Le nombre de passagers à comparer. \nType: `Integer`",
+                                    "type": "integer"
+                                }
+                            }
+                        },
+                        {
+                            "properties": {
+                                "test": {
+                                    "description": "Renvoie vrai si le sujet est un mob de surface. \nType: `String`",
+                                    "type": "string",
+                                    "const": "surface_mob"
+                                },
+                                "value": {
+                                    "description": "Vrai ou faux. \nType: `Boolean`",
+                                    "default": true,
+                                    "type": "boolean"
+                                }
+                            }
+                        },
+                        {
+                            "properties": {
+                                "test": {
+                                    "description": "Renvoie vrai si le sujet subit des dégâts de feu. Nécessite le composant 'damage_sensor'. \nType: `String`",
+                                    "type": "string",
+                                    "const": "taking_fire_damage"
+                                },
+                                "value": {
+                                    "description": "Vrai ou faux. \nType: `Boolean`",
+                                    "default": true,
+                                    "type": "boolean"
+                                }
+                            }
+                        },
+                        {
+                            "required": ["value"],
+                            "properties": {
+                                "test": {
+                                    "description": "Teste la distance entre l'entité appelante et sa cible. \nType: `String`",
+                                    "type": "string",
+                                    "const": "target_distance"
+                                },
+                                "value": {
+                                    "description": "La distance à comparer. \nType: `Number`",
+                                    "type": "number"
+                                }
+                            }
+                        },
+                        {
+                            "properties": {
+                                "test": {
+                                    "description": "Renvoie vrai si le sujet est de confiance pour l'entité. \nType: `String`",
+                                    "type": "string",
+                                    "const": "trusts"
+                                },
+                                "value": {
+                                    "description": "Vrai ou faux. \nType: `Boolean`",
+                                    "default": true,
+                                    "type": "boolean"
+                                }
+                            }
+                        },
+                        {
+                            "properties": {
+                                "test": {
+                                    "description": "Teste si le sujet est le dernier joueur à avoir attaqué l'entité dans les 400 dernières secondes, ou le dernier mob à l'avoir fait dans les 60 dernières secondes. \nType: `String`",
+                                    "type": "string",
+                                    "const": "was_last_hurt_by"
+                                },
+                                "value": {
+                                    "description": "Vrai ou faux. \nType: `Boolean`",
+                                    "default": true,
+                                    "type": "boolean"
+                                }
+                            }
+                        },
+                        {
+                            "required": ["value"],
+                            "properties": {
+                                "test": {
+                                    "description": "Teste la météo actuelle dans la dimension par rapport à une valeur météo fournie. \nType: `String`",
+                                    "type": "string",
+                                    "const": "weather"
+                                },
+                                "value": {
+                                    "description": "La météo à comparer. \nType: `String`",
+                                    "type": "string"
+                                }
+                            }
+                        },
+                        {
+                            "required": ["value"],
+                            "properties": {
+                                "test": {
+                                    "description": "Teste la météo actuelle à la position de l'entité par rapport à une valeur météo fournie. \nType: `String`",
+                                    "type": "string",
+                                    "const": "weather_at_position"
+                                },
+                                "value": {
+                                    "description": "La météo à comparer. \nType: `String`",
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    ]
+                }
+            }
+        },
+
+        "minecraft_version": {
+            "$comment": "Définit une version de Minecraft.",
+            "type": "string",
+            "pattern": "^\\d+\\.\\d+(\\.\\d+)?$"
+        },
+        "string_with_namespace": {
+            "$comment": "Définit une chaîne de caractères avec un espace de noms.",
+            "type": "string",
+            "pattern": "^[a-zA-Z0-9_]+:[a-zA-Z0-9_]+$"
+        },
+        "uuid": {
+            "$comment": "Définit un UUID.",
+            "type": "string",
+            "pattern": "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-4[0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$"
+        },
+        "item_descriptorRECIPE": {
+            "$comment": "Définit un descripteur d'item.",
+            "oneOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "item": {
+                            "description": "L'identifiant de l'item. \n Type: String",
+                            "type": "string"
+                        },
+                        "tag": {
+                            "description": "L'identifiant du tag des items qui peuvent être utilisés dans ce contexte. \n Type: String",
+                            "type": "string",
+                            "$ref": "#/definitions/vanilla_item_tags_id"
+                        },
+                        "data": {
+                            "description": "La donnée de l'item. \n Type: Integer",
+                            "type": "integer"
+                        },
+                        "count": {
+                            "description": "Le nombre d'items. \n Type: Integer",
+                            "type": "integer"
+                        }
+                    }
+                }
+            ]
+        },
+        "item_descriptor": {
+            "$comment": "Définit un descripteur d'item.",
+            "oneOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "item": {
+                            "description": "L'identifiant de l'item. \nType: `String`",
+                            "type": "string"
+                        },
+                        "data": {
+                            "description": "La donnée de l'item. \nType: `Integer`",
+                            "type": "integer"
+                        },
+                        "tags": {
+                            "description": "Les tags de l'item exprimé en Molang. \n Type: `String`",
+                            "type": "string"
+                        }
+                    }
+                }
+            ]
+        },
+        "block_descriptor": {
+            "$comment": "Définit un descripteur de bloc.",
+            "oneOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "name": {
+                            "description": "Le nom du bloc. \nType: `String`",
+                            "type": "string"
+                        },
+                        "states": {
+                            "description": "Les états du bloc. \nType: `Object`",
+                            "type": "object",
+                            "additionalProperties": {
+                                "oneOf": [
+                                    {
+                                        "type": "string"
+                                    },
+                                    {
+                                        "type": "integer"
+                                    },
+                                    {
+                                        "type": "number"
+                                    },
+                                    {
+                                        "type": "boolean"
+                                    }
+                                ]
+                            }
+                        },
+                        "tags": {
+                            "description": "Les tags du bloc. \nType: `Molang`",
+                            "type": "string"
+                        }
+                    }
+                }
+            ]
+        }
+    }
+}

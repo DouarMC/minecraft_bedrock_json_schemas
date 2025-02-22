@@ -1,0 +1,240 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "required": ["format_version", "minecraft:jigsaw"],
+    "properties": {
+        "format_version": {
+            "description": "La version du Format à utiliser.",
+            "type": "string",
+            "pattern": "^\\d+\\.\\d+\\.\\d+$"
+        },
+        "minecraft:jigsaw": {
+            "description": "Contient les paramètres spécifiques de la structure.",
+            "type": "object",
+            "required": ["description"],
+            "properties": {
+                "description": {
+                    "description": "Description de la structure jigsaw.",
+                    "type": "object",
+                    "required": ["identifier"],
+                    "properties": {
+                        "identifier": {
+                            "description": "L'identifiant de la structure jigsaw.",
+                            "type": "string"
+                        }
+                    }
+                },
+                "biome_filters": {
+                    "description": "Les biomes où la structure peut apparaître.",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/minecraft_filter-ref"
+                    }
+                },
+                "start_pool": {
+                    "description": "Référence la Template Pool initiale. La Template Pool contient les templates de structures possibles pour commencer la génération.",
+                    "type": "string"
+                },
+                "step": {
+                    "description": "Définit la phase de génération de la structure dans le processus global de génération du monde.",
+                    "type": "string",
+                    "enum": [
+                        "raw_generation",
+                        "lakes",
+                        "local_modifications",
+                        "underground_structures",
+                        "surface_structures",
+                        "strongholds",
+                        "underground_ores",
+                        "underground_decoration",
+                        "fluid_springs",
+                        "vegetal_decoration",
+                        "top_layer_modification"
+                    ]
+                },
+                "terrain_adaptation": {
+                    "description": "Contrôle comment la structure s'intègre au terrain.",
+                    "type": "string",
+                    "enum": ["bury", "beard_thin", "beard_box", "encapsulate"]
+                },
+                "start_height": {
+                    "description": "Hauteur dans le monde où la structure commence à se générer.",
+                    "type": "integer"
+                },
+                "heightmap_projection": {
+                    "description": "Détermine la base de calcul pour la hauteur relative.",
+                    "type": "string",
+                    "enum": ["world_surface", "ocean_floor"]
+                },
+                "max_depth": {
+                    "description": "Nombre maximum de niveaux de récursion lors de la génération. Cela contrôle la complexité de la structure (ex. chemins ou tunnels connectés).",
+                    "type": "integer",
+                    "minimum": 0
+                }
+            }
+        }
+    },
+    "definitions": {
+        "minecraft_filter-ref": {
+            "type": "object", 
+            "properties": {
+                "none_of": {
+                    "description": "Aucune des conditions ne doivent être rempli.",
+                    "type": "array", 
+                    "items": {
+                        "$ref": "#/definitions/minecraft_filter-ref"
+                    }
+                },
+                "any_of": {
+                    "description": "Au moins une des conditions doivent être rempli.",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/minecraft_filter-ref"
+                    }
+                },
+                "all_of": {
+                    "description": "Toutes les conditions doivent être rempli.",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/minecraft_filter-ref"
+                    }
+                },
+                "test": {
+                    "description": "Le Test à effectuer.", 
+                    "type": "string", 
+                    "anyOf": [
+                    {"enum": ["actor_health"], "description": "Teste le nombre de PV."},
+                    {"enum": ["all_slots_empty"], "description": "Renvoie True lorsque l'emplacement d'inventaire spécifié du Sujet est complètement vide."},
+                    {"enum": ["any_slot_empty"], "description": "Renvoie True lorsque l'emplacement d'inventaire spécifié du Sujet a au moins un emplacement vide."},
+                    {"enum": ["bool_property"], "description": "Renvoie True quand la propriété d'Entité de type Boolean (ou Component avec aucune propriété) correspond avec la valeur fournit."},
+                    {"enum": ["clock_time"], "description": "Compare l'heure actuelle avec une valeur flottante comprise entre 0.0 et 1.0 (0.0 = Midi, 0.25 = Coucher du soleil, 0.5 = Minuit, 0.75 = Lever du soleil.)"},
+                    {"enum": ["distance_to_nearest_player"], "description": "Compare la distance jusqu'au joueur le plus proche avec une valeur flottante."},
+                    {"enum": ["enum_property"], "description": "Renvoie True quand la propriété d'Entité de type Enum (ou Component avec aucune propriété) correspond avec la valeur fournit."},
+                    {"enum": ["float_property"], "description": "Renvoie True quand la propriété d'Entité de type Float (ou Component avec aucune propriété) correspond avec la valeur fournit."},
+                    {"enum": ["has_ability"], "description": "Renvoie True si le Sujet a l'abilité spécifié."},
+                    {"enum": ["has_biome_tag"], "description": "Teste si le biome auquel le Sujet s'y trouve a le tag spécifié."},
+                    {"enum": ["has_component"], "description": "Renvoie True si le Sujet a le component spécifié."},
+                    {"enum": ["has_container_open"], "description": "Renvoie True lorsque le sujet Joueur est en train d'ouvrir un conteneur."},
+                    {"enum": ["has_damage"], "description": "Renvoie True lorsque le Sujet Entité reçoit le type de dégat spécifié."},
+                    {"enum": ["has_damaged_equipment"], "description": "Teste la présence d'un Item spécifié endomagé dans le type d'emplacement d'inventaire spécifié du Sujet."},
+                    {"enum": ["has_equipment"], "description": "Teste la présence d'un Item spécifié se trouve dans le type d'emplacement d'inventaire spécifié su Sujet."},
+                    {"enum": ["has_mob_effect"], "description": "Teste si le sujet Entité a l'effet de potion spécifié."},
+                    {"enum": ["has_nametag"], "description": "Teste si le sujet a reçu un nom personalisé."},
+                    {"enum": ["has_property"], "description": "Teste la présence d'une propriété d'Entité sur le Sujet."},
+                    {"enum": ["has_ranged_weapon"], "description": "Renvoie True lorsque le sujet Entité est en train de tenir une arme à distance comme un arc ou une arbalète."},
+                    {"enum": ["has_silk_touch"], "description": "Teste si le sujet tient un Item avec l'enchantement Délicatesse."},
+                    {"enum": ["has_tag"], "description": "Renvoie True so le sujet a le tag spécifié."},
+                    {"enum": ["has_target"], "description": "Renvoie True si le sujet Entité a une cible valide."},
+                    {"enum": ["has_trade_supply"], "description": "Teste si la Cible a encore de l'approvisionnement commercial."},
+                    {"enum": ["hourly_clock_time"], "description": "Compare l'heure actuelle sur 24 heures avec une valeur Int dans la range [0, 24000]"},
+                    {"enum": ["in_block"], "description": "Renvoie True lorsque le sujet Entité est à l'intérieur du type de Block spécifié."},
+                    {"enum": ["in_caravan"], "description": "Renvoie True si le sujet Entité est dans une caravane."},
+                    {"enum": ["in_clouds"], "description": "Renvoie True si le sujet Entité est dans les nuages."},
+                    {"enum": ["in_contact_with_water"], "description": "Renvoie True lorsque le sujet Entité est en contact avec l'eau : l'eau, pluie, splash bottle d'eau."},
+                    {"enum": ["in_lava"], "description": "Renvoie True lorsque le sujet Entité est dans la lave."},
+                    {"enum": ["in_nether"], "description": "Renvoie True si le sujet Entité est dans le Nether."},
+                    {"enum": ["in_overworld"], "description": "Renvoie True si le sujet Entité est dans l'Overworld."},
+                    {"enum": ["in_water"], "description": "Renvoie True lorsque le sujet Entité est dans l'eau."},
+                    {"enum": ["in_water_or_rain"], "description": "Renvoie True lorsque le sujet Entité est dans l'eau ou sous la pluie."},
+                    {"enum": ["inactivity_timer"], "description": "Teste si la durée en secondes spécifié d'inactivité pour la désapparition a été atteinte."},
+                    {"enum": ["int_property"], "description": "Renvoie True quand la propriété d'Entité de type Integer (ou Component avec aucune propriété) correspond avec la valeur fournit."},
+                    {"enum": ["is_altitude"], "description": "Teste si l'atitude actuelle par rapport à une valeur fournie. 0 = niveau d'altitude de la Bedrock."},
+                    {"enum": ["is_avoiding_mobs"], "description": "Renvoie True si le sujet Entité fuit les autres Mobs."},
+                    {"enum": ["is_baby"], "description": "Renvoie True si le sujet Entité est un bébé."},
+                    {"enum": ["is_biome"], "description": "Teste si le Sujet se trouve actuellement dans le Biome spécifié."},
+                    {"enum": ["is_block"], "description": "Renvoie True lorsque le sujet Bloc est du type spécifié."},
+                    {"enum": ["is_brightness"], "description": "Teste le luminosité actuelle par rapport à une valeur dournie dans la plage (0.0f, 1.0f)"},
+                    {"enum": ["is_climbing"], "description": "Renvoie True si le sujet Entité grimpe."},
+                    {"enum": ["is_color"], "description": "Renvoie True si le sujet Entité est de la couleur spécifiée."},
+                    {"enum": ["is_daytime"], "description": "Renvoie True s'il fait jour."},
+                    {"enum": ["is_difficulty"], "description": "Teste le niveau de difficulté actuel du monde."},
+                    {"enum": ["is_family"], "description": "Renvoie True si le sujet Entité est un membre de la famille spécifié."},
+                    {"enum": ["is_game_rule"], "description": "Teste si la Gamerule spécifié est active."},
+                    {"enum": ["is_humid"], "description": "Teste si le sujet est dans une zone avec de l'humidité."},
+                    {"enum": ["is_immobile"], "description": "Renvoie True si le sujet Entité est immobile. Une Entité est immobile si elle n'a pas de AI Goals, si elle vient de changer de dimension ou si c'est un Mob n'a pas de Vie."},
+                    {"enum": ["is_in_village"], "description": "Teste si le sujet se trouve à l'intérieur des limites d'un village."},
+                    {"enum": ["is_leashed"], "description": "Renvoie True si le sujet est en laisse."},
+                    {"enum": ["is_leashed_to"], "description": "Renvoie True si le sujet Entité est attaché à l'Entité appelante."},
+                    {"enum": ["is_mark_variant"], "description": "Renvoie True si le sujet Entité à le nombre mark_variant spécifié."},
+                    {"enum": ["is_missing_health"], "description": "Teste s'il manque de la vie au sujet Entité."},
+                    {"enum": ["is_moving"], "description": "Renvoie True si le sujet Entité bouge."},
+                    {"enum": ["is_owner"], "description": "Renvoie True si le sujet Entité est le propriétaire de l'Entité appelante."},
+                    {"enum": ["is_panicking"], "description": "Teste si le sujet panique."},
+                    {"enum": ["is_persistent"], "description": "Teste si la persistance du sujet correspond à la valeur booléenne transmise."},
+                    {"enum": ["is_raider"], "description": "Teste si le sujet est un chevaucheur."},
+                    {"enum": ["is_riding"], "description": "Renvoie True si le sujet Entité chevauche une autre Entité."},
+                    {"enum": ["is_sitting"], "description": "Teste si le sujet est assis."},
+                    {"enum": ["is_skin_id"], "description": "Renvoie True, si le sujet Entité a la propriété de skin_id spécifié."},
+                    {"enum": ["is_sleeping"], "description": "Renvoie True si le sujet Entité dort."},
+                    {"enum": ["is_sneak_held"], "description": "Renvoie True si le sujet Entité a l'entrée de sneak tenu."},
+                    {"enum": ["is_sneaking"], "description": "Renvoie True si le sujet Entité sneak."},
+                    {"enum": ["is_snow_covered"], "description": "Teste si le sujet est dans une zone avec des couches de neiges."},
+                    {"enum": ["is_sprinting"], "description": "Teste si le sujet court."},
+                    {"enum": ["is_target"], "description": "Renvoie True si le sujet Entité est la cible de l'Entité appelant."},
+                    {"enum": ["is_temperature_type"], "description": "Teste si le type de température correspond à celle spécifié."},
+                    {"enum": ["is_temperature_value"], "description": "Teste si la température actuelle correspond à la valeut spécifié dans la range (0.0, 1.0) où 0.0f est la plus froide des températures et 1.0f la plus chaude."},
+                    {"enum": ["is_underground"], "description": "Renvoie True lorsque le sujet Entité est sous terre. Une Entité est considéré comm étant sous terre si elle est recouverte de blocs non solides."},
+                    {"enum": ["is_underwater"], "description": "Renvoie True si le sujet Entité est sous l'eau. Une Entité est consiédré comme sous l'eau si elle est complètement recouverte de blocs d'eau."},
+                    {"enum": ["is_variant"], "description": "Renvoie True si le sujet Entité a la valeur du component 'variant' qui correspond à la valeur fourni."},
+                    {"enum": ["is_visible"], "description": "Renvoie True si le sujet Entité est visible."},
+                    {"enum": ["is_waterlogged"], "description": "Teste si le sjet Bloc est submergé d'eau."},
+                    {"enum": ["light_level"], "description": "Teste si le Mob se trouve en dehors de la plage de niveaux de lumière spécifiée (0, 16)."},
+                    {"enum": ["moon_intensity"], "description": "Compare l'intensité actuelle de la lune avec une valeur dans la range (0.0, 1.0)"},
+                    {"enum": ["moon_phase"], "description": "Compare la phase actuelle de la lune avec une valeur etière dans la range (0, 7)."},
+                    {"enum": ["on_fire"], "description": "Teste si le sujet est en feu."},
+                    {"enum": ["on_ground"], "description": "Renvoie True lorsque le sujet Entité est sur le sol."},
+                    {"enum": ["on_hot_block"], "description": "Teste si le sujet est sur un bloc chaud."},
+                    {"enum": ["on_ladder"], "description": "Renvoie True lorsque le sujet Entité est sur une échelle."},
+                    {"enum": ["owner_distance"], "description": "Renvoie la distance entre cette Entité et son propriétaire."},
+                    {"enum": ["random_chance"], "description": "Renvoie True si la chance aléatoire obtient 0 hors d'une plage maximale spécifiée."},
+                    {"enum": ["rider_count"], "description": "Renvoie le nombre de chevauchers sur ce sujet Entité."},
+                    {"enum": ["surface_mob"], "description": "Teste si le sujet est un mob de surface."},
+                    {"enum": ["taking_fire_damage"], "description": "Teste si le sujet subit des dégâts de feu. Nécessite le component 'damage_sensor'."},
+                    {"enum": ["target_distance"], "description": "Teste la distance entre l'Entité appelante et sa cible."},
+                    {"enum": ["trusts"], "description": "Renvoie vrai si le sujet est approuvé par l'Entité."},
+                    {"enum": ["was_last_hurt_by"], "description": "Teste si le sujet est le dernier joueur qui a attaqué le sujet dans les 400 dernières secondes, ou le dernier Mob à l'avoir fait dans les dernières 60 secondes."},
+                    {"enum": ["weather"], "description": "Teste la météo actuelle dans la dimension par rapport à la valeur météo spécifié."},
+                    {"enum": ["weather_at_position"], "description": "Teste la météo acutelle, dans la position de l'Acteur, par rapport à la valeur de météo fourni."}
+                ]},
+                "domain": {"description": "Le Domaine du Test.", "anyOf": [
+                    {"type": "string"},
+                    {"type": "string", "description": "L'emplacement d'Equipement à tester.", "enum": ["any", "armor", "body", "feet", "hand", "head", "inventory", "leg", "torso"]}
+                ]},
+                "operator": {"type": "string", "description": "La comparaison à appliquer avec 'value'.", "anyOf": [
+                    {"enum": ["!=", "<>", "not"], "description": "Teste pour l'inégalité."},
+                    {"enum": ["<"], "description": "Teste pour une valeur inférieure à la valeur."},
+                    {"enum": ["<="], "description": "Teste pour une valeur inférieure ou égale à la valeur."},
+                    {"enum": ["=", "==", "equals"], "description": "Teste pour l'égalité."},
+                    {"enum": [">"], "description": "Teste pour une valeur supérieure à la valeur."},
+                    {"enum": [">="], "description": "Teste pour une valeur supérieure ou égale à la valeur."}
+                ]},
+                "subject": {"type": "string", "description": "Le Sujet pour le Test.", "anyOf": [
+                    {"enum": ["block"], "description": "Le Bloc impliqué dans l'interaction."},
+                    {"enum": ["damager"], "description": "L'Entité qui a subit des dégâts dans l'interaction."},
+                    {"enum": ["other"], "description": "L'autre sujet de l'interaction. Pas celui qui execute l'appelle de ce filtre de test."},
+                    {"enum": ["parent"], "description": "Le Parent actuel de l'appelant."},
+                    {"enum": ["player"], "description": "Le Joueur impliqué dans l'interaction."},
+                    {"enum": ["self"], "description": "L'appelant de ce filtre de test."},
+                    {"enum": ["target"], "description": "La cible actuelle de l'appelant."}
+                ]},
+                "value": {"description": "La valeur pour le Test.", "anyOf": [
+                    {"type": "integer"},
+                    {"type": "string", "description": "L'emplacement d'Equipement à tester.", "enum": ["any", "armor", "feet", "hand", "head", "inventory", "leg", "torso"]},
+                    {"type": "boolean"},
+                    {"type": "number"},
+                    {"type": "string", "description": "Le Type d'Abilité à tester.", "enum": ["flySpeed", "flying", "instabuild", "invulnerable", "lightning", "mayfly", "mute", "noclip", "walkSpeed", "worldbuilder"]},
+                    {"type": "string"},
+                    {"type": "string", "description": "Le Type de Dégats à tester.", "enum": [
+                        "all", "anvil", "block_explosion", "contact", "drowning", "entity_attack", "entity_explosion", "fall", "falling_block", "fatal", "fire", "fire_tick", "fly_into_wall", 
+                        "lava", "magic", "none", "override", "piston", "projectile", "self_destruct", "sonic_boom", "stalactite", "stalagmite", "starve", "suffocation", "thorns", 
+                        "void", "wither"
+                    ]},
+                    {"type": "string", "description": "La palette de couleur à tester.", "enum": [
+                        "black", "blue", "brown", "cyan", "gray", "green", "light_blue", "light_green", "magenta", "orange", "pink", "purple", "red", "silver", "white", "yellow"
+                    ]},
+                    {"type": "string", "description": "Le niveau de difficulté à tester.", "enum": ["peaceful", "easy", "normal", "hard"]},
+                    {"type": "string", "description": "Le type de température à tester.", "enum": ["cold", "mild", "ocean", "warm"]}
+                ]}
+        }}
+    }
+}

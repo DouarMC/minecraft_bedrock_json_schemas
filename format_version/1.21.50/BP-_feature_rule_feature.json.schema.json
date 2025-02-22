@@ -1,0 +1,122 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "required": ["format_version", "minecraft:feature_rules"],
+    "properties": {
+        "format_version": {"$ref": "#/definitions/format_version-def"},
+        "minecraft:feature_rules": {"$ref": "#/definitions/minecraft:feature_rules-def", "properties": {
+            "description": {"$ref": "#/definitions/description-def"},
+            "conditions": {"$ref": "#/definitions/conditions-def"},
+            "distribution": {"$ref": "#/definitions/distribution-def"}
+        }}
+    },
+
+    "definitions": {
+        "format_version-def": {"type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$", "description": "La version du Format à utiliser."},
+        "minecraft:feature_rules-def": {"type": "object", "description": "Contient toute la définition de cette Feature_Rules."},
+        "description-def": {"type": "object", "description": "La Description de la Feature_Rules.", "properties": {
+            "identifier": {"type": "string", "description": "L'Identifiant de la Feature_Rules."},
+            "places_feature": {"type": "string", "description": "L'Identifiant de la Feature controlée par cette Feature_Rules."}
+        }},
+        "conditions-def": {"type": "object", "description": "Les Paramètres pour controler où et quand la Feature sera placé.", "properties": {
+            "placement_pass": {"type": "string", "description": "Quand la fonctionnalité doit être placée par rapport aux autres. Les passes antérieures dans la liste sont garanties avant les passes ultérieures. L'ordre n'est pas garanti pour chaque pass.",
+              "enum": ["first_pass", "before_underground_pass", "underground_pass", "after_underground_pass", "before_surface_pass", "surface_pass", "after_surface_pass", "before_sky_pass", "sky_pass", "after_sky_pass", "final_pass"]
+            },
+            "minecraft:biome_filter": {"description": "Détermine les biomes auquel cette Feature Rule sera attaché.", "anyOf": [
+                {"type": "array", "items": {"$ref": "#/definitions/advanced_filter_object-ref"}},
+                {"$ref": "#/definitions/advanced_filter_object-ref"}
+            ]}
+        }},
+        "distribution-def": {"type": "object", "description": "Paramètres contrôlant la dispersion initiale de la fonctionnalité.", "properties": {
+            "iterations": {"description": "Nombre de positions dispersées à générer", "anyOf": [
+                {"type": "string"},
+                {"type": "number"}
+            ]},
+            "scatter_chance": {"description": "Numérateur/dénominateur de probabilité que cette dispersion se produise. Non évalué à chaque itération, soit aucune itération ne s'exécutera, soit toutes le seront.", "anyOf": [
+                {"type": "object", "properties": {
+                    "numerator": {"type": "number"},
+                    "denominator": {"type": "number"}
+                }},
+                {"type": "string"},
+                {"type": "number"}
+            ]},
+            "coordinate_eval_order": {"type": "string", "description": "L'ordre dans lequel les coordonnées seront évaluées. Doit être utilisé lorsqu'une coordonnée dépend d'une autre. En cas d'omission, la valeur par défaut est 'xzy'.", 
+             "enum": ["xyz", "xzy", "yxz", "yzx", "zxy", "zyx"]
+            },
+            "x": {"description": "Expression/Distribution pour la coordonnée X (évaluée à chaque itération).", "anyOf": [
+                {"type": "string"},
+                {"type": "number"},
+                {"type": "object", "properties": {
+                    "distribution": {"type": "string", "description": "Type de distribution : aléatoire uniforme, gaussienne (centrée dans la plage), triangulaire (centrée dans la plage) ou grille (à pas fixe ou instable)", 
+                     "enum": ["uniform", "gaussian", "inverse_gaussian", "triangle", "fixed_grid", "jittered_grid"]
+                    },
+                    "step_size": {"type": "integer", "description": "Lorsque le type de distribution est Grille, définit la distance entre les pas le long de cet axe"},
+                    "grid_offset": {"type": "integer", "description": "Lorsque le type de distribution est grille, définit le décalage le long de cet axe"},
+                    "extent": {"type": "array", "description": "Limites de la plage de dispersion.", "items": [
+                        {"description": "Limite inférieure (incluse) de la plage de dispersion, en tant que décalage par rapport au point d'entrée autour duquel se disperser", "oneOf": [
+                            {"type": "string"},
+                            {"type": "number"}
+                        ]},
+                        {"description": "Limite supérieure (incluse) de la plage de dispersion, en tant que décalage par rapport au point d'entrée autour duquel se disperser", "oneOf": [
+                            {"type": "string"},
+                            {"type": "number"}
+                        ]}
+                    ]}
+                }}
+            ]},
+            "z": {"description": "Expression/Distribution pour la coordonnée Z (évaluée à chaque itération).", "anyOf": [
+                {"type": "string"},
+                {"type": "number"},
+                {"type": "object", "properties": {
+                    "distribution": {"type": "string", "description": "Type de distribution : aléatoire uniforme, gaussienne (centrée dans la plage), triangulaire (centrée dans la plage) ou grille (à pas fixe ou instable)", 
+                     "enum": ["uniform", "gaussian", "inverse_gaussian", "triangle", "fixed_grid", "jittered_grid"]
+                    },
+                    "step_size": {"type": "integer", "description": "Lorsque le type de distribution est Grille, définit la distance entre les pas le long de cet axe"},
+                    "grid_offset": {"type": "integer", "description": "Lorsque le type de distribution est grille, définit le décalage le long de cet axe"},
+                    "extent": {"type": "array", "description": "Limites de la plage de dispersion.", "items": [
+                        {"description": "Limite inférieure (incluse) de la plage de dispersion, en tant que décalage par rapport au point d'entrée autour duquel se disperser", "oneOf": [
+                            {"type": "string"},
+                            {"type": "number"}
+                        ]},
+                        {"description": "Limite supérieure (incluse) de la plage de dispersion, en tant que décalage par rapport au point d'entrée autour duquel se disperser", "oneOf": [
+                            {"type": "string"},
+                            {"type": "number"}
+                        ]}
+                    ]}
+                }}
+            ]},
+            "y": {"description": "Expression/Distribution pour la coordonnée Y (évaluée à chaque itération).", "anyOf": [
+                {"type": "string"},
+                {"type": "number"},
+                {"type": "object", "properties": {
+                    "distribution": {"type": "string", "description": "Type de distribution : aléatoire uniforme, gaussienne (centrée dans la plage), triangulaire (centrée dans la plage) ou grille (à pas fixe ou instable)", 
+                     "enum": ["uniform", "gaussian", "inverse_gaussian", "triangle", "fixed_grid", "jittered_grid"]
+                    },
+                    "step_size": {"type": "integer", "description": "Lorsque le type de distribution est Grille, définit la distance entre les pas le long de cet axe"},
+                    "grid_offset": {"type": "integer", "description": "Lorsque le type de distribution est grille, définit le décalage le long de cet axe"},
+                    "extent": {"type": "array", "description": "Limites de la plage de dispersion.", "items": [
+                        {"description": "Limite inférieure (incluse) de la plage de dispersion, en tant que décalage par rapport au point d'entrée autour duquel se disperser", "oneOf": [
+                            {"type": "string"},
+                            {"type": "number"}
+                        ]},
+                        {"description": "Limite supérieure (incluse) de la plage de dispersion, en tant que décalage par rapport au point d'entrée autour duquel se disperser", "oneOf": [
+                            {"type": "string"},
+                            {"type": "number"}
+                        ]}
+                    ]}
+                }}
+            ]}
+        }},
+
+
+        "advanced_filter_object-ref": {"type": "object", "properties": {
+            "none_of": {"type": "array", "description": "Aucune des conditions ne doivent être rempli.", "items": {"$ref": "#/definitions/advanced_filter_object-ref"}},
+            "any_of": {"type": "array", "description": "Au moins une des conditions doivent être rempli.", "items": {"$ref": "#/definitions/advanced_filter_object-ref"}},
+            "all_of": {"type": "array", "description": "Toutes les conditions doivent être rempli.", "items": {"$ref": "#/definitions/advanced_filter_object-ref"}},
+
+            "test": {"type": "string", "description": "Le type de test pour le filtrage du Biome.", "enum": ["has_biome_tag", "is_biome"]},
+            "operator": {"type": "string", "description": "L'opérateur du Test.", "enum": ["!=", "<", "<=", "<>", "=", "==", ">", ">=", "equals", "not"]},
+            "value": {"type": "string", "description": "La valeur pour la comparaison."}
+        }}
+    }
+}

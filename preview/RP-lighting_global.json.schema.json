@@ -1,0 +1,163 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "description": "Ce fichier sert à configurer et personnaliser divers paramètres d'éclairage. Il permet un contrôle détaillé des lumières directionnelles (soleil et lune), des lumières ponctuelles (comme les torches), de l'éclairage ambiant et des propriétés globales d'éclairage (émissives et PBR).",
+    "type": "object",
+    "required": ["format_version", "minecraft:lighting_settings"],
+    "properties": {
+        "format_version": {
+            "description": "La version du Format à utiliser pour ces paramètres d'éclairage (ex: 1.21.50).",
+            "const": "1.21.50"
+        },
+        "minecraft:lighting_settings": {
+            "description": "Contient toute la définition des paramètres d'éclairage.",
+            "type": "object",
+            "required": ["description"],
+            "properties": {
+                "description": {
+                    "description": "Description des paramètres d'éclairage.",
+                    "type": "object",
+                    "required": ["identifier"],
+                    "properties": {
+                        "identifier": {
+                            "description": "Identifiant de ces paramètres d'éclairage.",
+                            "$ref": "../common.schema.json#/definitions/string_with_namespace"
+                        }
+                    }
+                },
+                "directional_lights": {
+                    "description": "Définit la luminosité et la couleur du soleil et de la lune et d'ajuster l'angle des ombres.",
+                    "type": "object",
+                    "properties": {
+                        "sun": {
+                            "description": "Définit la luminosité et la couleur du soleil.",
+                            "type": "object",
+                            "properties": {
+                                "illuminance": {
+                                    "description": "Définit l'intensité lumineuse du soleil, exprimée en lux (lx). Cette valeur peut varier en fonction de l'heure de la journée, avec une interpolation entre les valeurs définies pour créer une transition fluide.",
+                                    "oneOf": [
+                                        {
+                                            "type": "number",
+                                            "minimum": 0
+                                        },
+                                        {
+                                            "type": "object",
+                                            "patternProperties": {
+                                                "^(0(\\.\\d+)?|1(\\.0)?)$": {
+                                                    "type": "number",
+                                                    "description": "L'intensité lumineuse en lux (lx)."
+                                                }
+                                            },
+                                            "additionalProperties": false
+                                        }
+                                    ]
+                                },
+                                "color": {
+                                    "description": "Définit la couleur du soleil.",
+                                    "oneOf": [
+                                        {
+                                            "$ref": "../common.schema.json#/definitions/color_format"
+                                        },
+                                        {
+                                            "type": "object",
+                                            "patternProperties": {
+                                                "^(0(\\.\\d+)?|1(\\.0)?)$": {
+                                                    "$ref": "../common.schema.json#/definitions/color_format"
+                                                }
+                                            },
+                                            "additionalProperties": false
+                                        }
+                                    ]
+                                }
+                            }
+                        },
+                        "moon": {
+                            "description": "Définit la luminosité et la couleur de la lune.",
+                            "type": "object",
+                            "properties": {
+                                "illuminance": {
+                                    "description": "Définit l'intensité lumineuse de la lune, exprimée en lux (lx). Cette valeur peut varier en fonction de l'heure de la journée, avec une interpolation entre les valeurs définies pour créer une transition fluide.",
+                                    "oneOf": [
+                                        {
+                                            "type": "number"
+                                        },
+                                        {
+                                            "type": "object",
+                                            "patternProperties": {
+                                                "^(0(\\.\\d+)?|1(\\.0)?)$": {
+                                                    "type": "number",
+                                                    "description": "L'intensité lumineuse en lux (lx)."
+                                                }
+                                            },
+                                            "additionalProperties": false
+                                        }
+                                    ]
+                                },
+                                "color": {
+                                    "description": "Définit la couleur de la lune.",
+                                    "oneOf": [
+                                        {
+                                            "$ref": "../common.schema.json#/definitions/color_format"
+                                        },
+                                        {
+                                            "type": "object",
+                                            "patternProperties": {
+                                                "^(0(\\.\\d+)?|1(\\.0)?)$": {
+                                                    "$ref": "../common.schema.json#/definitions/color_format"
+                                                }
+                                            },
+                                            "additionalProperties": false
+                                        }
+                                    ]
+                                }
+                            }
+                        },
+                        "orbital_offset_degrees": {
+                            "description": " Décalage de rotation du soleil et de la lune par rapport à leur axe orbital standard, mesuré en degrés. Ce paramètre permet de modifier l'angle de leur trajectoire dans le ciel.",
+                            "oneOf": [
+                                {
+                                    "type": "number"
+                                },
+                                {
+                                    "type": "object",
+                                    "patternProperties": {
+                                        "^(0(\\.\\d+)?|1(\\.0)?)$": {
+                                            "type": "number",
+                                            "description": "Décalage de rotation du soleil et de la lune par rapport à leur axe orbital standard, mesuré en degrés."
+                                        }
+                                    },
+                                    "additionalProperties": false
+                                }
+                            ]
+                        }
+                    }
+                },
+                "emissive": {
+                    "description": "Contrôle l'effet de la lumière émise.",
+                    "type": "object",
+                    "properties": {
+                        "desaturation": {
+                            "description": "Contrôle le degré de désaturation appliqué aux couleurs de l'objet lors du calcul de la lumière émise.",
+                            "type": "number",
+                            "minimum": 0,
+                            "maximum": 1
+                        }
+                    }
+                },
+                "ambient": {
+                    "description": "Conntrôle la façon dont les surfaces sont éclairées lorsqu'aucune autre source de lumière n'est disponible ou visible dans la scène.",
+                    "type": "object",
+                    "properties": {
+                        "illuminance": {
+                            "description": "Définit l'intensité lumineuse de la lumière ambiante, exprimée en lux (lx).",
+                            "type": "number"
+                        },
+                        "color": {
+                            "description": "Définit la couleur de la lumière ambiante.",
+                            "$ref": "../common.schema.json#/definitions/color_format"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,8 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "description": "Ce fichier sert à créer des variables globales pour l'ensemble des fichiers d'UI. \nType: `Object`",
+    "type": "object",
+    "propertyNames": {
+        "pattern": "^\\$.*$"
+    }
+}

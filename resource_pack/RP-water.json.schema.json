@@ -1,0 +1,36 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "description": "Ce fichier sert à configurer les caractéristiques de l'eau dans Minecraft.",
+    "required": ["format_version"],
+    "properties": {
+        "format_version": {
+            "description": "La version du Format à utiliser.",
+            "$ref": "../common.schema.json#/definitions/minecraft_version",
+            "examples": ["1.21.50"]
+        }
+    },
+    "allOf": [
+        {
+            "if": {
+                "properties": {
+                    "format_version": {
+                        "const": "1.21.50"
+                    }
+                }
+            },
+            "then": {
+                "$ref": "../format_version/1.21.50/RP-water.json.schema.json"
+            }
+        }
+    ],
+    "examples": [
+        {
+            "format_version": "1.21.50",
+            "minecraft:water_settings": {
+                "description": {
+                    "identifier": "my_namespace:my_water"
+                }
+            }
+        }
+    ]
+}

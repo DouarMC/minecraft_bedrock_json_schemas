@@ -1,0 +1,77 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "description": "[EXPERIMENTALE]: Aim Assist \nCe fichier sert à créer des catégories d'Aim-Assist. \nType: `Object`",
+    "type": "object",
+    "required": ["format_version", "minecraft:aim_assist_categories"],
+    "properties": {
+        "format_version": {
+            "description": "La version du Format à utiliser. \nType: `String` \nNote: La version minimum est `1.21.50`.",
+            "type": "string",
+            "enum": ["1.21.50", "1.21.60"]
+        },
+        "minecraft:aim_assist_categories": {
+            "description": "La définition des catégories d'Aim-Assist. \nType: `Object`",
+            "required": ["categories"],
+            "properties": {
+                "categories": {
+                    "description": "Les catégories d'assistance à la visée pouvant être utilisés par les presets d'Aim-Assist. \nType: `Object[]`",
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "required": ["name", "priorities"],
+                        "properties": {
+                            "name": {
+                                "description": "Le nom de la catégorie. \nType: `String`",
+                                "type": "string"
+                            },
+                            "entity_default": {
+                                "description": "La priorité par défaut pour les entités. \nType: `Integer`",
+                                "type": "integer"
+                            },
+                            "block_default": {
+                                "description": "La priorité par défaut pour les blocs. \nType: `Integer`",
+                                "type": "integer"
+                            },
+                            "priorities": {
+                                "description": "Les priorités pour les entités et les blocs pour la sélection de l'Aim-Assist. \nType: `Object`",
+                                "type": "object",
+                                "properties": {
+                                    "block_default": {
+                                        "description": "La priorité par défaut pour les blocs qui ne sont pas dans 'blocks'. \nType: `Integer`",
+                                        "type": "integer",
+                                        "minimum": 0,
+                                        "maximum": 100
+                                    },
+                                    "blocks": {
+                                        "description": "Les priorités pour les blocs. \nType: `Object`",
+                                        "type": "object",
+                                        "additionalProperties": {
+                                            "type": "integer",
+                                            "minimum": 0,
+                                            "maximum": 100
+                                        }
+                                    },
+                                    "entities": {
+                                        "description": "Les priorités pour les entités. \nType: `Object`",
+                                        "type": "object",
+                                        "additionalProperties": {
+                                            "type": "integer",
+                                            "minimum": 0,
+                                            "maximum": 100
+                                        }
+                                    },
+                                    "entity_default": {
+                                        "description": "La priorité par défaut pour les entités qui ne sont pas dans 'entities'. \nType: `Integer`",
+                                        "type": "integer",
+                                        "minimum": 0,
+                                        "maximum": 100
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

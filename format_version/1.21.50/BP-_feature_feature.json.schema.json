@@ -1,0 +1,1749 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "required": ["format_version"],
+    "properties": {
+        "format_version": {"$ref": "#/definitions/format_version-def"},
+        "minecraft:aggregate_feature": {"$ref": "#/definitions/minecraft:aggregate_feature-def"},
+        "minecraft:cave_carver_feature": {"$ref": "#/definitions/minecraft:cave_carver_feature-def"},
+        "minecraft:fossil_feature": {"$ref": "#/definitions/minecraft:fossil_feature-def"},
+        "minecraft:geode_feature": {"$ref": "#/definitions/minecraft:geode_feature-def"},
+        "minecraft:growing_plant_feature": {"$ref": "#/definitions/minecraft:growing_plant_feature-def"},
+        "minecraft:multiface_feature": {"$ref": "#/definitions/minecraft:multiface_feature-def"},
+        "minecraft:nether_cave_carver_feature": {"$ref": "#/definitions/minecraft:nether_cave_carver_feature-def"},
+        "minecraft:ore_feature": {"$ref": "#/definitions/minecraft:ore_feature-def"},
+        "minecraft:partially_exposed_blob_feature": {"$ref": "#/definitions/minecraft:partially_exposed_blob_feature-def"},
+        "minecraft:scatter_feature": {"$ref": "#/definitions/minecraft:scatter_feature-def"},
+        "minecraft:search_feature": {"$ref": "#/definitions/minecraft:search_feature-def"},
+        "minecraft:sequence_feature": {"$ref": "#/definitions/minecraft:sequence_feature-def"},
+        "minecraft:single_block_feature": {"$ref": "#/definitions/minecraft:single_block_feature-def"},
+        "minecraft:snap_to_surface_feature": {"$ref": "#/definitions/minecraft:snap_to_surface_feature-def"},
+        "minecraft:structure_template_feature": {"$ref": "#/definitions/minecraft:structure_template_feature-def"},
+        "minecraft:surface_relative_threshold_feature": {"$ref": "#/definitions/minecraft:surface_relative_threshold_feature-def"},
+        "minecraft:tree_feature": {"$ref": "#/definitions/minecraft:tree_feature-def"},
+        "minecraft:underwater_cave_carver_feature": {"$ref": "#/definitions/minecraft:underwater_cave_carver_feature-def"},
+        "minecraft:vegetation_patch_feature": {"$ref": "#/definitions/minecraft:vegetation_patch_feature-def"},
+        "minecraft:weighted_random_feature": {"$ref": "#/definitions/minecraft:weighted_random_feature-def"}
+    },
+
+    "definitions": {
+        "format_version-def": {"type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$", "description": "La version du Format à utiliser."},
+        "minecraft:aggregate_feature-def": {"type": "object", "description": "Place une collection de Features dans un ordre arbitraire. Toutes les Features de la collection utilisent la même position d'entrée. Les Features ne doivent pas dépendre les unes des autres, car il n'y a aucune garantie dans quel ordre elles seront placées.", "properties": {
+            "description": {"type": "object", "description": "La Description de la Feature.", "properties": {
+                "identifier": {"type": "string", "description": "L'Identifiant de la Feature."}
+            }},
+            "features": {"type": "array", "description": "La collection de Features.", "items": {"type": "string"}},
+            "early_out": {"type": "string", "description": "Définit s'il faut arrêter de placer les Features avec la condition spécifié.", "enum": ["none", "first_failure", "first_success"]}
+        }},
+        "minecraft:cave_carver_feature-def": {"type": "object", "description": "Sculpte une grotte à travers le monde dans le Chunk actuel et dans chaque chunk autour du Chunk actuel selon un motif à 8 rayons. Cette fonctionnalité ne fonctionne que lorsqu'elle est placée dans le pass 'pregeneration_pass'. Ne peuvent pas être combiné avec d'autres Features", "properties": {
+            "description": {"type": "object", "description": "La Description de la Feature.", "properties": {
+                "identifier": {"type": "string", "description": "L'Identifiant de la Feature."}
+            }},
+            "fill_with": {"type": "string", "description": "Avec quel type de Bloc pour remplir cette grotte une fois qu'elle a été sculptée."},
+            "width_modifier": {"description": "Cela détermine de combien de blocs le rayon en largeur de la grotte est augmenté à partir du point central de la grotte.", "oneOf": [
+                {"type": "string"},
+                {"type": "number"}
+            ]},
+            "skip_carve_chance": {"type": "integer", "description": "C'est la chance de ne pas creuser la grotte dans un chunk donné. Plus la valeur est faible, plus il est probable que la grotte soit creusée."},
+            "height_limit": {"type": "integer", "description": "C'est la limite de hauteur jusqu'à laquelle la grotte va essayer de creuser."},
+            "y_scale": {"type": "array", "description": "C'est l'échelle de modification de la hauteur de la grotte.", "minItems": 2, "maxItems": 2, "items": {"type": "number"}},
+            "horizontal_radius_multiplier": {"type": "array", "description": "C'est le multiplicateur qui ajustent la taille horizontale de la grotte.", "minItems": 2, "maxItems": 2, "items": {"type": "number"}},
+            "vertical_radius_multiplier": {"type": "array", "description": "C'est le multiplicateur qui ajustent la taille verticale de la grotte.", "minItems": 2, "maxItems": 2, "items": {"type": "number"}},
+            "floor_level": {"type": "array", "description": "C'est le niveau du sol de la grotte.", "minItems": 2, "maxItems": 2, "items": {"type": "number"}}
+        }},
+        "minecraft:fossil_feature-def": {"type": "object", "description": "Génère un structure de squelette composé de bloc d'Os et d'un minerai de bloc spécifié.", "properties": {
+            "description": {"type": "object", "description": "La Description de la Feature.", "properties": {
+                "identifier": {"type": "string", "description": "L'Identifiant de la Feature."}
+            }},
+            "ore_block": {"type": "string", "description": "Le Bloc en question."},
+            "max_empty_corners": {"type": "number", "description": "Le nombre maximum de coins vides autorisés dans la structure. Si la structure a plus de coins vides que cette valeur, la génération échoue. Cela garantit que la structure est placée correctement dans le monde et qu'elle ne se chevauche pas avec d'autres structures. Dans l'exemple, le maximum est de 4 coins vides."}
+        }},
+        "minecraft:geode_feature-def": {"type": "object", "description": "Génère une structure en forme de géode, simulant une formation rocheuse", "properties": {
+            "description": {"type": "object", "description": "La Description de la Feature.", "properties": {
+                "identifier": {"type": "string", "description": "L'Identifiant de la Feature."}
+            }},
+            "filler": {"type": "string", "description": "C'est le bloc utilisé pour remplir l'intérieur de la géode"},
+            "inner_layer": {"type": "string", "description": "C'est le bloc qui forme la couche intérieure de la coquille de la géode."},
+            "alternate_inner_layer": {"type": "string", "description": "C'est un bloc alternatif qui a une chance de générer à la place de la couche intérieure."},
+            "middle_layer": {"type": "string", "description": "C'est le bloc qui forme la couche intermédiaire de la coquille de la géode."},
+            "outer_layer": {"type": "string", "description": "C'est le bloc qui forme la coquille extérieure de la géode."},
+            "inner_placements": {"type": "array", "description": " Il s'agit d'une liste de blocs qui peuvent être remplacés pendant la génération de la géode", "items": {"anyOf": [
+                {"type": "string"},
+                {"type": "object", "properties": {
+                    "name": {"type": "string", "description": "Le nom du Bloc."},
+                    "states": {"type": "array", "items": {"type": "object"}, "description": "La paire état de Bloc et sa valeur."},
+                    "tags": {"type": "string", "description": "Le tag de Bloc exprimé en Molang."}
+                }}
+            ]}},
+            "min_outer_wall_distance": {"type": "integer", "description": "C'est la distance minimale que chaque point de distribution doit avoir par rapport à la paroi extérieure de la géode."},
+            "max_outer_wall_distance": {"type": "integer", "description": "C'est la distance maximale que chaque point de distribution doit avoir par rapport à la paroi extérieure de la géode."},
+            "min_distribution_points": {"type": "integer", "description": "C'est le nombre minimal de points de distribution à l'intérieur du champ de distance qui peuvent être générés."},
+            "max_distribution_points": {"type": "integer", "description": "C'est le nombre minimal de points de distribution à l'intérieur du champ de distance qui peuvent être générés."},
+            "min_point_offset": {"type": "integer", "description": "C'est la valeur minimale de l'offset aléatoire appliqué à la position de chaque point de distribution."},
+            "max_point_offset": {"type": "integer", "description": "C'est la valeur maximale de l'offset aléatoire appliqué à la position de chaque point de distribution."},
+            "max_radius": {"type": "integer", "description": "C'est le rayon maximal possible de la géode générée."},
+            "crack_point_offset": {"type": "integer", "description": "C'est un offset appliqué à chaque point de distribution qui forme l'ouverture de fissure de la géode."},
+            "generate_crack_chance": {"type": "number", "description": "C'est la probabilité qu'une géode génère avec une fissure dans sa coquille."},
+            "base_crack_size": {"type": "number", "description": "C'est la taille de base de l'ouverture de fissure de la géode lorsqu'elle est générée."},
+            "noise_multiplier": {"type": "number", "description": "C'est un multiplicateur appliqué au bruit qui est appliqué aux points de distribution à l'intérieur de la géode."},
+            "use_potential_placements_chance": {"type": "number", "description": "C'est la probabilité qu'un bloc spécial soit placé à l'intérieur de la géode."},
+            "use_alternate_layer0_chance": {"type": "number", "description": "C'est la probabilité qu'un bloc dans la couche intérieure la plus interne de la géode soit remplacé par une option alternative."},
+            "placements_require_layer0_alternate": {"type": "boolean", "description": "Si vrai, le bloc de placement potentiel ne sera placé que sur les blocs de la couche 0 alternés qui sont placés."},
+            "invalid_blocks_threshold": {"type": "integer", "description": "C'est le seuil de blocs invalides pour qu'une géode ait un point de distribution avant qu'elle n'abandonne complètement la génération."}
+        }},
+        "minecraft:growing_plant_feature-def": {"type": "object", "description": "Permet de placer une plante en croissance dans le monde de Minecraft.", "properties": {
+            "description": {"type": "object", "description": "La Description de la Feature.", "properties": {
+                "identifier": {"type": "string", "description": "L'Identifiant de la Feature."}
+            }},
+            "height_distribution": {"type": "array", "description": "Cela définit la distribution de la hauteur de la plante en croissance. Chaque élément de cette liste est un intervalle de hauteur avec un poids associé qui est utilisé dans la sélection aléatoire. Plus le poids est élevé, plus il est probable que cet intervalle de hauteur soit choisi.", "items": {"type": "array", "items": [{"type": "object", "properties": {
+                "range_min": {"type": "number", "description": "La range Minimum."},
+                "range_max": {"type": "number", "description": "La range Maximum."}
+            }},{"type": "number", "description": "Le poids de chance associé à cet élément."}]}},
+            "growth_direction": {"type": "string", "description": "C'est la direction dans laquelle la plante pousse.", "enum": ["DOWN", "UP"]},
+            "age": {"type": "object", "description": "C'est l'âge de la tête de la plante, spécifié par un intervalle minimum et maximum.", "properties": {
+                "range_min": {"type": "number", "description": "La range Minimum."},
+                "range_max": {"type": "number", "description": "La range Maximum."}
+            }},
+            "body_blocks": {"type": "array", "description": "C'est une liste de blocs qui composent le corps de la plante. Chaque bloc est accompagné d'un poids utilisé dans la sélection aléatoire.", "items": {"type": "array", "items": [
+                {"type": "string", "description": "Le bloc."},
+                {"type": "number", "description": "Le poids de chance associé à cet élément."}]
+            }},
+            "head_blocks": {"type": "array", "description": "C'est une liste de blocs qui composent la tête de la plante. Chaque bloc est accompagné d'un poids utilisé dans la sélection aléatoire.", "items": {"type": "array", "items": [
+                {"type": "string", "description": "Le bloc."},
+                {"type": "number", "description": "Le poids de chance associé à cet élément."}]
+            }},
+            "allow_water": {"type": "boolean", "description": "Indique si les blocs de la plante peuvent être placés dans l'eau."}
+        }},
+        "minecraft:multiface_feature-def": {"type": "object", "description": "Place des blocs multifaces sur les sols, les murs ou les plafonds. Malgré son nom, n'importe quel bloc peut être placé par cette fonctionnalité.", "properties": {
+            "description": {"type": "object", "description": "La Description de la Feature.", "properties": {
+                "identifier": {"type": "string", "description": "L'Identifiant de la Feature."}
+            }},
+            "places_block": {"type": "string", "description": "Le Bloc à placer."},
+            "search_range": {"type": "integer", "description": "C'est la distance maximale (en blocs) que cette fonctionnalité peut rechercher pour trouver une position valide où placer le bloc."},
+            "can_place_on_floor": {"type": "boolean", "description": "Indique si cette fonctionnalité peut être placée sur le sol (la face supérieure d'un bloc)."},
+            "can_place_on_ceiling": {"type": "boolean", "description": "Indique si cette fonctionnalité peut être placée sur le plafond (la face inférieur d'un bloc)."},
+            "can_place_on_wall": {"type": "boolean", "description": "Indique si cette fonctionnalité peut être placée sur les murs (la face latérales d'un bloc)."},
+            "chance_of_spreading": {"type": "number", "description": "C'est la probabilité qu'un bloc placé par cette fonctionnalité se propage à un autre."},
+            "can_place_on": {"type": "array", "description": "Les Blocs où peut se placer cette Feature.", "items": {"type": "string"}}
+        }},
+        "minecraft:nether_cave_carver_feature-def": {"type": "object", "description": "Sculpte une grotte à travers le Nether dans le Chunk actuel et dans chaque chunk autour du Chunk actuel selon un motif à 8 rayons. Cette fonctionnalité ne fonctionne que lorsqu'elle est placée dans le pass 'pregeneration_pass'. Ne peuvent pas être combiné avec d'autres Features", "properties": {
+            "description": {"type": "object", "description": "La Description de la Feature.", "properties": {
+                "identifier": {"type": "string", "description": "L'Identifiant de la Feature."}
+            }},
+            "fill_with": {"type": "string", "description": "Avec quel type de Bloc pour remplir cette grotte une fois qu'elle a été sculptée."},
+            "width_modifier": {"description": "Cela détermine de combien de blocs le rayon en largeur de la grotte est augmenté à partir du point central de la grotte.", "oneOf": [
+                {"type": "string"},
+                {"type": "number"}
+            ]},
+            "skip_carve_chance": {"type": "integer", "description": "C'est la chance de ne pas creuser la grotte dans un chunk donné. Plus la valeur est faible, plus il est probable que la grotte soit creusée."},
+            "height_limit": {"type": "integer", "description": "C'est la limite de hauteur jusqu'à laquelle la grotte va essayer de creuser."},
+            "y_scale": {"type": "array", "description": "C'est l'échelle de modification de la hauteur de la grotte.", "minItems": 2, "maxItems": 2, "items": {"type": "number"}},
+            "horizontal_radius_multiplier": {"type": "array", "description": "C'est le multiplicateur qui ajustent la taille horizontale de la grotte.", "minItems": 2, "maxItems": 2, "items": {"type": "number"}},
+            "vertical_radius_multiplier": {"type": "array", "description": "C'est le multiplicateur qui ajustent la taille verticale de la grotte.", "minItems": 2, "maxItems": 2, "items": {"type": "number"}},
+            "floor_level": {"type": "array", "description": "C'est le niveau du sol de la grotte.", "minItems": 2, "maxItems": 2, "items": {"type": "number"}}
+        }},
+        "minecraft:ore_feature-def": {"type": "object", "description": "Permet de placer une veine de blocs pour simuler des dépôts de minerai dans le monde de Minecraft.", "properties": {
+            "description": {"type": "object", "description": "La Description de la Feature.", "properties": {
+                "identifier": {"type": "string", "description": "L'Identifiant de la Feature."}
+            }},
+            "count": {"type": "integer", "description": "C'est le nombre de blocs à placer pour former la veine de minerai."},
+            "discard_chance_on_air_exposure": {"type": "number", "description": "C'est la chance de rejeter le placement si le bloc voisin est de l'air."},
+            "replace_rules": {"type": "array", "description": "Il s'agit d'une liste de règles de remplacement qui seront vérifiées dans l'ordre de définition.", "items": {"type": "object", "properties": {
+                "places_block": {"type": "string", "description": "Le Bloc à placer."},
+                "may_replace": {"type": "array", "description": "La liste de Bloc qui peuvent être remplacer.", "items": {"type": "string"}}
+            }}}
+        }},
+        "minecraft:partially_exposed_blob_feature-def": {"type": "object", "description": "Génère un amas du bloc spécifié avec les dimensions spécifiées. Pour la plupart, l'amas est encastré dans la surface spécifiée, mais un seul côté est autorisé à être exposé.", "properties": {
+            "description": {"type": "object", "description": "La Description de la Feature.", "properties": {
+                "identifier": {"type": "string", "description": "L'Identifiant de la Feature."}
+            }},
+            "placement_radius_around_floor": {"type": "integer", "description": "C'est le rayon cubique de l'amas. Il définit les dimensions de l'amas de blocs généré."},
+            "placement_probability_per_valid_position": {"type": "number", "description": "C'est la probabilité d'essayer de placer un bloc à chaque position à l'intérieur des limites de placement. Plus la valeur est élevée, plus il est probable qu'un bloc soit placé dans chaque position valide."},
+            "exposed_face": {"type": "string", "description": "C'est la face du bloc qui est autorisée à être exposée à l'air et/ou à l'eau. Les autres faces doivent être encastrées pour que les blocs soient placés par cette fonctionnalité. Par défaut, il s'agit de la face supérieure ('up').", "enum": ["up", "down", "north", "east", "south", "west"]},
+            "places_block": {"type": "string", "description": "Le Bloc à placer."}
+        }},
+        "minecraft:scatter_feature-def": {"type": "object", "description": "Permet de disperser une caractéristique (ou feature) à travers un chunk dans le monde.", "properties": {
+            "description": {"type": "object", "description": "La Description de la Feature.", "properties": {
+                "identifier": {"type": "string", "description": "L'Identifiant de la Feature."}
+            }},
+            "places_feature": {"type": "string", "description": "C'est une référence nommée à la caractéristique (feature) à placer."},
+            "project_input_to_floor": {"type": "boolean", "description": "S'il est vrai (true), cela ajuste la valeur y de la position dispersée à la hauteur du terrain (terrain heightmap). Sinon, la valeur y n'est pas modifiée."},
+            "distribution": {"type": "object", "description": "Paramètres contrôlant la dispersion initiale de la fonctionnalité.", "properties": {
+                "iterations": {"description": "Nombre de positions dispersées à générer", "anyOf": [
+                    {"type": "string"},
+                    {"type": "number"}
+                ]},
+                "scatter_chance": {"description": "Numérateur/dénominateur de probabilité que cette dispersion se produise. Non évalué à chaque itération, soit aucune itération ne s'exécutera, soit toutes le seront.", "anyOf": [
+                    {"type": "object", "properties": {
+                        "numerator": {"type": "number"},
+                        "denominator": {"type": "number"}
+                    }},
+                    {"type": "string"},
+                    {"type": "number"}
+                ]},
+                "coordinate_eval_order": {"type": "string", "description": "L'ordre dans lequel les coordonnées seront évaluées. Doit être utilisé lorsqu'une coordonnée dépend d'une autre. En cas d'omission, la valeur par défaut est 'xzy'.", 
+                 "enum": ["xyz", "xzy", "yxz", "yzx", "zxy", "zyx"]
+                },
+                "x": {"description": "Expression/Distribution pour la coordonnée X (évaluée à chaque itération).", "anyOf": [
+                    {"type": "string"},
+                    {"type": "number"},
+                    {"type": "object", "properties": {
+                        "distribution": {"type": "string", "description": "Type de distribution : aléatoire uniforme, gaussienne (centrée dans la plage), triangulaire (centrée dans la plage) ou grille (à pas fixe ou instable)", 
+                         "enum": ["uniform", "gaussian", "inverse_gaussian", "triangle", "fixed_grid", "jittered_grid"]
+                        },
+                        "step_size": {"type": "integer", "description": "Lorsque le type de distribution est Grille, définit la distance entre les pas le long de cet axe"},
+                        "grid_offset": {"type": "integer", "description": "Lorsque le type de distribution est grille, définit le décalage le long de cet axe"},
+                        "extent": {"type": "array", "description": "Limites de la plage de dispersion.", "items": [
+                            {"description": "Limite inférieure (incluse) de la plage de dispersion, en tant que décalage par rapport au point d'entrée autour duquel se disperser", "oneOf": [
+                                {"type": "string"},
+                                {"type": "number"}
+                            ]},
+                            {"description": "Limite supérieure (incluse) de la plage de dispersion, en tant que décalage par rapport au point d'entrée autour duquel se disperser", "oneOf": [
+                                {"type": "string"},
+                                {"type": "number"}
+                            ]}
+                        ]}
+                    }}
+                ]},
+                "z": {"description": "Expression/Distribution pour la coordonnée Z (évaluée à chaque itération).", "anyOf": [
+                    {"type": "string"},
+                    {"type": "number"},
+                    {"type": "object", "properties": {
+                        "distribution": {"type": "string", "description": "Type de distribution : aléatoire uniforme, gaussienne (centrée dans la plage), triangulaire (centrée dans la plage) ou grille (à pas fixe ou instable)", 
+                         "enum": ["uniform", "gaussian", "inverse_gaussian", "triangle", "fixed_grid", "jittered_grid"]
+                        },
+                        "step_size": {"type": "integer", "description": "Lorsque le type de distribution est Grille, définit la distance entre les pas le long de cet axe"},
+                        "grid_offset": {"type": "integer", "description": "Lorsque le type de distribution est grille, définit le décalage le long de cet axe"},
+                        "extent": {"type": "array", "description": "Limites de la plage de dispersion.", "items": [
+                            {"description": "Limite inférieure (incluse) de la plage de dispersion, en tant que décalage par rapport au point d'entrée autour duquel se disperser", "oneOf": [
+                                {"type": "string"},
+                                {"type": "number"}
+                            ]},
+                            {"description": "Limite supérieure (incluse) de la plage de dispersion, en tant que décalage par rapport au point d'entrée autour duquel se disperser", "oneOf": [
+                                {"type": "string"},
+                                {"type": "number"}
+                            ]}
+                        ]}
+                    }}
+                ]},
+                "y": {"description": "Expression/Distribution pour la coordonnée Y (évaluée à chaque itération).", "anyOf": [
+                    {"type": "string"},
+                    {"type": "number"},
+                    {"type": "object", "properties": {
+                        "distribution": {"type": "string", "description": "Type de distribution : aléatoire uniforme, gaussienne (centrée dans la plage), triangulaire (centrée dans la plage) ou grille (à pas fixe ou instable)", 
+                         "enum": ["uniform", "gaussian", "inverse_gaussian", "triangle", "fixed_grid", "jittered_grid"]
+                        },
+                        "step_size": {"type": "integer", "description": "Lorsque le type de distribution est Grille, définit la distance entre les pas le long de cet axe"},
+                        "grid_offset": {"type": "integer", "description": "Lorsque le type de distribution est grille, définit le décalage le long de cet axe"},
+                        "extent": {"type": "array", "description": "Limites de la plage de dispersion.", "items": [
+                            {"description": "Limite inférieure (incluse) de la plage de dispersion, en tant que décalage par rapport au point d'entrée autour duquel se disperser", "oneOf": [
+                                {"type": "string"},
+                                {"type": "number"}
+                            ]},
+                            {"description": "Limite supérieure (incluse) de la plage de dispersion, en tant que décalage par rapport au point d'entrée autour duquel se disperser", "oneOf": [
+                                {"type": "string"},
+                                {"type": "number"}
+                            ]}
+                        ]}
+                    }}
+                ]}
+            }}
+        }},
+        "minecraft:search_feature-def": {"type": "object", "description": "Permet de balayer un volume à la recherche d'un emplacement valide pour placer une Feature référencée.", "properties": {
+            "description": {"type": "object", "description": "La Description de la Feature.", "properties": {
+                "identifier": {"type": "string", "description": "L'Identifiant de la Feature."}
+            }},
+            "places_feature": {"type": "string", "description": "La Feature à placer."},
+            "search_volume": {"type": "object", "description": "C'est la boîte englobante alignée sur les axes qui définit les limites de la zone de recherche. Elle est exprimée comme des décalages par rapport à la position d'entrée.", "properties": {
+                "min": {"type": "array", "description": "C'est l'extrémité minimale du volume de recherche exprimée comme [x, y, z].", "items": {"type": "number"}},
+                "max": {"type": "array", "description": "C'est l'extrémité maximale du volume de recherche exprimée comme [x, y, z].", "items": {"type": "number"}}
+            }},
+            "search_axis": {"type": "string", "description": "C'est l'axe le long duquel la recherche va balayer à travers le 'search_volume'.", "enum": ["-x", "+x", "-y", "+y", "-z", "+z"]},
+            "required_successes": {"type": "integer", "description": " C'est le nombre d'emplacements valides que la recherche doit trouver pour placer la Feature référencée. Par défaut, un seul emplacement valide doit être trouvé, mais cela peut être modifié en spécifiant cette propriété."}
+        }},
+        "minecraft:sequence_feature-def": {"type": "object", "description": "Place une collection de Features de manière séquentielle, dans l'ordre où elles apparaissent dans les données. La position de sortie de la fonctionnalité précédente est utilisée comme position d'entrée pour la suivante.", "properties": {
+            "description": {"type": "object", "description": "La Description de la Feature.", "properties": {
+                "identifier": {"type": "string", "description": "L'Identifiant de la Feature."}
+            }},
+            "features": {"type": "array", "description": "La collection de Features.", "items": {"type": "string"}}
+        }},
+        "minecraft:single_block_feature-def": {"type": "object", "description": "Place un seul bloc dans le monde.", "properties": {
+            "description": {"type": "object", "description": "La Description de la Feature.", "properties": {
+                "identifier": {"type": "string", "description": "L'Identifiant de la Feature."}
+            }},
+            "places_block": {"type": "object", "description": "Le Bloc à placer.", "properties": {
+                "block": {"type": "string", "description": "Le Bloc."},
+                "weight": {"type": "number", "description": "Le poids de chance associé à cet élément."}
+            }},
+            "enforce_placement_rules": {"type": "boolean", "description": "Si cette valeur est true, les règles de placement internes du bloc sont appliquées."},
+            "enforce_survivability_rules": {"type": "boolean", "description": "Si cette valeur est true, les règles de survie internes du bloc sont appliquées."},
+            "may_attach_to": {"type": "object", "description": "C'est une liste de côtés auxquels le bloc peut être attaché. Chaque côté peut avoir une liste de blocs auxquels le bloc peut être attaché.", "properties": {
+                "min_sides_must_attach": {"type": "integer", "description": "C'est un entier compris entre 1 et 4 qui spécifie le nombre minimum de côtés du bloc auxquels il doit être attaché."},
+                "auto_rotate": {"type": "boolean", "description": " Si cette valeur est true, le bloc est automatiquement tourné pour s'attacher de manière appropriée aux autres blocs. Cela garantit que le bloc est placé de manière à ce qu'il se connecte correctement aux autres blocs environnants."},
+                "top": {"type": "array", "description": "Défini les blocs auquels ce Bloc peut s'attacher de ce coté.", "items": {"anyOf": [
+                    {"type": "string"},
+                    {"type": "object", "properties": {
+                        "name": {"type": "string", "description": "Le nom du Bloc."},
+                        "states": {"type": "array", "items": {"type": "object"}, "description": "La paire état de Bloc et sa valeur."},
+                        "tags": {"type": "string", "description": "Le tag de Bloc exprimé en Molang."}
+                    }}
+                ]}},
+                "bottom": {"type": "array", "description": "Défini les blocs auquels ce Bloc peut s'attacher de ce coté.", "items": {"anyOf": [
+                    {"type": "string"},
+                    {"type": "object", "properties": {
+                        "name": {"type": "string", "description": "Le nom du Bloc."},
+                        "states": {"type": "array", "items": {"type": "object"}, "description": "La paire état de Bloc et sa valeur."},
+                        "tags": {"type": "string", "description": "Le tag de Bloc exprimé en Molang."}
+                    }}
+                ]}},
+                "north": {"type": "array", "description": "Défini les blocs auquels ce Bloc peut s'attacher de ce coté.", "items": {"anyOf": [
+                    {"type": "string"},
+                    {"type": "object", "properties": {
+                        "name": {"type": "string", "description": "Le nom du Bloc."},
+                        "states": {"type": "array", "items": {"type": "object"}, "description": "La paire état de Bloc et sa valeur."},
+                        "tags": {"type": "string", "description": "Le tag de Bloc exprimé en Molang."}
+                    }}
+                ]}},
+                "east": {"type": "array", "description": "Défini les blocs auquels ce Bloc peut s'attacher de ce coté.", "items": {"anyOf": [
+                    {"type": "string"},
+                    {"type": "object", "properties": {
+                        "name": {"type": "string", "description": "Le nom du Bloc."},
+                        "states": {"type": "array", "items": {"type": "object"}, "description": "La paire état de Bloc et sa valeur."},
+                        "tags": {"type": "string", "description": "Le tag de Bloc exprimé en Molang."}
+                    }}
+                ]}},
+                "south": {"type": "array", "description": "Défini les blocs auquels ce Bloc peut s'attacher de ce coté.", "items": {"anyOf": [
+                    {"type": "string"},
+                    {"type": "object", "properties": {
+                        "name": {"type": "string", "description": "Le nom du Bloc."},
+                        "states": {"type": "array", "items": {"type": "object"}, "description": "La paire état de Bloc et sa valeur."},
+                        "tags": {"type": "string", "description": "Le tag de Bloc exprimé en Molang."}
+                    }}
+                ]}},
+                "west": {"type": "array", "description": "Défini les blocs auquels ce Bloc peut s'attacher de ce coté.", "items": {"anyOf": [
+                    {"type": "string"},
+                    {"type": "object", "properties": {
+                        "name": {"type": "string", "description": "Le nom du Bloc."},
+                        "states": {"type": "array", "items": {"type": "object"}, "description": "La paire état de Bloc et sa valeur."},
+                        "tags": {"type": "string", "description": "Le tag de Bloc exprimé en Molang."}
+                    }}
+                ]}},
+                "all": {"type": "array", "description": "Défini les blocs auquels ce Bloc peut s'attacher de ce coté.", "items": {"anyOf": [
+                    {"type": "string"},
+                    {"type": "object", "properties": {
+                        "name": {"type": "string", "description": "Le nom du Bloc."},
+                        "states": {"type": "array", "items": {"type": "object"}, "description": "La paire état de Bloc et sa valeur."},
+                        "tags": {"type": "string", "description": "Le tag de Bloc exprimé en Molang."}
+                    }}
+                ]}},
+                "sides": {"type": "array", "description": "Défini les blocs auquels ce Bloc peut s'attacher de ce coté.", "items": {"anyOf": [
+                    {"type": "string"},
+                    {"type": "object", "properties": {
+                        "name": {"type": "string", "description": "Le nom du Bloc."},
+                        "states": {"type": "array", "items": {"type": "object"}, "description": "La paire état de Bloc et sa valeur."},
+                        "tags": {"type": "string", "description": "Le tag de Bloc exprimé en Molang."}
+                    }}
+                ]}},
+                "diagonal": {"type": "array", "description": "???", "items": {"type": "string"}}
+            }},
+            "may_not_attach_to": {"type": "object", "description": "Liste de refus qui spécifie les blocs qui ne peuvent pas être proches de l'emplacement de placement.", "properties": {
+                "top": {"type": "array", "description": "Défini les blocs auquels ce Bloc peut s'attacher de ce coté.", "items": {"anyOf": [
+                    {"type": "string"},
+                    {"type": "object", "properties": {
+                        "name": {"type": "string", "description": "Le nom du Bloc."},
+                        "states": {"type": "array", "items": {"type": "object"}, "description": "La paire état de Bloc et sa valeur."},
+                        "tags": {"type": "string", "description": "Le tag de Bloc exprimé en Molang."}
+                    }}
+                ]}},
+                "bottom": {"type": "array", "description": "Défini les blocs auquels ce Bloc peut s'attacher de ce coté.", "items": {"anyOf": [
+                    {"type": "string"},
+                    {"type": "object", "properties": {
+                        "name": {"type": "string", "description": "Le nom du Bloc."},
+                        "states": {"type": "array", "items": {"type": "object"}, "description": "La paire état de Bloc et sa valeur."},
+                        "tags": {"type": "string", "description": "Le tag de Bloc exprimé en Molang."}
+                    }}
+                ]}},
+                "north": {"type": "array", "description": "Défini les blocs auquels ce Bloc peut s'attacher de ce coté.", "items": {"anyOf": [
+                    {"type": "string"},
+                    {"type": "object", "properties": {
+                        "name": {"type": "string", "description": "Le nom du Bloc."},
+                        "states": {"type": "array", "items": {"type": "object"}, "description": "La paire état de Bloc et sa valeur."},
+                        "tags": {"type": "string", "description": "Le tag de Bloc exprimé en Molang."}
+                    }}
+                ]}},
+                "east": {"type": "array", "description": "Défini les blocs auquels ce Bloc peut s'attacher de ce coté.", "items": {"anyOf": [
+                    {"type": "string"},
+                    {"type": "object", "properties": {
+                        "name": {"type": "string", "description": "Le nom du Bloc."},
+                        "states": {"type": "array", "items": {"type": "object"}, "description": "La paire état de Bloc et sa valeur."},
+                        "tags": {"type": "string", "description": "Le tag de Bloc exprimé en Molang."}
+                    }}
+                ]}},
+                "south": {"type": "array", "description": "Défini les blocs auquels ce Bloc peut s'attacher de ce coté.", "items": {"anyOf": [
+                    {"type": "string"},
+                    {"type": "object", "properties": {
+                        "name": {"type": "string", "description": "Le nom du Bloc."},
+                        "states": {"type": "array", "items": {"type": "object"}, "description": "La paire état de Bloc et sa valeur."},
+                        "tags": {"type": "string", "description": "Le tag de Bloc exprimé en Molang."}
+                    }}
+                ]}},
+                "west": {"type": "array", "description": "Défini les blocs auquels ce Bloc peut s'attacher de ce coté.", "items": {"anyOf": [
+                    {"type": "string"},
+                    {"type": "object", "properties": {
+                        "name": {"type": "string", "description": "Le nom du Bloc."},
+                        "states": {"type": "array", "items": {"type": "object"}, "description": "La paire état de Bloc et sa valeur."},
+                        "tags": {"type": "string", "description": "Le tag de Bloc exprimé en Molang."}
+                    }}
+                ]}},
+                "all": {"type": "array", "description": "Défini les blocs auquels ce Bloc peut s'attacher de ce coté.", "items": {"anyOf": [
+                    {"type": "string"},
+                    {"type": "object", "properties": {
+                        "name": {"type": "string", "description": "Le nom du Bloc."},
+                        "states": {"type": "array", "items": {"type": "object"}, "description": "La paire état de Bloc et sa valeur."},
+                        "tags": {"type": "string", "description": "Le tag de Bloc exprimé en Molang."}
+                    }}
+                ]}},
+                "sides": {"type": "array", "description": "Défini les blocs auquels ce Bloc peut s'attacher de ce coté.", "items": {"anyOf": [
+                    {"type": "string"},
+                    {"type": "object", "properties": {
+                        "name": {"type": "string", "description": "Le nom du Bloc."},
+                        "states": {"type": "array", "items": {"type": "object"}, "description": "La paire état de Bloc et sa valeur."},
+                        "tags": {"type": "string", "description": "Le tag de Bloc exprimé en Molang."}
+                    }}
+                ]}},
+                "diagonal": {"type": "array", "description": "???", "items": {"type": "string"}}
+            }},
+            "may_replace": {"type": "array", "description": "C'est une liste de blocs qui peuvent être remplacés lors du placement du bloc. Si cette liste est omise, le bloc peut remplacer n'importe quel bloc.", "items": {"type": "string"}},
+            "randomize_rotation": {"type": "boolean", "description": "Si cette valeur est true, le bloc est placé avec une rotation aléatoire"}
+        }},
+        "minecraft:snap_to_surface_feature-def": {"type": "object", "description": "Permet de fixer la valeur y d'un placement d'une Feature au sol ou au plafond à l'intérieur de la plage de recherche verticale spécifiée.", "properties": {
+            "description": {"type": "object", "description": "La Description de la Feature.", "properties": {
+                "identifier": {"type": "string", "description": "L'Identifiant de la Feature."}
+            }},
+            "feature_to_snap": {"type": "string", "description": "La Feature."},
+            "vertical_search_range": {"type": "integer", "description": "C'est la plage de recherche verticale pour un sol ou un plafond où la fonctionnalité peut être fixée. Par exemple, si vertical_search_range est défini sur 12, la fonctionnalité cherchera un sol ou un plafond dans une plage de 12 blocs au-dessus et au-dessous du point de placement."},
+            "surface": {"type": "string", "description": "C'est la surface à laquelle la valeur y du placement sera ajustée.", "enum": ["ceiling", "floor", "random_horizontal"]},
+            "allow_air_placement": {"type": "boolean", "description": "Détermine si la fonctionnalité peut traverser les blocs d'air."},
+            "allow_underwater_placement": {"type": "boolean", "description": "Détermine si la fonctionnalité peut traverser les blocs d'eau."}
+        }},
+        "minecraft:structure_template_feature-def": {"type": "object", "description": "Permet de placer une structure dans le monde en tant que Feature.", "properties": {
+            "description": {"type": "object", "description": "La Description de la Feature.", "properties": {
+                "identifier": {"type": "string", "description": "L'Identifiant de la Feature."}
+            }},
+            "structure_name": {"type": "string", "description": "L'Identifiant de la Structure."},
+            "adjustment_radius": {"type": "integer", "description": "C'est la distance maximale de déplacement de la structure autorisée lors de la recherche d'une position de placement valide. La recherche est radiale, s'arrêtant lorsque la position valide la plus proche est trouvée."},
+            "facing_direction": {"type": "string", "description": "C'est la direction vers laquelle la structure sera orientée lorsqu'elle est placée dans le monde.", "enum": ["north", "south", "east", "west", "random"]},
+            "constraints": {"type": "object", "description": "Ce sont des contraintes spécifiques qui doivent être satisfaites lors du placement de cette structure.", "properties": {
+                "grounded": {"type": "object", "description": "Garantit que la Structure est au sol."},
+                "unburied": {"type": "object", "description": "Garantit que la Structure a de l'air au dessus d'elle."},
+                "block_intersection": {"type": "object", "description": "Garantit que la structure n'interagit qu'avec des blocs autorisés spécifiés.", "properties": {
+                    "block_allowlist": {"type": "array", "description": "Leqs Blocs autorisés", "items": {"anyOf": [
+                        {"type": "string"},
+                        {"type": "object", "properties": {
+                            "name": {"type": "string", "description": "Le nom du Bloc."},
+                            "states": {"type": "array", "items": {"type": "object"}, "description": "La paire état de Bloc et sa valeur."},
+                            "tags": {"type": "string", "description": "Le tag de Bloc exprimé en Molang."}
+                        }}
+                    ]}}
+                }}
+            }}
+        }},
+        "minecraft:surface_relative_threshold_feature-def": {"type": "object", "description": "Détermine si la position fournie est en dessous du niveau de surface estimé du monde, et place une Feature si c'est le cas.", "properties": {
+            "description": {"type": "object", "description": "La Description de la Feature.", "properties": {
+                "identifier": {"type": "string", "description": "L'Identifiant de la Feature."}
+            }},
+            "feature_to_place": {"type": "string", "description": "L'Identifiant de la Feature à placer."},
+            "minimum_distance_below_surface": {"type": "integer", "description": "C'est le nombre minimum de blocs requis entre le niveau de surface estimé et un emplacement valide pour cette fonctionnalité."}
+        }},
+        "minecraft:tree_feature-def": {"type": "object", "description": "Feature qui place un arbre dans le monde.", "properties": {
+            "description": {"type": "object", "description": "La Description de la Feature.", "properties": {
+                "identifier": {"type": "string", "description": "L'Identifiant de la Feature."}
+            }},
+            "base_block": {"type": "array", "description": "Le Bloc utiisé pour la Base de l'arbre.", "items": {"anyOf": [
+                {"type": "string"},
+                {"type": "object", "properties": {
+                    "name": {"type": "string", "description": "Le nom du Bloc."},
+                    "states": {"type": "array", "items": {"type": "object"}, "description": "La paire état de Bloc et sa valeur."},
+                    "tags": {"type": "string", "description": "Le tag de Bloc exprimé en Molang."}
+                }}
+            ]}},
+            "base_cluster": {"type": "object", "description": "Contient une liste des blocs que le cluster de base de l'arbre est autorisé à remplacer.", "properties": {
+                "may_replace": {"type": "array", "description": "Contient une liste des blocs que le cluster de base de l'arbre est autorisé à remplacer.", "items": {"anyOf": [
+                    {"type": "string"},
+                    {"type": "object", "properties": {
+                        "name": {"type": "string", "description": "Le nom du Bloc."},
+                        "states": {"type": "array", "items": {"type": "object"}, "description": "La paire état de Bloc et sa valeur."},
+                        "tags": {"type": "string", "description": "Le tag de Bloc exprimé en Molang."}
+                    }}
+                ]}},
+                "num_clusters": {"type": "integer", "description": "Spécifie le nombre de groupes de blocs qui peuvent être générés pour former l'arbre."},
+                "cluster_radius": {"type": "integer", "description": "Rayon autour de la position de départ où les clusters peuvent être générés, détermine la zone dans laquelle les groupes de blocs peuvent être répartis pour former l'arbre"}
+            }},
+            "may_grow_on": {"type": "array", "description": "Liste des blocs sur lesquels un arbre peut pousser.", "items": {"anyOf": [
+                {"type": "string"},
+                {"type": "object", "properties": {
+                    "name": {"type": "string", "description": "Le nom du Bloc."},
+                    "states": {"type": "array", "items": {"type": "object"}, "description": "La paire état de Bloc et sa valeur."},
+                    "tags": {"type": "string", "description": "Le tag de Bloc exprimé en Molang."}
+                }}
+            ]}},
+            "may_replace": {"type": "array", "description": "Liste des blocs qu'un arbre peut remplacer lorsqu'il pousse.", "items": {"anyOf": [
+                {"type": "string"},
+                {"type": "object", "properties": {
+                    "name": {"type": "string", "description": "Le nom du Bloc."},
+                    "states": {"type": "array", "items": {"type": "object"}, "description": "La paire état de Bloc et sa valeur."},
+                    "tags": {"type": "string", "description": "Le tag de Bloc exprimé en Molang."}
+                }}
+            ]}},
+            "may_grow_through": {"type": "array", "description": "Liste des blocs à travers lesquels un arbre peut pousser sans être arrêté.", "items": {"anyOf": [
+                {"type": "string"},
+                {"type": "object", "properties": {
+                    "name": {"type": "string", "description": "Le nom du Bloc."},
+                    "states": {"type": "array", "items": {"type": "object"}, "description": "La paire état de Bloc et sa valeur."},
+                    "tags": {"type": "string", "description": "Le tag de Bloc exprimé en Molang."}
+                }}
+            ]}},
+            "acacia_trunk": {"type": "object", "description": "Contient les détails spécifiques relatifs au tronc de l'arbre acacia.", "properties": {
+                "trunk_width": {"type": "integer", "description": "La largeur du tronc de l'arbre."},
+                "trunk_height": {"type": "object", "description": "Objet de configuration pour la hauteur du tronc.", "properties": {
+                    "base": {"type": "integer", "description": "Hauteur minimale pour le tronc."},
+                    "intervals": {"type": "array", "description": "Intervalle utilisé pour aléatoirement varier la hauteur du tronc.", "items": {"type": "integer"}},
+                    "min_height_for_canopy": {"type": "integer", "description": "Hauteur minimale pour placer la canopée."}
+                }},
+                "trunk_lean": {"type": "object", "description": "Objet de configuration pour les branches diagonales.", "properties": {
+                    "allow_diagonal_growth": {"type": "boolean", "description": "Défini si des branches diagonales seront crées."},
+                    "lean_height": {"type": "integer", "description": "Nombre de blocs en dessous de la hauteur de l'arbre où les branches diagonales peuvent être créées."},
+                    "lean_steps": {"type": "integer", "description": "Nombre de pas pris dans la direction X/Z lors de la création d'une branche diagonale."},
+                    "lean_length": {"type": "integer", "description": "Longueur de la branche diagonale dans l'axe Y."}
+                }},
+                "trunk_block": {"description": "Le bloc qui forme le tronc de l'arbre.", "anyOf": [
+                    {"type": "string"},
+                    {"type": "object", "properties": {
+                        "name": {"type": "string", "description": "Le nom du Bloc."},
+                        "states": {"type": "array", "items": {"type": "object"}, "description": "La paire état de Bloc et sa valeur."},
+                        "tags": {"type": "string", "description": "Le tag de Bloc exprimé en Molang."}
+                    }}
+                ]},
+                "branches": {"type": "object", "description": "Objet de configuration pour les branches.", "properties": {
+                    "branch_length": {"type": "number", "description": " Longueur de la branche dans l'axe Y."},
+                    "branch_position": {"type": "number", "description": "Position de départ en Y pour la branche."},
+                    "branch_chance": {"type": "object", "description": "Probabilité de créer une branche.", "properties": {
+                        "numerator": {"type": "number"},
+                        "denominator": {"type": "number"}
+                    }},
+                    "branch_canopy": {"type": "object", "description": "Objet de configuration pour la canopée de la branche.", "properties": {
+                        "acacia_canopy": {"type": "object", "description": "Configuration de la canopée pour l'arbre acacia.", "properties": {
+                            "canopy_size": {"type": "integer", "description": "La taille de la canopée."},
+                            "leaf_block": {"description": "Le Bloc qui forme la canopée de l'arbre.", "anyOf": [
+                                {"type": "string"},
+                                {"type": "object", "properties": {
+                                    "name": {"type": "string", "description": "Le nom du Bloc."},
+                                    "states": {"type": "array", "items": {"type": "object"}, "description": "La paire état de Bloc et sa valeur."},
+                                    "tags": {"type": "string", "description": "Le tag de Bloc exprimé en Molang."}
+                                }}
+                            ]},
+                            "simplify_canopy": {"type": "boolean", "description": "Si vrai, la canopée utilise un motif simple."}
+                        }},
+                        "canopy": {"type": "object", "description": "Configuration générale pour la canopée.", "properties": {
+                            "canopy_offset": {"type": "object", "description": "Position de la canopée par rapport au bloc au-dessus du tronc.", "properties": {
+                                "min": {"type": "integer", "description": "Position Minimale"},
+                                "max": {"type": "integer", "description": "Position Maximale"}
+                            }},
+                            "min_width": {"type": "integer", "description": "Largeur minimale pour la canopée."},
+                            "canopy_slope": {"type": "object", "description": "Configuration de la pente de la canopée.", "properties": {
+                                "rise": {"type": "integer", "description": "Le numérateur de la division de pente."},
+                                "run": {"type": "integer", "description": "Le dénominateur de la division de pente."}
+                            }},
+                            "variation_chance": {"description": "hance de créer des blocs de feuilles pour chaque couche de la canopée.", "oneOf": [
+                                {"type": "object", "properties": {
+                                    "numerator": {"type": "number"},
+                                    "denominator": {"type": "number"}
+                                }},
+                                {"type": "array", "items": {"type": "object", "properties": {
+                                    "numerator": {"type": "number"},
+                                    "denominator": {"type": "number"}
+                                }}}
+                            ]},
+                            "leaf_block": {"description": "Le Bloc qui forme la canopée de l'arbre.", "anyOf": [
+                                {"type": "string"},
+                                {"type": "object", "properties": {
+                                    "name": {"type": "string", "description": "Le nom du Bloc."},
+                                    "states": {"type": "array", "items": {"type": "object"}, "description": "La paire état de Bloc et sa valeur."},
+                                    "tags": {"type": "string", "description": "Le tag de Bloc exprimé en Molang."}
+                                }}
+                            ]},
+                            "canopy_decoration": {"type": "object", "description": "Objet de configuration pour la décoration de la canopée", "properties": {
+                                "decoration_chance": {"description": "Probabilité de décorer le tronc.", "type": "object", "properties": {
+                                    "numerator": {"type": "number"},
+                                    "denominator": {"type": "number"}
+                                }},
+                                "decoration_block": {"description": "Le Bloc utilisé pour la décoration.", "anyOf": [
+                                    {"type": "string"},
+                                    {"type": "object", "properties": {
+                                        "name": {"type": "string", "description": "Le nom du Bloc."},
+                                        "states": {"type": "array", "items": {"type": "object"}, "description": "La paire état de Bloc et sa valeur."},
+                                        "tags": {"type": "string", "description": "Le tag de Bloc exprimé en Molang."}
+                                    }}
+                                ]},
+                                "num_steps": {"type": "integer", "description": "Nombre de blocs de décoration à placer."},
+                                "step_direction": {"type": "string", "description": "Directions pour répartir les blocs de décoration.", "enum": ["down", "up", "out", "away"]}
+                            }}
+                        }},
+                        "cherry_canopy": {"type": "object", "description": "Cette section décrit les caractéristiques de la canopée d'un arbre de cerisier.", "properties": {
+                            "leaf_block": {"description": "Le Bloc qui forme la canopée de l'arbre.", "anyOf": [
+                                {"type": "string"},
+                                {"type": "object", "properties": {
+                                    "name": {"type": "string", "description": "Le nom du Bloc."},
+                                    "states": {"type": "array", "items": {"type": "object"}, "description": "La paire état de Bloc et sa valeur."},
+                                    "tags": {"type": "string", "description": "Le tag de Bloc exprimé en Molang."}
+                                }}
+                            ]},
+                            "height": {"type": "integer", "description": "Le nombre de couches pour la canopée, c'est-à-dire le nombre de niveaux de feuilles superposés."},
+                            "radius": {"type": "number", "description": "Le rayon de la canopée, déterminant sa largeur horizontale."},
+                            "trunk_width": {"type": "number", "description": "La largeur du tronc de l'arbre."},
+                            "wide_bottom_layer_hole_chance": {"type": "object", "description": "La probabilité que la canopée ait un trou dans la couche inférieure", "properties": {
+                                "numerator": {"type": "number"},
+                                "denominator": {"type": "number"}
+                            }},
+                            "corner_hole_chance": {"type": "object", "description": "La probabilité que la canopée ait un trou dans le coin.", "properties": {
+                                "numerator": {"type": "number"},
+                                "denominator": {"type": "number"}
+                            }},
+                            "hanging_leaves_chance": {"type": "object", "description": "La probabilité que la canopée ait des feuilles suspendues.", "properties": {
+                                "numerator": {"type": "number"},
+                                "denominator": {"type": "number"}
+                            }},
+                            "hanging_leaves_extension_chance": {"type": "object", "description": "La probabilité que les feuilles suspendues s'étendent davantage vers le bas.", "properties": {
+                                "numerator": {"type": "number"},
+                                "denominator": {"type": "number"}
+                            }}
+                        }},
+                        "fancy_canopy": {"type": "object", "description": "Cette section décrit les caractéristiques de la canopée d'un arbre fantaisie.", "properties": {
+                            "height": {"type": "integer", "description": "Le nombre de couches pour la canopée."},
+                            "radius": {"type": "number", "description": "Le rayon de la canopée, déterminant sa largeur horizontale."},
+                            "leaf_block": {"description": "Le Bloc qui forme la canopée de l'arbre.", "anyOf": [
+                                {"type": "string"},
+                                {"type": "object", "properties": {
+                                    "name": {"type": "string", "description": "Le nom du Bloc."},
+                                    "states": {"type": "array", "items": {"type": "object"}, "description": "La paire état de Bloc et sa valeur."},
+                                    "tags": {"type": "string", "description": "Le tag de Bloc exprimé en Molang."}
+                                }}
+                            ]}
+                        }},
+                        "mangrove_canopy": {"type": "object", "description": "Cette section décrit les caractéristiques de la canopée d'un arbre de Mangrove.", "properties": {
+                            "canopy_height": {"type": "integer", "description": "Nombre de couches pour la canopée."},
+                            "canopy_radius": {"type": "number", "description": "Le rayon de la canopée, déterminant sa largeur horizontale."},
+                            "leaf_placement_attempts": {"type": "integer", "description": "Nombre maximum de tentatives pour créer des blocs de feuilles dans la canopée."},
+                            "leaf_blocks": {"type": "array", "description": "Les blocs qui forment la canopée de l'arbre.", "items": [
+                                {"description": "Le Type de Bloc.", "anyOf": [
+                                    {"type": "string"},
+                                    {"type": "object", "properties": {
+                                        "name": {"type": "string", "description": "Le nom du Bloc."},
+                                        "states": {"type": "array", "items": {"type": "object"}, "description": "La paire état de Bloc et sa valeur."},
+                                        "tags": {"type": "string", "description": "Le tag de Bloc exprimé en Molang."}
+                                    }}
+                                ]},
+                                {"description": "Nombre indiquant la probabilité d'apparition de ce bloc.", "type": "number"}
+                            ]},
+                            "canopy_decoration": {"type": "object", "description": "Objet de configuration pour la décoration de la canopée", "properties": {
+                                "decoration_chance": {"description": "Probabilité de décorer le tronc.", "type": "object", "properties": {
+                                    "numerator": {"type": "number"},
+                                    "denominator": {"type": "number"}
+                                }},
+                                "decoration_block": {"description": "Le Bloc utilisé pour la décoration.", "anyOf": [
+                                    {"type": "string"},
+                                    {"type": "object", "properties": {
+                                        "name": {"type": "string", "description": "Le nom du Bloc."},
+                                        "states": {"type": "array", "items": {"type": "object"}, "description": "La paire état de Bloc et sa valeur."},
+                                        "tags": {"type": "string", "description": "Le tag de Bloc exprimé en Molang."}
+                                    }}
+                                ]},
+                                "num_steps": {"type": "integer", "description": "Nombre de blocs de décoration à placer."},
+                                "step_direction": {"type": "string", "description": "Directions pour répartir les blocs de décoration.", "enum": ["down", "up", "out", "away"]}
+                            }},
+                            "hanging_block": {"description": "Le bloc utilisé comme bloc suspendu dans la canopée.", "anyOf": [
+                                {"type": "string"},
+                                {"type": "object", "properties": {
+                                    "name": {"type": "string", "description": "Le nom du Bloc."},
+                                    "states": {"type": "array", "items": {"type": "object"}, "description": "La paire état de Bloc et sa valeur."},
+                                    "tags": {"type": "string", "description": "Le tag de Bloc exprimé en Molang."}
+                                }}
+                            ]},
+                            "hanging_block_placement_chance": {"description": "Probabilité de créer un bloc de feuille suspendu.", "type": "object", "properties": {
+                                "numerator": {"type": "number"},
+                                "denominator": {"type": "number"}
+                            }}
+                        }},
+                        "mega_canopy": {"type": "object", "description": "Cette section décrit les caractéristiques de la canopée d'un arbre Méga.", "properties": {
+                            "canopy_height": {"type": "integer", "description": "Nombre de couches pour la canopée."},
+                            "base_radius": {"type": "number", "description": "Cela permet de contrôler la largeur/rayon de la base de la canopée de l'arbre."},
+                            "core_width": {"type": "integer", "description": " Cela définit la largeur du tronc de l'arbre."},
+                            "simplify_canopy": {"type": "boolean", "description": "Si la canopée de l'arbre doit être simplifiée ou non."},
+                            "leaf_block": {"description": "Le Bloc qui forme la canopée de l'arbre.", "anyOf": [
+                                {"type": "string"},
+                                {"type": "object", "properties": {
+                                    "name": {"type": "string", "description": "Le nom du Bloc."},
+                                    "states": {"type": "array", "items": {"type": "object"}, "description": "La paire état de Bloc et sa valeur."},
+                                    "tags": {"type": "string", "description": "Le tag de Bloc exprimé en Molang."}
+                                }}
+                            ]}
+                        }},
+                        "mega_pine_canopy": {"type": "object", "description": "Cette section décrit les caractéristiques de la canopée d'un arbre Méga Pine.", "properties": {
+                            "canopy_height": {"type": "integer", "description": "Nombre de couches pour la canopée."},
+                            "base_radius": {"type": "number", "description": "Cela permet de contrôler la largeur/rayon de la base de la canopée de l'arbre."},
+                            "radius_step_modifier": {"type": "number", "description": "Il s'agit d'un modificateur pour le rayon de base de la canopée."},
+                            "core_width": {"type": "integer", "description": " Cela définit la largeur du tronc de l'arbre."},
+                            "simplify_canopy": {"type": "boolean", "description": "Si la canopée de l'arbre doit être simplifiée ou non."},
+                            "leaf_block": {"description": "Le Bloc qui forme la canopée de l'arbre.", "anyOf": [
+                                {"type": "string"},
+                                {"type": "object", "properties": {
+                                    "name": {"type": "string", "description": "Le nom du Bloc."},
+                                    "states": {"type": "array", "items": {"type": "object"}, "description": "La paire état de Bloc et sa valeur."},
+                                    "tags": {"type": "string", "description": "Le tag de Bloc exprimé en Molang."}
+                                }}
+                            ]}
+                        }},
+                        "pine_canopy": {"type": "object", "description": "Cette section décrit les caractéristiques de la canopée d'un arbre Pine.", "properties": {
+                            "canopy_height": {"type": "integer", "description": "Nombre de couches pour la canopée."},
+                            "base_radius": {"type": "number", "description": "Cela permet de contrôler la largeur/rayon de la base de la canopée de l'arbre."},
+                            "leaf_block": {"description": "Le Bloc qui forme la canopée de l'arbre.", "anyOf": [
+                                {"type": "string"},
+                                {"type": "object", "properties": {
+                                    "name": {"type": "string", "description": "Le nom du Bloc."},
+                                    "states": {"type": "array", "items": {"type": "object"}, "description": "La paire état de Bloc et sa valeur."},
+                                    "tags": {"type": "string", "description": "Le tag de Bloc exprimé en Molang."}
+                                }}
+                            ]}
+                        }},
+                        "roofed_canopy": {"type": "object", "description": "Cette section décrit les caractéristiques de la canopée d'un arbre Roofed.", "properties": {
+                            "canopy_height": {"type": "integer", "description": "Nombre de couches pour la canopée."},
+                            "core_width": {"type": "integer", "description": " Cela définit la largeur du tronc de l'arbre."},
+                            "outer_radius": {"type": "integer", "description": "Le rayon utilisé pour les couches de base et supérieures de la canopée."},
+                            "inner_radius": {"type": "integer", "description": "Le rayon utilisé pour les couches intermédiaires de la canopée."},
+                            "leaf_block": {"description": "Le Bloc qui forme la canopée de l'arbre.", "anyOf": [
+                                {"type": "string"},
+                                {"type": "object", "properties": {
+                                    "name": {"type": "string", "description": "Le nom du Bloc."},
+                                    "states": {"type": "array", "items": {"type": "object"}, "description": "La paire état de Bloc et sa valeur."},
+                                    "tags": {"type": "string", "description": "Le tag de Bloc exprimé en Molang."}
+                                }}
+                            ]}
+                        }},
+                        "spruce_canopy": {"type": "object", "description": "Cette section décrit les caractéristiques de la canopée d'un arbre Spruce.", "properties": {
+                            "lower_offset": {"type": "number", "description": "La distance minimale à laquelle la canopée peut être placée par rapport à la base de l'arbre ou à une autre référence."},
+                            "upper_offset": {"type": "number", "description": "La distance maximale à laquelle la canopée peut être placée par rapport à la base de l'arbre ou à une autre référence."},
+                            "max_radius": {"type": "integer", "description": "Détermine à quelle distance maximale de la base de l'arbre la canopée peut s'étendre."},
+                            "leaf_block": {"description": "Le Bloc qui forme la canopée de l'arbre.", "anyOf": [
+                                {"type": "string"},
+                                {"type": "object", "properties": {
+                                    "name": {"type": "string", "description": "Le nom du Bloc."},
+                                    "states": {"type": "array", "items": {"type": "object"}, "description": "La paire état de Bloc et sa valeur."},
+                                    "tags": {"type": "string", "description": "Le tag de Bloc exprimé en Molang."}
+                                }}
+                            ]}
+                        }}
+                    }}
+                }},
+                "trunk_decoration": {"type": "object", "description": "Paramètres pour décorer le tronc d'un arbre.", "properties": {
+                    "decoration_chance": {"description": "Probabilité de décorer le tronc.", "type": "object", "properties": {
+                        "numerator": {"type": "number"},
+                        "denominator": {"type": "number"}
+                    }},
+                    "decoration_block": {"description": "Le Bloc utilisé pour la décoration.", "anyOf": [
+                        {"type": "string"},
+                        {"type": "object", "properties": {
+                            "name": {"type": "string", "description": "Le nom du Bloc."},
+                            "states": {"type": "array", "items": {"type": "object"}, "description": "La paire état de Bloc et sa valeur."},
+                            "tags": {"type": "string", "description": "Le tag de Bloc exprimé en Molang."}
+                        }}
+                    ]},
+                    "num_steps": {"type": "integer", "description": "Nombre de blocs de décoration à placer."},
+                    "step_direction": {"type": "string", "description": "Directions pour répartir les blocs de décoration.", "enum": ["down", "up", "out", "away"]}
+                }}
+            }},
+            "cherry_trunk": {"type": "object", "description": "Contient les détails spécifiques relatifs au tronc de l'arbre Cherry.", "properties": {
+                "trunk_block": {"description": "Le bloc qui forme le tronc de l'arbre.", "anyOf": [
+                    {"type": "string"},
+                    {"type": "object", "properties": {
+                        "name": {"type": "string", "description": "Le nom du Bloc."},
+                        "states": {"type": "array", "items": {"type": "object"}, "description": "La paire état de Bloc et sa valeur."},
+                        "tags": {"type": "string", "description": "Le tag de Bloc exprimé en Molang."}
+                    }}
+                ]},
+                "trunk_height": {"type": "object", "description": "Objet de configuration pour la hauteur du tronc.", "properties": {
+                    "base": {"type": "integer", "description": "Hauteur minimale pour le tronc."},
+                    "intervals": {"type": "array", "description": "Intervalle utilisé pour aléatoirement varier la hauteur du tronc.", "items": {"type": "integer"}}
+                }},
+                "branches": {"type": "object", "description": "Objet de configuration pour les branches.", "properties": {
+                    "tree_type_weights": {"type": "object", "description": "Configuration pour choisir la variante d'Arbre basé sur un poid de chance aléatoire.", "properties": {
+                        "one_branch": {"type": "integer", "description": "Variante d'arbre avec une branche."},
+                        "two_branches": {"type": "integer", "description": "Variante d'arbre avec deux branches."},
+                        "two_branches_and_trunk": {"type": "integer", "description": "Variante d'arbre avec trois branches."}
+                    }},
+                    "branch_horizontal_length": {"type": "number", "description": "Contrôle à quelle distance horizontale la branche s'étend à partir du tronc de l'arbre dans le plan horizontal."},
+                    "branch_start_offset_from_top": {"type": "number", "description": "A quelle distance verticale, mesurée à partir du sommet de l'arbre, la branche commence à se développer."},
+                    "branch_end_offset_from_top": {"type": "number", "description": "A quelle distance verticale, mesurée à partir du sommet de l'arbre, la branche s'arrête ou se termine."},
+                    "branch_canopy": {"type": "object", "description": "Objet de configuration pour la canopée de la branche.", "properties": {
+                        "acacia_canopy": {"type": "object", "description": "Configuration de la canopée pour l'arbre acacia.", "properties": {
+                            "canopy_size": {"type": "integer", "description": "La taille de la canopée."},
+                            "leaf_block": {"description": "Le Bloc qui forme la canopée de l'arbre.", "anyOf": [
+                                {"type": "string"},
+                                {"type": "object", "properties": {
+                                    "name": {"type": "string", "description": "Le nom du Bloc."},
+                                    "states": {"type": "array", "items": {"type": "object"}, "description": "La paire état de Bloc et sa valeur."},
+                                    "tags": {"type": "string", "description": "Le tag de Bloc exprimé en Molang."}
+                                }}
+                            ]},
+                            "simplify_canopy": {"type": "boolean", "description": "Si vrai, la canopée utilise un motif simple."}
+                        }},
+                        "canopy": {"type": "object", "description": "Configuration générale pour la canopée.", "properties": {
+                            "canopy_offset": {"type": "object", "description": "Position de la canopée par rapport au bloc au-dessus du tronc.", "properties": {
+                                "min": {"type": "integer", "description": "Position Minimale"},
+                                "max": {"type": "integer", "description": "Position Maximale"}
+                            }},
+                            "min_width": {"type": "integer", "description": "Largeur minimale pour la canopée."},
+                            "canopy_slope": {"type": "object", "description": "Configuration de la pente de la canopée.", "properties": {
+                                "rise": {"type": "integer", "description": "Le numérateur de la division de pente."},
+                                "run": {"type": "integer", "description": "Le dénominateur de la division de pente."}
+                            }},
+                            "variation_chance": {"description": "hance de créer des blocs de feuilles pour chaque couche de la canopée.", "oneOf": [
+                                {"type": "object", "properties": {
+                                    "numerator": {"type": "number"},
+                                    "denominator": {"type": "number"}
+                                }},
+                                {"type": "array", "items": {"type": "object", "properties": {
+                                    "numerator": {"type": "number"},
+                                    "denominator": {"type": "number"}
+                                }}}
+                            ]},
+                            "leaf_block": {"description": "Le Bloc qui forme la canopée de l'arbre.", "anyOf": [
+                                {"type": "string"},
+                                {"type": "object", "properties": {
+                                    "name": {"type": "string", "description": "Le nom du Bloc."},
+                                    "states": {"type": "array", "items": {"type": "object"}, "description": "La paire état de Bloc et sa valeur."},
+                                    "tags": {"type": "string", "description": "Le tag de Bloc exprimé en Molang."}
+                                }}
+                            ]},
+                            "canopy_decoration": {"type": "object", "description": "Objet de configuration pour la décoration de la canopée", "properties": {
+                                "decoration_chance": {"description": "Probabilité de décorer le tronc.", "type": "object", "properties": {
+                                    "numerator": {"type": "number"},
+                                    "denominator": {"type": "number"}
+                                }},
+                                "decoration_block": {"description": "Le Bloc utilisé pour la décoration.", "anyOf": [
+                                    {"type": "string"},
+                                    {"type": "object", "properties": {
+                                        "name": {"type": "string", "description": "Le nom du Bloc."},
+                                        "states": {"type": "array", "items": {"type": "object"}, "description": "La paire état de Bloc et sa valeur."},
+                                        "tags": {"type": "string", "description": "Le tag de Bloc exprimé en Molang."}
+                                    }}
+                                ]},
+                                "num_steps": {"type": "integer", "description": "Nombre de blocs de décoration à placer."},
+                                "step_direction": {"type": "string", "description": "Directions pour répartir les blocs de décoration.", "enum": ["down", "up", "out", "away"]}
+                            }}
+                        }},
+                        "cherry_canopy": {"type": "object", "description": "Cette section décrit les caractéristiques de la canopée d'un arbre de cerisier.", "properties": {
+                            "leaf_block": {"description": "Le Bloc qui forme la canopée de l'arbre.", "anyOf": [
+                                {"type": "string"},
+                                {"type": "object", "properties": {
+                                    "name": {"type": "string", "description": "Le nom du Bloc."},
+                                    "states": {"type": "array", "items": {"type": "object"}, "description": "La paire état de Bloc et sa valeur."},
+                                    "tags": {"type": "string", "description": "Le tag de Bloc exprimé en Molang."}
+                                }}
+                            ]},
+                            "height": {"type": "integer", "description": "Le nombre de couches pour la canopée, c'est-à-dire le nombre de niveaux de feuilles superposés."},
+                            "radius": {"type": "number", "description": "Le rayon de la canopée, déterminant sa largeur horizontale."},
+                            "trunk_width": {"type": "number", "description": "La largeur du tronc de l'arbre."},
+                            "wide_bottom_layer_hole_chance": {"type": "object", "description": "La probabilité que la canopée ait un trou dans la couche inférieure", "properties": {
+                                "numerator": {"type": "number"},
+                                "denominator": {"type": "number"}
+                            }},
+                            "corner_hole_chance": {"type": "object", "description": "La probabilité que la canopée ait un trou dans le coin.", "properties": {
+                                "numerator": {"type": "number"},
+                                "denominator": {"type": "number"}
+                            }},
+                            "hanging_leaves_chance": {"type": "object", "description": "La probabilité que la canopée ait des feuilles suspendues.", "properties": {
+                                "numerator": {"type": "number"},
+                                "denominator": {"type": "number"}
+                            }},
+                            "hanging_leaves_extension_chance": {"type": "object", "description": "La probabilité que les feuilles suspendues s'étendent davantage vers le bas.", "properties": {
+                                "numerator": {"type": "number"},
+                                "denominator": {"type": "number"}
+                            }}
+                        }},
+                        "fancy_canopy": {"type": "object", "description": "Cette section décrit les caractéristiques de la canopée d'un arbre fantaisie.", "properties": {
+                            "height": {"type": "integer", "description": "Le nombre de couches pour la canopée."},
+                            "radius": {"type": "number", "description": "Le rayon de la canopée, déterminant sa largeur horizontale."},
+                            "leaf_block": {"description": "Le Bloc qui forme la canopée de l'arbre.", "anyOf": [
+                                {"type": "string"},
+                                {"type": "object", "properties": {
+                                    "name": {"type": "string", "description": "Le nom du Bloc."},
+                                    "states": {"type": "array", "items": {"type": "object"}, "description": "La paire état de Bloc et sa valeur."},
+                                    "tags": {"type": "string", "description": "Le tag de Bloc exprimé en Molang."}
+                                }}
+                            ]}
+                        }},
+                        "mangrove_canopy": {"type": "object", "description": "Cette section décrit les caractéristiques de la canopée d'un arbre de Mangrove.", "properties": {
+                            "canopy_height": {"type": "integer", "description": "Nombre de couches pour la canopée."},
+                            "canopy_radius": {"type": "number", "description": "Le rayon de la canopée, déterminant sa largeur horizontale."},
+                            "leaf_placement_attempts": {"type": "integer", "description": "Nombre maximum de tentatives pour créer des blocs de feuilles dans la canopée."},
+                            "leaf_blocks": {"type": "array", "description": "Les blocs qui forment la canopée de l'arbre.", "items": [
+                                {"description": "Le Type de Bloc.", "anyOf": [
+                                    {"type": "string"},
+                                    {"type": "object", "properties": {
+                                        "name": {"type": "string", "description": "Le nom du Bloc."},
+                                        "states": {"type": "array", "items": {"type": "object"}, "description": "La paire état de Bloc et sa valeur."},
+                                        "tags": {"type": "string", "description": "Le tag de Bloc exprimé en Molang."}
+                                    }}
+                                ]},
+                                {"description": "Nombre indiquant la probabilité d'apparition de ce bloc.", "type": "number"}
+                            ]},
+                            "canopy_decoration": {"type": "object", "description": "Objet de configuration pour la décoration de la canopée", "properties": {
+                                "decoration_chance": {"description": "Probabilité de décorer le tronc.", "type": "object", "properties": {
+                                    "numerator": {"type": "number"},
+                                    "denominator": {"type": "number"}
+                                }},
+                                "decoration_block": {"description": "Le Bloc utilisé pour la décoration.", "anyOf": [
+                                    {"type": "string"},
+                                    {"type": "object", "properties": {
+                                        "name": {"type": "string", "description": "Le nom du Bloc."},
+                                        "states": {"type": "array", "items": {"type": "object"}, "description": "La paire état de Bloc et sa valeur."},
+                                        "tags": {"type": "string", "description": "Le tag de Bloc exprimé en Molang."}
+                                    }}
+                                ]},
+                                "num_steps": {"type": "integer", "description": "Nombre de blocs de décoration à placer."},
+                                "step_direction": {"type": "string", "description": "Directions pour répartir les blocs de décoration.", "enum": ["down", "up", "out", "away"]}
+                            }},
+                            "hanging_block": {"description": "Le bloc utilisé comme bloc suspendu dans la canopée.", "anyOf": [
+                                {"type": "string"},
+                                {"type": "object", "properties": {
+                                    "name": {"type": "string", "description": "Le nom du Bloc."},
+                                    "states": {"type": "array", "items": {"type": "object"}, "description": "La paire état de Bloc et sa valeur."},
+                                    "tags": {"type": "string", "description": "Le tag de Bloc exprimé en Molang."}
+                                }}
+                            ]},
+                            "hanging_block_placement_chance": {"description": "Probabilité de créer un bloc de feuille suspendu.", "type": "object", "properties": {
+                                "numerator": {"type": "number"},
+                                "denominator": {"type": "number"}
+                            }}
+                        }},
+                        "mega_canopy": {"type": "object", "description": "Cette section décrit les caractéristiques de la canopée d'un arbre Méga.", "properties": {
+                            "canopy_height": {"type": "integer", "description": "Nombre de couches pour la canopée."},
+                            "base_radius": {"type": "number", "description": "Cela permet de contrôler la largeur/rayon de la base de la canopée de l'arbre."},
+                            "core_width": {"type": "integer", "description": " Cela définit la largeur du tronc de l'arbre."},
+                            "simplify_canopy": {"type": "boolean", "description": "Si la canopée de l'arbre doit être simplifiée ou non."},
+                            "leaf_block": {"description": "Le Bloc qui forme la canopée de l'arbre.", "anyOf": [
+                                {"type": "string"},
+                                {"type": "object", "properties": {
+                                    "name": {"type": "string", "description": "Le nom du Bloc."},
+                                    "states": {"type": "array", "items": {"type": "object"}, "description": "La paire état de Bloc et sa valeur."},
+                                    "tags": {"type": "string", "description": "Le tag de Bloc exprimé en Molang."}
+                                }}
+                            ]}
+                        }},
+                        "mega_pine_canopy": {"type": "object", "description": "Cette section décrit les caractéristiques de la canopée d'un arbre Méga Pine.", "properties": {
+                            "canopy_height": {"type": "integer", "description": "Nombre de couches pour la canopée."},
+                            "base_radius": {"type": "number", "description": "Cela permet de contrôler la largeur/rayon de la base de la canopée de l'arbre."},
+                            "radius_step_modifier": {"type": "number", "description": "Il s'agit d'un modificateur pour le rayon de base de la canopée."},
+                            "core_width": {"type": "integer", "description": " Cela définit la largeur du tronc de l'arbre."},
+                            "simplify_canopy": {"type": "boolean", "description": "Si la canopée de l'arbre doit être simplifiée ou non."},
+                            "leaf_block": {"description": "Le Bloc qui forme la canopée de l'arbre.", "anyOf": [
+                                {"type": "string"},
+                                {"type": "object", "properties": {
+                                    "name": {"type": "string", "description": "Le nom du Bloc."},
+                                    "states": {"type": "array", "items": {"type": "object"}, "description": "La paire état de Bloc et sa valeur."},
+                                    "tags": {"type": "string", "description": "Le tag de Bloc exprimé en Molang."}
+                                }}
+                            ]}
+                        }},
+                        "pine_canopy": {"type": "object", "description": "Cette section décrit les caractéristiques de la canopée d'un arbre Pine.", "properties": {
+                            "canopy_height": {"type": "integer", "description": "Nombre de couches pour la canopée."},
+                            "base_radius": {"type": "number", "description": "Cela permet de contrôler la largeur/rayon de la base de la canopée de l'arbre."},
+                            "leaf_block": {"description": "Le Bloc qui forme la canopée de l'arbre.", "anyOf": [
+                                {"type": "string"},
+                                {"type": "object", "properties": {
+                                    "name": {"type": "string", "description": "Le nom du Bloc."},
+                                    "states": {"type": "array", "items": {"type": "object"}, "description": "La paire état de Bloc et sa valeur."},
+                                    "tags": {"type": "string", "description": "Le tag de Bloc exprimé en Molang."}
+                                }}
+                            ]}
+                        }},
+                        "roofed_canopy": {"type": "object", "description": "Cette section décrit les caractéristiques de la canopée d'un arbre Roofed.", "properties": {
+                            "canopy_height": {"type": "integer", "description": "Nombre de couches pour la canopée."},
+                            "core_width": {"type": "integer", "description": " Cela définit la largeur du tronc de l'arbre."},
+                            "outer_radius": {"type": "integer", "description": "Le rayon utilisé pour les couches de base et supérieures de la canopée."},
+                            "inner_radius": {"type": "integer", "description": "Le rayon utilisé pour les couches intermédiaires de la canopée."},
+                            "leaf_block": {"description": "Le Bloc qui forme la canopée de l'arbre.", "anyOf": [
+                                {"type": "string"},
+                                {"type": "object", "properties": {
+                                    "name": {"type": "string", "description": "Le nom du Bloc."},
+                                    "states": {"type": "array", "items": {"type": "object"}, "description": "La paire état de Bloc et sa valeur."},
+                                    "tags": {"type": "string", "description": "Le tag de Bloc exprimé en Molang."}
+                                }}
+                            ]}
+                        }},
+                        "spruce_canopy": {"type": "object", "description": "Cette section décrit les caractéristiques de la canopée d'un arbre Spruce.", "properties": {
+                            "lower_offset": {"type": "number", "description": "La distance minimale à laquelle la canopée peut être placée par rapport à la base de l'arbre ou à une autre référence."},
+                            "upper_offset": {"type": "number", "description": "La distance maximale à laquelle la canopée peut être placée par rapport à la base de l'arbre ou à une autre référence."},
+                            "max_radius": {"type": "integer", "description": "Détermine à quelle distance maximale de la base de l'arbre la canopée peut s'étendre."},
+                            "leaf_block": {"description": "Le Bloc qui forme la canopée de l'arbre.", "anyOf": [
+                                {"type": "string"},
+                                {"type": "object", "properties": {
+                                    "name": {"type": "string", "description": "Le nom du Bloc."},
+                                    "states": {"type": "array", "items": {"type": "object"}, "description": "La paire état de Bloc et sa valeur."},
+                                    "tags": {"type": "string", "description": "Le tag de Bloc exprimé en Molang."}
+                                }}
+                            ]}
+                        }}
+                    }}
+                }}
+            }},
+            "fallen_trunk": {"type": "object", "description": "Contient les détails spécifiques relatifs au tronc de l'arbre Fallen.", "properties": {
+                "log_length": {"type": "number", "description": "Longueur de la bûche tombée."},
+                "stump_height": {"type": "number", "description": "Hauteur de la souche."},
+                "height_modifier":{"type": "number", "description": "Modificateur pour la longueur de la bûche tombée."},
+                "trunk_block": {"description": "Le bloc qui forme le tronc de l'arbre.", "anyOf": [
+                    {"type": "string"},
+                    {"type": "object", "properties": {
+                        "name": {"type": "string", "description": "Le nom du Bloc."},
+                        "states": {"type": "array", "items": {"type": "object"}, "description": "La paire état de Bloc et sa valeur."},
+                        "tags": {"type": "string", "description": "Le tag de Bloc exprimé en Molang."}
+                    }}
+                ]},
+                "log_decoration_feature": {"type": "string", "description": "La Feature pouvant être utilisée pour décorer la bûche tombée."},
+                "trunk_decoration": {"type": "object", "description": "Paramètres pour décorer le tronc d'un arbre.", "properties": {
+                    "decoration_chance": {"description": "Probabilité de décorer le tronc.", "type": "object", "properties": {
+                        "numerator": {"type": "number"},
+                        "denominator": {"type": "number"}
+                    }},
+                    "decoration_block": {"description": "Le Bloc utilisé pour la décoration.", "anyOf": [
+                        {"type": "string"},
+                        {"type": "object", "properties": {
+                            "name": {"type": "string", "description": "Le nom du Bloc."},
+                            "states": {"type": "array", "items": {"type": "object"}, "description": "La paire état de Bloc et sa valeur."},
+                            "tags": {"type": "string", "description": "Le tag de Bloc exprimé en Molang."}
+                        }}
+                    ]},
+                    "num_steps": {"type": "integer", "description": "Nombre de blocs de décoration à placer."},
+                    "step_direction": {"type": "string", "description": "Directions pour répartir les blocs de décoration.", "enum": ["down", "up", "out", "away"]}
+                }}
+            }},
+            "fancy_trunk": {"type": "object", "description": "Contient les détails spécifiques relatifs au tronc de l'arbre Fancy.", "properties": {
+                "trunk_height": {"type": "object", "description": "Objet de configuration pour la hauteur du tronc.", "properties": {
+                    "base": {"type": "integer", "description": "Hauteur minimale pour le tronc."},
+                    "variance": {"type": "integer", "description": "Modificateur pour la hauteur du Tronc."},
+                    "scale": {"type": "number", "description": "Hauteur finale de l'arbre est multipliée par cette échelle. Max : 1"}
+                }},
+                "trunk_width": {"type": "integer", "description": "La largeur du tronc de l'arbre."},
+                "branches": {"type": "object", "description": "Objet de configuration pour les branches.", "properties": {
+                    "slope": {"type": "number", "description": "Pente de la branche, où 0 est horizontal et 1 est vertical."},
+                    "density": {"type": "number", "description": "Densité du feuillage."},
+                    "min_altitude_factor": {"type": "number", "description": "Hauteur minimale des branches. Représenté par un pourcentage de la hauteur de l'arbre."}
+                }},
+                "trunk_block": {"description": "Le bloc qui forme le tronc de l'arbre.", "anyOf": [
+                    {"type": "string"},
+                    {"type": "object", "properties": {
+                        "name": {"type": "string", "description": "Le nom du Bloc."},
+                        "states": {"type": "array", "items": {"type": "object"}, "description": "La paire état de Bloc et sa valeur."},
+                        "tags": {"type": "string", "description": "Le tag de Bloc exprimé en Molang."}
+                    }}
+                ]},
+                "width_scale": {"type": "number", "description": "Modificateur d'echellle pour ce rayon d'arbre."},
+                "foliage_altitude_factor": {"type": "number", "description": "Hauteur minimale du feuillage. Représenté par un pourcentage de la hauteur de l'arbre."}
+            }},
+            "mangrove_trunk": {"type": "object", "description": "Contient les détails spécifiques relatifs au tronc de l'arbre Mangrove.", "properties": {
+                "trunk_width": {"type": "integer", "description": "La largeur du tronc de l'arbre."},
+                "trunk_height": {"type": "object", "description": "Objet de configuration pour la hauteur du tronc.", "properties": {
+                    "base": {"type": "integer", "description": "Hauteur minimale pour le tronc."},
+                    "height_rand_a": {"type": "integer", "description": "Modificateur A pour la hauteur de l'arbre."},
+                    "height_rand_b": {"type": "integer", "description": "Modificateur B pour la hauteur de l'arbre."}
+                }},
+                "trunk_block": {"description": "Le bloc qui forme le tronc de l'arbre.", "anyOf": [
+                    {"type": "string"},
+                    {"type": "object", "properties": {
+                        "name": {"type": "string", "description": "Le nom du Bloc."},
+                        "states": {"type": "array", "items": {"type": "object"}, "description": "La paire état de Bloc et sa valeur."},
+                        "tags": {"type": "string", "description": "Le tag de Bloc exprimé en Molang."}
+                    }}
+                ]},
+                "branches": {"type": "object", "description": "Objet de configuration pour les branches.", "properties": {
+                    "branch_length": {"type": "number", "description": " Longueur de la branche dans l'axe Y."},
+                    "branch_steps": {"type": "number", "description": "Nombree de branches à placer."},
+                    "branch_chance": {"type": "object", "description": "Probabilité de créer une branche.", "properties": {
+                        "numerator": {"type": "number"},
+                        "denominator": {"type": "number"}
+                    }}
+                }},
+                "trunk_decoration": {"type": "object", "description": "Paramètres pour décorer le tronc d'un arbre.", "properties": {
+                    "decoration_chance": {"description": "Probabilité de décorer le tronc.", "type": "object", "properties": {
+                        "numerator": {"type": "number"},
+                        "denominator": {"type": "number"}
+                    }},
+                    "decoration_block": {"description": "Le Bloc utilisé pour la décoration.", "anyOf": [
+                        {"type": "string"},
+                        {"type": "object", "properties": {
+                            "name": {"type": "string", "description": "Le nom du Bloc."},
+                            "states": {"type": "array", "items": {"type": "object"}, "description": "La paire état de Bloc et sa valeur."},
+                            "tags": {"type": "string", "description": "Le tag de Bloc exprimé en Molang."}
+                        }}
+                    ]},
+                    "num_steps": {"type": "integer", "description": "Nombre de blocs de décoration à placer."},
+                    "step_direction": {"type": "string", "description": "Directions pour répartir les blocs de décoration.", "enum": ["down", "up", "out", "away"]}
+                }}
+            }},
+            "mega_trunk": {"type": "object", "description": "Contient les détails spécifiques relatifs au tronc de l'arbre Mega.", "properties": {
+                "trunk_width": {"type": "integer", "description": "La largeur du tronc de l'arbre."},
+                "trunk_height": {"type": "object", "description": "Objet de configuration pour la hauteur du tronc.", "properties": {
+                    "base": {"type": "integer", "description": "Hauteur minimale pour le tronc."},
+                    "intervals": {"type": "array", "description": "Intervals utilisé pour aléatoirement varier la hauteur du tronc.", "items": {"type": "integer"}}
+                }},
+                "trunk_block": {"description": "Le bloc qui forme le tronc de l'arbre.", "anyOf": [
+                    {"type": "string"},
+                    {"type": "object", "properties": {
+                        "name": {"type": "string", "description": "Le nom du Bloc."},
+                        "states": {"type": "array", "items": {"type": "object"}, "description": "La paire état de Bloc et sa valeur."},
+                        "tags": {"type": "string", "description": "Le tag de Bloc exprimé en Molang."}
+                    }}
+                ]},
+                "trunk_decoration": {"type": "object", "description": "Paramètres pour décorer le tronc d'un arbre.", "properties": {
+                    "decoration_chance": {"description": "Probabilité de décorer le tronc.", "type": "object", "properties": {
+                        "numerator": {"type": "number"},
+                        "denominator": {"type": "number"}
+                    }},
+                    "decoration_block": {"description": "Le Bloc utilisé pour la décoration.", "anyOf": [
+                        {"type": "string"},
+                        {"type": "object", "properties": {
+                            "name": {"type": "string", "description": "Le nom du Bloc."},
+                            "states": {"type": "array", "items": {"type": "object"}, "description": "La paire état de Bloc et sa valeur."},
+                            "tags": {"type": "string", "description": "Le tag de Bloc exprimé en Molang."}
+                        }}
+                    ]},
+                    "num_steps": {"type": "integer", "description": "Nombre de blocs de décoration à placer."},
+                    "step_direction": {"type": "string", "description": "Directions pour répartir les blocs de décoration.", "enum": ["down", "up", "out", "away"]}
+                }},
+                "branches": {"type": "object", "description": "Objet de configuration pour les branches.", "properties": {
+                    "branch_length": {"type": "number", "description": " Longueur de la branche dans l'axe Y."},
+                    "branch_slope": {"type": "number", "description": "Pente de la branche, où 0 est horizontal et 1 est vertical."},
+                    "branch_interval": {"type": "number", "description": "Distance aléatoire entre les branches."},
+                    "branch_altitude_factor": {"type": "object", "description": "Altitude à laquelle les branches peuvent apparaître, par rapport à la hauteur de l'arbre.", "properties": {
+                        "min": {"type": "integer", "description": "Altitude Minimale"},
+                        "max": {"type": "integer", "description": "Altitude Maximale"}
+                    }},
+                    "branch_canopy": {"type": "object", "description": "Objet de configuration pour la canopée de la branche.", "properties": {
+                        "acacia_canopy": {"type": "object", "description": "Configuration de la canopée pour l'arbre acacia.", "properties": {
+                            "canopy_size": {"type": "integer", "description": "La taille de la canopée."},
+                            "leaf_block": {"description": "Le Bloc qui forme la canopée de l'arbre.", "anyOf": [
+                                {"type": "string"},
+                                {"type": "object", "properties": {
+                                    "name": {"type": "string", "description": "Le nom du Bloc."},
+                                    "states": {"type": "array", "items": {"type": "object"}, "description": "La paire état de Bloc et sa valeur."},
+                                    "tags": {"type": "string", "description": "Le tag de Bloc exprimé en Molang."}
+                                }}
+                            ]},
+                            "simplify_canopy": {"type": "boolean", "description": "Si vrai, la canopée utilise un motif simple."}
+                        }},
+                        "canopy": {"type": "object", "description": "Configuration générale pour la canopée.", "properties": {
+                            "canopy_offset": {"type": "object", "description": "Position de la canopée par rapport au bloc au-dessus du tronc.", "properties": {
+                                "min": {"type": "integer", "description": "Position Minimale"},
+                                "max": {"type": "integer", "description": "Position Maximale"}
+                            }},
+                            "min_width": {"type": "integer", "description": "Largeur minimale pour la canopée."},
+                            "canopy_slope": {"type": "object", "description": "Configuration de la pente de la canopée.", "properties": {
+                                "rise": {"type": "integer", "description": "Le numérateur de la division de pente."},
+                                "run": {"type": "integer", "description": "Le dénominateur de la division de pente."}
+                            }},
+                            "variation_chance": {"description": "hance de créer des blocs de feuilles pour chaque couche de la canopée.", "oneOf": [
+                                {"type": "object", "properties": {
+                                    "numerator": {"type": "number"},
+                                    "denominator": {"type": "number"}
+                                }},
+                                {"type": "array", "items": {"type": "object", "properties": {
+                                    "numerator": {"type": "number"},
+                                    "denominator": {"type": "number"}
+                                }}}
+                            ]},
+                            "leaf_block": {"description": "Le Bloc qui forme la canopée de l'arbre.", "anyOf": [
+                                {"type": "string"},
+                                {"type": "object", "properties": {
+                                    "name": {"type": "string", "description": "Le nom du Bloc."},
+                                    "states": {"type": "array", "items": {"type": "object"}, "description": "La paire état de Bloc et sa valeur."},
+                                    "tags": {"type": "string", "description": "Le tag de Bloc exprimé en Molang."}
+                                }}
+                            ]},
+                            "canopy_decoration": {"type": "object", "description": "Objet de configuration pour la décoration de la canopée", "properties": {
+                                "decoration_chance": {"description": "Probabilité de décorer le tronc.", "type": "object", "properties": {
+                                    "numerator": {"type": "number"},
+                                    "denominator": {"type": "number"}
+                                }},
+                                "decoration_block": {"description": "Le Bloc utilisé pour la décoration.", "anyOf": [
+                                    {"type": "string"},
+                                    {"type": "object", "properties": {
+                                        "name": {"type": "string", "description": "Le nom du Bloc."},
+                                        "states": {"type": "array", "items": {"type": "object"}, "description": "La paire état de Bloc et sa valeur."},
+                                        "tags": {"type": "string", "description": "Le tag de Bloc exprimé en Molang."}
+                                    }}
+                                ]},
+                                "num_steps": {"type": "integer", "description": "Nombre de blocs de décoration à placer."},
+                                "step_direction": {"type": "string", "description": "Directions pour répartir les blocs de décoration.", "enum": ["down", "up", "out", "away"]}
+                            }}
+                        }},
+                        "cherry_canopy": {"type": "object", "description": "Cette section décrit les caractéristiques de la canopée d'un arbre de cerisier.", "properties": {
+                            "leaf_block": {"description": "Le Bloc qui forme la canopée de l'arbre.", "anyOf": [
+                                {"type": "string"},
+                                {"type": "object", "properties": {
+                                    "name": {"type": "string", "description": "Le nom du Bloc."},
+                                    "states": {"type": "array", "items": {"type": "object"}, "description": "La paire état de Bloc et sa valeur."},
+                                    "tags": {"type": "string", "description": "Le tag de Bloc exprimé en Molang."}
+                                }}
+                            ]},
+                            "height": {"type": "integer", "description": "Le nombre de couches pour la canopée, c'est-à-dire le nombre de niveaux de feuilles superposés."},
+                            "radius": {"type": "number", "description": "Le rayon de la canopée, déterminant sa largeur horizontale."},
+                            "trunk_width": {"type": "number", "description": "La largeur du tronc de l'arbre."},
+                            "wide_bottom_layer_hole_chance": {"type": "object", "description": "La probabilité que la canopée ait un trou dans la couche inférieure", "properties": {
+                                "numerator": {"type": "number"},
+                                "denominator": {"type": "number"}
+                            }},
+                            "corner_hole_chance": {"type": "object", "description": "La probabilité que la canopée ait un trou dans le coin.", "properties": {
+                                "numerator": {"type": "number"},
+                                "denominator": {"type": "number"}
+                            }},
+                            "hanging_leaves_chance": {"type": "object", "description": "La probabilité que la canopée ait des feuilles suspendues.", "properties": {
+                                "numerator": {"type": "number"},
+                                "denominator": {"type": "number"}
+                            }},
+                            "hanging_leaves_extension_chance": {"type": "object", "description": "La probabilité que les feuilles suspendues s'étendent davantage vers le bas.", "properties": {
+                                "numerator": {"type": "number"},
+                                "denominator": {"type": "number"}
+                            }}
+                        }},
+                        "fancy_canopy": {"type": "object", "description": "Cette section décrit les caractéristiques de la canopée d'un arbre fantaisie.", "properties": {
+                            "height": {"type": "integer", "description": "Le nombre de couches pour la canopée."},
+                            "radius": {"type": "number", "description": "Le rayon de la canopée, déterminant sa largeur horizontale."},
+                            "leaf_block": {"description": "Le Bloc qui forme la canopée de l'arbre.", "anyOf": [
+                                {"type": "string"},
+                                {"type": "object", "properties": {
+                                    "name": {"type": "string", "description": "Le nom du Bloc."},
+                                    "states": {"type": "array", "items": {"type": "object"}, "description": "La paire état de Bloc et sa valeur."},
+                                    "tags": {"type": "string", "description": "Le tag de Bloc exprimé en Molang."}
+                                }}
+                            ]}
+                        }},
+                        "mangrove_canopy": {"type": "object", "description": "Cette section décrit les caractéristiques de la canopée d'un arbre de Mangrove.", "properties": {
+                            "canopy_height": {"type": "integer", "description": "Nombre de couches pour la canopée."},
+                            "canopy_radius": {"type": "number", "description": "Le rayon de la canopée, déterminant sa largeur horizontale."},
+                            "leaf_placement_attempts": {"type": "integer", "description": "Nombre maximum de tentatives pour créer des blocs de feuilles dans la canopée."},
+                            "leaf_blocks": {"type": "array", "description": "Les blocs qui forment la canopée de l'arbre.", "items": [
+                                {"description": "Le Type de Bloc.", "anyOf": [
+                                    {"type": "string"},
+                                    {"type": "object", "properties": {
+                                        "name": {"type": "string", "description": "Le nom du Bloc."},
+                                        "states": {"type": "array", "items": {"type": "object"}, "description": "La paire état de Bloc et sa valeur."},
+                                        "tags": {"type": "string", "description": "Le tag de Bloc exprimé en Molang."}
+                                    }}
+                                ]},
+                                {"description": "Nombre indiquant la probabilité d'apparition de ce bloc.", "type": "number"}
+                            ]},
+                            "canopy_decoration": {"type": "object", "description": "Objet de configuration pour la décoration de la canopée", "properties": {
+                                "decoration_chance": {"description": "Probabilité de décorer le tronc.", "type": "object", "properties": {
+                                    "numerator": {"type": "number"},
+                                    "denominator": {"type": "number"}
+                                }},
+                                "decoration_block": {"description": "Le Bloc utilisé pour la décoration.", "anyOf": [
+                                    {"type": "string"},
+                                    {"type": "object", "properties": {
+                                        "name": {"type": "string", "description": "Le nom du Bloc."},
+                                        "states": {"type": "array", "items": {"type": "object"}, "description": "La paire état de Bloc et sa valeur."},
+                                        "tags": {"type": "string", "description": "Le tag de Bloc exprimé en Molang."}
+                                    }}
+                                ]},
+                                "num_steps": {"type": "integer", "description": "Nombre de blocs de décoration à placer."},
+                                "step_direction": {"type": "string", "description": "Directions pour répartir les blocs de décoration.", "enum": ["down", "up", "out", "away"]}
+                            }},
+                            "hanging_block": {"description": "Le bloc utilisé comme bloc suspendu dans la canopée.", "anyOf": [
+                                {"type": "string"},
+                                {"type": "object", "properties": {
+                                    "name": {"type": "string", "description": "Le nom du Bloc."},
+                                    "states": {"type": "array", "items": {"type": "object"}, "description": "La paire état de Bloc et sa valeur."},
+                                    "tags": {"type": "string", "description": "Le tag de Bloc exprimé en Molang."}
+                                }}
+                            ]},
+                            "hanging_block_placement_chance": {"description": "Probabilité de créer un bloc de feuille suspendu.", "type": "object", "properties": {
+                                "numerator": {"type": "number"},
+                                "denominator": {"type": "number"}
+                            }}
+                        }},
+                        "mega_canopy": {"type": "object", "description": "Cette section décrit les caractéristiques de la canopée d'un arbre Méga.", "properties": {
+                            "canopy_height": {"type": "integer", "description": "Nombre de couches pour la canopée."},
+                            "base_radius": {"type": "number", "description": "Cela permet de contrôler la largeur/rayon de la base de la canopée de l'arbre."},
+                            "core_width": {"type": "integer", "description": " Cela définit la largeur du tronc de l'arbre."},
+                            "simplify_canopy": {"type": "boolean", "description": "Si la canopée de l'arbre doit être simplifiée ou non."},
+                            "leaf_block": {"description": "Le Bloc qui forme la canopée de l'arbre.", "anyOf": [
+                                {"type": "string"},
+                                {"type": "object", "properties": {
+                                    "name": {"type": "string", "description": "Le nom du Bloc."},
+                                    "states": {"type": "array", "items": {"type": "object"}, "description": "La paire état de Bloc et sa valeur."},
+                                    "tags": {"type": "string", "description": "Le tag de Bloc exprimé en Molang."}
+                                }}
+                            ]}
+                        }},
+                        "mega_pine_canopy": {"type": "object", "description": "Cette section décrit les caractéristiques de la canopée d'un arbre Méga Pine.", "properties": {
+                            "canopy_height": {"type": "integer", "description": "Nombre de couches pour la canopée."},
+                            "base_radius": {"type": "number", "description": "Cela permet de contrôler la largeur/rayon de la base de la canopée de l'arbre."},
+                            "radius_step_modifier": {"type": "number", "description": "Il s'agit d'un modificateur pour le rayon de base de la canopée."},
+                            "core_width": {"type": "integer", "description": " Cela définit la largeur du tronc de l'arbre."},
+                            "simplify_canopy": {"type": "boolean", "description": "Si la canopée de l'arbre doit être simplifiée ou non."},
+                            "leaf_block": {"description": "Le Bloc qui forme la canopée de l'arbre.", "anyOf": [
+                                {"type": "string"},
+                                {"type": "object", "properties": {
+                                    "name": {"type": "string", "description": "Le nom du Bloc."},
+                                    "states": {"type": "array", "items": {"type": "object"}, "description": "La paire état de Bloc et sa valeur."},
+                                    "tags": {"type": "string", "description": "Le tag de Bloc exprimé en Molang."}
+                                }}
+                            ]}
+                        }},
+                        "pine_canopy": {"type": "object", "description": "Cette section décrit les caractéristiques de la canopée d'un arbre Pine.", "properties": {
+                            "canopy_height": {"type": "integer", "description": "Nombre de couches pour la canopée."},
+                            "base_radius": {"type": "number", "description": "Cela permet de contrôler la largeur/rayon de la base de la canopée de l'arbre."},
+                            "leaf_block": {"description": "Le Bloc qui forme la canopée de l'arbre.", "anyOf": [
+                                {"type": "string"},
+                                {"type": "object", "properties": {
+                                    "name": {"type": "string", "description": "Le nom du Bloc."},
+                                    "states": {"type": "array", "items": {"type": "object"}, "description": "La paire état de Bloc et sa valeur."},
+                                    "tags": {"type": "string", "description": "Le tag de Bloc exprimé en Molang."}
+                                }}
+                            ]}
+                        }},
+                        "roofed_canopy": {"type": "object", "description": "Cette section décrit les caractéristiques de la canopée d'un arbre Roofed.", "properties": {
+                            "canopy_height": {"type": "integer", "description": "Nombre de couches pour la canopée."},
+                            "core_width": {"type": "integer", "description": " Cela définit la largeur du tronc de l'arbre."},
+                            "outer_radius": {"type": "integer", "description": "Le rayon utilisé pour les couches de base et supérieures de la canopée."},
+                            "inner_radius": {"type": "integer", "description": "Le rayon utilisé pour les couches intermédiaires de la canopée."},
+                            "leaf_block": {"description": "Le Bloc qui forme la canopée de l'arbre.", "anyOf": [
+                                {"type": "string"},
+                                {"type": "object", "properties": {
+                                    "name": {"type": "string", "description": "Le nom du Bloc."},
+                                    "states": {"type": "array", "items": {"type": "object"}, "description": "La paire état de Bloc et sa valeur."},
+                                    "tags": {"type": "string", "description": "Le tag de Bloc exprimé en Molang."}
+                                }}
+                            ]}
+                        }},
+                        "spruce_canopy": {"type": "object", "description": "Cette section décrit les caractéristiques de la canopée d'un arbre Spruce.", "properties": {
+                            "lower_offset": {"type": "number", "description": "La distance minimale à laquelle la canopée peut être placée par rapport à la base de l'arbre ou à une autre référence."},
+                            "upper_offset": {"type": "number", "description": "La distance maximale à laquelle la canopée peut être placée par rapport à la base de l'arbre ou à une autre référence."},
+                            "max_radius": {"type": "integer", "description": "Détermine à quelle distance maximale de la base de l'arbre la canopée peut s'étendre."},
+                            "leaf_block": {"description": "Le Bloc qui forme la canopée de l'arbre.", "anyOf": [
+                                {"type": "string"},
+                                {"type": "object", "properties": {
+                                    "name": {"type": "string", "description": "Le nom du Bloc."},
+                                    "states": {"type": "array", "items": {"type": "object"}, "description": "La paire état de Bloc et sa valeur."},
+                                    "tags": {"type": "string", "description": "Le tag de Bloc exprimé en Molang."}
+                                }}
+                            ]}
+                        }}
+                    }}
+                }}
+            }},
+            "trunk": {"type": "object", "description": "Contient les détails spécifiques relatifs au tronc de l'arbre.", "properties": {
+                "trunk_height": {"type": "number", "description": "Définit la hauteur du tronc."},
+                "height_modifier":{"type": "number", "description": "Modificateur pour la longueur du tronc."},
+                "can_be_submerged": {"description": "Spécifie si le tronc peut être submergé.", "anyOf": [
+                    {"type": "object", "properties": {
+                        "max_depth": {"type": "integer", "description": "Définit la profondeur maximale à laquelle le tronc peut être immergé."}
+                    }},
+                    {"type": "boolean"}
+                ]},
+                "trunk_block": {"description": "Le bloc qui forme le tronc de l'arbre.", "anyOf": [
+                    {"type": "string"},
+                    {"type": "object", "properties": {
+                        "name": {"type": "string", "description": "Le nom du Bloc."},
+                        "states": {"type": "array", "items": {"type": "object"}, "description": "La paire état de Bloc et sa valeur."},
+                        "tags": {"type": "string", "description": "Le tag de Bloc exprimé en Molang."}
+                    }}
+                ]},
+                "trunk_decoration": {"type": "object", "description": "Paramètres pour décorer le tronc d'un arbre.", "properties": {
+                    "decoration_chance": {"description": "Probabilité de décorer le tronc.", "type": "object", "properties": {
+                        "numerator": {"type": "number"},
+                        "denominator": {"type": "number"}
+                    }},
+                    "decoration_block": {"description": "Le Bloc utilisé pour la décoration.", "anyOf": [
+                        {"type": "string"},
+                        {"type": "object", "properties": {
+                            "name": {"type": "string", "description": "Le nom du Bloc."},
+                            "states": {"type": "array", "items": {"type": "object"}, "description": "La paire état de Bloc et sa valeur."},
+                            "tags": {"type": "string", "description": "Le tag de Bloc exprimé en Molang."}
+                        }}
+                    ]},
+                    "num_steps": {"type": "integer", "description": "Nombre de blocs de décoration à placer."},
+                    "step_direction": {"type": "string", "description": "Directions pour répartir les blocs de décoration.", "enum": ["down", "up", "out", "away"]}
+                }},
+                "acacia_canopy": {"type": "object", "description": "Configuration de la canopée pour l'arbre acacia.", "properties": {
+                    "canopy_size": {"type": "integer", "description": "La taille de la canopée."},
+                    "leaf_block": {"description": "Le Bloc qui forme la canopée de l'arbre.", "anyOf": [
+                        {"type": "string"},
+                        {"type": "object", "properties": {
+                            "name": {"type": "string", "description": "Le nom du Bloc."},
+                            "states": {"type": "array", "items": {"type": "object"}, "description": "La paire état de Bloc et sa valeur."},
+                            "tags": {"type": "string", "description": "Le tag de Bloc exprimé en Molang."}
+                        }}
+                    ]},
+                    "simplify_canopy": {"type": "boolean", "description": "Si vrai, la canopée utilise un motif simple."}
+                }},
+                "canopy": {"type": "object", "description": "Configuration générale pour la canopée.", "properties": {
+                    "canopy_offset": {"type": "object", "description": "Position de la canopée par rapport au bloc au-dessus du tronc.", "properties": {
+                        "min": {"type": "integer", "description": "Position Minimale"},
+                        "max": {"type": "integer", "description": "Position Maximale"}
+                    }},
+                    "min_width": {"type": "integer", "description": "Largeur minimale pour la canopée."},
+                    "canopy_slope": {"type": "object", "description": "Configuration de la pente de la canopée.", "properties": {
+                        "rise": {"type": "integer", "description": "Le numérateur de la division de pente."},
+                        "run": {"type": "integer", "description": "Le dénominateur de la division de pente."}
+                    }},
+                    "variation_chance": {"description": "hance de créer des blocs de feuilles pour chaque couche de la canopée.", "oneOf": [
+                        {"type": "object", "properties": {
+                            "numerator": {"type": "number"},
+                            "denominator": {"type": "number"}
+                        }},
+                        {"type": "array", "items": {"type": "object", "properties": {
+                            "numerator": {"type": "number"},
+                            "denominator": {"type": "number"}
+                        }}}
+                    ]},
+                    "leaf_block": {"description": "Le Bloc qui forme la canopée de l'arbre.", "anyOf": [
+                        {"type": "string"},
+                        {"type": "object", "properties": {
+                            "name": {"type": "string", "description": "Le nom du Bloc."},
+                            "states": {"type": "array", "items": {"type": "object"}, "description": "La paire état de Bloc et sa valeur."},
+                            "tags": {"type": "string", "description": "Le tag de Bloc exprimé en Molang."}
+                        }}
+                    ]},
+                    "canopy_decoration": {"type": "object", "description": "Objet de configuration pour la décoration de la canopée", "properties": {
+                        "decoration_chance": {"description": "Probabilité de décorer le tronc.", "type": "object", "properties": {
+                            "numerator": {"type": "number"},
+                            "denominator": {"type": "number"}
+                        }},
+                        "decoration_block": {"description": "Le Bloc utilisé pour la décoration.", "anyOf": [
+                            {"type": "string"},
+                            {"type": "object", "properties": {
+                                "name": {"type": "string", "description": "Le nom du Bloc."},
+                                "states": {"type": "array", "items": {"type": "object"}, "description": "La paire état de Bloc et sa valeur."},
+                                "tags": {"type": "string", "description": "Le tag de Bloc exprimé en Molang."}
+                            }}
+                        ]},
+                        "num_steps": {"type": "integer", "description": "Nombre de blocs de décoration à placer."},
+                        "step_direction": {"type": "string", "description": "Directions pour répartir les blocs de décoration.", "enum": ["down", "up", "out", "away"]}
+                    }}
+                }},
+                "cherry_canopy": {"type": "object", "description": "Cette section décrit les caractéristiques de la canopée d'un arbre de cerisier.", "properties": {
+                    "leaf_block": {"description": "Le Bloc qui forme la canopée de l'arbre.", "anyOf": [
+                        {"type": "string"},
+                        {"type": "object", "properties": {
+                            "name": {"type": "string", "description": "Le nom du Bloc."},
+                            "states": {"type": "array", "items": {"type": "object"}, "description": "La paire état de Bloc et sa valeur."},
+                            "tags": {"type": "string", "description": "Le tag de Bloc exprimé en Molang."}
+                        }}
+                    ]},
+                    "height": {"type": "integer", "description": "Le nombre de couches pour la canopée, c'est-à-dire le nombre de niveaux de feuilles superposés."},
+                    "radius": {"type": "number", "description": "Le rayon de la canopée, déterminant sa largeur horizontale."},
+                    "trunk_width": {"type": "number", "description": "La largeur du tronc de l'arbre."},
+                    "wide_bottom_layer_hole_chance": {"type": "object", "description": "La probabilité que la canopée ait un trou dans la couche inférieure", "properties": {
+                        "numerator": {"type": "number"},
+                        "denominator": {"type": "number"}
+                    }},
+                    "corner_hole_chance": {"type": "object", "description": "La probabilité que la canopée ait un trou dans le coin.", "properties": {
+                        "numerator": {"type": "number"},
+                        "denominator": {"type": "number"}
+                    }},
+                    "hanging_leaves_chance": {"type": "object", "description": "La probabilité que la canopée ait des feuilles suspendues.", "properties": {
+                        "numerator": {"type": "number"},
+                        "denominator": {"type": "number"}
+                    }},
+                    "hanging_leaves_extension_chance": {"type": "object", "description": "La probabilité que les feuilles suspendues s'étendent davantage vers le bas.", "properties": {
+                        "numerator": {"type": "number"},
+                        "denominator": {"type": "number"}
+                    }}
+                }},
+                "fancy_canopy": {"type": "object", "description": "Cette section décrit les caractéristiques de la canopée d'un arbre fantaisie.", "properties": {
+                    "height": {"type": "integer", "description": "Le nombre de couches pour la canopée."},
+                    "radius": {"type": "number", "description": "Le rayon de la canopée, déterminant sa largeur horizontale."},
+                    "leaf_block": {"description": "Le Bloc qui forme la canopée de l'arbre.", "anyOf": [
+                        {"type": "string"},
+                        {"type": "object", "properties": {
+                            "name": {"type": "string", "description": "Le nom du Bloc."},
+                            "states": {"type": "array", "items": {"type": "object"}, "description": "La paire état de Bloc et sa valeur."},
+                            "tags": {"type": "string", "description": "Le tag de Bloc exprimé en Molang."}
+                        }}
+                    ]}
+                }},
+                "mangrove_canopy": {"type": "object", "description": "Cette section décrit les caractéristiques de la canopée d'un arbre de Mangrove.", "properties": {
+                    "canopy_height": {"type": "integer", "description": "Nombre de couches pour la canopée."},
+                    "canopy_radius": {"type": "number", "description": "Le rayon de la canopée, déterminant sa largeur horizontale."},
+                    "leaf_placement_attempts": {"type": "integer", "description": "Nombre maximum de tentatives pour créer des blocs de feuilles dans la canopée."},
+                    "leaf_blocks": {"type": "array", "description": "Les blocs qui forment la canopée de l'arbre.", "items": [
+                        {"description": "Le Type de Bloc.", "anyOf": [
+                            {"type": "string"},
+                            {"type": "object", "properties": {
+                                "name": {"type": "string", "description": "Le nom du Bloc."},
+                                "states": {"type": "array", "items": {"type": "object"}, "description": "La paire état de Bloc et sa valeur."},
+                                "tags": {"type": "string", "description": "Le tag de Bloc exprimé en Molang."}
+                            }}
+                        ]},
+                        {"description": "Nombre indiquant la probabilité d'apparition de ce bloc.", "type": "number"}
+                    ]},
+                    "canopy_decoration": {"type": "object", "description": "Objet de configuration pour la décoration de la canopée", "properties": {
+                        "decoration_chance": {"description": "Probabilité de décorer le tronc.", "type": "object", "properties": {
+                            "numerator": {"type": "number"},
+                            "denominator": {"type": "number"}
+                        }},
+                        "decoration_block": {"description": "Le Bloc utilisé pour la décoration.", "anyOf": [
+                            {"type": "string"},
+                            {"type": "object", "properties": {
+                                "name": {"type": "string", "description": "Le nom du Bloc."},
+                                "states": {"type": "array", "items": {"type": "object"}, "description": "La paire état de Bloc et sa valeur."},
+                                "tags": {"type": "string", "description": "Le tag de Bloc exprimé en Molang."}
+                            }}
+                        ]},
+                        "num_steps": {"type": "integer", "description": "Nombre de blocs de décoration à placer."},
+                        "step_direction": {"type": "string", "description": "Directions pour répartir les blocs de décoration.", "enum": ["down", "up", "out", "away"]}
+                    }},
+                    "hanging_block": {"description": "Le bloc utilisé comme bloc suspendu dans la canopée.", "anyOf": [
+                        {"type": "string"},
+                        {"type": "object", "properties": {
+                            "name": {"type": "string", "description": "Le nom du Bloc."},
+                            "states": {"type": "array", "items": {"type": "object"}, "description": "La paire état de Bloc et sa valeur."},
+                            "tags": {"type": "string", "description": "Le tag de Bloc exprimé en Molang."}
+                        }}
+                    ]},
+                    "hanging_block_placement_chance": {"description": "Probabilité de créer un bloc de feuille suspendu.", "type": "object", "properties": {
+                        "numerator": {"type": "number"},
+                        "denominator": {"type": "number"}
+                    }}
+                }},
+                "mega_canopy": {"type": "object", "description": "Cette section décrit les caractéristiques de la canopée d'un arbre Méga.", "properties": {
+                    "canopy_height": {"type": "integer", "description": "Nombre de couches pour la canopée."},
+                    "base_radius": {"type": "number", "description": "Cela permet de contrôler la largeur/rayon de la base de la canopée de l'arbre."},
+                    "core_width": {"type": "integer", "description": " Cela définit la largeur du tronc de l'arbre."},
+                    "simplify_canopy": {"type": "boolean", "description": "Si la canopée de l'arbre doit être simplifiée ou non."},
+                    "leaf_block": {"description": "Le Bloc qui forme la canopée de l'arbre.", "anyOf": [
+                        {"type": "string"},
+                        {"type": "object", "properties": {
+                            "name": {"type": "string", "description": "Le nom du Bloc."},
+                            "states": {"type": "array", "items": {"type": "object"}, "description": "La paire état de Bloc et sa valeur."},
+                            "tags": {"type": "string", "description": "Le tag de Bloc exprimé en Molang."}
+                        }}
+                    ]}
+                }},
+                "mega_pine_canopy": {"type": "object", "description": "Cette section décrit les caractéristiques de la canopée d'un arbre Méga Pine.", "properties": {
+                    "canopy_height": {"type": "integer", "description": "Nombre de couches pour la canopée."},
+                    "base_radius": {"type": "number", "description": "Cela permet de contrôler la largeur/rayon de la base de la canopée de l'arbre."},
+                    "radius_step_modifier": {"type": "number", "description": "Il s'agit d'un modificateur pour le rayon de base de la canopée."},
+                    "core_width": {"type": "integer", "description": " Cela définit la largeur du tronc de l'arbre."},
+                    "simplify_canopy": {"type": "boolean", "description": "Si la canopée de l'arbre doit être simplifiée ou non."},
+                    "leaf_block": {"description": "Le Bloc qui forme la canopée de l'arbre.", "anyOf": [
+                        {"type": "string"},
+                        {"type": "object", "properties": {
+                            "name": {"type": "string", "description": "Le nom du Bloc."},
+                            "states": {"type": "array", "items": {"type": "object"}, "description": "La paire état de Bloc et sa valeur."},
+                            "tags": {"type": "string", "description": "Le tag de Bloc exprimé en Molang."}
+                        }}
+                    ]}
+                }},
+                "pine_canopy": {"type": "object", "description": "Cette section décrit les caractéristiques de la canopée d'un arbre Pine.", "properties": {
+                    "canopy_height": {"type": "integer", "description": "Nombre de couches pour la canopée."},
+                    "base_radius": {"type": "number", "description": "Cela permet de contrôler la largeur/rayon de la base de la canopée de l'arbre."},
+                    "leaf_block": {"description": "Le Bloc qui forme la canopée de l'arbre.", "anyOf": [
+                        {"type": "string"},
+                        {"type": "object", "properties": {
+                            "name": {"type": "string", "description": "Le nom du Bloc."},
+                            "states": {"type": "array", "items": {"type": "object"}, "description": "La paire état de Bloc et sa valeur."},
+                            "tags": {"type": "string", "description": "Le tag de Bloc exprimé en Molang."}
+                        }}
+                    ]}
+                }},
+                "roofed_canopy": {"type": "object", "description": "Cette section décrit les caractéristiques de la canopée d'un arbre Roofed.", "properties": {
+                    "canopy_height": {"type": "integer", "description": "Nombre de couches pour la canopée."},
+                    "core_width": {"type": "integer", "description": " Cela définit la largeur du tronc de l'arbre."},
+                    "outer_radius": {"type": "integer", "description": "Le rayon utilisé pour les couches de base et supérieures de la canopée."},
+                    "inner_radius": {"type": "integer", "description": "Le rayon utilisé pour les couches intermédiaires de la canopée."},
+                    "leaf_block": {"description": "Le Bloc qui forme la canopée de l'arbre.", "anyOf": [
+                        {"type": "string"},
+                        {"type": "object", "properties": {
+                            "name": {"type": "string", "description": "Le nom du Bloc."},
+                            "states": {"type": "array", "items": {"type": "object"}, "description": "La paire état de Bloc et sa valeur."},
+                            "tags": {"type": "string", "description": "Le tag de Bloc exprimé en Molang."}
+                        }}
+                    ]}
+                }},
+                "spruce_canopy": {"type": "object", "description": "Cette section décrit les caractéristiques de la canopée d'un arbre Spruce.", "properties": {
+                    "lower_offset": {"type": "number", "description": "La distance minimale à laquelle la canopée peut être placée par rapport à la base de l'arbre ou à une autre référence."},
+                    "upper_offset": {"type": "number", "description": "La distance maximale à laquelle la canopée peut être placée par rapport à la base de l'arbre ou à une autre référence."},
+                    "max_radius": {"type": "integer", "description": "Détermine à quelle distance maximale de la base de l'arbre la canopée peut s'étendre."},
+                    "leaf_block": {"description": "Le Bloc qui forme la canopée de l'arbre.", "anyOf": [
+                        {"type": "string"},
+                        {"type": "object", "properties": {
+                            "name": {"type": "string", "description": "Le nom du Bloc."},
+                            "states": {"type": "array", "items": {"type": "object"}, "description": "La paire état de Bloc et sa valeur."},
+                            "tags": {"type": "string", "description": "Le tag de Bloc exprimé en Molang."}
+                        }}
+                    ]}
+                }},
+                "random_spread_canopy": {"type": "object", "description": "Cette section décrit les caractéristiques de la canopée d'un arbre Random Spread.", "properties": {
+                    "canopy_height": {"type": "integer", "description": "Nombre de couches pour la canopée."},
+                    "canopy_radius": {"type": "number", "description": "Le rayon de la canopée, déterminant sa largeur horizontale."},
+                    "leaf_placement_attempts": {"type": "integer", "description": "Nombre maximum de tentatives pour créer des blocs de feuilles dans la canopée."},
+                    "leaf_blocks": {"type": "array", "description": "Les blocs qui forment la canopée de l'arbre.", "items": [
+                        {"description": "Le Type de Bloc.", "anyOf": [
+                            {"type": "string"},
+                            {"type": "object", "properties": {
+                                "name": {"type": "string", "description": "Le nom du Bloc."},
+                                "states": {"type": "array", "items": {"type": "object"}, "description": "La paire état de Bloc et sa valeur."},
+                                "tags": {"type": "string", "description": "Le tag de Bloc exprimé en Molang."}
+                            }}
+                        ]},
+                        {"description": "Nombre indiquant la probabilité d'apparition de ce bloc.", "type": "number"}
+                    ]}
+                }},
+                "mangrove_roots": {"type": "object", "description": "Cette section décrit les acaractéristiques des racines d'un Mangrove.", "properties": {
+                    "max_root_width": {"type": "integer", "description": "Largeur maximale que peuvent occuper les racines. La largeur augmente jusqu'à la largeur maximale en descendant. Lorsqu'une largeur maximale est atteinte, les racines pousseront verticalement."},
+                    "max_root_length": {"type": "integer", "description": "Longueur maximale pour les racines."},
+                    "root_block": {"description": "Le Bloc utilisé pour les Racines", "anyOf": [
+                        {"type": "string"},
+                        {"type": "object", "properties": {
+                            "name": {"type": "string", "description": "Le nom du Bloc."},
+                            "states": {"type": "array", "items": {"type": "object"}, "description": "La paire état de Bloc et sa valeur."},
+                            "tags": {"type": "string", "description": "Le tag de Bloc exprimé en Molang."}
+                        }}
+                    ]},
+                    "above_root": {"type": "object", "description": "Objet de configuration des blocs décorant le dessus des racines.", "definitions": {
+                        "above_root_chance": {"description": "Probabilité de créer un bloc au-dessus de la Racine.", "type": "object", "properties": {
+                            "numerator": {"type": "number"},
+                            "denominator": {"type": "number"}
+                        }},
+                        "above_root_block": {"description": "Le Bloc placés au dessus de la Racine.", "anyOf": [
+                            {"type": "string"},
+                            {"type": "object", "properties": {
+                                "name": {"type": "string", "description": "Le nom du Bloc."},
+                                "states": {"type": "array", "items": {"type": "object"}, "description": "La paire état de Bloc et sa valeur."},
+                                "tags": {"type": "string", "description": "Le tag de Bloc exprimé en Molang."}
+                            }}
+                        ]}
+                    }},
+                    "muddy_root_block": {"description": "Le Bloc utilisé pour les Racines boueuses", "anyOf": [
+                        {"type": "string"},
+                        {"type": "object", "properties": {
+                            "name": {"type": "string", "description": "Le nom du Bloc."},
+                            "states": {"type": "array", "items": {"type": "object"}, "description": "La paire état de Bloc et sa valeur."},
+                            "tags": {"type": "string", "description": "Le tag de Bloc exprimé en Molang."}
+                        }}
+                    ]},
+                    "mud_block": {"description": "Le Bloc utilisé pour déterminer si une racine boueuse devrait être placé.", "anyOf": [
+                        {"type": "string"},
+                        {"type": "object", "properties": {
+                            "name": {"type": "string", "description": "Le nom du Bloc."},
+                            "states": {"type": "array", "items": {"type": "object"}, "description": "La paire état de Bloc et sa valeur."},
+                            "tags": {"type": "string", "description": "Le tag de Bloc exprimé en Molang."}
+                        }}
+                    ]},
+                    "y_offset": {"type": "number", "description": "Racine décalée par rapport au tronc."},
+                    "roots_may_grow_through": {"type": "array", "description": "Liste des blocs à travers lesquels une racine peut se développer.", "items": {"anyOf": [
+                        {"type": "string"},
+                        {"type": "object", "properties": {
+                            "name": {"type": "string", "description": "Le nom du Bloc."},
+                            "states": {"type": "array", "items": {"type": "object"}, "description": "La paire état de Bloc et sa valeur."},
+                            "tags": {"type": "string", "description": "Le tag de Bloc exprimé en Molang."}
+                        }}
+                    ]}},
+                    "root_decoration": {"type": "object", "description": "Objet de configuration pour la décoration de la Racine", "properties": {
+                        "decoration_chance": {"description": "Probabilité de décorer la Racine.", "type": "object", "properties": {
+                            "numerator": {"type": "number"},
+                            "denominator": {"type": "number"}
+                        }},
+                        "decoration_block": {"description": "Le Bloc utilisé pour la décoration.", "anyOf": [
+                            {"type": "string"},
+                            {"type": "object", "properties": {
+                                "name": {"type": "string", "description": "Le nom du Bloc."},
+                                "states": {"type": "array", "items": {"type": "object"}, "description": "La paire état de Bloc et sa valeur."},
+                                "tags": {"type": "string", "description": "Le tag de Bloc exprimé en Molang."}
+                            }}
+                        ]},
+                        "num_steps": {"type": "integer", "description": "Nombre de blocs de décoration à placer."},
+                        "step_direction": {"type": "string", "description": "Directions pour répartir les blocs de décoration.", "enum": ["down", "up", "out", "away"]}
+                    }}
+                }}
+            }}
+        }},
+        "minecraft:underwater_cave_carver_feature-def": {"type": "object", "description": "Sculpte une grotte à travers le monde dans le Chunk actuel et dans chaque chunk autour du Chunk actuel selon un motif à 8 rayons. Cette Feature visera spécifiquement à créer des grottes uniquement sous le niveau de la mer. Cette Feature ne fonctionne que lorsqu'elle est placée dans le pass 'pregeneration_pass'. Ne peuvent pas être combiné avec d'autres Features", "properties": {
+            "description": {"type": "object", "description": "La Description de la Feature.", "properties": {
+                "identifier": {"type": "string", "description": "L'Identifiant de la Feature."}
+            }},
+            "fill_with": {"type": "string", "description": "Avec quel type de Bloc pour remplir cette grotte une fois qu'elle a été sculptée."},
+            "width_modifier": {"description": "Cela détermine de combien de blocs le rayon en largeur de la grotte est augmenté à partir du point central de la grotte.", "oneOf": [
+                {"type": "string"},
+                {"type": "number"}
+            ]},
+            "skip_carve_chance": {"type": "integer", "description": "C'est la chance de ne pas creuser la grotte dans un chunk donné. Plus la valeur est faible, plus il est probable que la grotte soit creusée."},
+            "height_limit": {"type": "integer", "description": "C'est la limite de hauteur jusqu'à laquelle la grotte va essayer de creuser."},
+            "y_scale": {"type": "array", "description": "C'est l'échelle de modification de la hauteur de la grotte.", "minItems": 2, "maxItems": 2, "items": {"type": "number"}},
+            "horizontal_radius_multiplier": {"type": "array", "description": "C'est le multiplicateur qui ajustent la taille horizontale de la grotte.", "minItems": 2, "maxItems": 2, "items": {"type": "number"}},
+            "vertical_radius_multiplier": {"type": "array", "description": "C'est le multiplicateur qui ajustent la taille verticale de la grotte.", "minItems": 2, "maxItems": 2, "items": {"type": "number"}},
+            "floor_level": {"type": "array", "description": "C'est le niveau du sol de la grotte.", "minItems": 2, "maxItems": 2, "items": {"type": "number"}},
+            "replace_air_with": {"description": "Remplace les blocs d'air par le bloc spécifié.", "anyOf": [
+                {"type": "string"},
+                {"type": "object", "properties": {
+                    "name": {"type": "string", "description": "Le nom du Bloc."},
+                    "states": {"type": "array", "items": {"type": "object"}, "description": "La paire état de Bloc et sa valeur."},
+                    "tags": {"type": "string", "description": "Le tag de Bloc exprimé en Molang."}
+                }}
+            ]}
+        }},
+        "minecraft:vegetation_patch_feature-def": {"type": "object", "description": "Utilisée pour disperser de la végétation dans une zone spécifique du jeu.", "properties": {
+            "description": {"type": "object", "description": "La Description de la Feature.", "properties": {
+                "identifier": {"type": "string", "description": "L'Identifiant de la Feature."}
+            }},
+            "replaceable_blocks": {"type": "array", "description": " Les blocs qui peuvent être remplacés par les blocs de sol sur le patch.", "items": {"anyOf": [
+                {"type": "string"},
+                {"type": "object", "properties": {
+                    "name": {"type": "string", "description": "Le nom du Bloc."},
+                    "states": {"type": "array", "items": {"type": "object"}, "description": "La paire état de Bloc et sa valeur."},
+                    "tags": {"type": "string", "description": "Le tag de Bloc exprimé en Molang."}
+                }}
+            ]}},
+            "ground_block": {"description": "Le bloc utilisé pour créer une base pour le patch de végétation.", "anyOf": [
+                {"type": "string"},
+                {"type": "object", "properties": {
+                    "name": {"type": "string", "description": "Le nom du Bloc."},
+                    "states": {"type": "array", "items": {"type": "object"}, "description": "La paire état de Bloc et sa valeur."},
+                    "tags": {"type": "string", "description": "Le tag de Bloc exprimé en Molang."}
+                }}
+            ]},
+            "vegetation_feature": {"type": "string", "description": "L'ID de la Feature qui sera placée par le patch."},
+            "surface": {"type": "string", "description": "Détermine si un patch de végétation poussera depuis le plafond ou le sol.", "enum": ["floor", "ceiling"]},
+            "depth": {"description": "La profondeur de la base couverte par les blocs de sol. ", "anyOf": [
+                {"type": "number"},
+                {"type": "object", "properties": {
+                    "range_min": {"type": "number", "description": "Plage minimale."},
+                    "range_max": {"type": "number", "description": "Plage maximale."}
+                }}
+            ]},
+            "extra_deep_block_chance": {"type": "number", "description": "La probabilité de placer les blocs de sol un bloc plus profond. Cela ajoute un peu de hasard au bas du patch."},
+            "vertical_range": {"type": "integer", "description": "La plage verticale utilisée pour déterminer une position de surface appropriée pour le patch."},
+            "vegetation_chance": {"type": "number", "description": "La probabilité de faire pousser de la végétation sur le patch. Des nombres plus élevés créent un patch de végétation plus dense."},
+            "horizontal_radius": {"description": "La zone horizontale que le patch de végétation couvrira.", "anyOf": [
+                {"type": "number"},
+                {"type": "object", "properties": {
+                    "range_min": {"type": "number", "description": "Plage minimale."},
+                    "range_max": {"type": "number", "description": "Plage maximale."}
+                }}
+            ]},
+            "extra_edge_column_chance": {"type": "number", "description": "La probabilité de faire pousser de la végétation sur le bord du rayon du patch."},
+            "waterlogged": {"type": "boolean", "description": "Si vrai, les positions occupées par les blocs de sol seront waterloguées."}
+        }},
+        "minecraft:weighted_random_feature-def": {"type": "object", "description": "Utilisée pour sélectionner et placer une fonctionnalité de manière aléatoire, en se basant sur des valeurs de poids de chance.", "properties": {
+            "description": {"type": "object", "description": "La Description de la Feature.", "properties": {
+                "identifier": {"type": "string", "description": "L'Identifiant de la Feature."}
+            }},
+            "features": {"type": "array", "description": "La collection de Features.", "items": {"type": "array", "items": [
+                {"type": "string", "description": "L'ID de la Feature."},
+                {"type": "integer", "description": "Le poids de chance."}
+            ]}}
+        }}
+    }
+}

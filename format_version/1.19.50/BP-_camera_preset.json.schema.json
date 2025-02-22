@@ -1,0 +1,163 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "description": "Ce fichier sert à créer un preset de Caméra. \nType: `Object`",
+    "type": "object",
+    "required": ["format_version", "minecraft:camera_preset"],
+    "properties": {
+        "format_version": {
+            "description": "La version du Format à utiliser. \nType: `String`",
+            "type": "string",
+            "enum": ["1.19.50", "1.19.60", "1.19.70", "1.19.80", "1.20.0", "1.20.10", "1.20.20", "1.20.30", "1.20.40", "1.20.50", "1.20.60", "1.20.70", "1.20.80", "1.21.0", "1.21.10", "1.21.20", "1.21.30", "1.21.40", "1.21.50", "1.21.60"]
+        },
+        "minecraft:camera_preset": {
+            "description": "Contient la définiton du Preset de Caméra. \nType: `Object`",
+            "type": "object",
+            "properties": {
+                "identifier": {
+                    "description": "L'identifiant du Preset de Caméra. \nType: `String`",
+                    "type": "string",
+                    "pattern": "^[a-zA-Z0-9_]+:[a-zA-Z0-9_]+$"
+                },
+                "inherit_from": {
+                    "description": "L'identifiant du Preset de Caméra auquel ce Preset héritera de ces propriétés. \nType: `String` \nNote: Peut être un preset vanilla ou un autre preset personnalisé.",
+                    "type": "string",
+                    "oneOf": [
+                        {
+                            "$ref": "../../common.schema.json#/definitions/vanille_camera_presets_id"
+                        },
+                        {
+
+                            "not": {
+                                "$ref": "../../common.schema.json#/definitions/vanille_camera_presets_id"
+                            }
+                        }
+                    ]
+                },
+                "pos_x": {
+                    "description": "La position X par défaut de ce Preset de Caméra. \nType: `Number` \nNote: Utilisé uniquement pour les presets 'free'.",
+                    "default": 0,
+                    "type": "number"
+                },
+                "pos_y": {
+                    "description": "La position Y par défaut de ce Preset de Caméra. \nType: `Number` \nNote: Utilisé uniquement pour les presets 'free'.",
+                    "default": 0,
+                    "type": "number"
+                },
+                "pos_z": {
+                    "description": "La position Z par défaut de ce Preset de Caméra. \nType: `Number` \nNote: Utilisé uniquement pour les presets 'free'.",
+                    "default": 0,
+                    "type": "number"
+                },
+                "rot_x": {
+                    "description": "La rotation X par défaut de ce Preset de Caméra. \nType: `Number` \nNote: Utilisé uniquement pour les presets 'free'.",
+                    "default": 0,
+                    "type": "number",
+                    "minimum": -90,
+                    "maximum": 90
+                },
+                "rot_y": {
+                    "description": "La rotation Y par défaut de ce Preset de Caméra. \nType: `Number` \nNote: Utilisé uniquement pour les presets 'free'.",
+                    "default": 0,
+                    "type": "number"
+                },
+                "rotation_speed": {
+                    "description": "Définit la vitesse de rotation de la caméra en degrés par seconde. \nType: `Number` \nNote: Utilisé uniquement pour les presets 'free'. \nNote: 0 = suivi parfait, toujours aligné.",
+                    "default": 0.0,
+                    "type": "number",
+                    "minimum": 0.0
+                },
+                "snap_to_target": {
+                    "description": "Définit si la Caméra doit s'aligner immédiatement sur la cible puis suivre à la vitesse définie. \nType: `Boolean` \nNote: Utilisé uniquement pour les presets 'free'.",
+                    "type": "boolean"
+                },
+                "horizontal_rotation_limit": {
+                    "description": "Définit la limite de rotation horizontale (gauche/droite). La somme des valeurs ne peut dépasser 360°. \nType: `Number[2]`",
+                    "type": "array",
+                    "minItems": 2,
+                    "maxItems": 2,
+                    "items": {
+                        "type": "number"
+                    }
+                },
+                "vertical_rotation_limit": {
+                    "description": "Définit la limite de rotation verticale (haut/bas). La somme des valeurs ne peut dépasser 180°. \nType: `Number[2]`",
+                    "type": "array",
+                    "minItems": 2,
+                    "maxItems": 2,
+                    "items": {
+                        "type": "number"
+                    }
+                },
+                "continue_targeting": {
+                    "description": "Définit si la caméra doit continuer à suivre la cible même si elle sort des limites de rotation ou de suivi. \nType: `Boolean` \nNote: Utilisé uniquement pour les presets 'free'.",
+                    "default": false,
+                    "type": "boolean"
+                },
+                "tracking_radius": {
+                    "description": "Rayon (en blocs) autour de la caméra où elle peut détecter l’entité cible. \nType: `Number` \nNote: Utilisé uniquement pour les presets 'free'.",
+                    "default": 50,
+                    "type": "number"
+                },
+                "listener": {
+                    "description": "Définit que la position du joueur sera utilisé pour l'écoute des sons. \nType: `String`",
+                    "type": "string",
+                    "const": "player"
+                },
+                "player_effects": {
+                    "description": "Défini si ce Preset de Caméra contiendra les effets de potions du joueur comme Vision Nocturne ou Cécité. \nType: `Boolean`",
+                    "default": false,
+                    "type": "boolean"
+                },
+                "view_offset": {
+                    "description": "Point d'ancrage qui est au centre de l'écran. Définit le décalage du joueur entre le centre de l'écran et lui. \nType: `Number[2]` \nNote: Utile uniquement pour les presets en 3ème personne.",
+                    "type": "array",
+                    "minItems": 2,
+                    "maxItems": 2,
+                    "items": {
+                        "type": "number"
+                    }
+                },
+                "entity_offset": {
+                    "description": "Le décalage d'entité définit le point de pivot de la caméra sur le joueur (0, 0, 0 étant son centre) et est uniquement compatible avec le préréglage follow_orbit pour permettre une rotation précise autour du joueur. \nType: `Number[3]` \nNote: Utile uniquement pour les presets en 3ème personne.",
+                    "type": "array",
+                    "minItems": 3,
+                    "maxItems": 3,
+                    "items": {
+                        "type": "number"
+                    }
+                },
+                "starting_rot_x": {
+                    "description": "Définit la rotatio X initiale autour du joueur. \nType: `Number` \nNote: Utile uniquement pour les presets en 3ème personne.",
+                    "type": "number"
+                },
+                "starting_rot_y": {
+                    "description": "Définit la rotation Y initiale autour du joueur. \nType: `Number` \nNote: Utile uniquement pour les presets en 3ème personne.",
+                    "type": "number"
+                },
+                "radius": {
+                    "description": "Distance entre la caméra 3rd et le joueur. \nType: `Number` \nNote: Utile uniquement pour les presets en 3ème personne.",
+                    "default": 10,
+                    "type": "number",
+                    "minimum": 0.1,
+                    "maximum": 100
+                },
+                "align_target_and_camera_forward": {
+                    "description": "[EXPERIMENTALE]: (Creator Cameras: Cameras Third Person) \nAligner la direction de la caméra avec la direction de la cible. \nType: `Boolean`",
+                    "type": "boolean"
+                },
+                "aim_assist": {
+                    "description": "[EXPERIMENTALE]: (Aim Assist) \nDéfinit le preset d'aim assist à utiliser pour ce preset de Caméra. \nType: `Object`",
+                    "type": "object",
+                    "properties": {
+                        "preset": {
+                            "description": "L'identifiant du preset d'aim assist à utiliser. \nType: `String`",
+                            "type": "string",
+                            "pattern": "^[a-zA-Z0-9_]+:[a-zA-Z0-9_]+$",
+                            "examples": ["minecraft:aim_assist_default"]
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

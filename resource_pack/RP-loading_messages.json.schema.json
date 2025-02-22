@@ -1,0 +1,5 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "description": "Ce fichier contient les messages de chargement pour les différentes étapes du jeu. \n Type: `Object`",
+    "$ref": "../format_version/unversioned/RP-loading_messages.json.schema.json"
+}

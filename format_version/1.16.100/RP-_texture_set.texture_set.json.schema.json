@@ -1,0 +1,64 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "description": "Ce fichier sert à configurer plusieurs couches PBR (Physically Based Rendering) pour une texture, améliorant ainsi la qualité visuelle. \nType: `Object`",
+    "required": ["format_version", "minecraft:texture_set"],
+    "properties": {
+        "format_version": {
+            "description": "La version du Format à utiliser pour ce texture_set.\nType: `String`",
+            "type": "string",
+            "enum": [
+                "1.16.100", "1.16.200", "1.16.210", "1.16.220", "1.26.230", "1.17.0", "1.17.10", "1.17.20", "1.17.30", "1.17.40", "1.18.0", "1.18.10", "1.18.20", "1.18.30", "1.18.40", "1.19.0", "1.19.10", "1.19.20", "1.19.30", "1.19.40", "1.19.50", "1.19.60", "1.19.70", "1.19.80", "1.20.0", "1.20.10", "1.20.20", "1.20.30", "1.20.40", "1.20.50", "1.20.60", "1.20.70", "1.20.80", "1.21.0", "1.21.10", "1.21.20"
+            ]
+        },
+        "minecraft:texture_set": {
+            "description": "Contient toute la définition des textures PBR. \nType: `Object`",
+            "type": "object",
+            "properties": {
+                "color": {
+                    "description": "Définit la couleur de la texture (en utilisant soit une image RGBA, soit une couleur uniforme) ou définit le nom de la texture d'une couche de TextureSet. \nType: `Integer[4] | String`",
+                    "oneOf": [
+                        {
+                            "type": "array",
+                            "minItems": 4,
+                            "maxItems": 4,
+                            "items": {
+                                "type": "integer",
+                                "minimum": 0,
+                                "maximum": 255
+                            }
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ]
+                },
+                "normal": {
+                    "description": "Applique une carte normale (normal map) à la texture, influençant l'apparence de la surface sans changer sa géométrie. \nType: `String`",
+                    "type": "string"
+                },
+                "heightmap": {
+                    "description": "Définit la hauteur de la surface à partir d'une texture, affectant l'élévation des pixels pour donner un effet de relief. \nType: `String`",
+                    "type": "string"
+                },
+                "metalness_emissive_roughness": {
+                    "description": "Définit la combinaison de trois propriétés : métallisation, émission de lumière, et rugosité de la surface à travers une texture RGB ou une valeur uniforme. \nType: `Integer[3] | String`",
+                    "oneOf": [
+                        {
+                            "type": "array",
+                            "minItems": 3,
+                            "maxItems": 3,
+                            "items": {
+                                "type": "integer",
+                                "minimum": 0,
+                                "maximum": 255
+                            }
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ]
+                }
+            }
+        }
+    }
+}

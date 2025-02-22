@@ -1,0 +1,5 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "description": "Ce fichier contient toutes les informations basiques d'un resource pack qui permet auxquels Minecraft a besoin d'identifier. \nType : Object",
+    "$ref": "../format_version/unversioned/RP-manifest.json.schema.json"
+}

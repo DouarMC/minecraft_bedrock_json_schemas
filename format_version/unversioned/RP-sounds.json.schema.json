@@ -1,0 +1,197 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "description": "Ce fichier sert à créer des références de sons à utiliser pour les blocs, entités, environnements, etc. \nType: `Object`",
+    "type": "object",
+    "properties": {
+        "block_sounds": {
+            "description": "Définit les sons des blocs. \nType: `Object`",
+            "type": "object",
+            "additionalProperties": {
+                "type": "object",
+                "properties": {
+                    "events": {
+                        "description": "Définit les sons à jouer pour les événements spécifiques. \nType: `Object`",
+                        "type": "object",
+                        "properties": {
+                            "break": {
+                                "description": "Définit le son à jouer lorsqu'un bloc est cassé. \nType: `String | Object`",
+                                "oneOf": [
+                                    {
+                                        "type": "string"
+                                    },
+                                    {
+                                        "type": "object",
+                                        "properties": {
+                                            "sound": {
+                                                "description": "Définit le son à jouer. \nType: `String`",
+                                                "type": "string"
+                                            },
+                                            "volume": {
+                                                "description": "Définit le volume du son. \nType: `Number | Number[2]`",
+                                                "oneOf": [
+                                                    {
+                                                        "type": "number"
+                                                    },
+                                                    {
+                                                        "type": "array",
+                                                        "minItems": 2,
+                                                        "maxItems": 2,
+                                                        "items": {
+                                                            "type": "number"
+                                                        }
+                                                    }
+                                                ]
+                                            },
+                                            "pitch": {
+                                                "description": "Définit le pitch du son. \nType: `Number | Number[2]`",
+                                                "oneOf": [
+                                                    {
+                                                        "type": "number"
+                                                    },
+                                                    {
+                                                        "type": "array",
+                                                        "minItems": 2,
+                                                        "maxItems": 2,
+                                                        "items": {
+                                                            "type": "number"
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    }
+                                ]
+                            },
+                            "hit": {
+                                "description": "Définit le son à jouer lorsqu'un bloc est touché. \nType: `String | Object`",
+                                "oneOf": [
+                                    {
+                                        "type": "string"
+                                    },
+                                    {
+                                        "type": "object",
+                                        "properties": {
+                                            "sound": {
+                                                "description": "Définit le son à jouer. \nType: `String`",
+                                                "type": "string"
+                                            },
+                                            "volume": {
+                                                "description": "Définit le volume du son. \nType: `Number | Number[2]`",
+                                                "oneOf": [
+                                                    {
+                                                        "type": "number"
+                                                    },
+                                                    {
+                                                        "type": "array",
+                                                        "minItems": 2,
+                                                        "maxItems": 2,
+                                                        "items": {
+                                                            "type": "number"
+                                                        }
+                                                    }
+                                                ]
+                                            },
+                                            "pitch": {
+                                                "description": "Définit le pitch du son. \nType: `Number | Number[2]`",
+                                                "oneOf": [
+                                                    {
+                                                        "type": "number"
+                                                    },
+                                                    {
+                                                        "type": "array",
+                                                        "minItems": 2,
+                                                        "maxItems": 2,
+                                                        "items": {
+                                                            "type": "number"
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    }
+                                ]
+                            },
+                            "place": {
+                                "description": "Définit le son à jouer lorsqu'un bloc est placé. \nType: `String | Object`",
+                                "oneOf": [
+                                    {
+                                        "type": "string"
+                                    },
+                                    {
+                                        "type": "object",
+                                        "properties": {
+                                            "sound": {
+                                                "description": "Définit le son à jouer. \nType: `String`",
+                                                "type": "string"
+                                            },
+                                            "volume": {
+                                                "description": "Définit le volume du son. \nType: `Number | Number[2]`",
+                                                "oneOf": [
+                                                    {
+                                                        "type": "number"
+                                                    },
+                                                    {
+                                                        "type": "array",
+                                                        "minItems": 2,
+                                                        "maxItems": 2,
+                                                        "items": {
+                                                            "type": "number"
+                                                        }
+                                                    }
+                                                ]
+                                            },
+                                            "pitch": {
+                                                "description": "Définit le pitch du son. \nType: `Number | Number[2]`",
+                                                "oneOf": [
+                                                    {
+                                                        "type": "number"
+                                                    },
+                                                    {
+                                                        "type": "array",
+                                                        "minItems": 2,
+                                                        "maxItems": 2,
+                                                        "items": {
+                                                            "type": "number"
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    "volume": {
+                        "description": "Définit le volume par défaut des sons. \nType: `Number`",
+                        "type": "number"
+                    },
+                    "pitch": {
+                        "description": "Définit le pitch par défaut des sons. \nType: `Number`",
+                        "type": "number"
+                    },
+                    "base": {
+                        "description": "Définit une référence de son de bloc à utiliser comme base pour cette référence. \nType: `String`",
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "interactive_sounds": {
+            "description": "Sons liés aux mouvemennts du jouueur ou d'entités sur des blocs ou sur elles mêmes. \nType: `Object`",
+            "type": "object"
+        },
+        "individual_event_sounds": {
+            "description": "Sons spécifiques déclenchés par des événements uniques dans le jeu. Ils ne sont pas liés à une interaction physique avec un bloc, mais à une action spécifique. \nType: `Object`",
+            "type": "object"
+        },
+        "individual_named_sounds": {
+            "description": "Sons généraux et ambiant du jeu. \nType: `Object`",
+            "type": "object"
+        },
+        "entity_sounds": {
+            "description": "Sons liés aux entités (mobs, créatures). \nType: `Object`",
+            "type": "object"
+        }
+    }
+}

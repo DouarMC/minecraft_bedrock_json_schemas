@@ -1,0 +1,144 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "description": "Ce fichier sert à créer un Item. \nType: `Object`",
+    "type": "object",
+    "required": ["format_version", "minecraft:item"],
+    "properties": {
+        "format_version": {
+            "description": "La version du Format à utiliser. \nType: `String`",
+            "enum": ["1.20.0"]
+        },
+        "minecraft:item": {
+            "description": "Contient toute la définition de l'Item. \nType: `Object`",
+            "type": "object",
+            "required": ["description"],
+            "properties": {
+                "description": {
+                    "description": "Contient les propeiétés de descriptions de l'Item. \nType: `Object`",
+                    "type": "object",
+                    "required": ["identifier"],
+                    "properties": {
+                        "identifier": {
+                            "description": "L'identifiant de l'Item. \nType: `String`",
+                            "type": "string",
+                            "pattern": "^[a-zA-Z0-9_]+:[a-zA-Z0-9_]+$"
+                        },
+                        "category": {
+                            "description": "La catégorie du menu de l'inventaire dans lequel l'item sera affiché. \nType: `String`",
+                            "type": "string",
+                            "default": "Items",
+                            "enum": ["construction", "equipment", "items", "nature", "commands", "all"]
+                        }
+                    }
+                },
+                "components": {
+                    "description": "Tous les composants de l'Item. \nType: `Object`",
+                    "type": "object",
+                    "required": ["minecraft:icon"],
+                    "properties": {
+                        "minecraft:display_name": {
+                            "description": "Définit le nom de l'Item. \nType: `Object`",
+                            "type": "object",
+                            "required": ["value"],
+                            "properties": {
+                                "value": {
+                                    "description": "Le nom de l'Item. \nType: `Localization_String`",
+                                    "type": "string"
+                                }
+                            }
+                        },
+                        "minecraft:durability": {
+                            "description": "Définit la durabilité de l'Item. \nType: `Object`",
+                            "type": "object",
+                            "required": ["max_durability"],
+                            "properties": {
+                                "damage_chance": {
+                                    "description": "Le pourcentage de chance que l'Item soit endommagé. \nType: `Integer | Object`",
+                                    "default": 100,
+                                    "oneOf": [
+                                        {
+                                            "type": "integer"
+                                        },
+                                        {
+                                            "type": "object",
+                                            "properties": {
+                                                "max": {
+                                                    "description": "Le pourcentage maximum de chance que l'Item soit endommagé. \nType: `Integer`",
+                                                    "type": "integer"
+                                                },
+                                                "min": {
+                                                    "description": "Le pourcentage minimum de chance que l'Item soit endommagé. \nType: `Integer`",
+                                                    "type": "integer"
+                                                }
+                                            }
+                                        }
+                                    ]
+                                },
+                                "max_durability": {
+                                    "description": "La durabilité maximale de l'Item. \nType: `Integer`",
+                                    "type": "integer",
+                                    "minimum": 0
+                                }
+                            }
+                        },
+                        "minecraft:entity_placer": {
+                            "description": "Permet de placer une entité lors de l'utilisation de l'Item. \nType: `Object`",
+                            "type": "object",
+                            "required": ["entity"],
+                            "properties": {
+                                "dispense_on": {
+                                    "description": "Liste des blocs sur lesquels l'entité peut être placée avec un distributeur. \nType: `BlockDescriptor[]` \nNote: Si cette propriété n'est pas défini ou laissé vide, tous les blocs sont acceptés.",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                    }
+                                },
+                                "entity": {
+                                    "description": "L'entité à placer. \nType: `String`",
+                                    "type": "string"
+                                },
+                                "use_on": {
+                                    "description": "Liste des blocs sur lesquels l'entité peut être placée. \nType: `BlockDescriptor[]` \nNote: Si cette propriété n'est pas défini ou laissé vide, tous les blocs sont acceptés.",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                    }
+                                }
+                            }
+                        },
+                        "minecraft:fuel": {
+                            "description": "Permet de définir si l'Item est un combustible. \nType: `Object`",
+                            "type": "object",
+                            "required": ["duration"],
+                            "properties": {
+                                "duration": {
+                                    "description": "La durée de combustion de l'Item. \nType: `Number`",
+                                    "type": "number",
+                                    "minimum": 0.05
+                                }
+                            }
+                        },
+                        "minecraft:icon": {
+                            "description": "Définit la texture qui sera utilisé pour l'icône de l'Item. \nType: `String | Object` \nNote: La texture ici est une référence qui doit être définie dans un fichier 'item_texture.json'.",
+                            "oneOf": [
+                                {
+                                    "type": "string"
+                                },
+                                {
+                                    "type": "object",
+                                    "required": ["texture"],
+                                    "properties": {
+                                        "texture": {
+                                            "description": "La texture de l'Item. \nType: `String`",
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

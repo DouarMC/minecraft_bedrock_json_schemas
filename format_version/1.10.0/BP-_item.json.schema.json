@@ -1,0 +1,216 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "description": "Ce fichier sert à créer un Item. \nType: `Object`",
+    "type": "object",
+    "required": ["format_version", "minecraft:item"],
+    "properties": {
+        "format_version": {
+            "description": "La version du Format à utiliser. \nType: `String`",
+            "enum": ["1.10", "1.10.0", "1.14", "1.14.0", "1.16", "1.16.0"]
+        },
+        "minecraft:item": {
+            "description": "Contient toute la définition de l'Item. \nType: `Object`",
+            "type": "object",
+            "required": ["description"],
+            "properties": {
+                "description": {
+                    "description": "Contient les propeiétés de descriptions de l'Item. \nType: `Object`",
+                    "type": "object",
+                    "required": ["identifier"],
+                    "properties": {
+                        "identifier": {
+                            "description": "L'identifiant de l'Item. \nType: `String`",
+                            "type": "string",
+                            "pattern": "^[a-zA-Z0-9_]+:[a-zA-Z0-9_]+$"
+                        }
+                    }
+                },
+                "components": {
+                    "description": "Tous les composants de l'Item. \nType: `Object`",
+                    "type": "object",
+                    "properties": {
+                        "minecraft:block": {
+                            "description": "Transforme l'Item en bloc qui existe dans le jeu. \nType: `String`",
+                            "type": "string"
+                        },
+                        "minecraft:camera": {
+                            "description": "Permet à l'Item de placer une caméra. \nType: `Object`",
+                            "type": "object",
+                            "properties": {
+                                "black_bars_duration": {
+                                    "type": "number"
+                                },
+                                "black_bars_screen_ratio": {
+                                    "type": "number"
+                                },
+                                "shutter_duration": {
+                                    "type": "number"
+                                },
+                                "shutter_screen_ratio": {
+                                    "type": "number"
+                                },
+                                "picture_duration": {
+                                    "type": "number"
+                                },
+                                "slide_away_duration": {
+                                    "type": "number"
+                                }
+                            }
+                        },
+                        "minecraft:foil": {
+                            "description": "Définit si l'Item a l'effet visuel d'enchantement. \nType: `Boolean`",
+                            "default": false,
+                            "type": "boolean"
+                        },
+                        "minecraft:food": {
+                            "description": "Définit que l'Item est un aliment. \nType: `Object`",
+                            "type": "object",
+                            "properties": {
+                                "can_always_eat": {
+                                    "description": "Définit si l'Item peut toujours être mangé. \nType: `Boolean`",
+                                    "default": false,
+                                    "type": "boolean"
+                                },
+                                "cooldown_time": {
+                                    "description": "Le temps en ticks avant de pouvoir réutiliser l'Item. \nType: `Integer`",
+                                    "type": "integer"
+                                },
+                                "cooldown_type": {
+                                    "description": "Le type de cooldown de l'Item. \nType: `String`",
+                                    "type": "string",
+                                    "enum": ["chorusfruit", "none"]
+                                },
+                                "effects": {
+                                    "description": "Les effets que l'Item donne lors de la consommation. \nType: `Object[]`",
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "name": {
+                                                "description": "Le nom de l'effet. \nType: `String`",
+                                                "type": "string",
+                                                "$ref": "../../common.schema.json#/definitions/potion_effects_id"
+                                            },
+                                            "chance": {
+                                                "description": "La chance que l'effet soit appliqué. \nType: `Number`",
+                                                "default": 1.0,
+                                                "type": "number",
+                                                "minimum": 0.0,
+                                                "maximum": 1.0
+                                            },
+                                            "duration": {
+                                                "description": "La durée de l'effet en ticks. \nType: `Integer`",
+                                                "type": "integer"
+                                            },
+                                            "amplifier": {
+                                                "description": "L'amplificateur de l'effet. \nType: `Integer`",
+                                                "type": "integer"
+                                            }
+                                        }
+                                    }
+                                },
+                                "is_meat": {
+                                    "type": "boolean"
+                                },
+                                "nutrition": {
+                                    "description": "La valeur de nutrition de l'Item. \nType: `Integer`",
+                                    "type": "integer"
+                                },
+                                "remove_effects": {
+                                    "description": "Définit les effets à retirer lors de la consommation de l'Item. \nType: `String[]`",
+                                    "type": "array",
+                                    "items": {
+                                        "type": "string",
+                                        "$ref": "../../common.schema.json#/definitions/potion_effects_id"
+                                    }
+                                },
+                                "on_use_action": {
+                                    "description": "L'action à effectuer lors de la consommation de l'Item. \nType: `String`",
+                                    "default": "none",
+                                    "type": "string",
+                                    "enum": ["chorus_teleport", "suspicious_stew_effect", "none"]
+                                },
+                                "on_use_range": {
+                                    "description": "Définit la zone de téléportation de l'Item. \nType: `Number[3]`",
+                                    "type": "array",
+                                    "minItems": 3,
+                                    "maxItems": 3,
+                                    "items": {
+                                        "type": "number"
+                                    }
+                                },
+                                "saturation_modifier": {
+                                    "description": "Le modificateur de saturation de l'Item. \nType: `String`",
+                                    "type": "string",
+                                    "enum": ["poor", "low", "normal", "good", "max", "supernatural"]
+                                },
+                                "using_converts_to": {
+                                    "description": "Définit l'Item en lequel l'Item est converti après utilisation. \nType: `String`",
+                                    "type": "string"
+                                }
+                            }
+                        },
+                        "minecraft:hand_equipped": {
+                            "description": "Définit si l'Item est équipé dans la main et non juste tenue. \nType: `Boolean`",
+                            "default": false,
+                            "type": "boolean"
+                        },
+                        "minecraft:max_damage": {
+                            "description": "La durabilité maximale de l'Item. \nType: `Integer` \nNote: Si ce composant n'est pas défini, l'Item n'a pas de durabilité.",
+                            "type": "integer"
+                        },
+                        "minecraft:max_stack_size": {
+                            "description": "Le nombre maximum d'Item qui peuvent être stackés ensemble. \nType: `Integer`",
+                            "type": "integer",
+                            "maximum": 64
+                        },
+                        "minecraft:seed": {
+                            "description": "Définit si l'Item est une graine. \nType: `Object`",
+                            "type": "object",
+                            "properties": {
+                                "crop_result": {
+                                    "description": "Définit le bloc qui est planté lors de l'utilisation de l'Item. \nType: `String`",
+                                    "type": "string"
+                                },
+                                "plant_at": {
+                                    "description": "Définit les blocs sur lesquels l'Item peut être planté. \nType: `String | String[]`",
+                                    "oneOf": [
+                                        {
+                                            "type": "string"
+                                        },
+                                        {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    ]
+                                },
+                                "plant_at_any_solid_surface": {
+                                    "description": "Définit si l'Item peut être planté sur n'importe quelle bloc solide. \nType: `Boolean`",
+                                    "default": false,
+                                    "type": "boolean"
+                                },
+                                "plant_at_face": {
+                                    "description": "Définit la face des blocs sur laquel l'Item peut être planté. \nType: `String`",
+                                    "default": "UP",
+                                    "type": "string",
+                                    "enum": ["UP", "DOWN", "NORTH", "SOUTH", "WEST", "EAST"]
+                                }
+                            }
+                        },
+                        "minecraft:stacked_by_data": {
+                            "description": "Définit si l'Item se stack pat valeur de data aux. \nType: `Boolean`",
+                            "default": false,
+                            "type": "boolean"
+                        },
+                        "minecraft:use_duration": {
+                            "description": "Définit la durée d'utilisation de l'Item en ticks. \nType: `Integer`",
+                            "type": "integer"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

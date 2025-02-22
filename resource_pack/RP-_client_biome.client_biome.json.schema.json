@@ -1,0 +1,19 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "desscription": "Définit les propriétés du client du biome. \nType: `Object`",
+    "type": "object",
+    "required": ["format_version", "minecraft:client_biome"],
+    "properties": {
+        "format_version": {
+            "description": "La version du Format à utiliser. \nType: `String`",
+            "$ref": "../common.schema.json#/definitions/minecraft_version",
+            "examples": ["1.21.40", "1.21.50", "1.21.60"]
+        }
+    },
+    "allOf": [
+        {
+            "if": {"properties": {"format_version": {"enum": ["1.21.40", "1.21.50", "1.21.60"]}}},
+            "then": {"$ref": "../format_version/1.21.40/RP-_client_biome.client_biome.json.schema.json"}
+        }
+    ]
+}

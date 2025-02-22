@@ -1,0 +1,236 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "description": "Ce fichier sert à créer un bloc personnalisé. \n Type: Object",
+    "type": "object",
+    "required": ["format_version", "minecraft:block"],
+    "properties": {
+        "format_version": {
+            "description": "La version du Format à utiliser. \n Type: String",
+            "type": "string",
+            "enum": ["1.17.40"]
+        },
+        "minecraft:block": {
+            "description": "Contient toute la définition du Bloc. \n Type: Object",
+            "type": "object",
+            "required": ["description"],
+            "properties": {
+                "description": {
+                    "description": "Contient les propeiétés de Descriptions du Bloc. \n Type: Object",
+                    "type": "object",
+                    "required": ["identifier"],
+                    "properties": {
+                        "identifier": {
+                            "description": "L'identifiant du Bloc. \n Type: String",
+                            "type": "string",
+                            "pattern": "^[a-zA-Z0-9_]+:[a-zA-Z0-9_]+$"
+                        },
+                        "menu_category": {
+                            "description": "Définit les informations sur la localisation du Bloc dans l'inventaire créatif ou commande. \n Type: Object",
+                            "type": "object",
+                            "properties": {
+                                "category": {
+                                    "description": "La catégorie de l'inventaire créatif ou commande dans laquelle le Bloc sera placé. \n Type: String",
+                                    "default": "none",
+                                    "type": "string",
+                                    "enum": ["construction", "nature", "equipment", "items", "none"]
+                                },
+                                "group": {
+                                    "description": "Le groupe d'items du menu créatif où le Bloc sera placé. \n Type: String",
+                                    "maxLength": 256,
+                                    "type": "string",
+                                    "oneOf": [
+                                        {
+                                            "$ref": "../../common.schema.json#/definitions/vanilla_item_groups_id"
+                                        },
+                                        {
+                                            "not": {
+                                                "$ref": "../../common.schema.json#/definitions/vanilla_item_groups_id"
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                "components": {
+                    "description": "Contients les composants du Bloc. \n Type: Object",
+                    "type": "object",
+                    "properties": {
+                        "minecraft:block_light_absorption": {
+                            "description": "Définit la quantité de lumière absorbée par le bloc. \n Type: `Number | Object`",
+                            "default": 16,
+                            "oneOf": [
+                                {
+                                    "type": "number",
+                                    "minimum": 0.0,
+                                    "maximum": 16.0
+                                },
+                                {
+                                    "type": "object",
+                                    "required": ["filter_level"],
+                                    "properties": {
+                                        "filter_level": {
+                                            "description": "Le niveau de filtre de lumière. \n Type: Number",
+                                            "$ref": "#/properties/minecraft:block/properties/components/properties/minecraft:block_light_absorption/oneOf/0"
+                                        }
+                                    }
+                                }
+                            ]
+                        },
+                        "minecraft:block_light_emission": {
+                            "description": "Définit la quantité de lumière émise par le bloc. \n Type: `Number | Object`",
+                            "default": 0.0,
+                            "oneOf": [
+                                {
+                                    "type": "number",
+                                    "minimum": 0.0,
+                                    "maximum": 1.0
+                                },
+                                {
+                                    "type": "object",
+                                    "required": ["emission"],
+                                    "properties": {
+                                        "emission": {
+                                            "description": "Le niveau d'émission de lumière. \n Type: Number",
+                                            "$ref": "#/properties/minecraft:block/properties/components/properties/minecraft:block_light_emission/oneOf/0"
+                                        }
+                                    }
+                                }
+                            ]
+                        },
+                        "minecraft:destroy_time": {
+                            "description": "Définit le temps de destruction du bloc. \n Type: `Number | Object`",
+                            "default": 0.0,
+                            "oneOf": [
+                                {
+                                    "type": "number",
+                                    "minimum": 0.0
+                                },
+                                {
+                                    "type": "object",
+                                    "required": ["destroy_time"],
+                                    "properties": {
+                                        "destroy_time": {
+                                            "description": "Le temps de destruction du bloc. \n Type: Number",
+                                            "$ref": "#/properties/minecraft:block/properties/components/properties/minecraft:destroy_time/oneOf/0"
+                                        }
+                                    }
+                                }
+                            ]
+                        },
+                        "minecraft:explosion_resistance": {
+                            "description": "Définit la resistance du bloc à l'explosion. \n Type: `Number | Object`",
+                            "default": 0.0,
+                            "oneOf": [
+                                {
+                                    "type": "number",
+                                    "minimum": 0.0
+                                },
+                                {
+                                    "type": "object",
+                                    "required": ["resistance"],
+                                    "properties": {
+                                        "resistance": {
+                                            "description": "La resistance du bloc à l'explosion. \n Type: Number",
+                                            "$ref": "#/properties/minecraft:block/properties/components/properties/minecraft:explosion_resistance/oneOf/0"
+                                        }
+                                    }
+                                }
+                            ]
+                        },
+                        "minecraft:flammable": {
+                            "description": "Définit les propriétés de flammabilité du bloc. \n Type: `Object`",
+                            "type": "object",
+                            "properties": {
+                                "flame_odds": {
+                                    "description": "Définit la probabilité que le bloc prenne feu lorsqu'il est à côté d'un feu. \n Type: Integer",
+                                    "default": 0,
+                                    "type": "integer"
+                                },
+                                "burn_odds": {
+                                    "description": "Définit la probabilité que le bloc soit détruit par les flammes lorsqu'il est en feu. \n Type: Integer",
+                                    "default": 0,
+                                    "type": "integer"
+                                }
+                            }
+                        },
+                        "minecraft:friction": {
+                            "description": "Définit la friction pour ce bloc. La friction affecte les mouvements des entités lorsqu'elles marchent sur le bloc. \n Type: `Number | Object`",
+                            "default": 0.1,
+                            "oneOf": [
+                                {
+                                    "type": "number",
+                                    "minimum": 0.0
+                                },
+                                {
+                                    "type": "object",
+                                    "required": ["friction"],
+                                    "properties": {
+                                        "friction": {
+                                            "description": "La friction pour ce bloc. \n Type: Number",
+                                            "$ref": "#/properties/minecraft:block/properties/components/properties/minecraft:friction/oneOf/0"
+                                        }
+                                    }
+                                }
+                            ]
+                        },
+                        "minecraft:loot": {
+                            "description": "Définit le Loot Table utilisé lorsque le bloc est cassé. \n Type: `String | Object`",
+                            "oneOf": [
+                                {
+                                    "type": "string"
+                                },
+                                {
+                                    "type": "object",
+                                    "required": ["loot_table"],
+                                    "properties": {
+                                        "loot_table": {
+                                            "$ref": "#/properties/minecraft:block/properties/components/properties/minecraft:loot/oneOf/0"
+                                        }
+                                    }
+                                }
+                            ]
+                        },
+                        "minecraft:map_color": {
+                            "description": "Définit la couleur du bloc sur une carte. \nType: `String | Object | Integer[3]`",
+                            "oneOf": [
+                                {
+                                    "type": "string",
+                                    "pattern": "^#[0-9a-fA-F]{6}$"
+                                },
+                                {
+                                    "type": "array",
+                                    "minItems": 3,
+                                    "maxItems": 3,
+                                    "items": {
+                                        "type": "integer",
+                                        "minimum": 0,
+                                        "maximum": 255
+                                    }
+                                },
+                                {
+                                    "type": "object",
+                                    "required": ["map_color"],
+                                    "properties": {
+                                        "map_color": {
+                                            "description": "La couleur du bloc sur une carte. \nType: `String | Integer[3]`",
+                                            "oneOf": [
+                                                {
+                                                    "$ref": "#/properties/minecraft:block/properties/components/properties/minecraft:map_color/oneOf/0"
+                                                },
+                                                {
+                                                    "$ref": "#/properties/minecraft:block/properties/components/properties/minecraft:map_color/oneOf/1"
+                                                }
+                                            ]
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

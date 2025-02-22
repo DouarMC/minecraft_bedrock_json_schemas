@@ -1,0 +1,54 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "description": "[EXPERIMENTALE]: Ce fichier sert à créer un preset d'Aim-Assist. \nType: `Object`",
+    "type": "object",
+    "required": ["format_version", "minecraft:aim_assist_preset"],
+    "properties": {
+        "format_version": {
+            "description": "La version du Format à utiliser. \nType: `String` \nNote: La version minimum est `1.21.50`.",
+            "type": "string",
+            "enum": ["1.21.50", "1.21.60"]
+        },
+        "minecraft:aim_assist_preset": {
+            "description": "La définition du preset d'Aim-Assist. \nType: `Object`",
+            "type": "object",
+            "required": ["identifier"],
+            "properties": {
+                "identifier": {
+                    "description": "L'identifiant de la configuration de l'Aim-Assist. \nType: `String`",
+                    "type": "string",
+                    "pattern": "^[a-zA-Z0-9_]+:[a-zA-Z0-9_]+$"
+                },
+                "item_settings": {
+                    "description": "Contient la catégorie d'Aim-Assist à utiliser pour chaque item. \nType: `Object`",
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    }
+                },
+                "default_item_settings": {
+                    "description": "Définit la catégorie d'Aim-Assist à utiliser par défaut pour les items non définis dans `item_settings`. \nType: `String`",
+                    "type": "string"
+                },
+                "hand_settings": {
+                    "description": "Définit la catégorie d'Aim-Assist à utiliser pour les joueurs qui ne tiennent rien à la main. \nType: `String`",
+                    "type": "string"
+                },
+                "exclusion_list": {
+                    "description": "Liste des identifiants de blocs/entitiés à exclure du ciblage de l'Aim-Assist. \nType: `String[]`",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "liquid_targeting_list": {
+                    "description": "Liste des identifiants d'items qui cibleront les blocs liquides avec l'Aim-Assist lorsqu'ils sont tenus. \nType: `String[]`",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    }
+}

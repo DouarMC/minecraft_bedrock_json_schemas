@@ -1,0 +1,75 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "required": ["format_version", "minecraft:structure_set"],
+    "properties": {
+        "format_version": {
+            "description": "La version du Format à utiliser.",
+            "type": "string",
+            "pattern": "^\\d+\\.\\d+\\.\\d+$"
+        },
+        "minecraft:structure_set": {
+            "description": "Contient la définition d'un Structure Set.",
+            "type": "object",
+            "required": ["description"],
+            "properties": {
+                "description": {
+                    "description": "La description du Structure Set.",
+                    "type": "object",
+                    "required": ["identifier"],
+                    "properties": {
+                        "identifier": {
+                            "description": "L'identifiant du Structure Set.",
+                            "type": "string"
+                        }
+                    }
+                },
+                "placement": {
+                    "description": "Décrit l'emplacement où les structures de l'ensemble apparaissent les unes par rapport aux autres. Actuellement, le seul type de placement pris en charge est random_spread, qui disperse les structures de manière aléatoire avec une séparation et un espacement donnés.",
+                    "type": "object",
+                    "properties": {
+                        "type": {
+                            "description": "Le type de placement.",
+                            "type": "string",
+                            "enum": ["random_spread"]
+                        },
+                        "salt": {
+                            "description": "Graine utilisée pour le générateur aléatoire afin de fournir un modèle de dispersion unique. Cela permet d'éviter le chevauchement dans le cas où plusieurs ensembles de structures utilisent les mêmes valeurs de placement.",
+                            "type": "integer"
+                        },
+                        "separation": {
+                            "description": "La séparation (en chunks) qui détermine la zone autour de chaque structure où aucune autre structure ne peut apparaître. Cela évite que les structures soient trop proches les unes des autres.",
+                            "type": "integer"
+                        },
+                        "spacing": {
+                            "description": "La taille de la cellule de grille (en chunks) utilisée lors de la génération de la structure. Les structures seront générées à une position aléatoire dans chaque cellule de cette grille.",
+                            "type": "integer"
+                        },
+                        "spread_type": {
+                            "description": "L'algorithme de randomisation utilisé pour la dispersion des structures.",
+                            "type": "string",
+                            "enum": ["linear", "triangle"]
+                        }
+                    }
+                },
+                "structures": {
+                    "description": "Définit les différentes structures qui peuvent être choisies aléatoirement pendant la génération du monde. Chaque structure a un poids qui influence sa probabilité d'apparition.",
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "structure": {
+                                "description": "L'identifiant de la Jigsaw Structure à inclure dans le set. Cela fait référence à une structure déjà définie ailleurs.",
+                                "type": "string"
+                            },
+                            "weight": {
+                                "description": "Le poids de la structure dans le set. Plus le poids est élevé, plus la structure a de chances d'être choisie pendant la génération du monde.",
+                                "type": "integer"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

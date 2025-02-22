@@ -1,0 +1,6 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "description": "Ce fichier sert à repertorier tous les fichiers présents dans un Pack pour des meilleures performances. \nType : Object",
+    "type": "object",
+    "$ref": "../format_version/unversioned/BP-contents.json.schema.json"
+}
