@@ -3219,6 +3219,20 @@
                                 }
                             }
                         },
+                        "minecraft:movement": {
+                            "description": "Ce composant représente le mouvement fondamental d'une Entité. \nType: `Object`",
+                            "type": "object",
+                            "properties": {
+                                "max": {
+                                    "description": "La vitesse maximale de l'Entité. \nType: `Number`",
+                                    "type": "number"
+                                },
+                                "value": {
+                                    "description": "La vitesse de mouvement de l'Entité. \nType: `Number`",
+                                    "type": "number"
+                                }
+                            }
+                        },
                         "minecraft:movement.amphibious": {
                             "description": "Force une Entité à nager dans l'eau et à marcher sur terre. \nType: `Object`",
                             "type": "object",
