@@ -1694,27 +1694,34 @@
                             "type": "object",
                             "properties": {
                                 "triggers": {
-                                    "description": "La liste des déclencheurs qui sont déclenchés lorsque les conditions de l'environnement correspondent aux critères de filtre donnés. \nType: `Object[]`",
-                                    "type": "array",
-                                    "items": {
-                                        "type": "object",
-                                        "properties": {
-                                            "event": {
-                                                "description": "L'événement à déclencher lorsque les conditions de l'environnement correspondent aux critères de filtre donnés. \nType: `String`",
-                                                "type": "string"
-                                            },
-                                            "filters": {
-                                                "description": "La liste des conditions qui doivent être satisfaites pour que l'événement soit déclenché. \nType: `Minecraft Filter`",
-                                                "$ref": "../../common.schema.json#/definitions/minecraft_filter"
-                                            },
-                                            "target": {
-                                                "description": "Définit si l'événement doit être déclenché sur l'entité ou l'environnement. \nType: `String`",
-                                                "default": "self",
-                                                "type": "string",
-                                                "enum": ["baby", "block", "damager", "other", "parent", "player", "self", "target"]
+                                    "description": "La liste des déclencheurs qui sont déclenchés lorsque les conditions de l'environnement correspondent aux critères de filtre donnés. \nType: `Object | Object[]`",
+                                    "oneOf": [
+                                        {
+                                            "type": "object",
+                                            "properties": {
+                                                "event": {
+                                                    "description": "L'événement à déclencher lorsque les conditions de l'environnement correspondent aux critères de filtre donnés. \nType: `String`",
+                                                    "type": "string"
+                                                },
+                                                "filters": {
+                                                    "description": "La liste des conditions qui doivent être satisfaites pour que l'événement soit déclenché. \nType: `Minecraft Filter`",
+                                                    "$ref": "../../common.schema.json#/definitions/minecraft_filter"
+                                                },
+                                                "target": {
+                                                    "description": "Définit si l'événement doit être déclenché sur l'entité ou l'environnement. \nType: `String`",
+                                                    "default": "self",
+                                                    "type": "string",
+                                                    "enum": ["baby", "block", "damager", "other", "parent", "player", "self", "target"]
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/properties/minecraft:entity/properties/components/properties/minecraft:environment_sensor/properties/triggers/oneOf/0"
                                             }
                                         }
-                                    }
+                                    ]
                                 }
                             }
                         },
