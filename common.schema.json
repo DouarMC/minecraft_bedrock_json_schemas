@@ -1592,6 +1592,29 @@
                 }
             }
         },
+        "event_trigger_type": {
+            "$comment": "Définit le type de déclencheur d'événement.",
+            "oneOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "event": {
+                            "description": "L'événement à déclencher. \nType: `String`",
+                            "type": "string"
+                        },
+                        "target": {
+                            "description": "La cible de l'événement. \nType: `String`",
+                            "default": "self",
+                            "type": "string",
+                            "enum": ["baby", "block", "damager", "other", "parent", "player", "self", "target"]
+                        }
+                    }
+                }
+            ]
+        },
 
         "minecraft_version": {
             "$comment": "Définit une version de Minecraft.",
