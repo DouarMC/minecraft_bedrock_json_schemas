@@ -1,0 +1,26 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "description": "Ce fichier sert à configurer les points lumineux dans le jeu, c'est-à-dire des blocs qui émettent de la lumière depuis un point central.",
+    "required": ["format_version", "minecraft:point_light_settings"],
+    "properties": {
+        "format_version": {
+            "description": "La version du Format à utiliser pour ces paramètres d'éclairage (ex: 1.21.50).",
+            "const": "1.21.50"
+        },
+        "minecraft:point_light_settings": {
+            "description": "Contient toute la définition des paramètres des points lumineux.",
+            "type": "object",
+            "required": ["colors"],
+            "properties": {
+                "colors": {
+                    "description": "Liste de paires clé-valeur où la clé est un nom de bloc avec un namespace et la valeur est une couleur (supporte un tableau RGB ou une chaîne HEX).",
+                    "patternProperties": {
+                        "^[a-zA-Z0-9_]+:[a-zA-Z0-9_]+$": {
+                            "$ref": "../common.schema.json#/definitions/color_format"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

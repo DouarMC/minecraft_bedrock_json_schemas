@@ -1,0 +1,212 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "description": "Ce fichier sert à personnaliser les effets atmosphériques en jeu.",
+    "type": "object",
+    "required": ["format_version", "minecraft:atmosphere_settings"],
+    "properties": {
+        "format_version": {
+            "description": "La version du Format à utiliser pour ces paramètres d'effets atmosphériques (ex: 1.21.50).",
+            "const": "1.21.50"
+        },
+        "minecraft:atmosphere_settings": {
+            "description": "Contient toute la définition de ces paramètres d'effets atmosphériques.",
+            "type": "object",
+            "required": ["description"],
+            "properties": {
+                "description": {
+                    "description": "Description des paramètres d'effets atmosphériques.",
+                    "type": "object",
+                    "required": ["identifier"],
+                    "properties": {
+                        "identifier": {
+                            "description": "Identifiant de ces paramètres d'effets atmosphériques.",
+                            "$ref": "../common.schema.json#/definitions/string_with_namespace"
+                        }
+                    }
+                },
+                "horizon_blend_stops": {
+                    "description": "Définit comment l'atmosphère est divisée.",
+                    "type": "object",
+                    "properties": {
+                        "min": {
+                            "description": "Défiinit la hauteur minimale de l'horizon.",
+                            "oneOf": [
+                                {
+                                    "type": "number",
+                                    "minimum": 0,
+                                    "maximum": 1
+                                },
+                                {
+                                    "type": "object",
+                                    "patternProperties": {
+                                        "^(0(\\.\\d+)?|1(\\.0)?)$": {
+                                            "description": "La hauteur minimale de l'horizon.",
+                                            "type": "number",
+                                            "minimum": 0,
+                                            "maximum": 1
+                                        }
+                                    },
+                                    "additionalProperties": false
+                                }
+                            ]
+                        },
+                        "start": {
+                            "description": "Définit la hauteur où la contribution du zénith prend le dessus.",
+                            "oneOf": [
+                                {
+                                    "type": "number",
+                                    "minimum": 0,
+                                    "maximum": 1
+                                },
+                                {
+                                    "type": "object",
+                                    "patternProperties": {
+                                        "^(0(\\.\\d+)?|1(\\.0)?)$": {
+                                            "description": "La hauteur où la contribution du zénith prend le dessus.",
+                                            "type": "number",
+                                            "minimum": 0,
+                                            "maximum": 1
+                                        }
+                                    },
+                                    "additionalProperties": false
+                                }
+                            ]
+                        },
+                        "mie_start": {
+                            "description": "Définit la hauteur où commence la diffusion Mie.",
+                            "oneOf": [
+                                {
+                                    "type": "number",
+                                    "minimum": 0,
+                                    "maximum": 1
+                                },
+                                {
+                                    "type": "object",
+                                    "patternProperties": {
+                                        "^(0(\\.\\d+)?|1(\\.0)?)$": {
+                                            "description": "La hauteur où commence la diffusion Mie.",
+                                            "type": "number",
+                                            "minimum": 0,
+                                            "maximum": 1
+                                        }
+                                    },
+                                    "additionalProperties": false
+                                }
+                            ]
+                        },
+                        "max": {
+                            "description": "Définit la hauteur maximale de l'horizon.",
+                            "oneOf": [
+                                {
+                                    "type": "number",
+                                    "minimum": 0,
+                                    "maximum": 1
+                                },
+                                {
+                                    "type": "object",
+                                    "patternProperties": {
+                                        "^(0(\\.\\d+)?|1(\\.0)?)$": {
+                                            "description": "La hauteur maximale de l'horizon.",
+                                            "type": "number",
+                                            "minimum": 0,
+                                            "maximum": 1
+                                        }
+                                    },
+                                    "additionalProperties": false
+                                }
+                            ]
+                        }
+                    }
+                },
+                "rayleigh_strength": {
+                    "description": "Contrôle l'intensité de la diffusion Rayleigh (responsable du bleu du ciel). Plus la valeur est élevée, plus le ciel apparaît clair ou intense.",
+                    "oneOf": [
+                        {
+                            "type": "number",
+                            "minimum": 0
+                        },
+                        {
+                            "type": "object",
+                            "patternProperties": {
+                                "^(0(\\.\\d+)?|1(\\.0)?)$": {
+                                    "description": "L'intensité de la diffusion Rayleigh.",
+                                    "type": "number",
+                                    "minimum": 0
+                                }
+                            },
+                            "additionalProperties": false
+                        }
+                    ]
+                },
+                "sun_mie_strength": {
+                    "description": "Détermine la force de la diffusion Mie autour du soleil (responsable de l'effet de halo diffus). Une valeur élevée crée un halo solaire plus lumineux.",
+                    "oneOf": [
+                        {
+                            "type": "number",
+                            "minimum": 0
+                        },
+                        {
+                            "type": "object",
+                            "patternProperties": {
+                                "^(0(\\.\\d+)?|1(\\.0)?)$": {
+                                    "description": "La force de la diffusion Mie autour du soleil.",
+                                    "type": "number",
+                                    "minimum": 0
+                                }
+                            },
+                            "additionalProperties": false
+                        }
+                    ]
+                },
+                "moon_mie_strength": {
+                    "description": "Détermine la force de la diffusion Mie autour de la lune (effet de halo diffus similaire au soleil, mais plus subtil). Une valeur élevée crée un halo lunaire plus visible.",
+                    "oneOf": [
+                        {
+                            "type": "number",
+                            "minimum": 0
+                        },
+                        {
+                            "type": "object",
+                            "patternProperties": {
+                                "^(0(\\.\\d+)?|1(\\.0)?)$": {
+                                    "description": "La force de la diffusion Mie autour de la lune.",
+                                    "type": "number",
+                                    "minimum": 0
+                                }
+                            },
+                            "additionalProperties": false
+                        }
+                    ]
+                },
+                "sun_glare_shape": {
+                    "description": "Contrôle la forme du halo diffus autour du soleil. Valeurs plus élevées étirent ou adoucissent la forme du halo.",
+                    "oneOf": [
+                        {
+                            "type": "number",
+                            "minimum": 0
+                        },
+                        {
+                            "type": "object",
+                            "patternProperties": {
+                                "^(0(\\.\\d+)?|1(\\.0)?)$": {
+                                    "description": "La forme du halo diffus autour du soleil.",
+                                    "type": "number",
+                                    "minimum": 0
+                                }
+                            },
+                            "additionalProperties": false
+                        }
+                    ]
+                },
+                "sky_zenith_color": {
+                    "description": "Définit la couleur du ciel au zénith (le point directement au-dessus).",
+                    "$ref": "../common.schema.json#/definitions/color_format"
+                },
+                "sky_horizon_color": {
+                    "description": "Définit la couleur du ciel à l'horizon.",
+                    "$ref": "../common.schema.json#/definitions/color_format"
+                }
+            }
+        }
+    }
+}

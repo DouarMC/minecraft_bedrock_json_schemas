@@ -1,0 +1,57 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "description": "Ce fichier sert à configurer des paramètres par défaut pour les propriétés graphiques des objets du jeu (blocs, entités, particules, items) utilisant le système de rendu PBR.",
+    "required": ["format_version", "minecraft:pbr_fallback_settings"],
+    "properties": {
+        "format_version": {
+            "description": "La version du Format à utiliser pour ces paramètres de rendu PBR (ex: 1.21.50).",
+            "const": "1.21.50"
+        },
+        "minecraft:pbr_fallback_settings": {
+            "description": "Contient toute la définition des paramètres de rendu PBR.",
+            "type": "object",
+            "properties": {
+                "blocks": {
+                    "description": "Paramètres de rendu PBR par défaut pour les blocs.",
+                    "type": "object",
+                    "properties": {
+                        "global_metalness_emissive_roughness_subsurface": {
+                            "description": "Le MERS par défaut à utiliser pour les blocs lorsqu'il n'est pas défini via textureset; supporte un tableau RGBA ou une chaîne HEX.",
+                            "$ref": "../common.schema.json#/definitions/color_format_alpha"
+                        }
+                    }
+                },
+                "actors": {
+                    "description": "Paramètres de rendu PBR par défaut pour les entités.",
+                    "type": "object",
+                    "properties": {
+                        "global_metalness_emissive_roughness_subsurface": {
+                            "description": "Le MERS par défaut à utiliser pour les entités lorsqu'il n'est pas défini via textureset; supporte un tableau RGBA ou une chaîne HEX.",
+                            "$ref": "../common.schema.json#/definitions/color_format_alpha"
+                        }
+                    }
+                },
+                "particles": {
+                    "description": "Paramètres de rendu PBR par défaut pour les particules.",
+                    "type": "object",
+                    "properties": {
+                        "global_metalness_emissive_roughness_subsurface": {
+                            "description": "Le MERS par défaut à utiliser pour les particules lorsqu'il n'est pas défini via textureset; supporte un tableau RGBA ou une chaîne HEX.",
+                            "$ref": "../common.schema.json#/definitions/color_format_alpha"
+                        }
+                    }
+                },
+                "items": {
+                    "description": "Paramètres de rendu PBR par défaut pour les items.",
+                    "type": "object",
+                    "properties": {
+                        "global_metalness_emissive_roughness_subsurface": {
+                            "description": "Le MERS par défaut à utiliser pour les items lorsqu'il n'est pas défini via textureset; supporte un tableau RGBA ou une chaîne HEX.",
+                            "$ref": "../common.schema.json#/definitions/color_format_alpha"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
