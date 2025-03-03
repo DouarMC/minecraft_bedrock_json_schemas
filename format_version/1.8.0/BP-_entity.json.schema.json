@@ -2647,11 +2647,13 @@
                                 },
                                 "drop_item_slot": {
                                     "description": "Le slot pour retirer et déposer l'item, le cas échéant, lors d'une interaction réussie. Les slots d'inventaire sont désignés par des nombres positifs; les slots d'armure sont désignés par slot.armor.head, slot.armor.chest, slot.armor.legs, slot.armor.feet et slot.armor.body. \nType: `String`",
-                                    "type": "string"
+                                    "type": "string",
+                                    "enum": ["slot.armor.chest", "slot.armor.feet", "slot.armor.head", "slot.armor.legs", "slot.armor.body"]
                                 },
                                 "equip_item_slot": {
                                     "description": "Le slot pour équiper l'item, le cas échéant, lors d'une interaction réussie. Les slots d'inventaire sont désignés par des nombres positifs; les slots d'armure sont désignés par slot.armor.head, slot.armor.chest, slot.armor.legs, slot.armor.feet et slot.armor.body. \nType: `String`",
-                                    "type": "string"
+                                    "type": "string",
+                                    "enum": ["slot.armor.chest", "slot.armor.feet", "slot.armor.head", "slot.armor.legs", "slot.armor.body"]
                                 },
                                 "health_amount": {
                                     "description": "Le montant de santé que l'Entité gagne ou perd lors d'une interaction réussie. Les valeurs négatives nuiront à l'Entité. \nType: `Integer`",
@@ -2667,6 +2669,77 @@
                                     "description": "Texte à afficher lorsqu'un joueur peut interagir avec cette Entité. \nType: `Localization String`",
                                     "type": "string"
                                 },
+                                "interactions": {
+                                    "description": "Liste des interactions qui peuvent être utilisées avec cette Entité. \nType: `Object[]`",
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "give_item": {
+                                                "description": "Défiit si l'item tenu par le joueur sera donné à l'Entité lors d'une interaction réussie. \nType: `Boolean`",
+                                                "type": "boolean"
+                                            },
+                                            "hurt_item": {
+
+                                            },
+                                            "interact_text": {
+                                                "description": "Texte à afficher lorsqu'un joueur peut interagir avec cette Entité. \nType: `Localization String`",
+                                                "type": "string"
+                                            },
+                                            "on_interact": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "filters": {
+                                                        "$ref": "../../common.schema.json#/definitions/minecraft_filter"
+                                                    },
+                                                    "event": {
+                                                        "description": "L'événement à déclencher lorsqu'une interaction réussie se produit. \nType: `String`",
+                                                        "type": "string"
+                                                    },
+                                                    "target": {
+                                                        "description": "Définit la cible qui subira l'événement. \nType: `String`",
+                                                        "type": "string",
+                                                        "enum": ["baby", "block", "damager", "other", "parent", "player", "self", "target"]
+                                                    }
+                                                }
+                                            },
+                                            "particle_on_start": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "particle_type": {
+                                                        "description": "Le type de particule à afficher. \nType: `String`",
+                                                        "type": "string"
+                                                    }
+                                                }
+                                            },
+                                            "play_sounds": {
+                                                "description": "Le son à jouer lorsqu'une interaction réussie se produit. \nType: `String`",
+                                                "type": "string"
+                                            },
+                                            "spawn_items": {
+                                                "description": "Loot table avec les items à faire apparaître lors d'une interaction réussie. \nType: `Object`",
+                                                "type": "object",
+                                                "properties": {
+                                                    "table": {
+                                                        "description": "Le chemin de la Loot Table. \nType: `String`",
+                                                        "type": "string"
+                                                    }
+                                                }
+                                            },
+                                            "swing": {
+
+                                            },
+                                            "take_item": {
+                                                "description": "Définit si l'item tenu par le joueur sera pris par l'Entité lors d'une interaction réussie. \nType: `Boolean`",
+                                                "type": "boolean"
+                                            },
+                                            "use_item": {
+                                                "description": "Définit si l'interaction utilisera un item. \nType: `Boolean`",
+                                                "type": "boolean"
+                                            }
+                                        }
+                                    }
+                                },
                                 "on_interact": {
                                     "description": "Evenement à déclencher lorsqu'une interaction réussie se produit. \nType: `Object`",
                                     "type": "object",
@@ -2680,7 +2753,7 @@
                                             "type": "string"
                                         },
                                         "target": {
-                                            "description": "Définit si la cible qui subira l'événement. \nType: `String`",
+                                            "description": "Définit la cible qui subira l'événement. \nType: `String`",
                                             "default": "self",
                                             "type": "string",
                                             "enum": ["baby", "block", "damager", "other", "parent", "player", "self", "target"]
