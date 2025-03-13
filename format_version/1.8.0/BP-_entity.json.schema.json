@@ -219,6 +219,24 @@
                     "description": "Définit les composants de l'Entité. \nType: `Object`",
                     "type": "object",
                     "properties": {
+                        "minecraft:absorption": {
+                            "description": "Ajoute un montant d'absorption à l'Entité. \nType: `Object`",
+                            "type": "object",
+                            "properties": {
+                                "value": {
+                                    "description": "Montant d'absorption à ajouter à l'Entité. \nType: `Number`",
+                                    "type": "number"
+                                },
+                                "max": {
+                                    "description": "Montant maximum d'absorption que l'Entité peut avoir. \nType: `Number`",
+                                    "type": "number"
+                                },
+                                "min": {
+                                    "description": "Montant minimum d'absorption que l'Entité peut avoir. \nType: `Number`",
+                                    "type": "number"
+                                }
+                            }
+                        },
                         "minecraft:addrider": {
                             "description": "Ajoute un cavalier à l'Entité. \nType: `Object` \nNote: L'Entité doit avoir le composant `minecraft:rideable`.",
                             "type": "object",
@@ -3115,6 +3133,24 @@
                                 }
                             }
                         },
+                        "minecraft:luck": {
+                            "description": "Définit le niveau de chance du Joueur. \nType: `Object`",
+                            "type": "object",
+                            "properties": {
+                                "value": {
+                                    "description": "Le niveau de chance du Joueur. \nType: `Number`",
+                                    "type": "number"
+                                },
+                                "max": {
+                                    "description": "La valeur maximale de chance que le Joueur peut avoir. \nType: `Number`",
+                                    "type": "number"
+                                },
+                                "min": {
+                                    "description": "La valeur minimale de chance que le Joueur peut avoir. \nType: `Number`",
+                                    "type": "number"
+                                }
+                            }
+                        },
                         "minecraft:managed_wandering_trader": {
                             "description": "Gère la capacité de l'Entité à commercer. \nType: `Object` \nNote: Ce composant est seulement utilisable pour les marchands ambulants.",
                             "type": "object"
@@ -4420,6 +4456,24 @@
                                 "value": {
                                     "description": "La valeur initiale de l'expérience du joueur. \nType: `Integer`",
                                     "default": 1,
+                                    "type": "integer"
+                                }
+                            }
+                        },
+                        "minecraft:player.hunger": {
+                            "description": "Définit le niveau de faim du joueur. \nType: `Object`",
+                            "type": "object",
+                            "properties": {
+                                "value": {
+                                    "description": "La valeur initiale de la faim du joueur. \nType: `Integer`",
+                                    "type": "integer"
+                                },
+                                "max": {
+                                    "description": "Le niveau maximum de faim du joueur. \nType: `Integer`",
+                                    "type": "integer"
+                                },
+                                "min": {
+                                    "description": "Le niveau minimum de faim du joueur. \nType: `Integer`",
                                     "type": "integer"
                                 }
                             }
