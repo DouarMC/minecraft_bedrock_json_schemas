@@ -2158,9 +2158,15 @@
                             }
                         },
                         "minecraft:flying_speed": {
-                            "description": "Définit la vitesse en blocs à laquelle l'Entité vole. \nType: `Number`",
-                            "default": 0.02,
-                            "type": "number"
+                            "description": "Définit la vitesse en blocs à laquelle l'Entité vole. \nType: `Object`",
+                            "type": "object",
+                            "properties": {
+                                "value": {
+                                    "description": "La vitesse en blocs à laquelle l'Entité vole. \nType: `Number`",
+                                    "default": 0.02,
+                                    "type": "number"
+                                }
+                            }
                         },
                         "minecraft:follow_range": {
                             "description": "Définit la plage, en blocs, à laquelle l'Entité suivra un joueur. \nType: `Object`",
