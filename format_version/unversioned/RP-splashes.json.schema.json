@@ -4,6 +4,11 @@
     "type": "object",
     "required": ["splashes"],
     "properties": {
+        "canMerge": {
+            "description": "Si 'true', les entrées du fichier sont fusionnées avec celles existantes au lieu de les remplacer. \nType: `Boolean`",
+            "default": false,
+            "type": "boolean"
+        },
         "splashes": {
             "description": "Contient les Textes de Splashs. \nType: `Array`",
             "type": "array",
@@ -25,6 +30,13 @@
                             "trialMode": {
                                 "description": "Affiche le Splash uniquement en mode démo. \nType: `Boolean`",
                                 "type": "boolean"
+                            },
+                            "platforms": {
+                                "description": "Affiche le Splash uniquement sur les plateformes spécifiées. \nType: `String[]`",
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
                             }
                         }
                     },
