@@ -181,7 +181,7 @@
                                                     "enchantment": {
                                                         "description": "Le type d'enchantement. \nType: `String`",
                                                         "type": "string",
-                                                        "$ref": "../common.schema.json#/definitions/enchantments_id"
+                                                        "$ref": "../../common.schema.json#/definitions/enchantments_id"
                                                     },
                                                     "levels": {
                                                         "description": "Le niveau de l'enchantement. \nType: `Integer | Object`",
@@ -210,6 +210,57 @@
                                         "item": {
                                             "description": "Le nom de l'item. \nType: `String`",
                                             "type": "string"
+                                        },
+                                        "minecraft:match_tool_filter_all": {
+                                            "description": "[EXPERIMENTALE] : 'Upcoming Creator Features' \nLes items qui ont tous les tags ici seront acceptés. \nType: `String[]`",
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string",
+                                                "oneOf": [
+                                                    {
+                                                        "$ref": "../../common.schema.json#/definitions/vanilla_item_tags_id"
+                                                    },
+                                                    {
+                                                        "not": {
+                                                            "$ref": "../../common.schema.json#/definitions/vanilla_item_tags_id"
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        "minecraft:match_tool_filter_any": {
+                                            "description": "[EXPERIMENTALE] : 'Upcoming Creator Features' \nLes items qui ont au moins un des tags ici seront acceptés. \nType: `String[]`",
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string",
+                                                "oneOf": [
+                                                    {
+                                                        "$ref": "../../common.schema.json#/definitions/vanilla_item_tags_id"
+                                                    },
+                                                    {
+                                                        "not": {
+                                                            "$ref": "../../common.schema.json#/definitions/vanilla_item_tags_id"
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        "minecraft:match_tool_filter_none": {
+                                            "description": "[EXPERIMENTALE] : 'Upcoming Creator Features' \nLes items qui n'ont aucun des tags ici seront acceptés. \nType: `String[]`",
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string",
+                                                "oneOf": [
+                                                    {
+                                                        "$ref": "../../common.schema.json#/definitions/vanilla_item_tags_id"
+                                                    },
+                                                    {
+                                                        "not": {
+                                                            "$ref": "../../common.schema.json#/definitions/vanilla_item_tags_id"
+                                                        }
+                                                    }
+                                                ]
+                                            }
                                         }
                                     }
                                 },
