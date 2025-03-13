@@ -560,6 +560,178 @@
                                     }
                                 }
                             }
+                        },
+                        "tag:acacia": {
+                            "description": "Donne le tag 'acacia' au bloc. \n Type: `Boolean`",
+                            "type": "object"
+                        },
+                        "tag:birch": {
+                            "description": "Donne le tag 'birch' au bloc. \n Type: `Boolean`",
+                            "type": "object"
+                        },
+                        "tag:dark_oak": {
+                            "description": "Donne le tag 'dark_oak' au bloc. \n Type: `Boolean`",
+                            "type": "object"
+                        },
+                        "tag:diamond_pick_diggable": {
+                            "description": "Donne le tag 'diamond_pick_diggable' au bloc. \n Type: `Boolean`",
+                            "type": "object"
+                        },
+                        "tag:dirt": {
+                            "description": "Donne le tag 'dirt' au bloc. \n Type: `Boolean`",
+                            "type": "object"
+                        },
+                        "tag:fertilize_area": {
+                            "description": "Donne le tag 'fertilize_area' au bloc. \n Type: `Boolean`",
+                            "type": "object"
+                        },
+                        "tag:grass": {
+                            "description": "Donne le tag 'grass' au bloc. \n Type: `Boolean`",
+                            "type": "object"
+                        },
+                        "tag:gravel": {
+                            "description": "Donne le tag 'gravel' au bloc. \n Type: `Boolean`",
+                            "type": "object"
+                        },
+                        "tag:gold_pick_diggable": {
+                            "description": "Donne le tag 'gold_pick_diggable' au bloc. \n Type: `Boolean`",
+                            "type": "object"
+                        },
+                        "tag:iron_pick_diggable": {
+                            "description": "Donne le tag 'iron_pick_diggable' au bloc. \n Type: `Boolean`",
+                            "type": "object"
+                        },
+                        "tag:jungle": {
+                            "description": "Donne le tag 'jungle' au bloc. \n Type: `Boolean`",
+                            "type": "object"
+                        },
+                        "tag:log": {
+                            "description": "Donne le tag 'log' au bloc. \n Type: `Boolean`",
+                            "type": "object"
+                        },
+                        "tag:metal": {
+                            "description": "Donne le tag 'metal' au bloc. \n Type: `Boolean`",
+                            "type": "object"
+                        },
+                        "tag:minecraft:crop": {
+                            "description": "Donne le tag 'minecraft:crop' au bloc. \n Type: `Boolean`",
+                            "type": "object"
+                        },
+                        "tag:minecraft:diamond_tier_destructible": {
+                            "description": "Donne le tag 'minecraft:diamond_tier_destructible' au bloc. \n Type: `Boolean` \nNote: Les items avec un niveau de destruction de diamant peuvent détruire plus rapidement ce bloc.",
+                            "type": "object"
+                        },
+                        "tag:minecraft:iron_tier_destructible": {
+                            "description": "Donne le tag 'minecraft:iron_tier_destructible' au bloc. \n Type: `Boolean` \nNote: Les items avec un niveau de destruction de fer peuvent détruire plus rapidement ce bloc.",
+                            "type": "object"
+                        },
+                        "tag:minecraft:is_hatchet_item_destructible": {
+                            "description": "Donne le tag 'minecraft:is_hatchet_item_destructible' au bloc. \n Type: `Boolean` \nNote: Les haches peuvent détruire plus rapidement ce bloc.",
+                            "type": "object"
+                        },
+                        "tag:minecraft:is_hoe_item_destructible": {
+                            "description": "Donne le tag 'minecraft:is_hoe_item_destructible' au bloc. \n Type: `Boolean` \nNote: Les houes peuvent détruire plus rapidement ce bloc.",
+                            "type": "object"
+                        },
+                        "tag:minecraft:is_item_tier_destructible": {
+                            "description": "Donne le tag 'minecraft:is_item_tier_destructible' au bloc. \n Type: `Boolean` \nNote: Les items avec un niveau de destruction peuvent détruire plus rapidement ce bloc.",
+                            "type": "object"
+                        },
+                        "tag:minecraft:is_mace_item_destructible": {
+                            "description": "Donne le tag 'minecraft:is_mace_item_destructible' au bloc. \n Type: `Boolean` \nNote: Les masses peuvent détruire plus rapidement ce bloc.",
+                            "type": "object"
+                        },
+                        "tag:minecraft:is_pickaxe_item_destructible": {
+                            "description": "Donne le tag 'minecraft:is_pickaxe_item_destructible' au bloc. \n Type: `Boolean` \nNote: Les pioches peuvent détruire plus rapidement ce bloc.",
+                            "type": "object"
+                        },
+                        "tag:minecraft:is_shears_item_destructible": {
+                            "description": "Donne le tag 'minecraft:is_shears_item_destructible' au bloc. \n Type: `Boolean` \nNote: Les cisailles peuvent détruire plus rapidement ce bloc.",
+                            "type": "object"
+                        },
+                        "tag:minecraft:is_shovel_item_destructible": {
+                            "description": "Donne le tag 'minecraft:is_shovel_item_destructible' au bloc. \n Type: `Boolean` \nNote: Les pelles peuvent détruire plus rapidement ce bloc.",
+                            "type": "object"
+                        },
+                        "tag:minecraft:is_sword_item_destructible": {
+                            "description": "Donne le tag 'minecraft:is_sword_item_destructible' au bloc. \n Type: `Boolean` \nNote: Les épées peuvent détruire plus rapidement ce bloc.",
+                            "type": "object"
+                        },
+                        "tag:minecraft:netherite_tier_destructible": {
+                            "description": "Donne le tag 'minecraft:netherite_tier_destructible' au bloc. \n Type: `Boolean` \nNote: Les items avec un niveau de destruction de netherite peuvent détruire plus rapidement ce bloc.",
+                            "type": "object"
+                        },
+                        "tag:minecraft:stone_tier_destructible": {
+                            "description": "Donne le tag 'minecraft:stone_tier_destructible' au bloc. \n Type: `Boolean` \nNote: Les items avec un niveau de destruction de pierre peuvent détruire plus rapidement ce bloc.",
+                            "type": "object"
+                        },
+                        "tag:mob_spawner": {
+                            "description": "Donne le tag 'mob_spawner' au bloc. \n Type: `Boolean`",
+                            "type": "object"
+                        },
+                        "tag:not_feature_replaceable": {
+                            "description": "Donne le tag 'not_feature_replaceable' au bloc. \n Type: `Boolean`",
+                            "type": "object"
+                        },
+                        "tag:oak": {
+                            "description": "Donne le tag 'oak' au bloc. \n Type: `Boolean`",
+                            "type": "object"
+                        },
+                        "tag:one_way_collidable": {
+                            "description": "Donne le tag 'one_way_collidable' au bloc. \n Type: `Boolean`",
+                            "type": "object"
+                        },
+                        "tag:plant": {
+                            "description": "Donne le tag 'plant' au bloc. \n Type: `Boolean`",
+                            "type": "object"
+                        },
+                        "tag:pumpkin": {
+                            "description": "Donne le tag 'pumpkin' au bloc. \n Type: `Boolean`",
+                            "type": "object"
+                        },
+                        "tag:rail": {
+                            "description": "Donne le tag 'rail' au bloc. \n Type: `Boolean`",
+                            "type": "object"
+                        },
+                        "tag:sand": {
+                            "description": "Donne le tag 'sand' au bloc. \n Type: `Boolean`",
+                            "type": "object"
+                        },
+                        "tag:snow": {
+                            "description": "Donne le tag 'snow' au bloc. \n Type: `Boolean`",
+                            "type": "object"
+                        },
+                        "tag:spruce": {
+                            "description": "Donne le tag 'spruce' au bloc. \n Type: `Boolean`",
+                            "type": "object"
+                        },
+                        "tag:stone": {
+                            "description": "Donne le tag 'stone' au bloc. \n Type: `Boolean`",
+                            "type": "object"
+                        },
+                        "tag:stone_pick_diggable": {
+                            "description": "Donne le tag 'stone_pick_diggable' au bloc. \n Type: `Boolean`",
+                            "type": "object"
+                        },
+                        "tag:text_sign": {
+                            "description": "Donne le tag 'text_sign' au bloc. \n Type: `Boolean`",
+                            "type": "object"
+                        },
+                        "tag:trapdoors": {
+                            "description": "Donne le tag 'trapdoors' au bloc. \n Type: `Boolean`",
+                            "type": "object"
+                        },
+                        "tag:water": {
+                            "description": "Donne le tag 'water' au bloc. \n Type: `Boolean`",
+                            "type": "object"
+                        },
+                        "tag:wood": {
+                            "description": "Donne le tag 'wood' au bloc. \n Type: `Boolean`",
+                            "type": "object"
+                        },
+                        "tag:wood_pick_diggable": {
+                            "description": "Donne le tag 'wood_pick_diggable' au bloc. \n Type: `Boolean`",
+                            "type": "object"
                         }
                     }
                 },
