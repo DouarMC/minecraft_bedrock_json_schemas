@@ -724,6 +724,250 @@
                                     ]                                    
                                 }
                             }
+                        },
+                        "tag:minecraft:is_armor": {
+                            "description": "Donne le tag 'minecraft:is_armor' à l'Item. \nType: `Object` \nNote: Cela permet à l'Item d'être considéré comme une armure.",
+                            "type": "object"
+                        },
+                        "tag:minecraft:arrow": {
+                            "description": "Donne le tag 'minecraft:arrow' à l'Item. \nType: `Object",
+                            "type": "object"
+                        },
+                        "tag:minecraft:banner": {
+                            "description": "Donne le tag 'minecraft:banner' à l'Item. \nType: `Object`",
+                            "type": "object"
+                        },
+                        "tag:minecraft:boat": {
+                            "description": "Donne le tag 'minecraft:boat' à l'Item. \nType: `Object`",
+                            "type": "object"
+                        },
+                        "tag:minecraft:boats": {
+                            "description": "Donne le tag 'minecraft:boats' à l'Item. \nType: `Object`",
+                            "type": "object"
+                        },
+                        "tag:minecraft:bookshelf_books": {
+                            "description": "Donne le tag 'minecraft:bookshelf_books' à l'Item. \nType: `Object` \nNote: Un item avec ce tag peut être placé dans une bibliothèque ciselée.",
+                            "type": "object"
+                        },
+                        "tag:minecraft:chainmail_tier": {
+                            "description": "Donne le tag 'minecraft:chainmail_tier' à l'Item. \nType: `Object`",
+                            "type": "object"
+                        },
+                        "tag:minecraft:chest_boat": {
+                            "description": "Donne le tag 'minecraft:chest_boat' à l'Item. \nType: `Object`",
+                            "type": "object"
+                        },
+                        "tag:minecraft:coals": {
+                            "description": "Donne le tag 'minecraft:coals' à l'Item. \nType: `Object`",
+                            "type": "object"
+                        },
+                        "tag:minecraft:is_cooked": {
+                            "description": "Donne le tag 'minecraft:is_cooked' à l'Item. \nType: `Object`",
+                            "type": "object"
+                        },
+                        "tag:minecraft:crimson_stems": {
+                            "description": "Donne le tag 'minecraft:crimson_stems' à l'Item. \nType: `Object`",
+                            "type": "object"
+                        },
+                        "tag:minecraft:decorated_pot_sherds": {
+                            "description": "Donne le tag 'minecraft:decorated_pot_sherds' à l'Item. \nType: `Object` \nNote: Un item avec ce tag peut crafter un pot décoré.",
+                            "type": "object"
+                        },
+                        "tag:minecraft:diamond_tier": {
+                            "description": "Donne le tag 'minecraft:diamond_tier' à l'Item. \nType: `Object`",
+                            "type": "object"
+                        },
+                        "tag:minecraft:digger": {
+                            "description": "Donne le tag 'minecraft:digger' à l'Item. \nType: `Object`",
+                            "type": "object"
+                        },
+                        "tag:minecraft:door": {
+                            "description": "Donne le tag 'minecraft:door' à l'Item. \nType: `Object`",
+                            "type": "object"
+                        },
+                        "tag:minecraft:is_fish": {
+                            "description": "Donne le tag 'minecraft:is_fish' à l'Item. \nType: `Object`",
+                            "type": "object"
+                        },
+                        "tag:minecraft:is_food": {
+                            "description": "Donne le tag 'minecraft:is_food' à l'Item. \nType: `Object`",
+                            "type": "object"
+                        },
+                        "tag:minecraft:golden_tier": {
+                            "description": "Donne le tag 'minecraft:golden_tier' à l'Item. \nType: `Object`",
+                            "type": "object"
+                        },
+                        "tag:minecraft:hanging_actor": {
+                            "description": "Donne le tag 'minecraft:hanging_actor' à l'Item. \nType: `Object`",
+                            "type": "object"
+                        },
+                        "tag:minecraft:hanging_sign": {
+                            "description": "Donne le tag 'minecraft:hanging_sign' à l'Item. \nType: `Object`",
+                            "type": "object"
+                        },
+                        "tag:minecraft:is_axe": {
+                            "description": "Donne le tag 'minecraft:is_axe' à l'Item. \nType: `Object`",
+                            "type": "object"
+                        },
+                        "tag:minecraft:is_hoe": {
+                            "description": "Donne le tag 'minecraft:is_hoe' à l'Item. \nType: `Object`",
+                            "type": "object"
+                        },
+                        "tag:minecraft:horse_armor": {
+                            "description": "Donne le tag 'minecraft:horse_armor' à l'Item. \nType: `Object`",
+                            "type": "object"
+                        },
+                        "tag:minecraft:iron_tier": {
+                            "description": "Donne le tag 'minecraft:iron_tier' à l'Item. \nType: `Object`",
+                            "type": "object"
+                        },
+                        "tag:minecraft:leather_tier": {
+                            "description": "Donne le tag 'minecraft:leather_tier' à l'Item. \nType: `Object`",
+                            "type": "object"
+                        },
+                        "tag:minecraft:lectern_books": {
+                            "description": "Donne le tag 'minecraft:lectern_books' à l'Item. \nType: `Object`",
+                            "type": "object"
+                        },
+                        "tag:minecraft:logs": {
+                            "description": "Donne le tag 'minecraft:logs' à l'Item. \nType: `Object`",
+                            "type": "object"
+                        },
+                        "tag:minecraft:logs_that_burn": {
+                            "description": "Donne le tag 'minecraft:logs_that_burn' à l'Item. \nType: `Object`",
+                            "type": "object"
+                        },
+                        "tag:minecraft:mangrove_logs": {
+                            "description": "Donne le tag 'minecraft:mangrove_logs' à l'Item. \nType: `Object`",
+                            "type": "object"
+                        },
+                        "tag:minecraft:is_meat": {
+                            "description": "Donne le tag 'minecraft:is_meat' à l'Item. \nType: `Object`",
+                            "type": "object"
+                        },
+                        "tag:minecraft:is_minecart": {
+                            "description": "Donne le tag 'minecraft:is_minecart' à l'Item. \nType: `Object`",
+                            "type": "object"
+                        },
+                        "tag:minecraft:music_disc": {
+                            "description": "Donne le tag 'minecraft:music_disc' à l'Item. \nType: `Object`",
+                            "type": "object"
+                        },
+                        "tag:minecraft:netherite_tier": {
+                            "description": "Donne le tag 'minecraft:netherite_tier' à l'Item. \nType: `Object`",
+                            "type": "object"
+                        },
+                        "tag:minecraft:is_pickaxe": {
+                            "description": "Donne le tag 'minecraft:is_pickaxe' à l'Item. \nType: `Object`",
+                            "type": "object"
+                        },
+                        "tag:minecraft:piglin_loved": {
+                            "description": "Donne le tag 'minecraft:piglin_loved' à l'Item. \nType: `Object`",
+                            "type": "object"
+                        },
+                        "tag:minecraft:piglin_repellents": {
+                            "description": "Donne le tag 'minecraft:piglin_repellents' à l'Item. \nType: `Object`",
+                            "type": "object"
+                        },
+                        "tag:minecraft:planks": {
+                            "description": "Donne le tag 'minecraft:planks' à l'Item. \nType: `Object`",
+                            "type": "object"
+                        },
+                        "tag:minecraft:sand": {
+                            "description": "Donne le tag 'minecraft:sand' à l'Item. \nType: `Object`",
+                            "type": "object"
+                        },
+                        "tag:minecraft:is_shovel": {
+                            "description": "Donne le tag 'minecraft:is_shovel' à l'Item. \nType: `Object`",
+                            "type": "object"
+                        },
+                        "tag:minecraft:sign": {
+                            "description": "Donne le tag 'minecraft:sign' à l'Item. \nType: `Object`",
+                            "type": "object"
+                        },
+                        "tag:minecraft:soul_fire_base_blocks": {
+                            "description": "Donne le tag 'minecraft:soul_fire_base_blocks' à l'Item. \nType: `Object`",
+                            "type": "object"
+                        },
+                        "tag:minecraft:spawn_egg": {
+                            "description": "Donne le tag 'minecraft:spawn_egg' à l'Item. \nType: `Object`",
+                            "type": "object"
+                        },
+                        "tag:minecraft:stone_bricks": {
+                            "description": "Donne le tag 'minecraft:stone_bricks' à l'Item. \nType: `Object`",
+                            "type": "object"
+                        },
+                        "tag:minecraft:stone_crafting_materials": {
+                            "description": "Donne le tag 'minecraft:stone_crafting_materials' à l'Item. \nType: `Object`",
+                            "type": "object"
+                        },
+                        "tag:minecraft:stone_tier": {
+                            "description": "Donne le tag 'minecraft:stone_tier' à l'Item. \nType: `Object`",
+                            "type": "object"
+                        },
+                        "tag:minecraft:stone_tool_materials": {
+                            "description": "Donne le tag 'minecraft:stone_tool_materials' à l'Item. \nType: `Object`",
+                            "type": "object"
+                        },
+                        "tag:minecraft:is_sword": {
+                            "description": "Donne le tag 'minecraft:is_sword' à l'Item. \nType: `Object`",
+                            "type": "object"
+                        },
+                        "tag:minecraft:is_tool": {
+                            "description": "Donne le tag 'minecraft:is_tool' à l'Item. \nType: `Object`",
+                            "type": "object"
+                        },
+                        "tag:minecraft:is_trident": {
+                            "description": "Donne le tag 'minecraft:is_trident' à l'Item. \nType: `Object`",
+                            "type": "object"
+                        },
+                        "tag:minecraft:trim_materials": {
+                            "description": "Donne le tag 'minecraft:trim_materials' à l'Item. \nType: `Object`",
+                            "type": "object"
+                        },
+                        "tag:minecraft:trim_templates": {
+                            "description": "Donne le tag 'minecraft:trim_templates' à l'Item. \nType: `Object`",
+                            "type": "object"
+                        },
+                        "tag:minecraft:trimmable_armors": {
+                            "description": "Donne le tag 'minecraft:trimmable_armors' à l'Item. \nType: `Object`",
+                            "type": "object"
+                        },
+                        "tag:minecraft:transformable_items": {
+                            "description": "Donne le tag 'minecraft:transformable_items' à l'Item. \nType: `Object`",
+                            "type": "object"
+                        },
+                        "tag:minecraft:transform_materials": {
+                            "description": "Donne le tag 'minecraft:transform_materials' à l'Item. \nType: `Object`",
+                            "type": "object"
+                        },
+                        "tag:minecraft:transform_templates": {
+                            "description": "Donne le tag 'minecraft:transform_templates' à l'Item. \nType: `Object`",
+                            "type": "object"
+                        },
+                        "tag:minecraft:vibration_damper": {
+                            "description": "Donne le tag 'minecraft:vibration_damper' à l'Item. \nType: `Object`",
+                            "type": "object"
+                        },
+                        "tag:minecraft:warped_stems": {
+                            "description": "Donne le tag 'minecraft:warped_stems' à l'Item. \nType: `Object`",
+                            "type": "object"
+                        },
+                        "tag:minecraft:wooden_slabs": {
+                            "description": "Donne le tag 'minecraft:wooden_slabs' à l'Item. \nType: `Object`",
+                            "type": "object"
+                        },
+                        "tag:minecraft:wooden_tier": {
+                            "description": "Donne le tag 'minecraft:wooden_tier' à l'Item. \nType: `Object`",
+                            "type": "object"
+                        },
+                        "tag:minecraft:wool": {
+                            "description": "Donne le tag 'minecraft:wool' à l'Item. \nType: `Object`",
+                            "type": "object"
+                        },
+                        "tag:minecraft:is_shears": {
+                            "description": "Donne le tag 'minecraft:is_shears' à l'Item. \nType: `Object`",
+                            "type": "object"
                         }
                     }
                 }
