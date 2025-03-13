@@ -2,19 +2,13 @@
     "$schema": "http://json-schema.org/draft-07/schema#",
     "description": "Ce fichier sert à définir une table d'échanges avec une entité qui peut marchander. \nType: `Object`",
     "type": "object",
-    "required": ["format_version", "tiers"],
+    "required": ["tiers"],
     "properties": {
-        "format_version": {
-            "description": "Version du format à utiliser. \nType: `string`",
-            "type": "string",
-            "enum": ["1.21.30", "1.21.40", "1.21.50"]
-        },
         "tiers": {
             "description": "Contient les différents tiers qui sont des ensemble de transactions pouvant être proposées par l'entité. \nType: `Object[]`",
             "type": "array",
             "items": {
                 "type": "object",
-                "required": ["groups", "total_exp_required"],
                 "properties": {
                     "groups": {
                         "description": "Contient les différentes groupes de transactions qui sont un moyen de sélectionner aléatoirement les échanges qu'un marchand peut proposer dans un tier donné. \nType: `Object[]`",
