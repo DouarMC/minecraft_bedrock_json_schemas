@@ -4,6 +4,16 @@
     "type": "object",
     "required": ["texture_name", "resource_pack_name", "padding", "num_mip_levels", "texture_data"],
     "properties": {
+        "default_leather_color": {
+            "description": "Définit la couleur de base pour les armures en cuir. Type: String",
+            "type": "string",
+            "pattern": "^#[0-9a-fA-F]{6}$"
+        },
+        "default_horse_leather_color": {
+            "description": "Définit la couleur de base pour les armures de cheval en cuir. Type: String",
+            "type": "string",
+            "pattern": "^#[0-9a-fA-F]{6}$"
+        },
         "resource_pack_name": {
             "description": "Le nom du resource pack auquel ce fichier est associé. \n Type: `String`",
             "type": "string"
