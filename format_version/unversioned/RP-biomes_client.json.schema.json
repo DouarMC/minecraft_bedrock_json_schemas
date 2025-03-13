@@ -27,6 +27,10 @@
                         "description": "Détermine si le brouillard du biome doit hériter du brouillard du biome précédent dans la liste des biomes. \nType: `Boolean`",
                         "type": "boolean"
                     },
+                    "remove_all_prior_fog": {
+                        "description": "Détermine si le brouillard du biome doit supprimer tous les brouillards précédents dans la liste des biomes. \nType: `Boolean`",
+                        "type": "boolean"
+                    },
                     "water_surface_color": {
                         "description": "Définit la couleur de la surface de l'eau dans le biome. \nType: `String | Integer[3]`",
                         "oneOf": [
