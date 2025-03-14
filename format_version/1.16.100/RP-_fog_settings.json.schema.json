@@ -64,7 +64,7 @@
                                     "minimum": 0
                                 },
                                 "render_distance_type": {
-                                    "description": "Définit comment la valeur de distance est utilisée. \nType: `String`",
+                                    "description": "Définit comment la valeur de distance est utilisée. \nType: `String` \n'fixed': la distance est mesurée en blocs. \n'render': la distance est dynamique et est multipliée par la distance de rendu du joueur.",
                                     "type": "string",
                                     "enum": ["fixed", "render"]
                                 }
@@ -103,7 +103,7 @@
                                     "minimum": 0
                                 },
                                 "render_distance_type": {
-                                    "description": "Définit comment la valeur de distance est utilisée. \nType: `String`",
+                                    "description": "Définit comment la valeur de distance est utilisée. \nType: `String` \n'fixed': la distance est mesurée en blocs. \n'render': la distance est dynamique et est multipliée par la distance de rendu du joueur.",
                                     "type": "string",
                                     "enum": ["fixed", "render"]
                                 }
@@ -142,7 +142,7 @@
                                     "minimum": 0
                                 },
                                 "render_distance_type": {
-                                    "description": "Définit comment la valeur de distance est utilisée. \nType: `String`",
+                                    "description": "Définit comment la valeur de distance est utilisée. \nType: `String` \n'fixed': la distance est mesurée en blocs. \n'render': la distance est dynamique et est multipliée par la distance de rendu du joueur.",
                                     "type": "string",
                                     "enum": ["fixed", "render"]
                                 },
@@ -183,7 +183,7 @@
                                                     "minimum": 0
                                                 },
                                                 "render_distance_type": {
-                                                    "description": "Définit comment la valeur de distance est utilisée. \nType: `String`",
+                                                    "description": "Définit comment la valeur de distance est utilisée. \nType: `String` \n'fixed': la distance est mesurée en blocs. \n'render': la distance est dynamique et est multipliée par la distance de rendu du joueur.",
                                                     "type": "string",
                                                     "enum": ["fixed", "render"]
                                                 }
@@ -248,7 +248,7 @@
                                     "minimum": 0
                                 },
                                 "render_distance_type": {
-                                    "description": "Définit comment la valeur de distance est utilisée. \nType: `String`",
+                                    "description": "Définit comment la valeur de distance est utilisée. \nType: `String` \n'fixed': la distance est mesurée en blocs. \n'render': la distance est dynamique et est multipliée par la distance de rendu du joueur.",
                                     "type": "string",
                                     "enum": ["fixed", "render"]
                                 }
@@ -287,7 +287,7 @@
                                     "minimum": 0
                                 },
                                 "render_distance_type": {
-                                    "description": "Définit comment la valeur de distance est utilisée. \nType: `String`",
+                                    "description": "Définit comment la valeur de distance est utilisée. \nType: `String` \n'fixed': la distance est mesurée en blocs. \n'render': la distance est dynamique et est multipliée par la distance de rendu du joueur.",
                                     "type": "string",
                                     "enum": ["fixed", "render"]
                                 }
@@ -326,7 +326,7 @@
                                     "minimum": 0
                                 },
                                 "render_distance_type": {
-                                    "description": "Définit comment la valeur de distance est utilisée. \nType: `String`",
+                                    "description": "Définit comment la valeur de distance est utilisée. \nType: `String` \n'fixed': la distance est mesurée en blocs. \n'render': la distance est dynamique et est multipliée par la distance de rendu du joueur.",
                                     "type": "string",
                                     "enum": ["fixed", "render"]
                                 }
