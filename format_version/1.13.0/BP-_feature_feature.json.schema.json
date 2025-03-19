@@ -1872,8 +1872,615 @@
                                         "branch_end_offset_from_top": {
                                             "description": "Position de fin de la branche par rapport au haut de l'arbre. \nType: `Integer`",
                                             "type": "integer"
+                                        },
+                                        "branch_canopy": {
+                                            "description": "Configuration de la canopée de l'arbre de cerisier. \nType: `Object`",
+                                            "type": "object",
+                                            "required": [],
+                                            "properties": {
+                                                "acacia_canopy": {
+                                                    "description": "Configuration de la canopée de l'arbre d'acacia. \nType: `Object`",
+                                                    "type": "object",
+                                                    "required": ["canopy_size", "leaf_block"],
+                                                    "properties": {
+                                                        "canopy_size": {
+                                                            "description": "La taille de la canopée. \nType: `Integer`",
+                                                            "type": "integer",
+                                                            "minimum": 1
+                                                        },
+                                                        "leaf_block": {
+                                                            "description": "Le bloc qui forme la canopée. \nType: `BlockDescriptor`",
+                                                            "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                                        },
+                                                        "simplify_canopy": {
+                                                            "description": "Si 'true', la canopée utilise un motif simple. \nType: `Boolean`",
+                                                            "type": "boolean"
+                                                        }
+                                                    }
+                                                },
+                                                "canopy": {
+                                                    "description": "Configuration de la canopée. \nType: `Object`",
+                                                    "type": "object",
+                                                    "required": ["canopy_offset"],
+                                                    "properties": {
+                                                        "canopy_offset": {
+                                                            "description": "Position relative de la canopée par rapport au tronc. \nType: `Object`",
+                                                            "type": "object",
+                                                            "required": ["min", "max"],
+                                                            "properties": {
+                                                                "min": {
+                                                                    "description": "Position minimale de la canopée par rapport au tronc. \nType: `Integer`",
+                                                                    "type": "integer"
+                                                                },
+                                                                "max": {
+                                                                    "description": "Position maximale de la canopée par rapport au tronc. \nType: `Integer`",
+                                                                    "type": "integer"
+                                                                }
+                                                            }
+                                                        },
+                                                        "min_width": {
+                                                            "description": "Largeur minimale pour la canopée. \nType: `Integer`",
+                                                            "type": "integer",
+                                                            "minimum": 0
+                                                        },
+                                                        "canopy_slope": {
+                                                            "description": "Configuration de la pente de la canopée. \nType: `Object`",
+                                                            "type": "object",
+                                                            "properties": {
+                                                                "rise": {
+                                                                    "description": "Le numérateur de la pente. \nType: `Integer`",
+                                                                    "type": "integer",
+                                                                    "minimum": 1
+                                                                },
+                                                                "run": {
+                                                                    "description": "Le dénominateur de la pente. \nType: `Integer`",
+                                                                    "type": "integer",
+                                                                    "minimum": 1
+                                                                }
+                                                            }
+                                                        },
+                                                        "variation_chance": {
+                                                            "description": "Détermine la chance de créer des blocs de feuilles pour chaque couche de la canopée. Les nombres plus grands créent un arbre plus dense. \nType: `Object | Object[]`",
+                                                            "oneOf": [
+                                                                {
+                                                                    "type": "object",
+                                                                    "required": ["numerator", "denominator"],
+                                                                    "properties": {
+                                                                        "numerator": {
+                                                                            "description": "Le numérateur de la probabilité. \nType: `Integer`",
+                                                                            "type": "integer"
+                                                                        },
+                                                                        "denominator": {
+                                                                            "description": "Le dénominateur de la probabilité. \nType: `Integer`",
+                                                                            "type": "integer"
+                                                                        }
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "type": "array",
+                                                                    "items": {
+                                                                        "type": "object",
+                                                                        "required": ["numerator", "denominator"],
+                                                                        "properties": {
+                                                                            "numerator": {
+                                                                                "description": "Le numérateur de la probabilité. \nType: `Integer`",
+                                                                                "type": "integer"
+                                                                            },
+                                                                            "denominator": {
+                                                                                "description": "Le dénominateur de la probabilité. \nType: `Integer`",
+                                                                                "type": "integer"
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            ]
+                                                        },
+                                                        "leaf_block": {
+                                                            "description": "Le bloc qui forme la canopée. \nType: `BlockDescriptor`",
+                                                            "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                                        },
+                                                        "canopy_decoration": {
+                                                            "description": "Configuration de la décoration de la canopée. \nType: `Object`",
+                                                            "type": "object",
+                                                            "required": ["decoration_chance"],
+                                                            "properties": {
+                                                                "decoration_chance": {
+                                                                    "description": "Probabilité de décorer la canopée. \nType: `Object`",
+                                                                    "type": "object",
+                                                                    "required": ["numerator", "denominator"],
+                                                                    "properties": {
+                                                                        "numerator": {
+                                                                            "description": "Le numérateur de la probabilité. \nType: `Integer`",
+                                                                            "type": "integer"
+                                                                        },
+                                                                        "denominator": {
+                                                                            "description": "Le dénominateur de la probabilité. \nType: `Integer`",
+                                                                            "type": "integer"
+                                                                        }
+                                                                    }
+                                                                },
+                                                                "decoration_block": {
+                                                                    "description": "Le bloc à utilisé pour la décoration de la canopée. \nType: `BlockDescriptor`",
+                                                                    "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                                                },
+                                                                "num_steps": {
+                                                                    "description": "Nombre de blocs de décoration à placer. \nType: `Integer`",
+                                                                    "type": "integer"
+                                                                },
+                                                                "step_direction": {
+                                                                    "description": "Direction pour étaler les blocs de décoration. \nType: `String`",
+                                                                    "type": "string",
+                                                                    "enum": ["down", "up", "out", "away"]
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                },
+                                                "cherry_canopy": {
+                                                    "description": "Configuration de la canopée de cerisier. \nType: `Object`",
+                                                    "type": "object",
+                                                    "required": ["leaf_block", "height", "radius", "wide_bottom_layer_hole_chance", "corner_hole_chance", "hanging_leaves_chance", "hanging_leaves_extension_chance"],
+                                                    "properties": {
+                                                        "leaf_block": {
+                                                            "description": "Le bloc qui forme la canopée de cerisier. \nType: `BlockDescriptor`",
+                                                            "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                                        },
+                                                        "height": {
+                                                            "description": "Nombre de couches pour la canopée. \nType: `Integer`",
+                                                            "type": "integer"
+                                                        },
+                                                        "radius": {
+                                                            "description": "Le rayon de la canopée de cerisier. \nType: `Integer`",
+                                                            "type": "integer"
+                                                        },
+                                                        "trunk_width": {
+                                                            "description": "La largeur du tronc de cerisier. \nType: `Integer`",
+                                                            "type": "integer",
+                                                            "minimum": 1
+                                                        },
+                                                        "wide_bottom_layer_hole_chance": {
+                                                            "description": "Probabilité que la canopée ait un trou dans la couche inférieure. \nType: `Object`",
+                                                            "type": "object",
+                                                            "required": ["numerator", "denominator"],
+                                                            "properties": {
+                                                                "numerator": {
+                                                                    "description": "Le numérateur de la probabilité. \nType: `Integer`",
+                                                                    "type": "integer"
+                                                                },
+                                                                "denominator": {
+                                                                    "description": "Le dénominateur de la probabilité. \nType: `Integer`",
+                                                                    "type": "integer"
+                                                                }
+                                                            }
+                                                        },
+                                                        "corner_hole_chance": {
+                                                            "description": "Probabilité que la canopée ait un trou dans le coin. \nType: `Object`",
+                                                            "type": "object",
+                                                            "required": ["numerator", "denominator"],
+                                                            "properties": {
+                                                                "numerator": {
+                                                                    "description": "Le numérateur de la probabilité. \nType: `Integer`",
+                                                                    "type": "integer"
+                                                                },
+                                                                "denominator": {
+                                                                    "description": "Le dénominateur de la probabilité. \nType: `Integer`",
+                                                                    "type": "integer"
+                                                                }
+                                                            }
+                                                        },
+                                                        "hanging_leaves_chance": {
+                                                            "description": "Probabilité que la canopée ait des feuilles suspendues. \nType: `Object`",
+                                                            "type": "object",
+                                                            "required": ["numerator", "denominator"],
+                                                            "properties": {
+                                                                "numerator": {
+                                                                    "description": "Le numérateur de la probabilité. \nType: `Integer`",
+                                                                    "type": "integer"
+                                                                },
+                                                                "denominator": {
+                                                                    "description": "Le dénominateur de la probabilité. \nType: `Integer`",
+                                                                    "type": "integer"
+                                                                }
+                                                            }
+                                                        },
+                                                        "hanging_leaves_extension_chance": {
+                                                            "description": "Probabilité que les feuilles suspendues s'étendent plus bas. \nType: `Object`",
+                                                            "type": "object",
+                                                            "required": ["numerator", "denominator"],
+                                                            "properties": {
+                                                                "numerator": {
+                                                                    "description": "Le numérateur de la probabilité. \nType: `Integer`",
+                                                                    "type": "integer"
+                                                                },
+                                                                "denominator": {
+                                                                    "description": "Le dénominateur de la probabilité. \nType: `Integer`",
+                                                                    "type": "integer"
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                },
+                                                "fancy_canopy": {
+                                                    "description": "Configuration de la canopée fantaisie. \nType: `Object`",
+                                                    "type": "object",
+                                                    "required": ["height", "radius", "leaf_block"],
+                                                    "properties": {
+                                                        "height": {
+                                                            "description": "Nombre de couches pour la canopée. \nType: `Integer`",
+                                                            "type": "integer",
+                                                            "minimum": 1
+                                                        },
+                                                        "radius": {
+                                                            "description": "Le rayon de la canopée fantaisie. \nType: `Integer`",
+                                                            "type": "integer",
+                                                            "minimum": 0
+                                                        },
+                                                        "leaf_block": {
+                                                            "description": "Le bloc qui forme la canopée fantaisie. \nType: `BlockDescriptor`",
+                                                            "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                                        }
+                                                    }
+                                                },
+                                                "mangrove_canopy": {
+                                                    "description": "Configuration de la canopée de mangrove. \nType: `Object`",
+                                                    "type": "object",
+                                                    "required": ["canopy_height", "canopy_radius", "leaf_placement_attempts", "hanging_block", "hanging_block_placement_chance"],
+                                                    "properties": {
+                                                        "canopy_height": {
+                                                            "description": "Nombre de couches pour la canopée. \nType: `Integer`",
+                                                            "type": "integer"
+                                                        },
+                                                        "canopy_radius": {
+                                                            "description": "Le rayon de la canopée de mangrove. \nType: `Integer`",
+                                                            "type": "integer"
+                                                        },
+                                                        "leaf_placement_attempts": {
+                                                            "description": "Nombre maximum de tentatives pour placer les feuilles. \nType: `Integer`",
+                                                            "type": "integer",
+                                                            "minimum": 1
+                                                        },
+                                                        "leaf_blocks": {
+                                                            "description": "Les blocs avec un poids de chance pour la canopée de mangrove. \nType: `Array[]`",
+                                                            "type": "array",
+                                                            "items": {
+                                                                "type": "array",
+                                                                "minItems": 2,
+                                                                "maxItems": 2,
+                                                                "items": [
+                                                                    {
+                                                                        "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                                                    },
+                                                                    {
+                                                                        "type": "number"
+                                                                    }
+                                                                ]
+                                                            }
+                                                        },
+                                                        "canopy_decoration": {
+                                                            "description": "Configuration de la décoration de la canopée de mangrove. \nType: `Object`",
+                                                            "type": "object",
+                                                            "required": ["decoration_chance"],
+                                                            "properties": {
+                                                                "decoration_chance": {
+                                                                    "description": "Probabilité de décorer le tronc. \nType: `Object`",
+                                                                    "type": "object",
+                                                                    "required": ["numerator", "denominator"],
+                                                                    "properties": {
+                                                                        "numerator": {
+                                                                            "description": "Le numérateur de la probabilité. \nType: `Integer`",
+                                                                            "type": "integer"
+                                                                        },
+                                                                        "denominator": {
+                                                                            "description": "Le dénominateur de la probabilité. \nType: `Integer`",
+                                                                            "type": "integer"
+                                                                        }
+                                                                    }
+                                                                },
+                                                                "decoration_block": {
+                                                                    "description": "Le bloc à utilisé pour la décoration de la canopée de mangrove. \nType: `BlockDescriptor`",
+                                                                    "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                                                },
+                                                                "num_steps": {
+                                                                    "description": "Nombre de blocs de décoration à placer. \nType: `Integer`",
+                                                                    "type": "integer"
+                                                                },
+                                                                "step_direction": {
+                                                                    "description": "Direction pour étaler les blocs de décoration. \nType: `String`",
+                                                                    "type": "string",
+                                                                    "enum": ["down", "up", "out", "away"]
+                                                                }
+                                                            }
+                                                        },
+                                                        "hanging_block": {
+                                                            "description": "Le bloc à utiliser comme bloc suspendu. \nType: `BlockDescriptor`",
+                                                            "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                                        },
+                                                        "hanging_block_placement_chance": {
+                                                            "description": "Probabilité de placer un bloc suspendu. \nType: `Object`",
+                                                            "type": "object",
+                                                            "required": ["numerator", "denominator"],
+                                                            "properties": {
+                                                                "numerator": {
+                                                                    "description": "Le numérateur de la probabilité. \nType: `Integer`",
+                                                                    "type": "integer"
+                                                                },
+                                                                "denominator": {
+                                                                    "description": "Le dénominateur de la probabilité. \nType: `Integer`",
+                                                                    "type": "integer"
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                },
+                                                "mega_canopy": {
+                                                    "description": "Configuration de la canopée géante. \nType: `Object`",
+                                                    "type": "object",
+                                                    "required": ["canopy_height", "base_radius", "leaf_block"],
+                                                    "properties": {
+                                                        "canopy_height": {
+                                                            "description": "Nombre de couches pour la canopée géante. \nType: `Integer`",
+                                                            "type": "integer"
+                                                        },
+                                                        "base_radius": {
+                                                            "description": "Le rayon de la base de la canopée géante. \nType: `Integer`",
+                                                            "type": "integer",
+                                                            "minimum": 0
+                                                        },
+                                                        "core_width": {
+                                                            "description": "La largeur du tronc de la canopée géante. \nType: `Integer`",
+                                                            "type": "integer",
+                                                            "minimum": 1
+                                                        },
+                                                        "simplify_canopy": {
+                                                            "description": "Si 'true', la canopée utilise un motif simple. \nType: `Boolean`",
+                                                            "type": "boolean"
+                                                        },
+                                                        "leaf_block": {
+                                                            "description": "Le bloc qui forme la canopée géante. \nType: `BlockDescriptor`",
+                                                            "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                                        }
+                                                    }
+                                                },
+                                                "mega_pine_canopy": {
+                                                    "description": "Configuration de la canopée de pin géant. \nType: `Object`",
+                                                    "type": "object",
+                                                    "required": ["canopy_height", "base_radius", "radius_step_modifier", "leaf_block"],
+                                                    "properties": {
+                                                        "canopy_height": {
+                                                            "description": "Nombre de couches pour la canopée de pin géant. \nType: `Integer`",
+                                                            "type": "integer"
+                                                        },
+                                                        "base_radius": {
+                                                            "description": "Le rayon de la base de la canopée de pin géant. \nType: `Integer`",
+                                                            "type": "integer",
+                                                            "minimum": 0
+                                                        },
+                                                        "radius_step_modifier": {
+                                                            "description": "Modificateur pour le rayon de la base de la canopée de pin géant. \nType: `Number`",
+                                                            "type": "number",
+                                                            "minimum": 0
+                                                        },
+                                                        "core_width": {
+                                                            "description": "La largeur du tronc de la canopée de pin géant. \nType: `Integer`",
+                                                            "type": "integer",
+                                                            "minimum": 1
+                                                        },
+                                                        "leaf_block": {
+                                                            "description": "Le bloc qui forme la canopée de pin géant. \nType: `BlockDescriptor`",
+                                                            "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                                        }
+                                                    }
+                                                },
+                                                "pine_canopy": {
+                                                    "description": "Configuration de la canopée de pin. \nType: `Object`",
+                                                    "type": "object",
+                                                    "required": ["canopy_height", "base_radius", "leaf_block"],
+                                                    "properties": {
+                                                        "canopy_height": {
+                                                            "description": "Nombre de couches pour la canopée de pin. \nType: `Integer`",
+                                                            "type": "integer"
+                                                        },
+                                                        "base_radius": {
+                                                            "description": "Le rayon de la base de la canopée de pin. \nType: `Integer`",
+                                                            "type": "integer",
+                                                            "minimum": 1
+                                                        },
+                                                        "leaf_block": {
+                                                            "description": "Le bloc qui forme la canopée de pin. \nType: `BlockDescriptor`",
+                                                            "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                                        }
+                                                    }
+                                                },
+                                                "roofed_canopy": {
+                                                    "description": "Configuration de la canopée de forêt sombre. \nType: `Object`",
+                                                    "type": "object",
+                                                    "required": ["canopy_height", "core_width", "outer_radius", "inner_radius", "leaf_block"],
+                                                    "properties": {
+                                                        "canopy_height": {
+                                                            "description": "Nombre de couches pour la canopée de forêt sombre. \nType: `Integer`",
+                                                            "type": "integer",
+                                                            "minimum": 3
+                                                        },
+                                                        "core_width": {
+                                                            "description": "La largeur du tronc de la canopée de forêt sombre. \nType: `Integer`",
+                                                            "type": "integer",
+                                                            "minimum": 1
+                                                        },
+                                                        "outer_radius": {
+                                                            "description": "Le rayon de la base et de la couche supérieure de la canopée de forêt sombre. \nType: `Integer`",
+                                                            "type": "integer",
+                                                            "minimum": 0
+                                                        },
+                                                        "inner_radius": {
+                                                            "description": "Le rayon des couches intermédiaires de la canopée de forêt sombre. \nType: `Integer`",
+                                                            "type": "integer",
+                                                            "minimum": 0
+                                                        },
+                                                        "leaf_block": {
+                                                            "description": "Le bloc qui forme la canopée de forêt sombre. \nType: `BlockDescriptor`",
+                                                            "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                                        }
+                                                    }
+                                                },
+                                                "spruce_canopy": {
+                                                    "description": "Configuration de la canopée d'épicéa. \nType: `Object`",
+                                                    "type": "object",
+                                                    "required": ["lower_offset", "upper_offset", "max_radius", "leaf_block"],
+                                                    "properties": {
+                                                        "lower_offset": {
+                                                            "description": "Décalage de la position minimale de la canopée par rapport au tronc. \nType: `Integer`",
+                                                            "type": "integer"
+                                                        },
+                                                        "upper_offset": {
+                                                            "description": "Décalage de la position maximale de la canopée par rapport au tronc. \nType: `Integer`",
+                                                            "type": "integer"
+                                                        },
+                                                        "max_radius": {
+                                                            "description": "Rayon maximal de la canopée d'épicéa. \nType: `Integer`",
+                                                            "type": "integer",
+                                                            "minimum": 0
+                                                        },
+                                                        "leaf_block": {
+                                                            "description": "Le bloc qui forme la canopée d'épicéa. \nType: `BlockDescriptor`",
+                                                            "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                                        }
+                                                    }
+                                                }
+                                            }
                                         }
                                     }
+                                }
+                            }
+                        },
+                        "fallen_trunk": {
+                            "description": "Définit les propriétés du tronc tombé. \nType: `Object`",
+                            "type": "object",
+                            "required": ["log_length", "trunk_block"],
+                            "properties": {
+                                "log_length": {
+                                    "description": "Longueur du tronc tombé. \nType: `Integer`",
+                                    "type": "integer"
+                                },
+                                "stump_height": {
+                                    "description": "Hauteur de la souche. \nType: `Integer`",
+                                    "type": "integer"
+                                },
+                                "height_modifier": {
+                                    "description": "Modificateur pour la longueur du tronc tombé. \nType: `Number`",
+                                    "type": "number"
+                                },
+                                "trunk_block": {
+                                    "description": "Le bloc qui forme le tronc tombé. \nType: `BlockDescriptor`",
+                                    "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                },
+                                "log_decoration_feature": {
+                                    "description": "Feature qui peut être utilisée pour décorer le tronc tombé. \nType: `String`",
+                                    "type": "string"
+                                },
+                                "trunk_decoration": {
+                                    "description": "Configuration de la décoration du tronc tombé. \nType: `Object`",
+                                    "type": "object",
+                                    "required": ["decoration_chance"],
+                                    "properties": {
+                                        "decoration_chance": {
+                                            "description": "Probabilité de décorer le tronc tombé. \nType: `Object`",
+                                            "type": "object",
+                                            "required": ["numerator", "denominator"],
+                                            "properties": {
+                                                "numerator": {
+                                                    "description": "Le numérateur de la probabilité. \nType: `Integer`",
+                                                    "type": "integer"
+                                                },
+                                                "denominator": {
+                                                    "description": "Le dénominateur de la probabilité. \nType: `Integer`",
+                                                    "type": "integer"
+                                                }
+                                            }
+                                        },
+                                        "decoration_block": {
+                                            "description": "Le bloc à utilisé pour la décoration du tronc tombé. \nType: `BlockDescriptor`",
+                                            "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                        },
+                                        "num_steps": {
+                                            "description": "Nombre de blocs de décoration à placer. \nType: `Integer`",
+                                            "type": "integer"
+                                        },
+                                        "step_direction": {
+                                            "description": "Direction pour étaler les blocs de décoration. \nType: `String`",
+                                            "type": "string",
+                                            "enum": ["down", "up", "out", "away"]
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "fancy_trunk": {
+                            "description": "Définit les propriétés du tronc fantaisie. \nType: `Object`",
+                            "type": "object",
+                            "required": ["trunk_height", "trunk_width", "branches", "trunk_block", "width_scale", "foliage_altitude_factor"],
+                            "properties": {
+                                "trunk_height": {
+                                    "description": "Configuration de la hauteur du tronc fantaisie. \nType: `Object`",
+                                    "type": "object",
+                                    "required": ["base", "variance", "scale"],
+                                    "properties": {
+                                        "base": {
+                                            "description": "La hauteur minimale du tronc fantaisie. \nType: `Integer`",
+                                            "type": "integer",
+                                            "minimum": 1
+                                        },
+                                        "variance": {
+                                            "description": "Variance de la hauteur du tronc fantaisie. \nType: `Integer`",
+                                            "type": "integer",
+                                            "minimum": 1
+                                        },
+                                        "scale": {
+                                            "description": "Hauteur finale de l'arbre multipliée par cette échelle. L'échelle maximale prise en charge est de 1. \nType: `Number`",
+                                            "type": "number",
+                                            "maximum": 1
+                                        }
+                                    }
+                                },
+                                "trunk_width": {
+                                    "description": "La largeur du tronc fantaisie. \nType: `Integer`",
+                                    "type": "integer",
+                                    "minimum": 1
+                                },
+                                "branches": {
+                                    "description": "Configuration de l'objet pour les branches de l'arbre fantaisie. \nType: `Object`",
+                                    "type": "object",
+                                    "required": ["slope", "density", "min_altitude_factor"],
+                                    "properties": {
+                                        "slope": {
+                                            "description": "Pente pour la branche, où 0 est horizontal et 1 est vertical. \nType: `Number`",
+                                            "type": "number"
+                                        },
+                                        "density": {
+                                            "description": "Densité de la végétation. \nType: `Number`",
+                                            "type": "number"
+                                        },
+                                        "min_altitude_factor": {
+                                            "description": "Hauteur minimale pour les branches. Représentée par un pourcentage de la hauteur de l'arbre. \nType: `Number`",
+                                            "type": "number",
+                                            "minimum": 0,
+                                            "maximum": 1
+                                        }
+                                    }
+                                },
+                                "trunk_block": {
+                                    "description": "Le bloc qui forme le tronc de l'arbre fantaisie. \nType: `BlockDescriptor`",
+                                    "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                },
+                                "width_scale": {
+                                    "description": "Modificateur d'échelle pour le rayon de l'arbre. \nType: `Number`",
+                                    "type": "number",
+                                    "minimum": 0
+                                },
+                                "foliage_altitude_factor": {
+                                    "description": "Hauteur minimale pour la végétation. Représentée par un pourcentage de la hauteur de l'arbre. \nType: `Number`",
+                                    "type": "number",
+                                    "minimum": 0,
+                                    "maximum": 1
                                 }
                             }
                         }
