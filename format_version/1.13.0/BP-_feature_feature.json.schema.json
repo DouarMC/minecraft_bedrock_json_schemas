@@ -1804,6 +1804,78 @@
                                     }
                                 }
                             }
+                        },
+                        "cherry_trunk": {
+                            "description": "Définit les propriétés du tronc de cerisier. \nType: `Object`",
+                            "type": "object",
+                            "required": ["trunk_block", "trunk_height", "branches"],
+                            "properties": {
+                                "trunk_block": {
+                                    "description": "Le bloc qui forme le tronc de cerisier. \nType: `BlockDescriptor`",
+                                    "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                },
+                                "trunk_height": {
+                                    "description": "Configuration de la hauteur du tronc de cerisier. \nType: `Object`",
+                                    "type": "object",
+                                    "required": ["base"],
+                                    "properties": {
+                                        "base": {
+                                            "description": "La hauteur minimale du tronc de cerisier. \nType: `Integer`",
+                                            "type": "integer",
+                                            "minimum": 2
+                                        },
+                                        "intervals": {
+                                            "description": "Intervalle utilisé pour randomiser la hauteur du tronc, la valeur de chaque intervalle créera un nombre aléatoire où (0 <= rand < interval), et sera ajoutée à la hauteur. \nType: `Integer[]`",
+                                            "type": "array",
+                                            "items": {
+                                                "type": "integer",
+                                                "minimum": 1
+                                            }   
+                                        }
+                                    }
+                                },
+                                "branches": {
+                                    "description": "Configuration des branches de l'arbre de cerisier. \nType: `Object`",
+                                    "type": "object",
+                                    "required": ["branch_horizontal_length", "branch_start_offset_from_top", "branch_end_offset_from_top"],
+                                    "properties": {
+                                        "tree_type_weights": {
+                                            "description": "Configuration de l'objet pour choisir une variante d'arbre basée sur un nombre aléatoire pondéré. \nType: `Object`",
+                                            "type": "object",
+                                            "required": ["one_branch", "two_branches", "two_branches_and_trunk"],
+                                            "properties": {
+                                                "one_branch": {
+                                                    "description": "Poids pour la variante d'arbre avec une branche. \nType: `Integer`",
+                                                    "type": "integer",
+                                                    "minimum": 0
+                                                },  
+                                                "two_branches": {
+                                                    "description": "Poids pour la variante d'arbre avec deux branches. \nType: `Integer`",
+                                                    "type": "integer",
+                                                    "minimum": 0
+                                                },
+                                                "two_branches_and_trunk": {
+                                                    "description": "Poids pour la variante d'arbre avec trois branches. \nType: `Integer`",
+                                                    "type": "integer",
+                                                    "minimum": 0
+                                                }
+                                            }
+                                        },
+                                        "branch_horizontal_length": {
+                                            "description": "Longueur de la branche dans l'axe X/Z. \nType: `Integer`",
+                                            "type": "integer"
+                                        },
+                                        "branch_start_offset_from_top": {
+                                            "description": "Position de départ de la branche par rapport au haut de l'arbre. \nType: `Integer`",
+                                            "type": "integer"
+                                        },
+                                        "branch_end_offset_from_top": {
+                                            "description": "Position de fin de la branche par rapport au haut de l'arbre. \nType: `Integer`",
+                                            "type": "integer"
+                                        }
+                                    }
+                                }
+                            }
                         }
                     }
                 }
