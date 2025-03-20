@@ -8,7 +8,7 @@
             "description": "La version du format à utiliser. \nType: `String`",
             "type": "string",
             "enum": [
-                "1.13.0", "1.14.0", "1.14.1", "1.14.20", "1.14.30", "1.15.0", "1.16.0", "1.16.20", "1.16.100", "1.16.200", "1.16.210", "1.16.220", "1.16.230", "1.17.0", "1.17.10", "1.17.20", "1.17.30", "1.17.40", "1.18.0", "1.18.10", "1.18.20", "1.18.30", "1.18.40", "1.19.0", "1.19.10", "1.19.20", "1.19.30", "1.19.40", "1.19.50", "1.19.60", "1.19.70", "1.19.80", "1.20.0", "1.20.10", "1.20.20", "1.20.30", "1.20.40", "1.20.50", "1.20.60", "1.20.70", "1.20.80", "1.21.0"
+                "1.21.40", "1.21.50", "1.21.60"
             ]
         }
     },
@@ -623,7 +623,7 @@
                 "minecraft:scatter_feature": {
                     "description": "Définition d'une Feature qui réparit une Feature à travers un chunk. \nType: `Object`",
                     "type": "object",
-                    "required": ["description", "places_feature"],
+                    "required": ["description", "places_feature", "distribution"],
                     "properties": {
                         "description": {
                             "description": "Contient l'identifiant de la Feature. \nType: `Object`",
@@ -645,101 +645,114 @@
                             "description": "Si vrai, projette l'entrée de la Feature sur le sol avant de placer la Feature. Si faux ou non défini, l'entrée de la Feature est utilisée telle quelle. \nType: `Boolean`",
                             "type": "boolean"
                         },
-                        "z": {
-                            "description": "Distribution pour la coordonnée (évaluée à chaque itération). \nType: `Molang | Object`",
-                            "oneOf": [
-                                {
+                        "distribution": {
+                            "description": "Les paramètres qui contrôlent la dispersion initiale de la feature, définissant comment et où elle est répartie dans le monde. \nType: `Object`",
+                            "type": "object",
+                            "required": ["iterations", "z", "x", "y"],
+                            "properties": {
+                                "z": {
+                                    "description": "Distribution pour la coordonnée (évaluée à chaque itération). \nType: `Molang | Object`",
+                                    "oneOf": [
+                                        {
+                                            "oneOf": [
+                                                {
+                                                    "type": "string"
+                                                },
+                                                {
+                                                    "type": "number"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "object",
+                                            "required": ["distribution", "extent"],
+                                            "properties": {
+                                                "distribution": {
+                                                    "description": "Type de distribution à utiliser. \nType: `String`",
+                                                    "type": "string",
+                                                    "enum": ["uniform", "gaussian", "inverse_gaussian", "triangle", "fixed_grid", "jittered_grid"]
+                                                },
+                                                "extent": {
+                                                    "description": "Les bornes inférieure et supérieure (incluses) définissent la plage de dispersion, en tant que décalage par rapport au point d'entrée autour duquel la feature est dispersée. \nType: `Molang[2]`",
+                                                    "type": "array",
+                                                    "minItems": 2,
+                                                    "maxItems": 2,
+                                                    "items": {
+                                                        "oneOf": [
+                                                            {
+                                                                "type": "number"
+                                                            },
+                                                            {
+                                                                "type": "string"
+                                                            }
+                                                        ]
+                                                    }
+                                                },
+                                                "step_size": {
+                                                    "description": "Lorsque le type de distribution est 'grid', définit la distance entre les étapes le long de cet axe. \nType: `Integer`",
+                                                    "type": "integer",
+                                                    "minimum": 1
+                                                },
+                                                "grid_offset": {
+                                                    "description": "Lorsque le type de distribution est 'grid', définit le décalage le long de cet axe. \nType: `Integer`",
+                                                    "type": "integer",
+                                                    "minimum": 0
+                                                }
+                                            }
+                                        }
+                                    ]
+                                },
+                                "iterations": {
+                                    "description": "Nombre d'itérations pour générer des positions dispersées. \nType: `Molang`",
                                     "oneOf": [
                                         {
                                             "type": "string"
                                         },
                                         {
-                                            "type": "number"
+                                            "type": "integer"
                                         }
                                     ]
                                 },
-                                {
-                                    "type": "object",
-                                    "required": ["distribution", "extent"],
-                                    "properties": {
-                                        "distribution": {
-                                            "description": "Type de distribution à utiliser. \nType: `String`",
-                                            "type": "string",
-                                            "enum": ["uniform", "gaussian", "inverse_gaussian", "triangle", "fixed_grid", "jittered_grid"]
+                                "scatter_chance": {
+                                    "description": "Probabilité que cette dispersion se produise. Non évalué à chaque itération; soit aucune itération ne sera exécutée, soit toutes le seront. \nType: `Molang | Object`",
+                                    "oneOf": [
+                                        {
+                                            "type": "number"
                                         },
-                                        "extent": {
-                                            "description": "Les bornes inférieure et supérieure (incluses) définissent la plage de dispersion, en tant que décalage par rapport au point d'entrée autour duquel la feature est dispersée. \nType: `Molang[2]`",
-                                            "type": "array",
-                                            "minItems": 2,
-                                            "maxItems": 2,
-                                            "items": {
-                                                "oneOf": [
-                                                    {
-                                                        "type": "number"
-                                                    },
-                                                    {
-                                                        "type": "string"
-                                                    }
-                                                ]
+                                        {
+                                            "type": "string"
+                                        },
+                                        {
+                                            "type": "object",
+                                            "required": ["numerator", "denominator"],
+                                            "properties": {
+                                                "numerator": {
+                                                    "description": "Le numérateur de la probabilité. \nType: `Integer`",
+                                                    "type": "integer",
+                                                    "minimum": 1
+                                                },
+                                                "denominator": {
+                                                    "description": "Le dénominateur de la probabilité. \nType: `Integer`",
+                                                    "type": "integer",
+                                                    "minimum": 1
+                                                }
                                             }
-                                        },
-                                        "step_size": {
-                                            "description": "Lorsque le type de distribution est 'grid', définit la distance entre les étapes le long de cet axe. \nType: `Integer`",
-                                            "type": "integer",
-                                            "minimum": 1
-                                        },
-                                        "grid_offset": {
-                                            "description": "Lorsque le type de distribution est 'grid', définit le décalage le long de cet axe. \nType: `Integer`",
-                                            "type": "integer",
-                                            "minimum": 0
                                         }
-                                    }
-                                }
-                            ]
-                        },
-                        "iterations": { 
-                            "description": "Nombre d'itérations pour générer des positions dispersées. \nType: `Molang`",
-                            "oneOf": [
-                                {
-                                    "type": "string"
+                                    ]
                                 },
-                                {
-                                    "type": "integer"
-                                }
-                            ]
-                        },
-                        "scatter_chance": {
-                            "description": "Probabilité que cette dispersion se produise. Non évalué à chaque itération; soit aucune itération ne sera exécutée, soit toutes le seront. \nType: `Molang | Object`",
-                            "oneOf": [
-                                {
-                                    "type": "number"
+                                "coordinate_eval_order": {
+                                    "description": "L'ordre dans lequel les coordonnées seront évaluées. Doit être utilisé lorsqu'une coordonnée dépend d'une autre. Si omis, les valeurs par défaut à 'xzy'. \nType: `String`",
+                                    "default": "xzy",
+                                    "type": "string",
+                                    "enum": ["xzy", "xyz", "yxz", "yzx", "zxy", "zyx"]
                                 },
-                                {
-                                    "type": "string"
+                                "x": {
+                                    "$ref": "#/properties/minecraft:feature_rules/properties/distribution/properties/z"
                                 },
-                                {
-                                    "type": "object",
-                                    "required": ["numerator", "denominator"],
-                                    "properties": {
-                                        "numerator": {
-                                            "description": "Le numérateur de la probabilité. \nType: `Integer`",
-                                            "type": "integer",
-                                            "minimum": 1
-                                        },
-                                        "denominator": {
-                                            "description": "Le dénominateur de la probabilité. \nType: `Integer`",
-                                            "type": "integer",
-                                            "minimum": 1
-                                        }
-                                    }
+                                "y": {
+                                    "$ref": "#/properties/minecraft:feature_rules/properties/distribution/properties/z"
                                 }
-                            ]
-                        },
-                        "x": {
-                            "$ref": "#/properties/minecraft:feature_rules/properties/distribution/properties/z"
-                        },
-                        "y": {
-                            "$ref": "#/properties/minecraft:feature_rules/properties/distribution/properties/z"
+                            }
                         }
                     }
                 }
@@ -861,8 +874,28 @@
                             }
                         },
                         "places_block": {
-                            "description": "Le bloc à placer. \nType: `BlockDescriptor`",
-                            "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                            "description": "Le bloc à placer. \nType: `BlockDescriptor | Object[]`",
+                            "oneOf": [
+                                {
+                                    "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                },
+                                {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "required": ["block", "weight"],
+                                        "properties": {
+                                            "block": {
+                                                "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                            },
+                                            "weight": {
+                                                "description": "Poids de chances du bloc. \nType: `Integer`",
+                                                "type": "integer"
+                                            }
+                                        }
+                                    }
+                                }
+                            ]
                         },
                         "enforce_placement_rules": {
                             "description": "Si vrai, applique les règles de placement du bloc. \nType: `Boolean`",
@@ -997,6 +1030,20 @@
                                             }
                                         }
                                     ]
+                                },
+                                "diagonal": {
+                                    "description": "Le ou les blocs qui peuvent être placés en diagonale du bloc de cette Feature. \nType: `BlockDescriptor | BlockDescriptor[]`",
+                                    "oneOf": [
+                                        {
+                                            "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                        },
+                                        {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                            }
+                                        }
+                                    ]
                                 }
                             }
                         },
@@ -1005,6 +1052,142 @@
                             "type": "array",
                             "items": {
                                 "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                            }
+                        },
+                        "randomize_rotation": {
+                            "description": "Si vrai, faites pivoter le bloc de manière aléatoire. \nType: `Boolean`",
+                            "type": "boolean"
+                        },
+                        "may_not_attach_to": {
+                            "description": "Les blocs qui ne peuvent pas être placés à proximité du bloc de cette Feature. Omettez ce champ pour autoriser n'importe quel bloc à être placé. \nType: `Object`",
+                            "type": "object",
+                            "properties": {
+                                "top": {
+                                    "description": "Le ou les blocs qui ne peuvent pas être placés au-dessus du bloc de cette Feature. \nType: `BlockDescriptor | BlockDescriptor[]`",
+                                    "oneOf": [
+                                        {
+                                            "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                        },
+                                        {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                            }
+                                        }
+                                    ]
+                                },
+                                "bottom": {
+                                    "description": "Le ou les blocs qui ne peuvent pas être placés en dessous du bloc de cette Feature. \nType: `BlockDescriptor | BlockDescriptor[]`",
+                                    "oneOf": [
+                                        {
+                                            "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                        },
+                                        {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                            }
+                                        }
+                                    ]
+                                },
+                                "north": {
+                                    "description": "Le ou les blocs qui ne peuvent pas être placés au nord du bloc de cette Feature. \nType: `BlockDescriptor | BlockDescriptor[]`",
+                                    "oneOf": [
+                                        {
+                                            "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                        },
+                                        {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                            }
+                                        }
+                                    ]
+                                },
+                                "east": {
+                                    "description": "Le ou les blocs qui ne peuvent pas être placés à l'est du bloc de cette Feature. \nType: `BlockDescriptor | BlockDescriptor[]`",
+                                    "oneOf": [
+                                        {
+                                            "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                        },
+                                        {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                            }
+                                        }
+                                    ]
+                                },
+                                "south": {
+                                    "description": "Le ou les blocs qui ne peuvent pas être placés au sud du bloc de cette Feature. \nType: `BlockDescriptor | BlockDescriptor[]`",
+                                    "oneOf": [
+                                        {
+                                            "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                        },
+                                        {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                            }
+                                        }
+                                    ]
+                                },
+                                "west": {
+                                    "description": "Le ou les blocs qui ne peuvent pas être placés à l'ouest du bloc de cette Feature. \nType: `BlockDescriptor | BlockDescriptor[]`",
+                                    "oneOf": [
+                                        {
+                                            "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                        },
+                                        {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                            }
+                                        }
+                                    ]
+                                },
+                                "all": {
+                                    "description": "Le ou les blocs qui ne peuvent pas être placés de tous les côtés du bloc de cette Feature. \nType: `BlockDescriptor | BlockDescriptor[]`",
+                                    "oneOf": [
+                                        {
+                                            "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                        },
+                                        {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                            }
+                                        }
+                                    ]
+                                },
+                                "sides": {
+                                    "description": "Le ou les blocs qui ne peuvent pas être placés sur les côtés du bloc de cette Feature. \nType: `BlockDescriptor | BlockDescriptor[]`",
+                                    "oneOf": [
+                                        {
+                                            "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                        },
+                                        {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                            }
+                                        }
+                                    ]
+                                },
+                                "diagonal": {
+                                    "description": "Le ou les blocs qui ne peuvent pas être placés en diagonale du bloc de cette Feature. \nType: `BlockDescriptor | BlockDescriptor[]`",
+                                    "oneOf": [
+                                        {
+                                            "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                        },
+                                        {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                            }
+                                        }
+                                    ]
+                                }
                             }
                         }
                     }
