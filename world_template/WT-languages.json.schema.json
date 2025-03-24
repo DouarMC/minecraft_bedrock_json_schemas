@@ -1,0 +1,5 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "description": "La liste de toutes les langues utilisés pour le nom et la description de cette World Tamplate. \nType : String[]",
+    "$ref": "../format_version/unversioned/WT-languages.json.schema.json"
+}

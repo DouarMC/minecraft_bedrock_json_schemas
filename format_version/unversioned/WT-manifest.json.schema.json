@@ -1,0 +1,100 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "description": "Ce fichier contient toutes les informations basiques d'une World Template. \nType: `Object`",
+    "type": "object",
+    "required": ["format_version", "header", "modules"],
+    "properties": {
+        "format_version": {
+            "description": "La version de la syntaxe à utiliser pour ce fichier. \nType: `Integer`",
+            "const": 2
+        },
+        "header": {
+            "description": "Contient les principales informations et configurations de la World Template. \nType: `Object`",
+            "type": "object",
+            "required": ["name", "description", "uuid", "version", "base_game_version", "lock_template_options"],
+            "properties": {
+                "name": {
+                    "description": "Nom affiché de la World Template. \nType: `Localization String`",
+                    "type": "string"
+                },
+                "description": {
+                    "description": "Description de la World Template. \nType: `Localization String`",
+                    "type": "string"
+                },
+                "uuid": {
+                    "description": "UUID de la World Template. \nType: `String`",
+                    "$ref": "../../common.schema.json#/definitions/uuid"
+                },
+                "version": {
+                    "description": "Version de la World Template. \nType: `Integer[3]`",
+                    "type": "array",
+                    "minItems": 3,
+                    "maxItems": 3,
+                    "items": {
+                        "type": "integer",
+                        "minimum": 0
+                    }
+                },
+                "base_game_version": {
+                    "description": "Vérouille la World Template à une version spécifique de Minecraft pour éviter des bugs liés aux mises à jour. Si une mise à jour change le comportement des entités, le monde peut casser. \nType: `Integer[3] | String` \nNote: La version minimale est `[1, 13, 0]`. \nNote: Il est posible d'utiliser `*` si le contenu n'est pas affecté par les mises à jour.",
+                    "default": "*",
+                    "oneOf": [
+                        {
+                            "type": "array",
+                            "minItems": 3,
+                            "maxItems": 3,
+                            "items": {
+                                "type": "integer",
+                                "minimum": 0
+                            }
+                        },
+                        {
+                            "const": "*"
+                        }
+                    ]
+                },
+                "allow_random_seed": {
+                    "description": "Cette option définit si une seed aléatoire sera générée à chaque fois qu'une Template est chargée et autorise le joueur à la modifier avant de créer le monde. \nType: `Boolean`",
+                    "default": false,
+                    "type": "boolean"
+                },
+                "lock_template_options": {
+                    "description": "Définit si les options du monde crée à partir de la Template sont verrouillées. \nType: `Boolean`",
+                    "type": "boolean"
+                }
+            }
+        },
+        "modules": {
+            "description": "Informations sur le type de contenu importé. \nType: `Object[]`",
+            "type": "array",
+            "items": {
+                "type": "object",
+                "required": ["uuid", "version", "type"],
+                "properties": {
+                    "type": {
+                        "description": "Type du Module. \nType: `String`",
+                        "const": "world_template"
+                    },
+                    "uuid": {
+                        "description": "UUID du module. \nType: `String` \nNote: Doit être différent de l'UUID de l'en-tête.",
+                        "$ref": "../../common.schema.json#/definitions/uuid"
+                    },
+                    "version": {
+                        "description": "Version du module. \nType: `Integer[3]`",
+                        "type": "array",
+                        "minItems": 3,
+                        "maxItems": 3,
+                        "items": {
+                            "type": "integer",
+                            "minimum": 0
+                        }
+                    },
+                    "description": {
+                        "description": "Description du module. \nType: `String`",
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    }
+}

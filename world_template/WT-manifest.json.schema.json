@@ -1,0 +1,5 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "description": "Ce fichier contient toutes les informations basiques d'une World Template. \nType: `Object`",
+    "$ref": "../format_version/unversioned/WT-manifest.json.schema.json"
+}
