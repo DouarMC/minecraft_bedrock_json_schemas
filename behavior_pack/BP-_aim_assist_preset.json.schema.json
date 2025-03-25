@@ -1,18 +1,18 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema#",
-    "description": "[EXPERIMENTALE]: Ce fichier sert à créer un preset d'Aim-Assist.",
+    "description": "Ce fichier sert à créer un preset d'Aim-Assist. \nType: `Object`",
     "type": "object",
     "required": ["format_version"],
     "properties": {
         "format_version": {
             "description": "La version du Format à utiliser. \nType: `String` \nNote: La version minimum est `1.21.50`.",
             "$ref": "../common.schema.json#/definitions/minecraft_version",
-            "examples": ["1.21.50", "1.21.60"]
+            "examples": ["1.21.50", "1.21.60", "1.21.70"]
         }
     },
     "allOf": [
         {
-            "if": {"properties": {"format_version": {"enum": ["1.21.50", "1.21.60"]}}},
+            "if": {"properties": {"format_version": {"enum": ["1.21.50", "1.21.60", "1.21.70"]}}},
             "then": {"$ref": "../format_version/1.21.50/BP-_aim_assist_preset.json.schema.json"}
         }
     ]
