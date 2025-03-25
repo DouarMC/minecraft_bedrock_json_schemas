@@ -1605,6 +1605,10 @@
                             "description": "L'événement à déclencher. \nType: `String`",
                             "type": "string"
                         },
+                        "filters": {
+                            "description": "Les filtres servant de conditions pour déclencher l'événement. \nType: `MinecraftFilter`",
+                            "$ref": "#/definitions/minecraft_filter"
+                        },
                         "target": {
                             "description": "La cible de l'événement. \nType: `String`",
                             "default": "self",

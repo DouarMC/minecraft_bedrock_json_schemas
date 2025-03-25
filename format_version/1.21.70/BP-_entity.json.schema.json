@@ -8,7 +8,7 @@
             "description": "La version du Format à utiliser.",
             "type": "string",
             "enum": [
-                "1.20.70", "1.20.80", "1.21.0"
+                "1.21.70"
             ]
         },
         "use_beta_features": {
@@ -185,29 +185,6 @@
                                             "additionalProperties": {
                                                 "type": "string"
                                             }
-                                        }
-                                    ]
-                                }
-                            }
-                        },
-                        "aliases": {
-                            "description": "Définit des alias pour l'Entité. Un alias est une sorte de variante de l'Entité qui varie en fonction des propriétés d'entités qui lui sont attribués. \nType: `Object`",
-                            "type": "object",
-                            "propertyNames": {
-                                "pattern": "^[a-zA-Z0-9_]+:[a-zA-Z0-9_]+$"
-                            },
-                            "additionalProperties": {
-                                "type": "object",
-                                "additionalProperties": {
-                                    "oneOf": [
-                                        {
-                                            "type": "boolean"
-                                        },
-                                        {
-                                            "type": "number"
-                                        },
-                                        {
-                                            "type": "string"
                                         }
                                     ]
                                 }
@@ -1226,9 +1203,7 @@
                                 "width": {
                                     "description": "La largeur de la boîte de collision de l'Entité. \nType: `Number`",
                                     "default": 1.0,
-                                    "type": "number",
-                                    "minimum": -100000000,
-                                    "maximum": 100000000
+                                    "type": "number"
                                 }
                             }
                         },
@@ -8213,7 +8188,7 @@
                                 },
                                 "use_home_position_restriction": {
                                     "description": "Si vrai, l'entité ne choisira que des points à proximité de sa position d'origine. \nType: `Boolean`",
-                                    "default": false,
+                                    "default": true,
                                     "type": "boolean"
                                 },
                                 "xz_dist": {

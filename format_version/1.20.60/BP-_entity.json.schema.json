@@ -571,9 +571,16 @@
                                     ]
                                 },
                                 "effect_duration": {
-                                    "description": "Durée en secondes de l'effet appliqué à l'entité touchée. \nType: `Number`",
+                                    "description": "Durée en secondes de l'effet appliqué à l'entité touchée. \nType: `Number | String`",
                                     "default": 0.0,
-                                    "type": "number"
+                                    "oneOf": [
+                                        {
+                                            "type": "number"
+                                        },
+                                        {
+                                            "const": "infinite"
+                                        }
+                                    ]
                                 },
                                 "effect_name": {
                                     "description": "Nom de l'effet appliqué à l'entité touchée. \nType: `String`",
@@ -704,6 +711,10 @@
                                     }
                                 }
                             }
+                        },
+                        "minecraft:body_rotation_axis_aligned": {
+                            "description": "Fait tourner automatiquement le corps de l'entité pour s'aligner sur la direction cardinale la plus proche en fonction de sa direction de face actuelle. \nType: `Object` \nNote: Combiner cela avec le composant `minecraft:body_rotation_blocked` fera en sorte que l'entité s'aligne sur la direction cardinale la plus proche et reste fixe dans cette orientation, indépendamment des futurs changements de sa direction de face.",
+                            "type": "object"
                         },
                         "minecraft:body_rotation_blocked": {
                             "description": "Lorsque ce compoqsant est défini, l'entité ne tournera plus visuellement son corps pour correspondre à sa direction de face. \nType: `Object`",
@@ -1215,7 +1226,9 @@
                                 "width": {
                                     "description": "La largeur de la boîte de collision de l'Entité. \nType: `Number`",
                                     "default": 1.0,
-                                    "type": "number"
+                                    "type": "number",
+                                    "minimum": -100000000,
+                                    "maximum": 100000000
                                 }
                             }
                         },
@@ -1245,9 +1258,16 @@
                             "type": "object",
                             "properties": {
                                 "regeneration_duration": {
-                                    "description": "La durée en secondes pendant laquelle l'Entité gagnera Régénération I. \nType: `Integer`",
+                                    "description": "La durée en secondes pendant laquelle l'Entité gagnera Régénération I. \nType: `Integer | String`",
                                     "default": 5,
-                                    "type": "integer"
+                                    "oneOf": [
+                                        {
+                                            "type": "integer"
+                                        },
+                                        {
+                                            "const": "infinite"
+                                        }
+                                    ]
                                 },
                                 "apply_to_self": {
                                     "description": "Définit si l'Entité s'accordera la Régénération de Combat si elle tue la cible. \nType: `Boolean`",
@@ -1681,6 +1701,11 @@
                             "description": "Composant qui possède plusieurs sous-cpateurs où chacun déclenche un événement  lorsque les conditions sont valides par les autres entités dans la plage défini. \nType: `Object`",
                             "type": "object",
                             "properties": {
+                                "find_players_only": {
+                                    "description": "Définit si la recherche est limitée uniquement aux joueurs pour tous les sous-capteurs. \nType: `Boolean`",
+                                    "default": false,
+                                    "type": "boolean"
+                                },
                                 "relative_range": {
                                     "description": "Définit si la plage des sous-capteurs est additive par rapport à la taille de l'entité. \nType: `Boolean` \nNote: Additive signifie que la plage des sous-capteurs est ajoutée à la taille de l'entité.",
                                     "default": true,
@@ -1724,6 +1749,11 @@
                                                 "description": "Définit si toutes les entités à portée doivent satisfaire les conditions du sous-capteur pour que l'événement soit déclenché. \nType: `Boolean`",
                                                 "default": false,
                                                 "type": "boolean"
+                                            },
+                                            "y_offset": {
+                                                "description": "Décalage vertical appliquée à la position de l'Entité lors du calcul de la distance par rapport aux autres entités. \nType: `Number`",
+                                                "default": 0.0,
+                                                "type": "number"
                                             }
                                         }
                                     }
@@ -2455,6 +2485,42 @@
                                     "items": {
                                         "type": "object",
                                         "properties": {
+                                            "effects": {
+                                                "description": "Liste des effets à appliquer à l'Entité lorsqu'elle est nourrie avec cet item. \nType: `Object[]`",
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "required": ["name"],
+                                                    "properties": {
+                                                        "name": {
+                                                            "description": "Le nom de l'effet à appliquer à l'Entité. \nType: `String`",
+                                                            "$ref": "../../common.schema.json#/definitions/minecraft_effect_id"
+                                                        },
+                                                        "chance": {
+                                                            "description": "La chance que l'effet soit appliqué à l'Entité. \nType: `Number`",
+                                                            "default": 1.0,
+                                                            "type": "number"
+                                                        },
+                                                        "duration": {
+                                                            "description": "La durée de l'effet en ticks. \nType: `Integer | String`",
+                                                            "default": 0,
+                                                            "oneOf": [
+                                                                {
+                                                                    "type": "integer"
+                                                                },
+                                                                {
+                                                                    "const": "infinite"
+                                                                }
+                                                            ]
+                                                        },
+                                                        "amplifier": {
+                                                            "description": "Le niveau de l'effet à appliquer à l'Entité. \nType: `Integer`",
+                                                            "default": 0,
+                                                            "type": "integer"
+                                                        }
+                                                    }
+                                                }
+                                            },
                                             "heal_amount": {
                                                 "description": "Le montant de santé que l'Entité gagne lorsqu'elle est nourrie avec cet item. \nType: `Integer`",
                                                 "default": 1,
@@ -2616,6 +2682,22 @@
                                 "filters": {
                                     "description": "Définit quelles entités peuvent attaquer l'Entité. \nType: `Minecraft Filter` \nNote: Si cette propriété n'est pas définie, toutes les attaques sont autorisées.",
                                     "$ref": "../../common.schema.json#/definitions/minecraft_filter"
+                                }
+                            }
+                        },
+                        "minecraft:input_air_controlled": {
+                            "description": "[EXPERIMENTALE] : Doit avoir la propriété `use_beta_features` définit sur `true`. \nLorsque l'Entité est chevauchable, l'Entité sera controllée avec les touches du claiver et de la souris dans les 3 dimensions. \nType: `Object`",
+                            "type": "object",
+                            "properties": {
+                                "backwards_movement_modifier": {
+                                    "description": "Modifie la vitesse de l'Entité lorsqu'elle se déplace en arrière. \nType: `Number`",
+                                    "default": 0.5,
+                                    "type": "number"
+                                },
+                                "strafe_speed_modifier": {
+                                    "description": "Modifie la vitesse de l'Entité lorsqu'elle se déplace latéralement. \nType: `Number`",
+                                    "default": 0.4,
+                                    "type": "number"
                                 }
                             }
                         },
@@ -2933,6 +3015,10 @@
                             "description": "Définit que l'Entité porte actuellement un coffre. \nType: `Object` \nNote: Ce composant est utilisé pour des requêtes Molang ou de filtres",
                             "type": "object"
                         },
+                        "minecraft:is_collidable": {
+                            "description": "Permet aux autres mobs d'avoir des collisions verticales et horizontales avec cette Entité. Pour qu'une collision se produise, les deux entités doivent avoir un composant 'minecraft:collision_box'. Ce composant ne peut être utilisé que sur les entités et permet des collisions exclusivement entre les entités. Veuillez noter que ce type de collision est peu fiable pour les entités mobiles. Il est recommandé d'utiliser ce composant uniquement dans des scénarios où l'entité collidable reste stationnaire. Le comportement collidable est étroitement lié au comportement empilable. Alors que le composant 'minecraft:is_collidable' régit la façon dont les autres entités interagissent avec le propriétaire du composant, le composant 'minecraft:is_stackable' décrit comment une entité interagit avec d'autres de son espèce. \nType: `Object`",
+                            "type": "object"
+                        },
                         "minecraft:is_dyeable": {
                             "description": "Permet à l'Entité d'être teinte avec des colorants. \nType: `Object`",
                             "type": "object",
@@ -3205,9 +3291,16 @@
                                     "type": "number"
                                 },
                                 "effect_time": {
-                                    "description": "De combien de temps l'effet est appliqué en secondes. \nType: `Integer`",
+                                    "description": "De combien de temps l'effet est appliqué en secondes. \nType: `Integer | String`",
                                     "default": 10,
-                                    "type": "integer"
+                                    "oneOf": [
+                                        {
+                                            "type": "integer"
+                                        },
+                                        {
+                                            "const": "infinite"
+                                        }
+                                    ]
                                 },
                                 "mob_effect": {
                                     "description": "L'effet à appliquer. \nType: `String`",
@@ -4874,24 +4967,52 @@
                                                     "type": "boolean"
                                                 },
                                                 "duration": {
-                                                    "description": "La durée de l'effet. \nType: `Integer`",
+                                                    "description": "La durée de l'effet. \nType: `Integer | String`",
                                                     "default": 1,
-                                                    "type": "integer"
+                                                    "oneOf": [
+                                                        {
+                                                            "type": "integer"
+                                                        },
+                                                        {
+                                                            "const": "infinite"
+                                                        }
+                                                    ]
                                                 },
                                                 "durationeasy": {
-                                                    "description": "La durée de l'effet en mode facile. \nType: `Integer`",
+                                                    "description": "La durée de l'effet en mode facile. \nType: `Integer | String`",
                                                     "default": 0,
-                                                    "type": "integer"
+                                                    "oneOf": [
+                                                        {
+                                                            "type": "integer"
+                                                        },
+                                                        {
+                                                            "const": "infinite"
+                                                        }
+                                                    ]
                                                 },
                                                 "durationhard": {
-                                                    "description": "La durée de l'effet en mode difficile. \nType: `Integer`",
+                                                    "description": "La durée de l'effet en mode difficile. \nType: `Integer | String`",
                                                     "default": 800,
-                                                    "type": "integer"
+                                                    "oneOf": [
+                                                        {
+                                                            "type": "integer"
+                                                        },
+                                                        {
+                                                            "const": "infinite"
+                                                        }
+                                                    ]
                                                 },
                                                 "durationnormal": {
-                                                    "description": "La durée de l'effet en mode normal. \nType: `Integer`",
+                                                    "description": "La durée de l'effet en mode normal. \nType: `Integer | String`",
                                                     "default": 200,
-                                                    "type": "integer"
+                                                    "oneOf": [
+                                                        {
+                                                            "type": "integer"
+                                                        },
+                                                        {
+                                                            "const": "infinite"
+                                                        }
+                                                    ]
                                                 },
                                                 "effect": {
                                                     "description": "L'effet à appliquer. \nType: `String`",
@@ -4932,6 +5053,13 @@
                                                     "description": "Le nombre de particules à générer. \nType: `Integer`",
                                                     "default": 6,
                                                     "type": "integer"
+                                                },
+                                                "particle_item_name": {
+                                                    "description": "Sélectionne le nom de la particule à utiliser si les filtres sont valides. \nType: `Object`",
+                                                    "type": "object",
+                                                    "additionalProperties": {
+                                                        "$ref": "../../common.schema.json#/definitions/minecraft_filter"
+                                                    }
                                                 }
                                             }
                                         },
@@ -5007,6 +5135,13 @@
                                                     "description": "La chance qu'une entité apparaisse lorsqu'elle est touchée. \nType: `Number`",
                                                     "default": 0,
                                                     "type": "number"
+                                                },
+                                                "on_spawn": {
+                                                    "description": "Le ou les événements à déclencher lorsqu'une entité apparaît. \nType: `EventTrigger[]`",
+                                                    "type": "array",
+                                                    "items": {
+                                                        "$ref": "../../common.schema.json#/definitions/event_trigger_type"
+                                                    }
                                                 },
                                                 "second_spawn_chance": {
                                                     "description": "La chance qu'une deuxième entité apparaisse lorsqu'elle est touchée. \nType: `Number`",
@@ -5698,8 +5833,15 @@
                                                 "$ref": "../../common.schema.json#/definitions/potion_effects_id"
                                             },
                                             "duration": {
-                                                "description": "Le temps en secondes que l'effet doit durer. \nType: `Number`",
-                                                "type": "number"
+                                                "description": "Le temps en secondes que l'effet doit durer. \nType: `Number | String`",
+                                                "oneOf": [
+                                                    {
+                                                        "type": "number"
+                                                    },
+                                                    {
+                                                        "const": "infinite"
+                                                    }
+                                                ]
                                             },
                                             "amplifier": {
                                                 "description": "Le niveau de l'effet. \nType: `Integer`",
@@ -8046,6 +8188,11 @@
                                         "type": "number"
                                     }
                                 },
+                                "float_wander_has_move_control": {
+                                    "description": "Si 'true', le drapeau MoveControl sera ajouté au comportement, ce qui signifie qu'il ne peut plus être actif en même temps que d'autres comportements avec MoveControl. \nType: `Boolean`",
+                                    "default": true,
+                                    "type": "boolean"
+                                },
                                 "must_reach": {
                                     "description": "Si vrai, le point doit être atteignable pour être une cible valide. \nType: `Boolean`",
                                     "default": false,
@@ -8057,6 +8204,11 @@
                                 },
                                 "random_reselect": {
                                     "description": "Si vrai, l'entité choisira un nouveau point aléatoire tout en se déplaçant vers le point précédemment sélectionné. \nType: `Boolean`",
+                                    "default": false,
+                                    "type": "boolean"
+                                },
+                                "use_home_position_restriction": {
+                                    "description": "Si vrai, l'entité ne choisira que des points à proximité de sa position d'origine. \nType: `Boolean`",
                                     "default": false,
                                     "type": "boolean"
                                 },
@@ -13370,6 +13522,10 @@
                                     "$ref": "#/properties/minecraft:entity/properties/events/additionalProperties"
                                 }
                             },
+                            "set_home_position": {
+                                "description": "Définit la position de la maison de l'Entité à sa position actuelle. \nType: `Object`",
+                                "type": "object"
+                            },
                             "set_property": {
                                 "description": "Définit la valeur des propriétés d'entités de l'Entité. \nType: `Object`",
                                 "type": "object",
@@ -13388,6 +13544,20 @@
                                             "type": "boolean"
                                         }
                                     ]
+                                }
+                            },
+                            "stop_movement": {
+                                "description": "Réponse d'événement qui fait arrêter le mouvement de l'Entité. \nType: `Object`",
+                                "type": "object",
+                                "properties": {
+                                    "stop_vertical_movement": {
+                                        "description": "Spécifie si le mouvement vertical doit être arrêté. \nType: `Boolean`",
+                                        "type": "boolean"
+                                    },
+                                    "stop_horizontal_movement": {
+                                        "description": "Spécifie si le mouvement horizontal doit être arrêté. \nType: `Boolean`",
+                                        "type": "boolean"
+                                    }
                                 }
                             },
                             "triggger": {
