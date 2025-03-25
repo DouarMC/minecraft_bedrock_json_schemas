@@ -99,8 +99,15 @@
                                                 "maximum": 1.0
                                             },
                                             "duration": {
-                                                "description": "La durée de l'effet en ticks. \nType: `Integer`",
-                                                "type": "integer"
+                                                "description": "La durée de l'effet en ticks. \nType: `Integer | String`",
+                                                "oneOf": [
+                                                    {
+                                                        "type": "integer"
+                                                    },
+                                                    {
+                                                        "const": "infinite"
+                                                    }
+                                                ]
                                             },
                                             "amplifier": {
                                                 "description": "L'amplificateur de l'effet. \nType: `Integer`",
