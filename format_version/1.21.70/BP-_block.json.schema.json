@@ -7,7 +7,7 @@
         "format_version": {
             "description": "La version du Format à utiliser. \nType: `String`",
             "type": "string",
-            "enum": ["1.21.60"]
+            "enum": ["1.21.70"]
         },
         "minecraft:block": {
             "description": "Contient toute la définition du Bloc. \nType: Object",
@@ -285,6 +285,23 @@
                                 }
                             ]
                         },
+                        "minecraft:destruction_particles": {
+                            "description": "[EXPERIMENTALE] - Upcoming Creator Features \nDéfinit les particules qui seront utilisé quand le Bloc est détruit. \nType: `Object`",
+                            "type": "object",
+                            "required": ["texture"],
+                            "properties": {
+                                "texture": {
+                                    "description": "Le nom de la texture utilisée utilisée pour les particules. \nType: `String`",
+                                    "type": "string"
+                                },
+                                "tint_method": {
+                                    "description": "La méthode de teinte à utiliser pour les particules. \nType: `String`",
+                                    "default": "none",
+                                    "type": "string",
+                                    "enum": ["none", "default_foliage", "birch_foliage", "evergreen_foliage", "dry_foliage", "grass", "water"]
+                                }
+                            }
+                        },
                         "minecraft:display_name": {
                             "description": "Le nom d'affichage de ce Bloc. \nType: `Localization String` \nNote: Si aucun nom n'est spécifié ici, le nom de l'identifiant sera utilisé sous la forme de 'tile.<block_identifier>.name'.",
                             "type": "string"
@@ -448,7 +465,7 @@
                             "type": "string"
                         },
                         "minecraft:map_color": {
-                            "description": "Définit la couleur du bloc sur une carte. \n Type: `String | Integer[3]`",
+                            "description": "Définit la couleur du bloc sur une carte. \n Type: `String | Integer[3] | Object`",
                             "oneOf": [
                                 {
                                     "type": "string",
@@ -462,6 +479,37 @@
                                         "type": "integer",
                                         "minimum": 0,
                                         "maximum": 255
+                                    }
+                                },
+                                {
+                                    "type": "object",
+                                    "required": ["color"],
+                                    "properties": {
+                                        "color": {
+                                            "description": "La couleur du bloc sur une carte. \nType: `String | Integer[3]`",
+                                            "oneOf": [
+                                                {
+                                                    "type": "string",
+                                                    "pattern": "^#[0-9a-fA-F]{6}$"
+                                                },
+                                                {
+                                                    "type": "array",
+                                                    "minItems": 3,
+                                                    "maxItems": 3,
+                                                    "items": {
+                                                        "type": "integer",
+                                                        "minimum": 0,
+                                                        "maximum": 255
+                                                    }
+                                                }
+                                            ]
+                                        },
+                                        "tint_method": {
+                                            "description": "[EXPERIMENTALE] - Upcoming Creator Features \nDéfinit la méthode de teinte à utiliser pour la couleur de la carte. Une méthode de teinte est une fonction qui multiplie la couleur par une teinte prédéfinie en fonction du biome auquel se trouve le bloc. \nType: `String`",
+                                            "default": "none",
+                                            "type": "string",
+                                            "enum": ["none", "default_foliage", "birch_foliage", "evergreen_foliage", "dry_foliage", "grass", "water"]
+                                        }
                                     }
                                 }
                             ]
@@ -496,6 +544,11 @@
                                                     "default": true,
                                                     "type": "boolean"
                                                 },
+                                                "isotropic": {
+                                                    "description": "[EXPERIMENTALE] : `Upcoming Creator Features`\n Les faces sur lesquelles ce matériau est appliqué doivent-elles randomiser leurs UV ? \nType: `Boolean`",
+                                                    "default": false,
+                                                    "type": "boolean"
+                                                },
                                                 "render_method": {
                                                     "description": "La méthode de rendu à utiliser. \n Type: `String` \n `opaque`: Utilisé pour une texture de bloc ordinaire sans couche alpha. Ne permet pas la transparence ou la translucidité. (Exemples: Terre, Pierre, Béton) \n `double_sided`: Utilisé pour désactiver complètement le culling des faces arrière. \n `blend`: `Utilisé pour un bloc comme le verre teinté. Permet la transparence et la translucidité (textures légèrement transparentes) (Exemples: Verre, Balise, Bloc de miel). \n `alpha_test`: Utilisé pour un bloc comme le générateur de monstres. Ne permet pas la translucidité, seulement des textures entièrement opaques ou entièrement transparentes. Désactive également le culling des faces arrière (Exemples: Vignes, Rails, Pousse d'arbres). \n `alpha_test_single_sided`: Utilisé pour un bloc comme le verre (non teinté). Ne permet pas la translucidité, seulement des textures entièrement opaques ou entièrement transparentes. Active également le culling des faces arrière (Exemples: Portes, trappes).",
                                                     "default": "opaque",
@@ -505,6 +558,12 @@
                                                 "texture": {
                                                     "description": "La référence de texture définit dans le fichier `terrain_textures.json` à utiliser. \nType: `String`",
                                                     "type": "string"
+                                                },
+                                                "tint_method": {
+                                                    "description": "[EXPERIMENTALE] - Upcoming Creator Features \nDéfinit la méthode de teinte à utiliser pour cette face de ce Bloc. Une méthode de teinte est une fonction qui multiplie la couleur par une teinte prédéfinie en fonction du biome auquel se trouve le bloc. \nType: `String`",
+                                                    "default": "none",
+                                                    "type": "string",
+                                                    "enum": ["none", "default_foliage", "birch_foliage", "evergreen_foliage", "dry_foliage", "grass", "water"]
                                                 }
                                             }
                                         }
