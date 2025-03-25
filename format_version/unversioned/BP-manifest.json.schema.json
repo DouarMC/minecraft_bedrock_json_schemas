@@ -118,7 +118,8 @@
                             "@minecraft/server-admin",
                             "@minecraft/common",
                             "@minecraft/debug-utilities",
-                            "@minecraft/server-editor"
+                            "@minecraft/server-editor",
+                            "@minecraft/diagnostics"
                         ]
                     },
                     "version": {
