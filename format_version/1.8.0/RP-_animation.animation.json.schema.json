@@ -450,6 +450,10 @@
                                         "effect": {
                                             "description": "L'identifiant de l'effet sonore à jouer. \nType: `String` \nNote: les sons valides doivent être listés dans le fichier json de définition de ressource de l'entité.",
                                             "type": "string"
+                                        },
+                                        "locator": {
+                                            "description": "Le nom d'un locator sur l'acteur où le son doit être situé. \nType: `String`",
+                                            "type": "string"
                                         }
                                     }
                                 },
@@ -461,6 +465,10 @@
                                         "properties": {
                                             "effect": {
                                                 "description": "L'identifiant de l'effet sonore à jouer. \nType: `String` \nNote: les sons valides doivent être listés dans le fichier json de définition de ressource de l'entité.",
+                                                "type": "string"
+                                            },
+                                            "locator": {
+                                                "description": "Le nom d'un locator sur l'acteur où le son doit être situé. \nType: `String`",
                                                 "type": "string"
                                             }
                                         }

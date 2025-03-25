@@ -102,6 +102,10 @@
                                             "effect": {
                                                 "description": "Nom de l'effet de son à jouer. \nType: `String`",
                                                 "type": "string"
+                                            },
+                                            "locator": {
+                                                "description": "Définit dans quel locator l'effet de son doit être joué. \nType: `String`",
+                                                "type": "string"
                                             }
                                         }
                                     }

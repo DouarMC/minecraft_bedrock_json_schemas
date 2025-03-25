@@ -7,7 +7,7 @@
         "format_version": {
             "description": "La version du Format à utiliser. \nType: `String`",
             "type": "string",
-            "enum": ["1.19.50", "1.19.60", "1.19.70", "1.19.80", "1.20.0", "1.20.10", "1.20.20", "1.20.30", "1.20.40", "1.20.50", "1.20.60", "1.20.70", "1.20.80", "1.21.0", "1.21.10", "1.21.20", "1.21.30", "1.21.40", "1.21.50", "1.21.60"]
+            "enum": ["1.19.50", "1.19.60", "1.19.70", "1.19.80", "1.20.0", "1.20.10", "1.20.20", "1.20.30", "1.20.40", "1.20.50", "1.20.60", "1.20.70", "1.20.80", "1.21.0", "1.21.10", "1.21.20", "1.21.30", "1.21.40", "1.21.50", "1.21.60", "1.21.70"]
         },
         "minecraft:camera_preset": {
             "description": "Contient la définiton du Preset de Caméra. \nType: `Object`",
@@ -76,7 +76,9 @@
                     "minItems": 2,
                     "maxItems": 2,
                     "items": {
-                        "type": "number"
+                        "type": "number",
+                        "minimum": 0.0,
+                        "maximum": 360.0
                     }
                 },
                 "vertical_rotation_limit": {
@@ -85,7 +87,9 @@
                     "minItems": 2,
                     "maxItems": 2,
                     "items": {
-                        "type": "number"
+                        "type": "number",
+                        "minimum": 0.0,
+                        "maximum": 180.0
                     }
                 },
                 "continue_targeting": {
@@ -101,7 +105,7 @@
                 "listener": {
                     "description": "Définit que la position du joueur sera utilisé pour l'écoute des sons. \nType: `String`",
                     "type": "string",
-                    "const": "player"
+                    "enum": ["camera", "player"]
                 },
                 "player_effects": {
                     "description": "Défini si ce Preset de Caméra contiendra les effets de potions du joueur comme Vision Nocturne ou Cécité. \nType: `Boolean`",
@@ -114,7 +118,9 @@
                     "minItems": 2,
                     "maxItems": 2,
                     "items": {
-                        "type": "number"
+                        "type": "number",
+                        "minimum": -64.0,
+                        "maximum": 64.0
                     }
                 },
                 "entity_offset": {
@@ -123,7 +129,9 @@
                     "minItems": 3,
                     "maxItems": 3,
                     "items": {
-                        "type": "number"
+                        "type": "number",
+                        "minimum": -64.0,
+                        "maximum": 64.0
                     }
                 },
                 "starting_rot_x": {
@@ -138,22 +146,63 @@
                     "description": "Distance entre la caméra 3rd et le joueur. \nType: `Number` \nNote: Utile uniquement pour les presets en 3ème personne.",
                     "default": 10,
                     "type": "number",
-                    "minimum": 0.1,
-                    "maximum": 100
+                    "minimum": 0.10000000149011612,
+                    "maximum": 64.0
+                },
+                "yaw_limits_min": {
+                    "description": "Définit la limite minimale de rotation horizontale (gauche/droite). \nType: `Number` \nNote: Utile uniquement pour les presets en 3ème personne.",
+                    "type": "number",
+                    "minimum": -180.0,
+                    "maximum": 179.89999389648438
+                },
+                "yaw_limits_max": {
+                    "description": "Définit la limite maximale de rotation horizontale (gauche/droite). \nType: `Number` \nNote: Utile uniquement pour les presets en 3ème personne.",
+                    "type": "number",
+                    "minimum": -179.89999389648438,
+                    "maximum": 180.0
                 },
                 "align_target_and_camera_forward": {
-                    "description": "[EXPERIMENTALE]: (Creator Cameras: Cameras Third Person) \nAligner la direction de la caméra avec la direction de la cible. \nType: `Boolean`",
+                    "description": "Aligner la direction de la caméra avec la direction de la cible. \nType: `Boolean`",
                     "type": "boolean"
                 },
                 "aim_assist": {
-                    "description": "[EXPERIMENTALE]: (Aim Assist) \nDéfinit le preset d'aim assist à utiliser pour ce preset de Caméra. \nType: `Object`",
+                    "description": "Définit le preset d'aim assist à utiliser pour ce preset de Caméra. \nType: `Object`",
                     "type": "object",
                     "properties": {
                         "preset": {
                             "description": "L'identifiant du preset d'aim assist à utiliser. \nType: `String`",
                             "type": "string",
-                            "pattern": "^[a-zA-Z0-9_]+:[a-zA-Z0-9_]+$",
                             "examples": ["minecraft:aim_assist_default"]
+                        },
+                        "distance": {
+                            "type": "number"
+                        },
+                        "target_mode": {
+                            "type": "string",
+                            "enum": ["angle", "distance"]
+                        },
+                        "angle": {
+                            "oneOf": [
+                                {
+                                    "type": "array",
+                                    "minItems": 2,
+                                    "maxItems": 2,
+                                    "items": {
+                                        "type": "number"
+                                    }
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "x": {
+                                            "type": "number"
+                                        },
+                                        "y": {
+                                            "type": "number"
+                                        }
+                                    }
+                                }
+                            ]
                         }
                     }
                 }
