@@ -212,7 +212,7 @@
                                             "type": "string"
                                         },
                                         "minecraft:match_tool_filter_all": {
-                                            "description": "[EXPERIMENTALE] : 'Upcoming Creator Features' \nLes items qui ont tous les tags ici seront acceptés. \nType: `String[]`",
+                                            "description": "Les items qui ont tous les tags ici seront acceptés. \nType: `String[]`",
                                             "type": "array",
                                             "items": {
                                                 "type": "string",
@@ -229,7 +229,7 @@
                                             }
                                         },
                                         "minecraft:match_tool_filter_any": {
-                                            "description": "[EXPERIMENTALE] : 'Upcoming Creator Features' \nLes items qui ont au moins un des tags ici seront acceptés. \nType: `String[]`",
+                                            "description": "Les items qui ont au moins un des tags ici seront acceptés. \nType: `String[]`",
                                             "type": "array",
                                             "items": {
                                                 "type": "string",
@@ -246,7 +246,7 @@
                                             }
                                         },
                                         "minecraft:match_tool_filter_none": {
-                                            "description": "[EXPERIMENTALE] : 'Upcoming Creator Features' \nLes items qui n'ont aucun des tags ici seront acceptés. \nType: `String[]`",
+                                            "description": "Les items qui n'ont aucun des tags ici seront acceptés. \nType: `String[]`",
                                             "type": "array",
                                             "items": {
                                                 "type": "string",
