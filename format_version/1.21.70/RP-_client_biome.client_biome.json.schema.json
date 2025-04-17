@@ -5,9 +5,8 @@
     "required": ["format_version", "minecraft:client_biome"],
     "properties": {
         "format_version": {
-            "description": "La version du Format à utiliser.",
-            "type": "string",
-            "enum": ["1.21.70"]
+            "description": "La version du Format à utiliser. \nType: `String`",
+            "type": "string"
         },
         "minecraft:client_biome": {
             "description": "Contient toute la définition du client du biome. \nType: `Object`",

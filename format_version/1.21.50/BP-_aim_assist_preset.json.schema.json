@@ -5,9 +5,8 @@
     "required": ["format_version", "minecraft:aim_assist_preset"],
     "properties": {
         "format_version": {
-            "description": "La version du Format à utiliser. \nType: `String` \nNote: La version minimum est `1.21.50`.",
-            "type": "string",
-            "enum": ["1.21.50", "1.21.60", "1.21.70"]
+            "description": "La version du Format à utiliser. \nType: `String`",
+            "type": "string"
         },
         "minecraft:aim_assist_preset": {
             "description": "La définition du preset d'Aim-Assist. \nType: `Object`",

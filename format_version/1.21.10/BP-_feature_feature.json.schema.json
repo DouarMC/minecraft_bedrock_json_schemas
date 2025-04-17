@@ -5,11 +5,8 @@
     "required": ["format_version"],
     "properties": {
         "format_version": {
-            "description": "La version du format à utiliser. \nType: `String`",
-            "type": "string",
-            "enum": [
-                "1.21.10", "1.21.20", "1.21.30"
-            ]
+            "description": "La version du Format à utiliser. \nType: `String`",
+            "type": "string"
         }
     },
     "oneOf": [

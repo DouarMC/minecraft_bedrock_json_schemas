@@ -6,8 +6,7 @@
     "properties": {
         "format_version": {
             "description": "La version du Format à utiliser. \nType: `String`",
-            "type": "string",
-            "enum": ["1.19.50"]
+            "type": "string"
         },
         "minecraft:block": {
             "description": "Contient toute la définition du Bloc. \nType: Object",

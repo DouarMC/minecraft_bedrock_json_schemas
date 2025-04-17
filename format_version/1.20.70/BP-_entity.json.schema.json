@@ -5,11 +5,8 @@
     "required": ["format_version", "minecraft:entity"],
     "properties": {
         "format_version": {
-            "description": "La version du Format à utiliser.",
-            "type": "string",
-            "enum": [
-                "1.20.70", "1.20.80", "1.21.0"
-            ]
+            "description": "La version du Format à utiliser. \nType: `String`",
+            "type": "string"
         },
         "use_beta_features": {
             "description": "Définit si les fonctionnalités bêta doivent être activées. \nType: `Boolean`",

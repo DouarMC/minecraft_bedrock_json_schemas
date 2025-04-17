@@ -6,8 +6,7 @@
     "properties": {
         "format_version": {
             "description": "La version du Format à utiliser. \nType: `String`",
-            "$ref": "../common.schema.json#/definitions/minecraft_version",
-            "enum": ["1.10", "1.10.0", "1.14", "1.14.0", "1.16", "1.16.0"]
+            "type": "string"
         },
         "minecraft:item": {
             "description": "Contient la définition des propriétés d'un item. \nType: `Object`",

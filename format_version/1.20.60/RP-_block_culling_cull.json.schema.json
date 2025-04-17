@@ -6,7 +6,7 @@
     "properties": {
         "format_version": {
             "description": "La version du Format à utiliser. \nType: `String`",
-            "const": "1.21.50"
+            "type": "string"
         },
         "minecraft:block_culling_rules": {
             "description": "Contient toute la définition de ces règles de Block Culling. \nType: `Object`",
