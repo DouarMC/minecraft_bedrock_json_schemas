@@ -838,8 +838,9 @@
                             "properties": {
                                 "max_weight_limit": {
                                     "description": "Le poids maximum que cet Item de stockage peut contenir. \nType: `Integer`",
+                                    "default": 64,
                                     "type": "integer",
-                                    "maximum": 1
+                                    "maximum": 64
                                 }
                             }
                         },
