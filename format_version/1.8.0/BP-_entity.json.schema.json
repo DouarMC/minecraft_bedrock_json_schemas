@@ -2472,7 +2472,7 @@
                                                     "properties": {
                                                         "name": {
                                                             "description": "Le nom de l'effet à appliquer à l'Entité. \nType: `String`",
-                                                            "$ref": "../../common.schema.json#/definitions/minecraft_effect_id"
+                                                            "$ref": "../../common.schema.json#/definitions/potion_effects_id"
                                                         },
                                                         "chance": {
                                                             "description": "La chance que l'effet soit appliqué à l'Entité. \nType: `Number`",
