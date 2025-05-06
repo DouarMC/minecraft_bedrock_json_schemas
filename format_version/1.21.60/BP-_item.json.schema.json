@@ -536,6 +536,18 @@
                                                 "resin_palette": {
                                                     "description": "Le chemin d'accès au fichier de texture de la palette de résine utilisé pour l'armor-trim. \n Type: String",
                                                     "type": "string"
+                                                },
+                                                "dyed": {
+                                                    "description": "La texture à superposer sur l'icône de l'Item quand celui-ci est teint. Doit être une référence. \nType: `String`",
+                                                    "type": "string"
+                                                },
+                                                "bundle_open_back": {
+                                                    "description": "La texture à utiliser à l'arrière de l'Item quand celui-ci est ouvert avec le comportement de Bundle. Doit être une référence. \nType: `String`",
+                                                    "type": "string"
+                                                },
+                                                "bundle_open_front": {
+                                                    "description": "La texture à utiliser à l'avant de l'Item quand celui-ci est ouvert avec le comportement de Bundle. Doit être une référence. \nType: `String`",
+                                                    "type": "string"
                                                 }
                                             }
                                         }
