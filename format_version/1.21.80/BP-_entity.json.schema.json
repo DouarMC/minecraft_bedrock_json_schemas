@@ -186,29 +186,6 @@
                                     ]
                                 }
                             }
-                        },
-                        "aliases": {
-                            "description": "Définit des alias pour l'Entité. Un alias est une sorte de variante de l'Entité qui varie en fonction des propriétés d'entités qui lui sont attribués. \nType: `Object`",
-                            "type": "object",
-                            "propertyNames": {
-                                "pattern": "^[a-zA-Z0-9_]+:[a-zA-Z0-9_]+$"
-                            },
-                            "additionalProperties": {
-                                "type": "object",
-                                "additionalProperties": {
-                                    "oneOf": [
-                                        {
-                                            "type": "boolean"
-                                        },
-                                        {
-                                            "type": "number"
-                                        },
-                                        {
-                                            "type": "string"
-                                        }
-                                    ]
-                                }
-                            }
                         }
                     }
                 },
@@ -1223,9 +1200,7 @@
                                 "width": {
                                     "description": "La largeur de la boîte de collision de l'Entité. \nType: `Number`",
                                     "default": 1.0,
-                                    "type": "number",
-                                    "minimum": -100000000,
-                                    "maximum": 100000000
+                                    "type": "number"
                                 }
                             }
                         },
@@ -1738,9 +1713,13 @@
                                                 "type": "integer"
                                             },
                                             "range": {
-                                                "description": "La distance maximale à laquelle les entités peuvent être détectées par le sous-capteur. \nType: `Number`",
-                                                "default": 10,
-                                                "type": "number"
+                                                "description": "La distance horizontale et verticale maximale à laquelle les entités peuvent être détectées par le sous-capteur. \nType: `Number[2]`",
+                                                "type": "array",
+                                                "minItems": 2,
+                                                "maxItems": 2,
+                                                "items": {
+                                                    "type": "number"
+                                                }
                                             },
                                             "require_all": {
                                                 "description": "Définit si toutes les entités à portée doivent satisfaire les conditions du sous-capteur pour que l'événement soit déclenché. \nType: `Boolean`",
@@ -3148,8 +3127,13 @@
                                     "$ref": "../../common.schema.json#/definitions/event_trigger_type"
                                 },
                                 "on_unleash": {
-                                    "description": "Evénement à déclencher lorsque l'Entité est détachée d'une laisse. \nType: `EventTrigger`",
+                                    "description": "Evénement à déclencher lorsque la laisse attachée à l'Entité se brise. \nType: `EventTrigger`",
                                     "$ref": "../../common.schema.json#/definitions/event_trigger_type"
+                                },
+                                "on_unleash_interact_only": {
+                                    "description": "Lorsqu'il est définit sur `true`, l'événement `on_unleash` ne se déclenche pas lorsque l'entité est libérée pour des raisons autres que l'interaction directe du joueur avec elle. \nType: `Boolean`",
+                                    "default": false,
+                                    "type": "boolean"
                                 },
                                 "presets": {
                                     "description": "Définit comment l'Entité se comporte quand elle est attachée à une autre entité. Un preset est choisi lors de la liaison et reste en vigueur jusqu'à ce que l'Entité soit liée à un autre préréglage. Le premier preset qui a les conditions `filters` valide sera utilisé. Si aucun preset ne correspond, la configuration par défaut sera utilisé. \nType: `Object[]`",
@@ -8359,7 +8343,7 @@
                                 },
                                 "use_home_position_restriction": {
                                     "description": "Si vrai, l'entité ne choisira que des points à proximité de sa position d'origine. \nType: `Boolean`",
-                                    "default": false,
+                                    "default": true,
                                     "type": "boolean"
                                 },
                                 "xz_dist": {

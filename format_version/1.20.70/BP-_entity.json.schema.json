@@ -2784,6 +2784,11 @@
                                     "type": "string",
                                     "enum": ["slot.armor.chest", "slot.armor.feet", "slot.armor.head", "slot.armor.legs", "slot.armor.body"]
                                 },
+                                "drop_item_y_offset": {
+                                    "description": "Définit un décalage personnalisé de l'axe des Y lorsqu'un élément est déposé. Nécessite que la propriété `drop_item_slot` soit spécifié. \nType: `Number`",
+                                    "default": 0,
+                                    "type": "number"
+                                },
                                 "equip_item_slot": {
                                     "description": "Le slot pour équiper l'item, le cas échéant, lors d'une interaction réussie. Les slots d'inventaire sont désignés par des nombres positifs; les slots d'armure sont désignés par slot.armor.head, slot.armor.chest, slot.armor.legs, slot.armor.feet et slot.armor.body. \nType: `String`",
                                     "type": "string",
@@ -3149,6 +3154,34 @@
                                 "on_unleash": {
                                     "description": "Evénement à déclencher lorsque l'Entité est détachée d'une laisse. \nType: `EventTrigger`",
                                     "$ref": "../../common.schema.json#/definitions/event_trigger_type"
+                                },
+                                "presets": {
+                                    "description": "Définit comment l'Entité se comporte quand elle est attachée à une autre entité. Un preset est choisi lors de la liaison et reste en vigueur jusqu'à ce que l'Entité soit liée à un autre préréglage. Le premier preset qui a les conditions `filters` valide sera utilisé. Si aucun preset ne correspond, la configuration par défaut sera utilisé. \nType: `Object[]`",
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "filter": {
+                                                "description": "Définit les conditions qui doivent être satisfaites pour que le préréglage soit utilisé. \nType: `Minecraft Filter`",
+                                                "$ref": "../../common.schema.json#/definitions/minecraft_filter"
+                                            },
+                                            "soft_distance": {
+                                                "description": "Distance en blocs à laquelle l'effet de 'ressort' commence à agir pour garder cette Entité proche de l'Entité qui l'a attachée. \nType: `Number`",
+                                                "default": 4,
+                                                "type": "number"
+                                            },
+                                            "hard_distance": {
+                                                "description": "Distance en blocs à laquelle la laisse se raidit, limitant le mouvement. \nType: `Number`",
+                                                "default": 6,
+                                                "type": "number"
+                                            },
+                                            "max_distance": {
+                                                "description": "Distance en blocs à laquelle la laisse peut s'étendre. \nType: `Number`",
+                                                "default": 10,
+                                                "type": "number"
+                                            }
+                                        }
+                                    }
                                 },
                                 "soft_distance": {
                                     "description": "Distance en blocs à laquelle l'effet de 'ressort' commence à agir pour garder cette Entité proche de l'Entité qui l'a attachée. \nType: `Number`",
@@ -5439,6 +5472,12 @@
                                     "default": true,
                                     "type": "boolean"
                                 },
+                                "dismount_mode": {
+                                    "description": "Définit où les chevaucheurs sont placés lorsqu'ils descendent de l'Entité. \nType: `String` \n`default`: les chevaucheurs sont placés sur une position au sol valide autour de l'Entité ou au centre de la boite de collision si aucune position est trouvée. \n`on_top_center`: les chevaucheurs sont placés au centre en haut de la boite de collision de l'Entité.",
+                                    "default": "default",
+                                    "type": "string",
+                                    "enum": ["default", "on_top_center"]
+                                },
                                 "family_types": {
                                     "description": "Les types de famille d'entités qui peuvent monter sur cette entité. \nType: `String[]`",
                                     "type": "array",
@@ -5449,6 +5488,14 @@
                                 "interact_text": {
                                     "description": "Le texte à afficher lorsqu'un joueur peut interagir avec l'entité. \nType: `Localization String`",
                                     "type": "string"
+                                },
+                                "on_rider_enter_event": {
+                                    "description": "L'événement à exécuter sur l'Entité quand un passager monte. \nType: `EventTrigger`",
+                                    "$ref": "../../common.schema.json#/definitions/event_trigger_type"
+                                },
+                                "on_rider_exit_event": {
+                                    "description": "L'événement à exécuter sur l'Entité quand un passager descend. \nType: `EventTrigger`",
+                                    "$ref": "../../common.schema.json#/definitions/event_trigger_type"
                                 },
                                 "passenger_max_width": {
                                     "description": "La largeur maximale qu'une entité peut avoir pour être un passager. Une valeur de 0 ignore ce paramètre. \nType: `Number`",
@@ -5481,6 +5528,12 @@
                                     "items": {
                                         "type": "object",
                                         "properties": {
+                                            "camera_relax_distance_smoothing": {
+                                                "description": "Ajoute l'élasticité au mouvement de la caméra lorsqu'elle revient à son rayon après avoir été poussée vers le joueur par un obstacle. \nType: `Number`",
+                                                "type": "number",
+                                                "minimum": 1.0,
+                                                "maximum": 32.0
+                                            },
                                             "lock_rider_rotation": {
                                                 "description": "Angle en degrés que le cavalier est autorisé à tourner lorsqu'il monte cette entité. Omettre cette propriété pour aucune limite. \nType: `Number`",
                                                 "default": 181,
@@ -5516,6 +5569,12 @@
                                                         "type": "number"
                                                     }
                                                 ]
+                                            },
+                                            "third_person_camera_radius": {
+                                                "description": "Permet de définir un rayon différent de caméra pour la caméra 3ème personne ou 3ème personne avant. \nType: `Number`",
+                                                "type": "number",
+                                                "minimum": 1.0,
+                                                "maximum": 64.0
                                             }
                                         }
                                     }
@@ -8175,10 +8234,89 @@
                                 }
                             }
                         },
+                        "minecraft:behavior.float_tempt": {
+                            "description": "Force une Entité à être tentée par un item défini. Ce composant est fait pour les entités qui se déplacent en flottant. \nType: `Object`",
+                            "type": "object",
+                            "properties": {
+                                "can_get_scared": {
+                                    "description": "Si vrai, le mob peut cesser d'être tenté si le joueur se déplace trop vite tout en étant proche de ce mob. \nType: `Boolean`",
+                                    "default": false,
+                                    "type": "boolean"
+                                },
+                                "can_tempt_vertically": {
+                                    "description": "Si vrai, la distance verticale par rapport au joueur sera prise en compte lors de la tentation. \nType: `Boolean`",
+                                    "default": false,
+                                    "type": "boolean"
+                                },
+                                "can_tempt_while_ridden": {
+                                    "description": "Si vrai, le mob peut être tenté même s'il a un passager. \nType: `Boolean`",
+                                    "default": false,
+                                    "type": "boolean"
+                                },
+                                "items": {
+                                    "description": "Liste des items qui peuvent tenter cette entité. \nType: `String[]`",
+                                    "type": "array",
+                                    "items": {
+                                        "type": "string"
+                                    }
+                                },
+                                "on_start": {
+                                    "description": "Événement à déclencher lorsque ce comportement démarre. \nType: `EventTrigger`",
+                                    "$ref": "../../common.schema.json#/definitions/event_trigger_type"
+                                },
+                                "on_end": {
+                                    "description": "Événement à déclencher lorsque ce comportement se termine. \nType: `EventTrigger`",
+                                    "$ref": "../../common.schema.json#/definitions/event_trigger_type"
+                                },
+                                "priority": {
+                                    "description": "La priorité de l'objectif. \nType: `Integer`",
+                                    "type": "integer"
+                                },
+                                "sound_interval": {
+                                    "description": "Plage de ticks aléatoires à attendre entre les sons de tentation. \nType: `Number[2]`",
+                                    "default": [0.0, 0.0],
+                                    "type": "array",
+                                    "minItems": 2,
+                                    "maxItems": 2,
+                                    "items": {
+                                        "type": "number"
+                                    }
+                                },
+                                "speed_multiplier": {
+                                    "description": "Le multiplicateur de vitesse de l'entité lorsqu'elle est tentée. \nType: `Number`",
+                                    "default": 1.0,
+                                    "type": "number"
+                                },
+                                "stop_distance": {
+                                    "description": "La distance à laquelle l’Entité arrêtera de suivre le joueur. \nType: `Number`",
+                                    "default": 1.5,
+                                    "type": "number"
+                                },
+                                "tempt_sound": {
+                                    "description": "Le son à jouer pendant que le mob est tenté. \nType: `String`",
+                                    "type": "string"
+                                },
+                                "within_radius": {
+                                    "description": "La distance en blocs à laquelle le joueur doit être pour tenter cette entité. \nType: `Number`",
+                                    "default": 0.0,
+                                    "type": "number"
+                                }
+                            }
+                        },
                         "minecraft:behavior.float_wander": {
                             "description": "Permet à l'Entité de flotter et de dériver aléatoirement comme un Ghast. \nType: `Object`",
                             "type": "object",
                             "properties": {
+                                "additional_collision_buffer": {
+                                    "description": "Si 'true', l'Entité vérifie qu'il n'y a aucun bloc dans une zone élargie autour de la position cible. Cela aide à éviter que l’Entité se coince ou touche des blocs lorsqu'elle erre aléatoirement. \nType: `Boolean`",
+                                    "default": false,
+                                    "type": "boolean"
+                                },
+                                "allow_navigating_through_liquids": {
+                                    "description": "Si `true`, permet à l'Entité de naviguer à travers les blocs liquides sur son chemin vers la position cible. \nType: `Boolean`",
+                                    "default": false,
+                                    "type": "boolean"
+                                },
                                 "float_duration": {
                                     "description": "Temps en secondes que l'Entité flottera avant de choisir une nouvelle direction. \nType: `Number[2]`",
                                     "default": [0.0, 0.0],
@@ -8199,6 +8337,11 @@
                                     "default": false,
                                     "type": "boolean"
                                 },
+                                "navigate_around_surface": {
+                                    "description": "Active un nouvel algorithme pour choisir une position aléatoire vers laquelle aller. L'Entité cherchera une position proche de blocs solides. Si aucun bloc n'est trouvé, elle cherchera vers le niveau de surface du monde de la dimension courante. \nType: `Boolean`",
+                                    "default": false,
+                                    "type": "boolean"
+                                },
                                 "priority": {
                                     "description": "Plus la priorité est haute, plus vite cet objectif sera exécuté. \nType: `Integer`",
                                     "type": "integer"
@@ -8207,6 +8350,16 @@
                                     "description": "Si vrai, l'entité choisira un nouveau point aléatoire tout en se déplaçant vers le point précédemment sélectionné. \nType: `Boolean`",
                                     "default": false,
                                     "type": "boolean"
+                                },
+                                "surface_xz_dist": {
+                                    "description": "Distance horizontale (X et Z) à laquelle chercher une surface solide. \nType: `Integer` \nNote: Ne fonctionne que si `navigate_around_surface` est activé.",
+                                    "default": 0,
+                                    "type": "integer"
+                                },
+                                "surface_y_dist": {
+                                    "description": "Distance verticale (Y) à laquelle chercher une surface solide. \nType: `Integer` \nNote: Ne fonctionne que si `navigate_around_surface` est activé.",
+                                    "default": 0,
+                                    "type": "integer"
                                 },
                                 "use_home_position_restriction": {
                                     "description": "Si vrai, l'entité ne choisira que des points à proximité de sa position d'origine. \nType: `Boolean`",
@@ -8297,6 +8450,14 @@
                             "description": "Force une Entité à suivre et à se rassembler autour d'autres mob du même type.",
                             "type": "object",
                             "properties": {
+                                "filters": {
+                                    "description": "Permet de filtrer précisément quels types d’entités peuvent être suivis. Si vide, les critères par défaut sont appliqués : exclut joueurs, poissons, calamars, têtards, dauphins, et les entités du même type que l’Entité. \nType: `Minecraft Filter`",
+                                    "$ref": "../../common.schema.json#/definitions/minecraft_filter"
+                                },
+                                "preferred_actor_type": {
+                                    "description": "Permet de préciser le type d’entité que l’Entité préfère suivre. Si ce champ n’est pas défini, un mob aléatoire à proximité (parmi les valides) sera choisi. \nType: `String`",
+                                    "type": "string"
+                                },
                                 "priority": {
                                     "description": "Plus la priorité est haute, plus vite cet objectif sera exécuté. \nType: `Integer`",
                                     "type": "integer"
@@ -8315,6 +8476,11 @@
                                     "description": "La distance en blocs à laquelle cette Entité s'arrêtera de suivre un autre mob. \nType: `Number`",
                                     "default": 2.0,
                                     "type": "number"
+                                },
+                                "use_home_position_restriction": {
+                                    "description": "Si true, l'Entité respecte le rayon de restriction défini dans le composant minecraft:home. Si false, l'Entité peut suivre une cible sans tenir compte des limites du composant `minecraft:home`. \nType: `Boolean`",
+                                    "default": true,
+                                    "type": "boolean"
                                 }
                             }
                         },
@@ -12935,6 +13101,14 @@
                                         "type": "string"
                                     }
                                 },
+                                "on_start": {
+                                    "description": "Événement à déclencher lorsque ce comportement démarre. \nType: `EventTrigger`",
+                                    "$ref": "../../common.schema.json#/definitions/event_trigger_type"
+                                },
+                                "on_end": {
+                                    "description": "Événement à déclencher lorsque ce comportement se termine. \nType: `EventTrigger`",
+                                    "$ref": "../../common.schema.json#/definitions/event_trigger_type"
+                                },
                                 "priority": {
                                     "description": "La priorité de l'objectif. \nType: `Integer`",
                                     "type": "integer"
@@ -12952,6 +13126,11 @@
                                 "speed_multiplier": {
                                     "description": "Le multiplicateur de vitesse de l'entité lorsqu'elle est tentée. \nType: `Number`",
                                     "default": 1.0,
+                                    "type": "number"
+                                },
+                                "stop_distance": {
+                                    "description": "La distance à laquelle l’Entité arrêtera de suivre le joueur. \nType: `Number`",
+                                    "default": 1.5,
                                     "type": "number"
                                 },
                                 "tempt_sound": {
