@@ -522,7 +522,7 @@
                         "minecraft:surface_parameters": {
                             "description": "Contrôle les blocs utilisés pour la génération de terrain par défaut de l'Overworld. \nType: `Object`",
                             "type": "object",
-                            "required": ["sea_floor_depth", "mid_material", "sea_floor_material", "foundation_material", "top_material"," sea_material"],
+                            "required": ["sea_floor_depth", "mid_material", "sea_floor_material", "foundation_material", "top_material","sea_material"],
                             "properties": {
                                 "sea_floor_depth": {
                                     "description": "Contrôle à quelle profondeur sous le niveau mondial des eaux le fond de l'océan devrait se produire. \nType: `Integer`",

@@ -13,7 +13,7 @@
             "type": "object",
             "required": ["description", "components"],
             "properties": {
-                "descripion": {
+                "description": {
                     "description": "Contient toute la descripion du biome. \nType: `Object`",
                     "type": "object",
                     "required": ["identifier"],
@@ -21,7 +21,16 @@
                         "identifier": {
                             "description": "L'identifiant du biome. \nType: `String`",
                             "type": "string",
-                            "$ref": "../../common.schema.json#/definitions/vanilla_biomes_id"
+                            "oneOf": [
+                                {
+                                    "$ref": "../../common.schema.json#/definitions/vanilla_biomes_id"
+                                },
+                                {
+                                    "not": {
+                                        "$ref": "../../common.schema.json#/definitions/vanilla_biomes_id"
+                                    }
+                                }
+                            ]
                         }
                     }
                 },
@@ -179,7 +188,6 @@
                         "minecraft:water_appearance": {
                             "description": "Définit la couleur de la surface de l'eau utilisée pendant le rendu. Les biomes sans ce composant auront un comportement de couleur de surface d'eau par défaut. \nType: `Object`",
                             "type": "object",
-                            "required": ["surface_color"],
                             "properties": {
                                 "surface_color": {
                                     "description": "La couleur RGB de la surface de l'eau. \nType: `String | Integer[3]`",

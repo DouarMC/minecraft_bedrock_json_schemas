@@ -21,7 +21,16 @@
                         "identifier": {
                             "description": "L'identifiant du biome. \nType: `String`",
                             "type": "string",
-                            "$ref": "../../common.schema.json#/definitions/vanilla_biomes_id"
+                            "oneOf": [
+                                {
+                                    "$ref": "../../common.schema.json#/definitions/vanilla_biomes_id"
+                                },
+                                {
+                                    "not": {
+                                        "$ref": "../../common.schema.json#/definitions/vanilla_biomes_id"
+                                    }
+                                }
+                            ]
                         }
                     }
                 },
@@ -62,6 +71,10 @@
                             "description": "Définit comment la musique est jouée dans le biome. \nType: `Object`",
                             "type": "object",
                             "properties": {
+                                "music_definition": {
+                                    "description": "Définit la musique à jouer dans le biome. La musique par défaut sera déterminé par la dimension si ce composant ou cette propriété n’est pas définit. Une chaine de caractères vide peut être utilisé si ce biome est censé être silencieux. \nType: `String`",
+                                    "type": "string"
+                                },
                                 "volume_multiplier": {
                                     "description": "Multiplicateur temporaire et progressif appliqué au volume de la musique lorsqu'on se trouve dans ce biome. Doit être une valeur comprise entre 0 et 1, inclus. \nType: `Number`",
                                     "type": "number",
@@ -238,7 +251,6 @@
                         "minecraft:water_appearance": {
                             "description": "Définit la couleur de la surface de l'eau utilisée pendant le rendu. Les biomes sans ce composant auront un comportement de couleur de surface d'eau par défaut. \nType: `Object`",
                             "type": "object",
-                            "required": ["surface_color"],
                             "properties": {
                                 "surface_color": {
                                     "description": "La couleur RGB de la surface de l'eau. \nType: `String | Integer[3]`",
