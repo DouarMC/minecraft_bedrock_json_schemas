@@ -145,7 +145,7 @@
                             "type": "string"
                         },
                         "minecraft:map_color": {
-                            "description": "Définit la couleur du bloc sur une carte. \n Type: `String | Integer[3]`",
+                            "description": "Définit la couleur du bloc sur une carte. \n Type: `String | Integer[3] | Object`",
                             "oneOf": [
                                 {
                                     "type": "string",
@@ -159,6 +159,37 @@
                                         "type": "integer",
                                         "minimum": 0,
                                         "maximum": 255
+                                    }
+                                },
+                                {
+                                    "type": "object",
+                                    "required": ["color"],
+                                    "properties": {
+                                        "color": {
+                                            "description": "La couleur du bloc sur une carte. \nType: `String | Integer[3]`",
+                                            "oneOf": [
+                                                {
+                                                    "type": "string",
+                                                    "pattern": "^#[0-9a-fA-F]{6}$"
+                                                },
+                                                {
+                                                    "type": "array",
+                                                    "minItems": 3,
+                                                    "maxItems": 3,
+                                                    "items": {
+                                                        "type": "integer",
+                                                        "minimum": 0,
+                                                        "maximum": 255
+                                                    }
+                                                }
+                                            ]
+                                        },
+                                        "tint_method": {
+                                            "description": "Définit la méthode de teinte à utiliser pour la couleur de la carte. Une méthode de teinte est une fonction qui multiplie la couleur par une teinte prédéfinie en fonction du biome auquel se trouve le bloc. \nType: `String`",
+                                            "default": "none",
+                                            "type": "string",
+                                            "enum": ["none", "default_foliage", "birch_foliage", "evergreen_foliage", "dry_foliage", "grass", "water"]
+                                        }
                                     }
                                 }
                             ]

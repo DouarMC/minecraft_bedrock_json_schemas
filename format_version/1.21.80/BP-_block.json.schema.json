@@ -37,13 +37,14 @@
                                     "description": "Le groupe d'items du menu créatif où le Bloc sera placé. \n Type: String",
                                     "maxLength": 256,
                                     "type": "string",
+                                    "pattern": "^[a-zA-Z0-9_]+:[a-zA-Z0-9_.]+$",
                                     "oneOf": [
                                         {
-                                            "$ref": "../../common.schema.json#/definitions/vanilla_item_groups_id"
+                                            "$ref": "../../common.schema.json#/definitions/vanilla_item_groups_id_with_namespace"
                                         },
                                         {
                                             "not": {
-                                                "$ref": "../../common.schema.json#/definitions/vanilla_item_groups_id"
+                                                "$ref": "../../common.schema.json#/definitions/vanilla_item_groups_id_with_namespace"
                                             }
                                         }
                                     ]
@@ -221,7 +222,7 @@
                             }
                         },
                         "minecraft:custom_components": {
-                            "description": "La listes des composants personnalisés du Bloc. \nType: `String[]`",
+                            "description": "La listes des composants personnalisés du Bloc. \nType: `String[]` \nNote: Ce composant est obsolète si l'option expérimentale `Custom Components V2` est activée.",
                             "type": "array",
                             "items": {
                                 "type": "string",
@@ -282,6 +283,22 @@
                                     }
                                 }
                             ]
+                        },
+                        "minecraft:destruction_particles": {
+                            "description": "Définit les particules qui seront utilisé quand le Bloc est détruit. \nType: `Object`",
+                            "type": "object",
+                            "properties": {
+                                "texture": {
+                                    "description": "La référence de la texture utilisée pour les particules. \nType: `String`",
+                                    "type": "string"
+                                },
+                                "tint_method": {
+                                    "description": "La méthode de teinte à utiliser pour les particules. \nType: `String`",
+                                    "default": "none",
+                                    "type": "string",
+                                    "enum": ["none", "default_foliage", "birch_foliage", "evergreen_foliage", "dry_foliage", "grass", "water"]
+                                }
+                            }
                         },
                         "minecraft:display_name": {
                             "description": "Le nom d'affichage de ce Bloc. \nType: `Localization String` \nNote: Si aucun nom n'est spécifié ici, le nom de l'identifiant sera utilisé sous la forme de 'tile.<block_identifier>.name'.",
@@ -369,6 +386,28 @@
                                             "description": "L'identifiant des règles de Block Culling à utiliser pour ce Bloc. \nType: `String`",
                                             "type": "string",
                                             "pattern": "^[a-zA-Z0-9_]+:[a-zA-Z0-9_]+$"
+                                        },
+                                        "culling_layer": {
+                                            "description": "EXPÉRIMENTALE: Upcoming Creator Features \nPermet à la règle de culling de regrouper plusieurs blocs lors de leur comparaison. Lors de l'utilisation de l’espace de noms minecraft, les seuls identifiants de couche de culling autorisés sont : `minecraft:culling_layer.undefined`, `minecraft:culling_layer.leaves`. Lorsqu'aucun espace de noms ou un espace de noms personnalisé est utilisé, les noms doivent commencer et se terminer par un caractère alphanumérique. \nType: `String`",
+                                            "default": "minecraft:culling_layer.undefined",
+                                            "type": "string",
+                                            "pattern": "^[a-zA-Z0-9_]+:[a-zA-Z0-9_]+$",
+                                            "oneOf": [
+                                                {
+                                                    "enum": [
+                                                        "minecraft:culling_layer.undefined",
+                                                        "minecraft:culling_layer.leaves"
+                                                    ]
+                                                },
+                                                {
+                                                    "not": {
+                                                        "enum": [
+                                                            "minecraft:culling_layer.undefined",
+                                                            "minecraft:culling_layer.leaves"
+                                                        ]
+                                                    }
+                                                }
+                                            ]
                                         }
                                     }
                                 }
@@ -400,6 +439,46 @@
                             "type": "integer",
                             "minimum": 0,
                             "maximum": 15
+                        },
+                        "minecraft:liquid_detection": {
+                            "description": "Définit le comportement du Bloc lors de la détection de liquide. \nType: `Object`",
+                            "type": "object",
+                            "required": ["detection_rules"],
+                            "properties": {
+                                "detection_rules": {
+                                    "description": "Les règles de détection de liquide pour ce bloc. \nType: `Object[]`",
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "can_contain_liquid": {
+                                                "description": "Définit si ce bloc peut contenir le liquide. Par exemple, si le type de liquide est `water`, cela signifie que le bloc peut être waterlogged. \nType: `Boolean`",
+                                                "default": false,
+                                                "type": "boolean"
+                                            },
+                                            "liquid_type": {
+                                                "description": "Le type de liquide pour lequel cette règle de détection est destinée. \nType: `String`",
+                                                "const": "water"
+                                            },
+                                            "on_liquid_touches": {
+                                                "description": "Définit comment le bloc réagit à l'eau en mouvement. \nType: `String` \n`blocking`: Le Bloc arrête l'eau. \n`broken`: Le Bloc se casse. \n`popped`: Le Bloc se casse et un item est déposé. \n`no_reaction`: Le bloc ne réagit pas.",
+                                                "default": "blocking",
+                                                "type": "string",
+                                                "enum": ["blocking", "broken", "popped", "no_reaction"]
+                                            },
+                                            "stops_liquid_flowing_from_direction": {
+                                                "description": "Définit que lorsque le Bloc contient un liquide, il contrôle les directions dans lesquelles le liquide ne peut pas s'écouler du Bloc. Contrôle également les directions dans lesquelles un Bloc peut arrêter le liquide de s'écouler dans celui-ci si `no_reaction` est défini pour le champ `on_liquid_touches`. \nType: `String[]`",
+                                                "default": [],
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "string",
+                                                    "enum": ["north", "south", "east", "west", "up", "down"]
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
                         },
                         "minecraft:loot": {
                             "description": "Définit le Loot Table utilisé lorsque le bloc est cassé. \n Type: `String`",
@@ -483,6 +562,11 @@
                                                 "face_dimming": {
                                                     "description": "Définit si le matériau doit être assombri par la direction dans laquelle il est orienté. \nType: Boolean",
                                                     "default": true,
+                                                    "type": "boolean"
+                                                },
+                                                "isotropic": {
+                                                    "description": "Les faces sur lesquelles ce matériau est appliqué doivent-elles randomiser leurs UV ? \nType: `Boolean`",
+                                                    "default": false,
                                                     "type": "boolean"
                                                 },
                                                 "render_method": {
@@ -576,6 +660,10 @@
                                     "type": "boolean"
                                 }
                             }
+                        },
+                        "minecraft:replaceable": {
+                            "description": "Si ce Bloc possède ce composant, il peut être remplacé quand un autre bloc est placé dans la même position. \nType: `Object`",
+                            "type": "object"
                         },
                         "minecraft:selection_box": {
                             "description": "Définit la zone de séléection du Bloc. \nType: `Object | Boolean`",
@@ -873,7 +961,11 @@
                             "description": "Donne le tag 'wood_pick_diggable' au bloc. \n Type: `Boolean`",
                             "type": "object"
                         }
-                    }
+                    },
+                    "patternProperties": {
+                        "^[a-z0-9_]+:[a-z0-9_/]+$": {}
+                    },
+                    "additionalProperties": false
                 },
                 "permutations": {
                     "description": "Définit les permutations de blocs. \nType: `Object[]`",
