@@ -21,7 +21,16 @@
                         "identifier": {
                             "description": "L'identifiant du Biome. \nType: `String`",
                             "type": "string",
-                            "$ref": "../../common.schema.json#/definitions/vanilla_biomes_id"
+                            "oneOf": [
+                                {
+                                    "$ref": "../../common.schema.json#/definitions/vanilla_biomes_id"
+                                },
+                                {
+                                    "not": {
+                                        "$ref": "../../common.schema.json#/definitions/vanilla_biomes_id"
+                                    }
+                                }
+                            ]
                         }
                     }
                 },
@@ -438,6 +447,48 @@
                                     "maxItems": 2,
                                     "items": {
                                         "type": "number"
+                                    }
+                                }
+                            }
+                        },
+                        "minecraft:replace_biomes": {
+                            "description": "Remplace une portion spécifiée d'un ou plusieurs biomes par ce Biome. \nType: `Object`",
+                            "type": "object",
+                            "required": ["replacements"],
+                            "properties": {
+                                "replacements": {
+                                    "description": "Liste des configurations de remplacement de biome. L'ajout rétroactif d'un nouveau remplacement au début de cette liste modifiera la génération du monde. Veuillez ajouter tout nouveau remplacement à la fin de la liste. \nType: `Object[]`",
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "required": ["dimension", "amount", "targets", "noise_frequency_scale"],
+                                        "properties": {
+                                            "dimension": {
+                                                "description": "Dimension dans laquelle ce remplacement peut se produire. Doit être 'minecraft:overworld'. \nType: `String`",
+                                                "type": "string",
+                                                "enum": ["minecraft:overworld"]
+                                            },
+                                            "targets": {
+                                                "description": "Liste des biomes qui seront remplacés par le biome de remplacement. \nType: `String[]` \nNote: Les biomes ciblés ne doivent pas contenir de namespaces.",
+                                                "type": "array",
+                                                "minItems": 1,
+                                                "items": {
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "amount": {
+                                                "description": "Valeur de bruit utilisée pour déterminer si le remplacement est tenté ou non, similaire à un pourcentage. \nType: `Number`",
+                                                "type": "number",
+                                                "exclusiveMinimum": 0.0,
+                                                "maximum": 1.0
+                                            },
+                                            "noise_frequency_scale": {
+                                                "description": "Valeur d'échelle utilisée pour modifier la fréquence des tentatives de remplacement. Une fréquence plus basse signifiera une plus grande zone de biome contigu qui se produit moins souvent. Une fréquence plus élevée signifiera des zones de biome contigu plus petites qui se produisent plus souvent. \nType: `Number`",
+                                                "type": "number",
+                                                "exclusiveMinimum": 0.0,
+                                                "maximum": 100.0
+                                            }
+                                        }
                                     }
                                 }
                             }
