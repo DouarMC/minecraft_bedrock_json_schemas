@@ -7,12 +7,12 @@
         "format_version": {
             "description": "La version du format à utiliser. \nType: `String`",
             "$ref": "../common.schema.json#/definitions/minecraft_version",
-            "examples": ["1.21.60", "1.21.70"]
+            "examples": ["1.21.60", "1.21.70", "1.21.80"]
         }
     },
     "allOf": [
         {
-            "if": {"properties": {"format_version": {"enum": ["1.21.60", "1.21.70"]}}},
+            "if": {"properties": {"format_version": {"enum": ["1.21.60", "1.21.70", "1.21.80"]}}},
             "then": {"$ref": "../format_version/1.21.60/BP-crafting_item_catalog.json.schema.json"}
         }
     ]

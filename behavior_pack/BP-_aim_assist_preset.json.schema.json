@@ -7,12 +7,12 @@
         "format_version": {
             "description": "La version du Format à utiliser. \nType: `String` \nNote: La version minimum est `1.21.50`.",
             "$ref": "../common.schema.json#/definitions/minecraft_version",
-            "examples": ["1.21.50", "1.21.60", "1.21.70"]
+            "examples": ["1.21.50", "1.21.60", "1.21.70", "1.21.80"]
         }
     },
     "allOf": [
         {
-            "if": {"properties": {"format_version": {"enum": ["1.21.50", "1.21.60", "1.21.70"]}}},
+            "if": {"properties": {"format_version": {"enum": ["1.21.50", "1.21.60", "1.21.70", "1.21.80"]}}},
             "then": {"$ref": "../format_version/1.21.50/BP-_aim_assist_preset.json.schema.json"}
         }
     ]

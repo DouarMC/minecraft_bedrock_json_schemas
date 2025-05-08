@@ -8,14 +8,14 @@
             "description": "La version du Format à utiliser. \nType: `String`",
             "$ref": "../common.schema.json#/definitions/minecraft_version",
             "examples": [
-                "1.21.20", "1.21.30", "1.21.40", "1.21.50", "1.21.60", "1.21.70"
+                "1.21.20", "1.21.30", "1.21.40", "1.21.50", "1.21.60", "1.21.70", "1.21.80"
             ]
         }
     },
     "allOf": [
         {
             "if": {"properties": {"format_version": {"enum": [
-                "1.21.20", "1.21.30", "1.21.40", "1.21.50", "1.21.60", "1.21.70"
+                "1.21.20", "1.21.30", "1.21.40", "1.21.50", "1.21.60", "1.21.70", "1.21.80"
             ]}}},
             "then": {"$ref": "../format_version/1.21.20/BP-_jigsaw_structure.json.schema.json"}
         }
