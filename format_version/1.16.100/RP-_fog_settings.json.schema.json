@@ -189,8 +189,8 @@
                                         "min_percent": {
                                             "description": "Le progrès minimal de la transition du brouillard. Cela détermine à quel point le brouillard a commencé à se former, avec 0 signifiant aucun brouillard et 1 signifiant un brouillard complètement formé. \nType: `Number`",
                                             "type": "number",
-                                            "maximum": 0,
-                                            "minimum": 1
+                                            "minimum": 0,
+                                            "maximum": 1
                                         },
                                         "mid_seconds": {
                                             "description": "Le temps nécessaire pour atteindre un certain progrès de la transition du brouillard, défini par mid_percent. Cela représente la durée avant que la transition atteigne une certaine étape. \nType: `Number`",
