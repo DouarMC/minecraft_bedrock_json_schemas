@@ -80,17 +80,24 @@
                                         "required": ["variations"],
                                         "properties": {
                                             "variations": {
-                                                "description": "Définit les dofférentes variations de textures pour cette référece. \n Type: `Object[]`",
+                                                "description": "Définit les dofférentes variations de textures pour cette référece. \nType: `Object[]`",
                                                 "type": "array",
                                                 "items": {
                                                     "type": "object",
-                                                    "$ref": "#/properties/texture_data/additionalProperties/properties/textures/oneOf/1/oneOf/0/properties",
-                                                    "properties": {
-                                                        "weight": {
-                                                            "description": "Le poids de la variation. \n Type: `Number`",
-                                                            "type": "number"
+                                                    "allOf": [
+                                                        {
+                                                            "$ref": "#/properties/texture_data/additionalProperties/properties/textures/oneOf/1/oneOf/0/properties"
+                                                        },
+                                                        {
+                                                            "required": ["weight"],
+                                                            "properties": {
+                                                                "weight": {
+                                                                    "description": "Le poids de chance de la variation. \nType: `Number`",
+                                                                    "type": "number"
+                                                                }
+                                                            }
                                                         }
-                                                    }
+                                                    ]
                                                 }
                                             }
                                         }
