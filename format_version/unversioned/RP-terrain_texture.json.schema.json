@@ -56,21 +56,21 @@
                                         "required": ["path"],
                                         "properties": {
                                             "path": {
-                                                "description": "Le chemin d'accès de la Texture. \n Type: `String`",
+                                                "description": "Le chemin d'accès de la Texture. \nType: `String`",
                                                 "type": "string"
                                             },
                                             "overlay_color": {
-                                                "description": "La couleur à ajouté sur la texture. \n Type: `String`",
+                                                "description": "La couleur à ajouté sur la texture. \nType: `String`",
                                                 "type": "string",
                                                 "pattern": "^#([A-Fa-f0-9]{6})$"
                                             },
                                             "tint_color": {
-                                                "description": "Définit la couleur qui teinte la texture. C'est différent de `overlay_color` car ce dernier ajoute une couleur par-dessus la texture ce qui peut rendre cette dernière opaque. \n Type: `String`",
+                                                "description": "Définit la couleur qui teinte la texture. C'est différent de `overlay_color` car ce dernier ajoute une couleur par-dessus la texture ce qui peut rendre cette dernière opaque. \nType: `String`",
                                                 "type": "string",
                                                 "pattern": "^#([A-Fa-f0-9]{6})$"
                                             },
                                             "quad": {
-                                                "description": "Définit si seulement le quart supérieur gauche de la texture doit être utilisé. \n Type: `Boolean`",
+                                                "description": "Définit si seulement le quart supérieur gauche de la texture doit être utilisé. \nType: `Boolean`",
                                                 "default": false,
                                                 "type": "boolean"
                                             }
@@ -84,20 +84,32 @@
                                                 "type": "array",
                                                 "items": {
                                                     "type": "object",
-                                                    "allOf": [
-                                                        {
-                                                            "$ref": "#/properties/texture_data/additionalProperties/properties/textures/oneOf/1/oneOf/0/properties"
+                                                    "required": ["weight"],
+                                                    "properties": {
+                                                        "weight": {
+                                                            "description": "Le poids de chance de la variation. \nType: `Number`",
+                                                            "type": "number"
                                                         },
-                                                        {
-                                                            "required": ["weight"],
-                                                            "properties": {
-                                                                "weight": {
-                                                                    "description": "Le poids de chance de la variation. \nType: `Number`",
-                                                                    "type": "number"
-                                                                }
-                                                            }
+                                                        "path": {
+                                                            "description": "Le chemin d'accès de la Texture. \nType: `String`",
+                                                            "type": "string"
+                                                        },
+                                                        "overlay_color": {
+                                                            "description": "La couleur à ajouté sur la texture. \nType: `String`",
+                                                            "type": "string",
+                                                            "pattern": "^#([A-Fa-f0-9]{6})$"
+                                                        },
+                                                        "tint_color": {
+                                                            "description": "Définit la couleur qui teinte la texture. C'est différent de `overlay_color` car ce dernier ajoute une couleur par-dessus la texture ce qui peut rendre cette dernière opaque. \nType: `String`",
+                                                            "type": "string",
+                                                            "pattern": "^#([A-Fa-f0-9]{6})$"
+                                                        },
+                                                        "quad": {
+                                                            "description": "Définit si seulement le quart supérieur gauche de la texture doit être utilisé. \nType: `Boolean`",
+                                                            "default": false,
+                                                            "type": "boolean"
                                                         }
-                                                    ]
+                                                    }
                                                 }
                                             }
                                         }
