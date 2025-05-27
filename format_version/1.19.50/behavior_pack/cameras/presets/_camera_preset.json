@@ -22,12 +22,12 @@
                     "type": "string",
                     "oneOf": [
                         {
-                            "$ref": "../../common.schema.json#/definitions/vanille_camera_presets_id"
+                            "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/vanille_camera_presets_id"
                         },
                         {
 
                             "not": {
-                                "$ref": "../../common.schema.json#/definitions/vanille_camera_presets_id"
+                                "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/vanille_camera_presets_id"
                             }
                         }
                     ]

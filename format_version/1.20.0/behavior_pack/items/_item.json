@@ -90,7 +90,7 @@
                                     "description": "Liste des blocs sur lesquels l'entité peut être placée avec un distributeur. \nType: `BlockDescriptor[]` \nNote: Si cette propriété n'est pas défini ou laissé vide, tous les blocs sont acceptés.",
                                     "type": "array",
                                     "items": {
-                                        "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                        "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                     }
                                 },
                                 "entity": {
@@ -101,7 +101,7 @@
                                     "description": "Liste des blocs sur lesquels l'entité peut être placée. \nType: `BlockDescriptor[]` \nNote: Si cette propriété n'est pas défini ou laissé vide, tous les blocs sont acceptés.",
                                     "type": "array",
                                     "items": {
-                                        "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                        "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                     }
                                 }
                             }

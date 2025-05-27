@@ -23,7 +23,7 @@
                 },
                 "uuid": {
                     "description": "UUID de la World Template. \nType: `String`",
-                    "$ref": "../../common.schema.json#/definitions/uuid"
+                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/uuid"
                 },
                 "version": {
                     "description": "Version de la World Template. \nType: `Integer[3]`",
@@ -77,7 +77,7 @@
                     },
                     "uuid": {
                         "description": "UUID du module. \nType: `String` \nNote: Doit être différent de l'UUID de l'en-tête.",
-                        "$ref": "../../common.schema.json#/definitions/uuid"
+                        "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/uuid"
                     },
                     "version": {
                         "description": "Version du module. \nType: `Integer[3]`",

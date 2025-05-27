@@ -29,12 +29,12 @@
                     "description": "Les biomes exprimés sous forme de filtres de conditions pour lesquels la structure Jigsaw peut être générée. \nType: `(Minecraft Filter | Minecraft Filter[])`",
                     "oneOf": [
                         {
-                            "$ref": "../../common.schema.json#/definitions/minecraft_filter"
+                            "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/minecraft_filter"
                         },
                         {
                             "type": "array",
                             "items": {
-                                "$ref": "../../common.schema.json#/definitions/minecraft_filter"
+                                "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/minecraft_filter"
                             }
                         }
                     ]

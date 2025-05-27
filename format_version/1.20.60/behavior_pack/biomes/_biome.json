@@ -23,11 +23,11 @@
                             "type": "string",
                             "oneOf": [
                                 {
-                                    "$ref": "../../common.schema.json#/definitions/vanilla_biomes_id"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/vanilla_biomes_id"
                                 },
                                 {
                                     "not": {
-                                        "$ref": "../../common.schema.json#/definitions/vanilla_biomes_id"
+                                        "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/vanilla_biomes_id"
                                     }
                                 }
                             ]
@@ -45,14 +45,14 @@
                             "properties": {
                                 "beach_material": {
                                     "description": "Matériaux utilisés pour décorer la surface près du niveau de la mer. \nType: `BlockDescriptor`",
-                                    "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                 },
                                 "floor_materials": {
                                     "description": "Matériaux utilisés pour la surface du sol. \nType: `BlockDescriptor[]`",
                                     "type": "array",
                                     "minItems": 1,
                                     "items": {
-                                        "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                        "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                     }
                                 },
                                 "ceiling_materials": {
@@ -60,16 +60,16 @@
                                     "type": "array",
                                     "minItems": 1,
                                     "items": {
-                                        "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                        "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                     }
                                 },
                                 "foundation_material": {
                                     "description": "Matériaux utilisés pour remplacer les blocs solides qui ne sont pas des blocs de surface. \nType: `BlockDescriptor`",
-                                    "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                 },
                                 "sea_material": {
                                     "description": "Matériaux utilisés pour remplacer les blocs d'air sous le niveau de la mer. \nType: `BlockDescriptor`",
-                                    "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                 }
                             }
                         },
@@ -131,7 +131,7 @@
                             "properties": {
                                 "mid_material": {
                                     "description": "Controle le type de bloc utilisé dans une couche sous la surface de ce biome. \nType: `BlockDescriptor`",
-                                    "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                 },
                                 "sea_floor_depth": {
                                     "description": "Contrôle à quelle profondeur sous le niveau mondial des eaux le fond de l'océan devrait se produire. \nType: `Integer`",
@@ -139,19 +139,19 @@
                                 },
                                 "sea_floor_material": {
                                     "description": "Contrôle le type de bloc utilisé comme sol pour les étendues d'eau dans ce biome. \nType: `BlockDescriptor`",
-                                    "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                 },
                                 "sea_material": {
                                     "description": "Contrôle le type de bloc utilisé pour les étendues d'eau dans ce biome. \nType: `BlockDescriptor`",
-                                    "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                 },
                                 "top_material": {
                                     "description": "Contrôle le type de bloc utilisé pour la surface de ce biome. \nType: `BlockDescriptor`",
-                                    "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                 },
                                 "foundation_material": {
                                     "description": "Contrôle le type de bloc utilisé profondément sous terre dans ce biome. \nType: `BlockDescriptor`",
-                                    "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                 }
                             }
                         },
@@ -166,31 +166,31 @@
                                 },
                                 "mid_material": {
                                     "description": "Contrôle le type de bloc utilisé dans une couche sous la surface de ce biome. \nType: `BlockDescriptor`",
-                                    "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                 },
                                 "sea_floor_material": {
                                     "description": "Contrôle le type de bloc utilisé comme sol pour les étendues d'eau dans ce biome. \nType: `BlockDescriptor`",
-                                    "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                 },
                                 "foundation_material": {
                                     "description": "Contrôle le type de bloc utilisé profondément sous terre dans ce biome. \nType: `BlockDescriptor`",
-                                    "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                 },
                                 "top_material": {
                                     "description": "Contrôle le type de bloc utilisé pour la surface de ce biome. \nType: `BlockDescriptor`",
-                                    "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                 },
                                 "sea_material": {
                                     "description": "Contrôle le type de bloc utilisé pour les étendues d'eau dans ce biome. \nType: `BlockDescriptor`",
-                                    "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                 },
                                 "hard_clay_material": {
                                     "description": "L'argile durcie à utiliser. \nType: `BlockDescriptor`",
-                                    "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                 },
                                 "clay_material": {
                                     "description": "L'argile de base à utiliser. \nType: `BlockDescriptor`",
-                                    "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                 },
                                 "bryce_pillars": {
                                     "description": "Si la mesa se génère avec des piliers. \nType: `Boolean`",
@@ -212,7 +212,7 @@
                                     "properties": {
                                         "material": {
                                             "description": "Le matériau de surface pour les pentes raides. \nType: `BlockDescriptor`",
-                                            "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                            "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                         },
                                         "east_slopes": {
                                             "description": "Activer pour les pentes orientées à l'est. \nType: `Boolean`",
@@ -512,23 +512,23 @@
                                                     "properties": {
                                                         "sea_material": {
                                                             "description": "Contrôle le type de bloc utilisé dans les étendues d'eau de ce biome lorsque cet ajustement est actif. \nType: `BlockDescriptor`",
-                                                            "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                                            "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                                         },
                                                         "foundation_material": {
                                                             "description": "Contrôle le type de bloc utilisé profondément sous terre dans ce biome lorsque cet ajustement est actif. \nType: `BlockDescriptor`",
-                                                            "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                                            "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                                         },
                                                         "top_material": {
                                                             "description": "Contrôle le type de bloc utilisé pour la surface de ce biome lorsque cet ajustement est actif. \nType: `BlockDescriptor`",
-                                                            "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                                            "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                                         },
                                                         "mid_material": {
                                                             "description": "Contrôle le type de bloc utilisé dans une couche sous la surface de ce biome lorsque cet ajustement est actif. \nType: `BlockDescriptor`",
-                                                            "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                                            "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                                         },
                                                         "sea_floor_material": {
                                                             "description": "Contrôle le type de bloc utilisé comme sol pour les étendues d'eau dans ce biome lorsque cet ajustement est actif. \nType: `BlockDescriptor`",
-                                                            "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                                            "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                                         }
                                                     }
                                                 }
@@ -581,23 +581,23 @@
                                 },
                                 "mid_material": {
                                     "description": "Contrôle le type de bloc utilisé dans une couche sous la surface de ce biome. \nType: `BlockDescriptor`",
-                                    "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                 },
                                 "sea_floor_material": {
                                     "description": "Contrôle le type de bloc utilisé comme sol pour les étendues d'eau dans ce biome. \nType: `BlockDescriptor`",
-                                    "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                 },
                                 "sea_material": {
                                     "description": "Contrôle le type de bloc utilisé pour les étendues d'eau dans ce biome. \nType: `BlockDescriptor`",
-                                    "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                 },
                                 "top_material": {
                                     "description": "Contrôle le type de bloc utilisé pour la surface de ce biome. \nType: `BlockDescriptor`",
-                                    "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                 },
                                 "foundation_material": {
                                     "description": "Contrôle le type de bloc utilisé profondément sous terre dans ce biome. \nType: `BlockDescriptor`",
-                                    "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                 }
                             }
                         },
@@ -608,7 +608,7 @@
                             "properties": {
                                 "mid_material": {
                                     "description": "Contrôle le type de bloc utilisé dans une couche sous la surface de ce biome. \nType: `BlockDescriptor`",
-                                    "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                 },
                                 "sea_floor_depth": {
                                     "description": "Contrôle à quelle profondeur sous le niveau mondial des eaux le fond de l'océan devrait se produire. \nType: `Integer`",
@@ -616,19 +616,19 @@
                                 },
                                 "sea_floor_material": {
                                     "description": "Contrôle le type de bloc utilisé comme sol pour les étendues d'eau dans ce biome. \nType: `BlockDescriptor`",
-                                    "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                 },
                                 "sea_material": {
                                     "description": "Contrôle le type de bloc utilisé pour les étendues d'eau dans ce biome. \nType: `BlockDescriptor`",
-                                    "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                 },
                                 "top_material": {
                                     "description": "Contrôle le type de bloc utilisé pour la surface de ce biome. \nType: `BlockDescriptor`",
-                                    "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                 },
                                 "foundation_material": {
                                     "description": "Contrôle le type de bloc utilisé profondément sous terre dans ce biome. \nType: `BlockDescriptor`",
-                                    "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                 }
                             }
                         },

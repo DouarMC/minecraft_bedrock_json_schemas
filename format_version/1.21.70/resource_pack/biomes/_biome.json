@@ -23,11 +23,11 @@
                             "type": "string",
                             "oneOf": [
                                 {
-                                    "$ref": "../../common.schema.json#/definitions/vanilla_biomes_id"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/vanilla_biomes_id"
                                 },
                                 {
                                     "not": {
-                                        "$ref": "../../common.schema.json#/definitions/vanilla_biomes_id"
+                                        "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/vanilla_biomes_id"
                                     }
                                 }
                             ]

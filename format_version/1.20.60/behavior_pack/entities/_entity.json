@@ -308,11 +308,11 @@
                                 },
                                 "grow_up": {
                                     "description": "Evenement d'entité à déclencher quand l'Entité grandit. \nType: `EventTrigger`",
-                                    "$ref": "../../common.schema.json#/definitions/event_trigger_type"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/event_trigger_type"
                                 },
                                 "interact_filters": {
                                     "description": "Liste des conditions à remplir pour que l'Entité soit nourrie. \nType: `Minecraft Filter`",
-                                    "$ref": "../../common.schema.json#/definitions/minecraft_filter"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/minecraft_filter"
                                 },
                                 "transform_to_item": {
                                     "description": "L'item utilisé se transformera en cet item après une interaction réussie. \nType: `String`",
@@ -397,7 +397,7 @@
                                 },
                                 "nuisance_filter": {
                                     "description": "Filtre qui est appliqué pour déterminer si un mob peut être une nuisance. \nType: `Minecraft Filter`",
-                                    "$ref": "../../common.schema.json#/definitions/minecraft_filter"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/minecraft_filter"
                                 },
                                 "on_increase_sounds": {
                                     "description": "Sons à jouer lorsque l'Entité est provoquée. Évalué dans l'ordre; la première condition correspondante gagne. \nType: `Object[]`",
@@ -453,7 +453,7 @@
                                 },
                                 "broadcast_filters": {
                                     "description": "Conditions qui doivent être remplies pour que l'Entité diffuse sa colère. \nType: `Minecraft Filter`",
-                                    "$ref": "../../common.schema.json#/definitions/minecraft_filter"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/minecraft_filter"
                                 },
                                 "broadcast_range": {
                                     "description": "Distance en blocs où les autres entités de la même définition de cette Entité deviendront en colère. \nType: `Integer`",
@@ -469,7 +469,7 @@
                                 },
                                 "calm_event": {
                                     "description": "L'événement à déclencher lorsque l'Entité devient calme. \nType: `EventTrigger`",
-                                    "$ref": "../../common.schema.json#/definitions/event_trigger_type"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/event_trigger_type"
                                 },
                                 "duration": {
                                     "description": "Temps en secondes que l'Entité restera en colère. \nType: `Integer`",
@@ -483,7 +483,7 @@
                                 },
                                 "filters": {
                                     "description": "Filtre qui est appliqué pour déterminer les types de mobs qui ne doivent pas être attaqués pendant que l'Entité est en colère. \nType: `Minecraft Filter`",
-                                    "$ref": "../../common.schema.json#/definitions/minecraft_filter"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/minecraft_filter"
                                 },
                                 "sound_interval": {
                                     "description": "La plage de temps en secondes à attendre avant de rejouer le son de colère. \nType: `Number[2]`",
@@ -525,11 +525,11 @@
                                 "cause": {
                                     "description": "Le type de dégâts infligés par l'attaque. \nType: `String`",
                                     "type": "string",
-                                    "$ref": "../../common.schema.json#/definitions/entity_damage_causes_id"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/entity_damage_causes_id"
                                 },
                                 "entity_filter": {
                                     "description": "L'ensemble d'entités valides sur lesquelles appliquer des dégâts dans la zone. \nType: `Minecraft Filter`",
-                                    "$ref": "../../common.schema.json#/definitions/minecraft_filter"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/minecraft_filter"
                                 },
                                 "damage_per_tick": {
                                     "description": "Définit le montant de dégâts infligés par tick aux entités. \nType: `Integer`",
@@ -582,7 +582,7 @@
                                 "effect_name": {
                                     "description": "Nom de l'effet appliqué à l'entité touchée. \nType: `String`",
                                     "type": "string",
-                                    "$ref": "../../common.schema.json#/definitions/potion_effects_id"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/potion_effects_id"
                                 }
                             }
                         },
@@ -592,7 +592,7 @@
                             "properties": {
                                 "attack_cooldown_complete_event": {
                                     "description": "L'événement à déclencher lorsque le cooldown est terminé. \nType: `EventTrigger`",
-                                    "$ref": "../../common.schema.json#/definitions/event_trigger_type"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/event_trigger_type"
                                 },
                                 "attack_cooldown_time": {
                                     "description": "Temps en secondes avant que l'Entité puisse attaquer à nouveau. \nType: `Number | Number[2]`",
@@ -886,7 +886,7 @@
                                             },
                                             "breed_event": {
                                                 "description": "Evénement à déclencher lorsque l'Entité se reproduit. \nType: `EventTrigger`",
-                                                "$ref": "../../common.schema.json#/definitions/event_trigger_type"
+                                                "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/event_trigger_type"
                                             },
                                             "mate_type": {
                                                 "description": "Définit le type de l'entité partenaire. \nType: `String`",
@@ -965,7 +965,7 @@
                                 },
                                 "love_filters": {
                                     "description": "Les filtres à exécuter lors de la tentative de tomber amoureux. \nType: `Minecraft Filter`",
-                                    "$ref": "../../common.schema.json#/definitions/minecraft_filter"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/minecraft_filter"
                                 },
                                 "mutation_factor": {
                                     "description": "Détermine à quel point les bébés sont susceptibles de NE PAS hériter des variantes de l'un de leurs parents. Les valeurs sont comprises entre 0,0 et 1,0, un nombre plus élevé correspondant à une probabilité de mutation plus élevée. \nType: `Object`",
@@ -1178,7 +1178,7 @@
                                 },
                                 "celebration_targets": {
                                     "description": "Liste des conditions que la cible d'une chasse doit satisfaire pour initier la célébration. \nType: `Minecraft Filter`",
-                                    "$ref": "../../common.schema.json#/definitions/minecraft_filter"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/minecraft_filter"
                                 },
                                 "celebrate_sound": {
                                     "description": "L'événement sonore à jouer lorsque l'Entité célèbre. \nType: `String`",
@@ -1290,7 +1290,7 @@
                                         "properties": {
                                             "conditional_values": {
                                                 "description": "Conditions qui doivent être remplies pour que les valeurs d'optimisation soient appliquées. \nType: `Minecraft Filter`",
-                                                "$ref": "../../common.schema.json#/definitions/minecraft_filter"
+                                                "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/minecraft_filter"
                                             },
                                             "max_dropped_ticks": {
                                                 "description": "En relation avec la valeur d'optimisation, détermine le nombre maximum de ticks que les paquets de mise à jour spatiale peuvent être abandonnés. \nType: `Integer`",
@@ -1391,7 +1391,7 @@
                                                     "description": "Type de dégâts qui déclenchera l'événement. \nType: `String`",
                                                     "default": "none",
                                                     "type": "string",
-                                                    "$ref": "../../common.schema.json#/definitions/entity_damage_causes_id"
+                                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/entity_damage_causes_id"
                                                 },
                                                 "damage_modifier": {
                                                     "description": "Un modificateur qui ajoute/retire aux dégâts de base reçus du type de dégâts spécifié. Il ne réduit pas les dégâts à moins de 0. \nType: `Number`",
@@ -1415,7 +1415,7 @@
                                                     "properties": {
                                                         "filters": {
                                                             "description": "Les filtres à exécuter lors de la tentative de déclenchement de l'événement. \nType: `Minecraft Filter`",
-                                                            "$ref": "../../common.schema.json#/definitions/minecraft_filter"
+                                                            "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/minecraft_filter"
                                                         },
                                                         "event": {
                                                             "description": "L'événement à déclencher lorsque l'Entité est endommagée par le type de dégâts spécifié. \nType: `String`",
@@ -1514,7 +1514,7 @@
                                 },
                                 "filters": {
                                     "description": "La liste des conditions qui doivent être satisfaites avant que l'Entité ne soit despawn. Si un filtre est défini, les règles de despawn standard sont ignorées. \nType: `Minecraft Filter`",
-                                    "$ref": "../../common.schema.json#/definitions/minecraft_filter"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/minecraft_filter"
                                 },
                                 "min_range_inactivity_timer": {
                                     "description": "Le temps en secondes que l'Entité doit être inactive avant de despawn. \nType: `Integer`",
@@ -1548,15 +1548,15 @@
                                 },
                                 "dried_out_event": {
                                     "description": "Evénement à executer lorsque l'Entité est complètement séchée. \nType: `EventTrigger`",
-                                    "$ref": "../../common.schema.json#/definitions/event_trigger_type"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/event_trigger_type"
                                 },
                                 "recover_after_dried_out_event": {
                                     "description": "Evénement à executer lorsque l'Entité est déjà complètement séchée mais reçoit un approvisionnement en eau. \nType: `EventTrigger`",
-                                    "$ref": "../../common.schema.json#/definitions/event_trigger_type"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/event_trigger_type"
                                 },
                                 "stopped_drying_out_event": {
                                     "description": "Evénement à executer lorsque l'Entité est sous la pluie ou dans l'eau. \nType: `EventTrigger`",
-                                    "$ref": "../../common.schema.json#/definitions/event_trigger_type"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/event_trigger_type"
                                 },
                                 "water_bottle_refill_time": {
                                     "description": "Temps supplémentaire, en secondes, donné par l'utilisation d'une bouteille d'eau sur l'Entité. \nType: `Number`",
@@ -1721,11 +1721,11 @@
                                             },
                                             "event": {
                                                 "description": "L'événement à déclencher quand les conditions du sous-capteur sont remplies. \nType: `EventTrigger`",
-                                                "$ref": "../../common.schema.json#/definitions/event_trigger_type"
+                                                "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/event_trigger_type"
                                             },
                                             "event_filters": {
                                                 "description": "L'ensemble de conditions qui doivent être satisfaites pour que l'événement soit déclenché. \nType: `Minecraft Filter`",
-                                                "$ref": "../../common.schema.json#/definitions/minecraft_filter"
+                                                "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/minecraft_filter"
                                             },
                                             "maximum_count": {
                                                 "description": "Le nombre maximum d'entités qui peuvent être détectées par le sous-capteur. \nType: `Integer`",
@@ -1773,7 +1773,7 @@
                                                 },
                                                 "filters": {
                                                     "description": "La liste des conditions qui doivent être satisfaites pour que l'événement soit déclenché. \nType: `Minecraft Filter`",
-                                                    "$ref": "../../common.schema.json#/definitions/minecraft_filter"
+                                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/minecraft_filter"
                                                 },
                                                 "target": {
                                                     "description": "Définit si l'événement doit être déclenché sur l'entité ou l'environnement. \nType: `String`",
@@ -1862,11 +1862,11 @@
                                             },
                                             "on_equip": {
                                                 "description": "Evénement à executer lorsque l'item est équipé. \nType: `EventTrigger`",
-                                                "$ref": "../../common.schema.json#/definitions/event_trigger_type"
+                                                "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/event_trigger_type"
                                             },
                                             "on_unequip": {
                                                 "description": "Evénement à executer lorsque l'item est déséquipé. \nType: `EventTrigger`",
-                                                "$ref": "../../common.schema.json#/definitions/event_trigger_type"
+                                                "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/event_trigger_type"
                                             },
                                             "slot": {
                                                 "description": "Le numero de slot de ce slot. \nType: `Integer`",
@@ -2275,7 +2275,7 @@
                                                     "properties": {
                                                         "birth_event": {
                                                             "description": "Evénement à déclencher lorsque l'Entité est créée et que les conditions d'allèle sont remplies. \nType: `EventTrigger`",
-                                                            "$ref": "../../common.schema.json#/definitions/event_trigger_type"
+                                                            "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/event_trigger_type"
                                                         },
                                                         "both_allele": {
                                                             "description": "Si cette valeur est non négative, comparez les allèles principaux et cachés de l'Entité avec cette valeur pour une correspondance avec les deux. Peut également être une plage d'entiers. \nType: `Integer | Object`",
@@ -2413,7 +2413,7 @@
                                         },
                                         "on_give": {
                                             "description": "Evénement à déclencher lorsque l'item est donné à l'Entité. \nType: `EventTrigger`",
-                                            "$ref": "../../common.schema.json#/definitions/event_trigger_type"
+                                            "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/event_trigger_type"
                                         }
                                     }
                                 }
@@ -2436,7 +2436,7 @@
                             "properties": {
                                 "filters": {
                                     "description": "La liste des conditions qui doivent être satisfaites pour que l'Entité soit comptée dans la taille du groupe. \nType: `Minecraft Filter`",
-                                    "$ref": "../../common.schema.json#/definitions/minecraft_filter"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/minecraft_filter"
                                 },
                                 "radius": {
                                     "description": "Rayon autour de l'Entité pour compter les entités dans le groupe. \nType: `Number`",
@@ -2469,7 +2469,7 @@
                             "properties": {
                                 "filters": {
                                     "description": "La liste des conditions qui doivent être satisfaites pour que l'Entité puisse être soignée. \nType: `Minecraft Filter`",
-                                    "$ref": "../../common.schema.json#/definitions/minecraft_filter"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/minecraft_filter"
                                 },
                                 "force_use": {
                                     "description": "Détermine si un item peut être utilisé indépendamment de l'Entité étant en pleine santé. \nType: `Boolean`",
@@ -2491,7 +2491,7 @@
                                                     "properties": {
                                                         "name": {
                                                             "description": "Le nom de l'effet à appliquer à l'Entité. \nType: `String`",
-                                                            "$ref": "../../common.schema.json#/definitions/potion_effects_id"
+                                                            "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/potion_effects_id"
                                                         },
                                                         "chance": {
                                                             "description": "La chance que l'effet soit appliqué à l'Entité. \nType: `Number`",
@@ -2657,7 +2657,7 @@
                                             "cause": {
                                                 "description": "Le type de dégâts qui peuvent être infligés à l'Entité. \nType: `String` \nNote: Plusieurs armures et sorts utilisent ce champ pour déterminer si l'Entité est immunisée.",
                                                 "type": "string",
-                                                "$ref": "../../common.schema.json#/definitions/entity_damage_causes_id"
+                                                "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/entity_damage_causes_id"
                                             },
                                             "damage_per_tick": {
                                                 "description": "Montant de dégâts infligés à l'Entité par tick. \nType: `Integer`",
@@ -2665,7 +2665,7 @@
                                             },
                                             "filters": {
                                                 "description": "Liste des conditions qui doivent être satisfaites pour que l'Entité prenne des dégâts. \nType: `Minecraft Filter`",
-                                                "$ref": "../../common.schema.json#/definitions/minecraft_filter"
+                                                "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/minecraft_filter"
                                             }
                                         }
                                     }
@@ -2678,7 +2678,7 @@
                             "properties": {
                                 "filters": {
                                     "description": "Définit quelles entités peuvent attaquer l'Entité. \nType: `Minecraft Filter` \nNote: Si cette propriété n'est pas définie, toutes les attaques sont autorisées.",
-                                    "$ref": "../../common.schema.json#/definitions/minecraft_filter"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/minecraft_filter"
                                 }
                             }
                         },
@@ -2714,15 +2714,15 @@
                                         "properties": {
                                             "block": {
                                                 "description": "Le nom du bloc à surveiller. \nType: `String | Object`",
-                                                "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                                "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                             },
                                             "entered_block_event": {
                                                 "description": "Evénement à déclencher lorsque l'Entité entre dans le bloc. \nType: `EventTrigger`",
-                                                "$ref": "../../common.schema.json#/definitions/event_trigger_type"
+                                                "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/event_trigger_type"
                                             },
                                             "exited_block_event": {
                                                 "description": "Evénement à déclencher lorsque l'Entité sort du bloc. \nType: `Object`",
-                                                "$ref": "../../common.schema.json#/definitions/event_trigger_type"
+                                                "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/event_trigger_type"
                                             }
                                         }
                                     }
@@ -2825,7 +2825,7 @@
                                                 "type": "object",
                                                 "properties": {
                                                     "filters": {
-                                                        "$ref": "../../common.schema.json#/definitions/minecraft_filter"
+                                                        "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/minecraft_filter"
                                                     },
                                                     "event": {
                                                         "description": "L'événement à déclencher lorsqu'une interaction réussie se produit. \nType: `String`",
@@ -2881,7 +2881,7 @@
                                     "properties": {
                                         "filters": {
                                             "description": "Les conditions qui doivent être satisfaites pour que l'événement se déclenche. \nType: `Minecraft Filter`",
-                                            "$ref": "../../common.schema.json#/definitions/minecraft_filter"
+                                            "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/minecraft_filter"
                                         },
                                         "event": {
                                             "description": "L'événement à déclencher lorsqu'une interaction réussie se produit. \nType: `String`",
@@ -3145,11 +3145,11 @@
                                 },
                                 "on_leash": {
                                     "description": "Evénement à déclencher lorsque l'Entité est attachée à une laisse. \nType: `EventTrigger`",
-                                    "$ref": "../../common.schema.json#/definitions/event_trigger_type"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/event_trigger_type"
                                 },
                                 "on_unleash": {
                                     "description": "Evénement à déclencher lorsque l'Entité est détachée d'une laisse. \nType: `EventTrigger`",
-                                    "$ref": "../../common.schema.json#/definitions/event_trigger_type"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/event_trigger_type"
                                 },
                                 "presets": {
                                     "description": "Définit comment l'Entité se comporte quand elle est attachée à une autre entité. Un preset est choisi lors de la liaison et reste en vigueur jusqu'à ce que l'Entité soit liée à un autre préréglage. Le premier preset qui a les conditions `filters` valide sera utilisé. Si aucun preset ne correspond, la configuration par défaut sera utilisé. \nType: `Object[]`",
@@ -3159,7 +3159,7 @@
                                         "properties": {
                                             "filter": {
                                                 "description": "Définit les conditions qui doivent être satisfaites pour que le préréglage soit utilisé. \nType: `Minecraft Filter`",
-                                                "$ref": "../../common.schema.json#/definitions/minecraft_filter"
+                                                "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/minecraft_filter"
                                             },
                                             "soft_distance": {
                                                 "description": "Distance en blocs à laquelle l'effet de 'ressort' commence à agir pour garder cette Entité proche de l'Entité qui l'a attachée. \nType: `Number`",
@@ -3197,7 +3197,7 @@
                                 },
                                 "filters": {
                                     "description": "Définit quels entités peuvent être considérées comme regardant l'Entité propriétaire. \nType: `Minecraft Filter`",
-                                    "$ref": "../../common.schema.json#/definitions/minecraft_filter"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/minecraft_filter"
                                 },
                                 "find_players_only": {
                                     "description": "Limite la recherche uniquement au joueur le plus proche qui répond aux critères spécifiés plutôt qu'à toutes les entités à proximité. \nType: `Boolean`",
@@ -3230,7 +3230,7 @@
                                 },
                                 "looked_at_event": {
                                     "description": "Définit l'événement à déclencher lorsqu'une entité regarde l'Entité propriétaire. \nType: `EventTrigger`",
-                                    "$ref": "../../common.schema.json#/definitions/event_trigger_type"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/event_trigger_type"
                                 },
                                 "min_looked_at_duration": {
                                     "description": "Définit la durée minimale et continue pendant laquelle l'Entité propriétaire doit être regardée avant d'être considérée comme telle. \nType: `Number`",
@@ -3239,7 +3239,7 @@
                                 },
                                 "not_looked_at_event": {
                                     "description": "Définit l'événement à déclencher lorsqu'une entité ne regarde pas l'Entité propriétaire. \nType: `EventTrigger`",
-                                    "$ref": "../../common.schema.json#/definitions/event_trigger_type"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/event_trigger_type"
                                 },
                                 "scale_fov_by_distance": {
                                     "description": "Définit si le champ de vision de l'entité regardant l'Entité propriétaire se rétrécit à mesure que la distance entre l'entité et l'Entité propriétaire augmente. Cela garantit que la largeur du cône de vision reste quelque peu constante vers la position de l'Entité propriétaire, quelle que soit la distance. \nType: `Boolean`",
@@ -3313,7 +3313,7 @@
                                 },
                                 "entity_filter": {
                                     "description": "L'ensemble d'entités qui peuvent être affectées par l'effet. \nType: `Minecraft Filter`",
-                                    "$ref": "../../common.schema.json#/definitions/minecraft_filter"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/minecraft_filter"
                                 },
                                 "effect_range": {
                                     "description": "De combien de blocs l'entité doit être proche pour que l'effet soit appliqué. \nType: `Number`",
@@ -3335,7 +3335,7 @@
                                 "mob_effect": {
                                     "description": "L'effet à appliquer. \nType: `String`",
                                     "type": "string",
-                                    "$ref": "../../common.schema.json#/definitions/potion_effects_id"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/potion_effects_id"
                                 }
                             }
                         },
@@ -3348,7 +3348,7 @@
                                     "type": "array",
                                     "items": {
                                         "type": "string",
-                                        "$ref": "../../common.schema.json#/definitions/potion_effects_id"
+                                        "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/potion_effects_id"
                                     }
                                 }
                             }
@@ -4336,7 +4336,7 @@
                                 },
                                 "filters": {
                                     "description": "Les filtres à appliquer à l'événement. \nType: `Minecraft Filter`",
-                                    "$ref": "../../common.schema.json#/definitions/minecraft_filter"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/minecraft_filter"
                                 },
                                 "target": {
                                     "description": "La cible de l'événement. \nType: `String`",
@@ -4356,7 +4356,7 @@
                                 },
                                 "filters": {
                                     "description": "Les filtres à appliquer à l'événement. \nType: `Minecraft Filter`",
-                                    "$ref": "../../common.schema.json#/definitions/minecraft_filter"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/minecraft_filter"
                                 },
                                 "target": {
                                     "description": "La cible de l'événement. \nType: `String`",
@@ -4376,7 +4376,7 @@
                                 },
                                 "filters": {
                                     "description": "Les filtres à appliquer à l'événement. \nType: `Minecraft Filter`",
-                                    "$ref": "../../common.schema.json#/definitions/minecraft_filter"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/minecraft_filter"
                                 },
                                 "target": {
                                     "description": "La cible de l'événement. \nType: `String`",
@@ -4396,7 +4396,7 @@
                                 },
                                 "filters": {
                                     "description": "Les filtres à appliquer à l'événement. \nType: `Minecraft Filter`",
-                                    "$ref": "../../common.schema.json#/definitions/minecraft_filter"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/minecraft_filter"
                                 },
                                 "target": {
                                     "description": "La cible de l'événement. \nType: `String`",
@@ -4416,7 +4416,7 @@
                                 },
                                 "filters": {
                                     "description": "Les filtres à appliquer à l'événement. \nType: `Minecraft Filter`",
-                                    "$ref": "../../common.schema.json#/definitions/minecraft_filter"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/minecraft_filter"
                                 },
                                 "target": {
                                     "description": "La cible de l'événement. \nType: `String`",
@@ -4436,7 +4436,7 @@
                                 },
                                 "filters": {
                                     "description": "Les filtres à appliquer à l'événement. \nType: `Minecraft Filter`",
-                                    "$ref": "../../common.schema.json#/definitions/minecraft_filter"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/minecraft_filter"
                                 },
                                 "target": {
                                     "description": "La cible de l'événement. \nType: `String`",
@@ -4456,7 +4456,7 @@
                                 },
                                 "filters": {
                                     "description": "Les filtres à appliquer à l'événement. \nType: `Minecraft Filter`",
-                                    "$ref": "../../common.schema.json#/definitions/minecraft_filter"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/minecraft_filter"
                                 },
                                 "target": {
                                     "description": "La cible de l'événement. \nType: `String`",
@@ -4476,7 +4476,7 @@
                                 },
                                 "filters": {
                                     "description": "Les filtres à appliquer à l'événement. \nType: `Minecraft Filter`",
-                                    "$ref": "../../common.schema.json#/definitions/minecraft_filter"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/minecraft_filter"
                                 },
                                 "target": {
                                     "description": "La cible de l'événement. \nType: `String`",
@@ -4496,7 +4496,7 @@
                                 },
                                 "filters": {
                                     "description": "Les filtres à appliquer à l'événement. \nType: `Minecraft Filter`",
-                                    "$ref": "../../common.schema.json#/definitions/minecraft_filter"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/minecraft_filter"
                                 },
                                 "target": {
                                     "description": "La cible de l'événement. \nType: `String`",
@@ -4516,7 +4516,7 @@
                                 },
                                 "filters": {
                                     "description": "Les filtres à appliquer à l'événement. \nType: `Minecraft Filter`",
-                                    "$ref": "../../common.schema.json#/definitions/minecraft_filter"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/minecraft_filter"
                                 },
                                 "target": {
                                     "description": "La cible de l'événement. \nType: `String`",
@@ -4536,15 +4536,15 @@
                             "properties": {
                                 "on_close": {
                                     "description": "Evénement à déclencher lorsque l'Entité a fini de jeter un oeil. \nType: `EventTrigger`",
-                                    "$ref": "../../common.schema.json#/definitions/event_trigger_type"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/event_trigger_type"
                                 },
                                 "on_open": {
                                     "description": "Evénement à déclencher lorsque l'Entité commence à jeter un oeil. \nType: `EventTrigger`",
-                                    "$ref": "../../common.schema.json#/definitions/event_trigger_type"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/event_trigger_type"
                                 },
                                 "on_target_open": {
                                     "description": "Événement à appeler lorsque l'entité cible de l'entité commence à jeter un œil. \nType: `EventTrigger`",
-                                    "$ref": "../../common.schema.json#/definitions/event_trigger_type"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/event_trigger_type"
                                 }
                             }
                         },
@@ -4851,7 +4851,7 @@
                                                         },
                                                         "filters": {
                                                             "description": "Les filtres qui déterminent si l'événement doit être déclenché. \nType: `Minecraft Filter`",
-                                                            "$ref": "../../common.schema.json#/definitions/minecraft_filter"
+                                                            "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/minecraft_filter"
                                                         }
                                                     }
                                                 }
@@ -5047,7 +5047,7 @@
                                                 "effect": {
                                                     "description": "L'effet à appliquer. \nType: `String`",
                                                     "type": "string",
-                                                    "$ref": "../../common.schema.json#/definitions/potion_effects_id"
+                                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/potion_effects_id"
                                                 },
                                                 "visible": {
                                                     "description": "Définit si l'effet est visible. \nType: `Boolean`",
@@ -5088,7 +5088,7 @@
                                                     "description": "Sélectionne le nom de la particule à utiliser si les filtres sont valides. \nType: `Object`",
                                                     "type": "object",
                                                     "additionalProperties": {
-                                                        "$ref": "../../common.schema.json#/definitions/minecraft_filter"
+                                                        "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/minecraft_filter"
                                                     }
                                                 }
                                             }
@@ -5170,7 +5170,7 @@
                                                     "description": "Le ou les événements à déclencher lorsqu'une entité apparaît. \nType: `EventTrigger[]`",
                                                     "type": "array",
                                                     "items": {
-                                                        "$ref": "../../common.schema.json#/definitions/event_trigger_type"
+                                                        "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/event_trigger_type"
                                                     }
                                                 },
                                                 "second_spawn_chance": {
@@ -5314,7 +5314,7 @@
                             "properties": {
                                 "triggered_event": {
                                     "description": "L'événement à déclencher. \nType: `EventTrigger`",
-                                    "$ref": "../../common.schema.json#/definitions/event_trigger_type"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/event_trigger_type"
                                 }
                             }
                         },
@@ -5350,11 +5350,11 @@
                                 },
                                 "on_activate": {
                                     "description": "L'événement à déclencher lorsque l'entité passe sur un rail activé. \nType: `EventTrigger`",
-                                    "$ref": "../../common.schema.json#/definitions/event_trigger_type"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/event_trigger_type"
                                 },
                                 "on_deactivate": {
                                     "description": "L'événement à déclencher lorsque l'entité passe sur un rail désactivé. \nType: `EventTrigger`",
-                                    "$ref": "../../common.schema.json#/definitions/event_trigger_type"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/event_trigger_type"
                                 },
                                 "tick_command_block_on_activate": {
                                     "description": "Si c'est vrai, les blocs de commande commenceront à être activés lorsqu'ils passeront sur un rail activé. \nType: `Boolean`",
@@ -5389,7 +5389,7 @@
                                             },
                                             "value": {
                                                 "description": "La réponse à l'attaque au corps à corps bloquée. \nType: `EventTrigger`",
-                                                "$ref": "../../common.schema.json#/definitions/event_trigger_type"
+                                                "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/event_trigger_type"
                                             }
                                         }
                                     }
@@ -5487,11 +5487,11 @@
                                 },
                                 "on_rider_enter_event": {
                                     "description": "L'événement à exécuter sur l'Entité quand un passager monte. \nType: `EventTrigger`",
-                                    "$ref": "../../common.schema.json#/definitions/event_trigger_type"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/event_trigger_type"
                                 },
                                 "on_rider_exit_event": {
                                     "description": "L'événement à exécuter sur l'Entité quand un passager descend. \nType: `EventTrigger`",
-                                    "$ref": "../../common.schema.json#/definitions/event_trigger_type"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/event_trigger_type"
                                 },
                                 "passenger_max_width": {
                                     "description": "La largeur maximale qu'une entité peut avoir pour être un passager. Une valeur de 0 ignore ce paramètre. \nType: `Number`",
@@ -5616,7 +5616,7 @@
                                         "properties": {
                                             "filters": {
                                                 "description": "Les filtres qui déterminent si l'événement doit être déclenché. \nType: `Minecraft Filter`",
-                                                "$ref": "../../common.schema.json#/definitions/minecraft_filter"
+                                                "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/minecraft_filter"
                                             },
                                             "event": {
                                                 "description": "L'événement à déclencher. \nType: `String`",
@@ -5771,11 +5771,11 @@
                             "properties": {
                                 "sit_event": {
                                     "description": "Evénement à déclencher lorsque l'entité s'assoit. \nType: `EventTrigger`",
-                                    "$ref": "../../common.schema.json#/definitions/event_trigger_type"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/event_trigger_type"
                                 },
                                 "stand_event": {
                                     "description": "Evénement à déclencher lorsque l'entité se lève. \nType: `EventTrigger`",
-                                    "$ref": "../../common.schema.json#/definitions/event_trigger_type"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/event_trigger_type"
                                 }
                             }
                         },
@@ -5813,7 +5813,7 @@
                                         "properties": {
                                             "filters": {
                                                 "description": "Si présent, l'entité spécifiée ne sera générée que si le filtre est évalué à true. \nType: `Minecraft Filter`",
-                                                "$ref": "../../common.schema.json#/definitions/minecraft_filter"
+                                                "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/minecraft_filter"
                                             },
                                             "max_wait_time": {
                                                 "description": "Le temps maximum aléatoire en secondes à attendre avant de générer l'entité. \nType: `Integer`",
@@ -5847,7 +5847,7 @@
                                             "spawn_event": {
                                                 "description": "L'événement à déclencher lorsque l'entité est générée. \nType: `EventTrigger`",
                                                 "default": "minecraft:entity_born",
-                                                "$ref": "../../common.schema.json#/definitions/event_trigger_type"
+                                                "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/event_trigger_type"
                                             },
                                             "spawn_item": {
                                                 "description": "Identifiant de l'item à générer. \nType: `String`",
@@ -5856,7 +5856,7 @@
                                             },
                                             "spawn_item_event": {
                                                 "description": "L'événement à déclencher lorsque l'item est généré. \nType: `EventTrigger`",
-                                                "$ref": "../../common.schema.json#/definitions/event_trigger_type"
+                                                "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/event_trigger_type"
                                             },
                                             "spawn_method": {
                                                 "description": "La méthode à utiliser pour générer l'entité. \nType: `String`",
@@ -5886,7 +5886,7 @@
                                             "effect": {
                                                 "description": "L'effet de statut à ajouter. \nType: `String`",
                                                 "type": "string",
-                                                "$ref": "../../common.schema.json#/definitions/potion_effects_id"
+                                                "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/potion_effects_id"
                                             },
                                             "duration": {
                                                 "description": "Le temps en secondes que l'effet doit durer. \nType: `Number | String`",
@@ -5927,13 +5927,13 @@
                                     "oneOf": [
                                         {
                                             "type": "string",
-                                            "$ref": "../../common.schema.json#/definitions/potion_effects_id"
+                                            "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/potion_effects_id"
                                         },
                                         {
                                             "type": "array",
                                             "items": {
                                                 "type": "string",
-                                                "$ref": "../../common.schema.json#/definitions/potion_effects_id"
+                                                "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/potion_effects_id"
                                             }
                                         }
                                     ]
@@ -5971,7 +5971,7 @@
                                 },
                                 "tame_event": {
                                     "description": "L'événement à déclencher lorsque l'entité est apprivoisée. \nType: `EventTrigger`",
-                                    "$ref": "../../common.schema.json#/definitions/event_trigger_type"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/event_trigger_type"
                                 },
                                 "tame_items": {
                                     "description":"La liste des items qui peuvent être utilisés pour apprivoiser l'entité. \nType: `String | String[]`",
@@ -6044,7 +6044,7 @@
                                 },
                                 "tame_event": {
                                     "description": "L'événement à déclencher lorsque l'entité est apprivoisée. \nType: `EventTrigger`",
-                                    "$ref": "../../common.schema.json#/definitions/event_trigger_type"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/event_trigger_type"
                                 }
                             }
                         },
@@ -6064,15 +6064,15 @@
                                 },
                                 "on_inside_range": {
                                     "description": "Evénement à déclencher lorsque l'entité est dans la plage 'inside'. \nType: `EventTrigger`",
-                                    "$ref": "../../common.schema.json#/definitions/event_trigger_type"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/event_trigger_type"
                                 },
                                 "on_outside_range": {
                                     "description": "Evénement à déclencher lorsque l'entité est dans la plage 'outside'. \nType: `EventTrigger`",
-                                    "$ref": "../../common.schema.json#/definitions/event_trigger_type"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/event_trigger_type"
                                 },
                                 "on_vision_lost_inside_range": {
                                     "description": "Evénement à déclencher lorsque l'entité est dans la plage 'inside' et perd la vision de la cible. \nType: `EventTrigger`",
-                                    "$ref": "../../common.schema.json#/definitions/event_trigger_type"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/event_trigger_type"
                                 },
                                 "outside_range": {
                                     "description": "La distance maximale en blocs à laquelle une autre entité sera considérée dans la plage 'outside'. \nType: `Number`",
@@ -6207,7 +6207,7 @@
                                 },
                                 "time_down_event": {
                                     "description": "Contient l'événement à déclencher. \nType: `EventTrigger`",
-                                    "$ref": "../../common.schema.json#/definitions/event_trigger_type"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/event_trigger_type"
                                 }
                             }
                         },
@@ -6255,7 +6255,7 @@
                                 },
                                 "spawn_filter": {
                                     "description": "Un ou plusieurs filtres qui doivent être remplis pour que le type de bloc choisi apparaisse. \nType: `Minecraft Filter`",
-                                    "$ref": "../../common.schema.json#/definitions/minecraft_filter"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/minecraft_filter"
                                 },
                                 "spawn_offset": {
                                     "description": "La distance entre la position actuelle de l'entité et l'apparition du bloc. Limité à 16 blocs. La valeur X est gauche/droite (-/+), la valeur Z est en arrière/en avant (-/+), la valeur Y est en dessous/au-dessus (-/+). \nType: `Number[3]`",
@@ -6396,7 +6396,7 @@
                                 },
                                 "trust_event": {
                                     "description": "L'événement à déclencher lorsque l'entité fait confiance au joueur. \nType: `EventTrigger`",
-                                    "$ref": "../../common.schema.json#/definitions/event_trigger_type"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/event_trigger_type"
                                 },
                                 "trust_items": {
                                     "description": "La liste des items qui peuvent être utilisés pour gagner la confiance de l'entité. \nType: `String[]`",
@@ -6528,11 +6528,11 @@
                                 },
                                 "on_admire_item_start": {
                                     "description": "L'événement à déclencher lorsque l'entité commence à admirer l'item. \nType: `EventTrigger`",
-                                    "$ref": "../../common.schema.json#/definitions/event_trigger_type"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/event_trigger_type"
                                 },
                                 "on_admire_item_stop": {
                                     "description": "L'événement à déclencher lorsque l'entité arrête d'admirer l'item. \nType: `EventTrigger`",
-                                    "$ref": "../../common.schema.json#/definitions/event_trigger_type"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/event_trigger_type"
                                 },
                                 "priority": {
                                     "description": "Plus la priorité est haute, plus vite ce comportement sera exécuté en tant qu'objectif. \nType: `Integer`",
@@ -6550,7 +6550,7 @@
                                 },
                                 "on_escape": {
                                     "description": "L'événement à déclencher lorsque l'entité évite un bloc. \nType: `EventTrigger`",
-                                    "$ref": "../../common.schema.json#/definitions/event_trigger_type"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/event_trigger_type"
                                 },
                                 "priority": {
                                     "description": "Plus la priorité est haute, plus vite ce comportement sera exécuté en tant qu'objectif. \nType: `Integer`",
@@ -6639,7 +6639,7 @@
                                         "properties": {
                                             "filters": {
                                                 "description": "Les filtres à appliquer pour sélectionner les entités à éviter. \nType: `Minecraft Filter`",
-                                                "$ref": "../../common.schema.json#/definitions/minecraft_filter"
+                                                "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/minecraft_filter"
                                             },
                                             "avoid_mob_sound": {
                                                 "$ref": "#/properties/minecraft:entity/properties/components/properties/minecraft:behavior.avoid_mob_type/properties/avoid_mob_sound"
@@ -6703,7 +6703,7 @@
                                 },
                                 "on_escape_event": {
                                     "description": "L'événement à déclencher lorsque l'entité évite une autre entité. \nType: `EventTrigger`",
-                                    "$ref": "../../common.schema.json#/definitions/event_trigger_type"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/event_trigger_type"
                                 },
                                 "priority": {
                                     "description": "Plus la priorité est haute, plus vite ce comportement sera exécuté en tant qu'objectif. \nType: `Integer`",
@@ -6864,7 +6864,7 @@
                                 },
                                 "on_celebration_end_event": {
                                     "description": "L'événement à déclencher lorsque l'entité arrête de célébrer. \nType: `EventTrigger`",
-                                    "$ref": "../../common.schema.json#/definitions/event_trigger_type"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/event_trigger_type"
                                 },
                                 "priority": {
                                     "description": "Plus la priorité est haute, plus vite ce comportement sera exécuté en tant qu'objectif. \nType: `Integer`",
@@ -6919,7 +6919,7 @@
                                 },
                                 "on_celebration_end_event": {
                                     "description": "L'événement à déclencher lorsque l'entité arrête de célébrer. \nType: `EventTrigger`",
-                                    "$ref": "../../common.schema.json#/definitions/event_trigger_type"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/event_trigger_type"
                                 },
                                 "priority": {
                                     "description": "Plus la priorité est haute, plus vite ce comportement sera exécuté en tant qu'objectif. \nType: `Integer`",
@@ -7093,7 +7093,7 @@
                                 },
                                 "filters": {
                                     "description": "Les filtres à appliquer pour sélectionner les entités à croasser. \nType: `Minecraft Filter`",
-                                    "$ref": "../../common.schema.json#/definitions/minecraft_filter"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/minecraft_filter"
                                 },
                                 "interval": {
                                     "description": "Plage de temps en secondes entre les croassements de l'entité. \nType: `Number | Number[2]`",
@@ -7142,7 +7142,7 @@
                                         },
                                         "filters": {
                                             "description": "Les filtres à appliquer pour sélectionner les entités à attaquer. \nType: `Minecraft Filter`",
-                                            "$ref": "../../common.schema.json#/definitions/minecraft_filter"
+                                            "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/minecraft_filter"
                                         },
                                         "max_dist": {
                                             "description": "Distance maximale à laquelle l'entité doit être pour être sélectionnée comme cible. \nType: `Number`",
@@ -7188,7 +7188,7 @@
                                 },
                                 "on_defend_start": {
                                     "description": "L'événement à déclencher lorsque l'entité commence à se défendre. \nType: `EventTrigger`",
-                                    "$ref": "../../common.schema.json#/definitions/event_trigger_type"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/event_trigger_type"
                                 },
                                 "priority": {
                                     "description": "Plus la priorité est haute, plus vite ce comportement sera exécuté en tant qu'objectif. \nType: `Integer`",
@@ -7221,7 +7221,7 @@
                                     "properties": {
                                         "filters": {
                                             "description": "Les filtres à appliquer pour sélectionner les entités à attaquer. \nType: `Minecraft Filter`",
-                                            "$ref": "../../common.schema.json#/definitions/minecraft_filter"
+                                            "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/minecraft_filter"
                                         }
                                     }
                                 },
@@ -7297,7 +7297,7 @@
                                 },
                                 "on_attack": {
                                     "description": "L'événement à déclencher lorsque l'entité attaque. \nType: `EventTrigger`",
-                                    "$ref": "../../common.schema.json#/definitions/event_trigger_type"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/event_trigger_type"
                                 },
                                 "outer_boundary_time_increase": {
                                     "description": "Temps (en secondes) à ajouter au recalculer lorsque la cible est au-delà de la 'path_outer_boundary'. \nType: `Number`",
@@ -7394,7 +7394,7 @@
                                 },
                                 "on_start": {
                                     "description": "L'événement à déclencher lorsque l'entité commence à creuser. \nType: `EventTrigger`",
-                                    "$ref": "../../common.schema.json#/definitions/event_trigger_type"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/event_trigger_type"
                                 },
                                 "priority": {
                                     "description": "Plus la priorité est haute, plus vite ce comportement sera exécuté en tant qu'objectif. \nType: `Integer`",
@@ -7610,7 +7610,7 @@
                                 },
                                 "filters": {
                                     "description": "Les filtres à appliquer pour sélectionner les entités à boire du lait. \nType: `Minecraft Filter`",
-                                    "$ref": "../../common.schema.json#/definitions/minecraft_filter"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/minecraft_filter"
                                 },
                                 "priority": {
                                     "description": "Plus la priorité est haute, plus vite ce comportement sera exécuté en tant qu'objectif. \nType: `Integer`",
@@ -7637,7 +7637,7 @@
                                             },
                                             "filters": {
                                                 "description": "Les filtres à appliquer pour sélectionner les entités à boire cette potion. \nType: `Minecraft Filter`",
-                                                "$ref": "../../common.schema.json#/definitions/minecraft_filter"
+                                                "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/minecraft_filter"
                                             },
                                             "id": {
                                                 "description": "L'identifiant de la potion à boire. \nType: `Integer`",
@@ -7676,7 +7676,7 @@
                                 },
                                 "entity_types": {
                                     "description": "La liste des conditions qu'une autre entité doit remplir pour être une cible valide pour laquelle déposer un objet. \nType: `Minecraft Filter`",
-                                    "$ref": "../../common.schema.json#/definitions/minecraft_filter"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/minecraft_filter"
                                 },
                                 "goal_radius": {
                                     "description": "La distance en blocs à laquelle l'Entité considère qu'elle a atteint sa position cible. \nType: `Number`",
@@ -7704,7 +7704,7 @@
                                 },
                                 "on_drop_attempt": {
                                     "description": "L'événement à déclencher lorsque l'Entité tente de déposer un item. \nType: `EventTrigger`",
-                                    "$ref": "../../common.schema.json#/definitions/event_trigger_type"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/event_trigger_type"
                                 },
                                 "priority": {
                                     "description": "Plus la priorité est haute, plus vite cet objectif sera exécuté. \nType: `Integer`",
@@ -7790,7 +7790,7 @@
                                 },
                                 "on_eat": {
                                     "description": "L'événement à déclencher lorsque l'Entité mange un bloc. \nType: `EventTrigger`",
-                                    "$ref": "../../common.schema.json#/definitions/event_trigger_type"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/event_trigger_type"
                                 },
                                 "priority": {
                                     "description": "Plus la priorité est haute, plus vite cet objectif sera exécuté. \nType: `Integer`",
@@ -7883,7 +7883,7 @@
                                 },
                                 "on_done": {
                                     "description": "L'événement à déclencher lorsque l'entité a fini d'émerger. \nType: `EventTrigger`",
-                                    "$ref": "../../common.schema.json#/definitions/event_trigger_type"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/event_trigger_type"
                                 },
                                 "priority": {
                                     "description": "Plus la priorité est haute, plus vite cet objectif sera exécuté. \nType: `Integer`",
@@ -8137,7 +8137,7 @@
                                 },
                                 "filters": {
                                     "description": "Les filtres à appliquer pour sélectionner les entités à attaquer. \nType: `Minecraft Filter`",
-                                    "$ref": "../../common.schema.json#/definitions/minecraft_filter"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/minecraft_filter"
                                 },
                                 "max_head_rotation_x": {
                                     "description": "La rotation maximale de la tête (en degrés) sur l'axe X que cette Entité peut appliquer tout en essayant de regarder la cible. \nType: `Number`",
@@ -8258,11 +8258,11 @@
                                 },
                                 "on_start": {
                                     "description": "Événement à déclencher lorsque ce comportement démarre. \nType: `EventTrigger`",
-                                    "$ref": "../../common.schema.json#/definitions/event_trigger_type"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/event_trigger_type"
                                 },
                                 "on_end": {
                                     "description": "Événement à déclencher lorsque ce comportement se termine. \nType: `EventTrigger`",
-                                    "$ref": "../../common.schema.json#/definitions/event_trigger_type"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/event_trigger_type"
                                 },
                                 "priority": {
                                     "description": "La priorité de l'objectif. \nType: `Integer`",
@@ -8401,7 +8401,7 @@
                                         },
                                         "filters": {
                                             "description": "Les filtres à appliquer pour sélectionner les entités à suivre. \nType: `Minecraft Filter`",
-                                            "$ref": "../../common.schema.json#/definitions/minecraft_filter"
+                                            "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/minecraft_filter"
                                         },
                                         "max_dist": {
                                             "description": "Distance maximale à laquelle l'entité doit être pour être sélectionnée comme cible. \nType: `Number`",
@@ -8448,7 +8448,7 @@
                             "properties": {
                                 "filters": {
                                     "description": "Permet de filtrer précisément quels types d’entités peuvent être suivis. Si vide, les critères par défaut sont appliqués : exclut joueurs, poissons, calamars, têtards, dauphins, et les entités du même type que l’Entité. \nType: `Minecraft Filter`",
-                                    "$ref": "../../common.schema.json#/definitions/minecraft_filter"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/minecraft_filter"
                                 },
                                 "preferred_actor_type": {
                                     "description": "Permet de préciser le type d’entité que l’Entité préfère suivre. Si ce champ n’est pas défini, un mob aléatoire à proximité (parmi les valides) sera choisi. \nType: `String`",
@@ -8570,7 +8570,7 @@
                                 },
                                 "on_item_throw": {
                                     "description": "Les événements à déclencher lorsque l'Entité jette un item. \nType: `EventTrigger`",
-                                    "$ref": "../../common.schema.json#/definitions/event_trigger_type"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/event_trigger_type"
                                 },
                                 "priority": {
                                     "description": "Plus la priorité est haute, plus vite cet objectif sera exécuté. \nType: `Integer`",
@@ -8608,7 +8608,7 @@
                             "properties": {
                                 "on_item_throw": {
                                     "description": "Les événements à déclencher lorsque l'Entité jette un item. \nType: `EventTrigger`",
-                                    "$ref": "../../common.schema.json#/definitions/event_trigger_type"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/event_trigger_type"
                                 },
                                 "priority": {
                                     "description": "Plus la priorité est haute, plus vite cet objectif sera exécuté. \nType: `Integer`",
@@ -8662,11 +8662,11 @@
                                 },
                                 "on_failed": {
                                     "description": "Les événements à déclencher lorsque l'Entité échoue à atteindre son point d'apparition. \nType: `EventTrigger`",
-                                    "$ref": "../../common.schema.json#/definitions/event_trigger_type"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/event_trigger_type"
                                 },
                                 "on_home": {
                                     "description": "Les événements à déclencher lorsque l'Entité atteint son point d'apparition. \nType: `EventTrigger`",
-                                    "$ref": "../../common.schema.json#/definitions/event_trigger_type"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/event_trigger_type"
                                 },
                                 "priority": {
                                     "description": "Plus la priorité est haute, plus vite cet objectif sera exécuté. \nType: `Integer`",
@@ -8828,7 +8828,7 @@
                                 },
                                 "within_radius_event": {
                                     "description": "Les événements à déclencher lorsque l'Entité est à portée de sa cible. \nType: `EventTrigger`",
-                                    "$ref": "../../common.schema.json#/definitions/event_trigger_type"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/event_trigger_type"
                                 }
                             }
                         },
@@ -8852,7 +8852,7 @@
                                         },
                                         "filters": {
                                             "description": "Les filtres à appliquer pour sélectionner les entités à attaquer. \nType: `Minecraft Filter`",
-                                            "$ref": "../../common.schema.json#/definitions/minecraft_filter"
+                                            "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/minecraft_filter"
                                         },
                                         "max_dist": {
                                             "description": "Distance maximale à laquelle l'entité doit être pour être sélectionnée comme cible. \nType: `Number`",
@@ -8964,7 +8964,7 @@
                                 },
                                 "filters": {
                                     "description": "Les filtres à appliquer pour sélectionner les entités à sauter autour. \nType: `Minecraft Filter`",
-                                    "$ref": "../../common.schema.json#/definitions/minecraft_filter"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/minecraft_filter"
                                 },
                                 "jump_angles": {
                                     "description": "Les angles de saut en degrés flottants autorisés lors de l'exécution du saut. L'ordre dans lequel les angles sont choisis est aléatoire. \nType: `Number[]`",
@@ -9133,7 +9133,7 @@
                                 },
                                 "damage_filters": {
                                     "description": "La liste des conditions qu'une autre entité doit remplir pour être une cible valide pour infliger des dégâts. \nType: `Minecraft Filter`",
-                                    "$ref": "../../common.schema.json#/definitions/minecraft_filter"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/minecraft_filter"
                                 },
                                 "duration": {
                                     "description": "La durée maximale du rugissement (en secondes). \nType: `Number`",
@@ -9147,7 +9147,7 @@
                                 },
                                 "knockback_filters": {
                                     "description": "La liste des conditions qu'une autre entité doit remplir pour être une cible valide pour appliquer un knockback. \nType: `Minecraft Filter`",
-                                    "$ref": "../../common.schema.json#/definitions/minecraft_filter"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/minecraft_filter"
                                 },
                                 "knockback_height_cap": {
                                     "description": "La hauteur maximale pour le knockback. \nType: `Number`",
@@ -9171,7 +9171,7 @@
                                 },
                                 "on_roar_end": {
                                     "description": "Les événements à déclencher lorsque le rugissement se termine. \nType: `EventTrigger`",
-                                    "$ref": "../../common.schema.json#/definitions/event_trigger_type"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/event_trigger_type"
                                 },
                                 "priority": {
                                     "description": "Plus la priorité est haute, plus vite cet objectif sera exécuté. \nType: `Integer`",
@@ -9230,7 +9230,7 @@
                                 },
                                 "on_lay": {
                                     "description": "Les événements à déclencher lorsque l'Entité pond un oeuf. \nType: `EventTrigger`",
-                                    "$ref": "../../common.schema.json#/definitions/event_trigger_type"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/event_trigger_type"
                                 },
                                 "priority": {
                                     "description": "Plus la priorité est haute, plus vite cet objectif sera exécuté. \nType: `Integer`",
@@ -9321,7 +9321,7 @@
                                 },
                                 "filters": {
                                     "description": "Les filtres à appliquer pour sélectionner les entités à regarder. \nType: `Minecraft Filter`",
-                                    "$ref": "../../common.schema.json#/definitions/minecraft_filter"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/minecraft_filter"
                                 },
                                 "look_distance": {
                                     "description": "La distance en blocs à laquelle l'Entité regardera une autre Entité. \nType: `Number`",
@@ -9544,11 +9544,11 @@
                                 },
                                 "on_attack": {
                                     "description": "L'événement à déclencher lorsque l'entité attaque. \nType: `EventTrigger`",
-                                    "$ref": "../../common.schema.json#/definitions/event_trigger_type"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/event_trigger_type"
                                 },
                                 "on_kill": {
                                     "description": "L'événement à déclencher lorsque l'entité tue une autre entité. \nType: `EventTrigger`",
-                                    "$ref": "../../common.schema.json#/definitions/event_trigger_type"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/event_trigger_type"
                                 },
                                 "outer_boundary_time_increase": {
                                     "description": "Temps (en secondes) à ajouter au recalculer lorsque la cible est au-delà de la 'path_outer_boundary'. \nType: `Number`",
@@ -9677,7 +9677,7 @@
                                 },
                                 "on_attack": {
                                     "description": "L'événement à déclencher lorsque l'entité attaque. \nType: `EventTrigger`",
-                                    "$ref": "../../common.schema.json#/definitions/event_trigger_type"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/event_trigger_type"
                                 },
                                 "outer_boundary_time_increase": {
                                     "description": "Temps (en secondes) à ajouter au recalculer lorsque la cible est au-delà de la 'path_outer_boundary'. \nType: `Number`",
@@ -9832,7 +9832,7 @@
                                 },
                                 "filters": {
                                     "description": "Les conditions qui doivent être remplies pour que le comportement commence. \nType: `Minecraft Filter`",
-                                    "$ref": "../../common.schema.json#/definitions/minecraft_filter"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/minecraft_filter"
                                 },
                                 "height_difference_limit": {
                                     "description": "La distance en hauteur (en blocs) entre l'entité propriétaire et la cible doit être inférieure à cette valeur lorsque l'entité propriétaire vérifie si elle est trop proche et doit s'éloigner de la cible. \nType: `Number`",
@@ -9952,11 +9952,11 @@
                                 },
                                 "on_reach": {
                                     "description": "L'événement à déclencher lorsque l'entité atteint le bloc. \nType: `EventTrigger`",
-                                    "$ref": "../../common.schema.json#/definitions/event_trigger_type"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/event_trigger_type"
                                 },
                                 "on_stay_completed": {
                                     "description": "L'événement à déclencher lorsque l'Entité reste sur le bloc pendant la durée de séjour('stay_duration'). \nType: `EventTrigger`",
-                                    "$ref": "../../common.schema.json#/definitions/event_trigger_type"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/event_trigger_type"
                                 },
                                 "priority": {
                                     "description": "Plus la priorité est haute, plus vite cet objectif sera exécuté. \nType: `Integer`",
@@ -10295,7 +10295,7 @@
                             "properties": {
                                 "can_nap_filters": {
                                     "description": "Les conditions qui doivent être remplies pour que l'entité puisse faire une sieste. \nType: `Minecraft Filter`",
-                                    "$ref": "../../common.schema.json#/definitions/minecraft_filter"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/minecraft_filter"
                                 },
                                 "cooldown_max": {
                                     "description": "Le temps maximum en secondes que l'entité doit attendre avant de réutiliser l'objectif. \nType: `Number`",
@@ -10319,7 +10319,7 @@
                                 },
                                 "wake_mob_exceptions": {
                                     "description": "Les conditions qui doivent être remplies pour que l'entité se réveille de sa sieste. \nType: `Minecraft Filter`",
-                                    "$ref": "../../common.schema.json#/definitions/minecraft_filter"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/minecraft_filter"
                                 }
                             }
                         },
@@ -10348,7 +10348,7 @@
                                     "properties": {
                                         "filters": {
                                             "description": "Les filtres à appliquer pour sélectionner les entités à attaquer. \nType: `Minecraft Filter`",
-                                            "$ref": "../../common.schema.json#/definitions/minecraft_filter"
+                                            "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/minecraft_filter"
                                         },
                                         "max_dist": {
                                             "description": "Distance maximale à laquelle l'entité doit être pour être sélectionnée comme cible. \nType: `Number`",
@@ -10453,7 +10453,7 @@
                                     "properties": {
                                         "filters": {
                                             "description": "Les filtres à appliquer pour sélectionner les entités à attaquer. \nType: `Minecraft Filter`",
-                                            "$ref": "../../common.schema.json#/definitions/minecraft_filter"
+                                            "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/minecraft_filter"
                                         },
                                         "max_dist": {
                                             "description": "Distance maximale à laquelle l'entité doit être pour être sélectionnée comme cible. \nType: `Number`",
@@ -10645,7 +10645,7 @@
                                         },
                                         "filters": {
                                             "description": "Les filtres à appliquer pour sélectionner les entités à attaquer. \nType: `Minecraft Filter`",
-                                            "$ref": "../../common.schema.json#/definitions/minecraft_filter"
+                                            "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/minecraft_filter"
                                         },
                                         "max_dist": {
                                             "description": "Distance maximale à laquelle l'entité doit être pour être sélectionnée comme cible. \nType: `Number`",
@@ -10700,7 +10700,7 @@
                                         },
                                         "filters": {
                                             "description": "Les filtres à appliquer pour sélectionner les entités à attaquer. \nType: `Minecraft Filter`",
-                                            "$ref": "../../common.schema.json#/definitions/minecraft_filter"
+                                            "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/minecraft_filter"
                                         },
                                         "max_dist": {
                                             "description": "Distance maximale à laquelle l'entité doit être pour être sélectionnée comme cible. \nType: `Number`",
@@ -10750,7 +10750,7 @@
                                     "type": "array",
                                     "items": {
                                         "type": "string",
-                                        "$ref": "../../common.schema.json#/definitions/entity_damage_causes_id"
+                                        "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/entity_damage_causes_id"
                                     }
                                 },
                                 "force": {
@@ -10960,13 +10960,13 @@
                                     "oneOf": [
                                         {
                                             "type": "string",
-                                            "$ref": "../../common.schema.json#/definitions/entity_damage_causes_id"
+                                            "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/entity_damage_causes_id"
                                         },
                                         {
                                             "type": "array",
                                             "items": {
                                                 "type": "string",
-                                                "$ref": "../../common.schema.json#/definitions/entity_damage_causes_id"
+                                                "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/entity_damage_causes_id"
                                             }
                                         }
                                     ]
@@ -10978,7 +10978,7 @@
                                 },
                                 "filters": {
                                     "description": "Les conditions requises pour que l'entité joue la morte. \nType: `Minecraft Filter`",
-                                    "$ref": "../../common.schema.json#/definitions/minecraft_filter"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/minecraft_filter"
                                 },
                                 "force_below_health": {
                                     "description": "La quantité de santé à laquelle les dégâts feront jouer l'entité morte. \nType: `Integer`",
@@ -11112,7 +11112,7 @@
                                 },
                                 "on_start": {
                                     "description": "L'événement à déclencher lors de l'attaque. \nType: `EventTrigger`",
-                                    "$ref": "../../common.schema.json#/definitions/event_trigger_type"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/event_trigger_type"
                                 },
                                 "pre_ram_sound": {
                                     "description": "Le son à jouer lorsque l'entité est sur le point de commencer une attaque de charge. \nType: `String`",
@@ -11382,27 +11382,27 @@
                                 },
                                 "on_digging_start": {
                                     "description": "L'événement à déclencher lorsque la recherche se termine et que le creusage commence. \nType: `EventTrigger`",
-                                    "$ref": "../../common.schema.json#/definitions/event_trigger_type"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/event_trigger_type"
                                 },
                                 "on_fail_during_digging": {
                                     "description": "Evénement à déclencher lorsque l'objectif échoue pendant l'état de creusage. \nType: `EventTrigger`",
-                                    "$ref": "../../common.schema.json#/definitions/event_trigger_type"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/event_trigger_type"
                                 },
                                 "on_fail_during_searching": {
                                     "description": "Evénement à déclencher lorsque l'objectif échoue pendant l'état de recherche. \nType: `EventTrigger`",
-                                    "$ref": "../../common.schema.json#/definitions/event_trigger_type"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/event_trigger_type"
                                 },
                                 "on_item_found": {
                                     "description": "L'événement à déclencher lorsqu'un item est trouvé. \nType: `EventTrigger`",
-                                    "$ref": "../../common.schema.json#/definitions/event_trigger_type"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/event_trigger_type"
                                 },
                                 "on_searching_start": {
                                     "description": "L'événement à déclencher lorsque la recherche commence. \nType: `EventTrigger`",
-                                    "$ref": "../../common.schema.json#/definitions/event_trigger_type"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/event_trigger_type"
                                 },
                                 "on_success": {
                                     "description": "L'événement à déclencher lorsque la recherche et le creusage sont terminés. \nType: `EventTrigger`",
-                                    "$ref": "../../common.schema.json#/definitions/event_trigger_type"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/event_trigger_type"
                                 },
                                 "search_range_xz": {
                                     "description": "La largeur et la longueur du volume autour de l'entité utilisé pour trouver une position cible valide. \nType: `Number`",
@@ -11812,7 +11812,7 @@
                                         },
                                         "filters": {
                                             "description": "Les filtres à appliquer pour sélectionner les entités à attaquer. \nType: `Minecraft Filter`",
-                                            "$ref": "../../common.schema.json#/definitions/minecraft_filter"
+                                            "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/minecraft_filter"
                                         },
                                         "max_dist": {
                                             "description": "Distance maximale à laquelle l'entité doit être pour être sélectionnée comme cible. \nType: `Number`",
@@ -12095,7 +12095,7 @@
                                         },
                                         "filters": {
                                             "description": "Les filtres à appliquer pour sélectionner les entités à attaquer. \nType: `Minecraft Filter`",
-                                            "$ref": "../../common.schema.json#/definitions/minecraft_filter"
+                                            "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/minecraft_filter"
                                         },
                                         "max_dist": {
                                             "description": "Distance maximale à laquelle l'entité doit être pour être sélectionnée comme cible. \nType: `Number`",
@@ -12468,11 +12468,11 @@
                                 },
                                 "on_attack": {
                                     "description": "L'événement à déclencher lorsque l'entité attaque. \nType: `EventTrigger`",
-                                    "$ref": "../../common.schema.json#/definitions/event_trigger_type"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/event_trigger_type"
                                 },
                                 "on_kill": {
                                     "description": "L'événement à déclencher lorsque l'entité tue une autre entité. \nType: `EventTrigger`",
-                                    "$ref": "../../common.schema.json#/definitions/event_trigger_type"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/event_trigger_type"
                                 },
                                 "outer_boundary_time_increase": {
                                     "description": "Temps (en secondes) à ajouter au recalculer lorsque la cible est au-delà de la 'path_outer_boundary'. \nType: `Number`",
@@ -12651,7 +12651,7 @@
                                             },
                                             "filters": {
                                                 "description": "Les filtres permettent aux objets de données de spécifier des critères de test. \nType: `Minecraft Filter`",
-                                                "$ref": "../../common.schema.json#/definitions/minecraft_filter"
+                                                "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/minecraft_filter"
                                             },
                                             "max_activation_range": {
                                                 "description": "La limite supérieure de la distance d'activation en blocs pour ce sort, ne doit pas être négative. \nType: `Number`",
@@ -12878,7 +12878,7 @@
                                     "properties": {
                                         "filters": {
                                             "description": "Les filtres permettent aux objets de données de spécifier des critères de test. \nType: `Minecraft Filter`",
-                                            "$ref": "../../common.schema.json#/definitions/minecraft_filter"
+                                            "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/minecraft_filter"
                                         }
                                     }
                                 },
@@ -12954,7 +12954,7 @@
                             "properties": {
                                 "filters": {
                                     "description": "Les filtres permettent aux objets de données de spécifier des critères de test. \nType: `Minecraft Filter`",
-                                    "$ref": "../../common.schema.json#/definitions/minecraft_filter"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/minecraft_filter"
                                 },
                                 "max_head_rotation_y": {
                                     "description": "La rotation maximale (en degrés) sur l'axe Y que cette entité peut tourner la tête lorsqu'elle tente de regarder la cible. \nType: `Number`",
@@ -13012,7 +13012,7 @@
                                     "properties": {
                                         "filters": {
                                             "description": "Les filtres à appliquer pour sélectionner les entités à attaquer. \nType: `Minecraft Filter`",
-                                            "$ref": "../../common.schema.json#/definitions/minecraft_filter"
+                                            "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/minecraft_filter"
                                         },
                                         "max_dist": {
                                             "description": "Distance maximale à laquelle l'entité doit être pour être sélectionnée comme cible. \nType: `Number`",
@@ -13063,7 +13063,7 @@
                                 },
                                 "filters": {
                                     "description": "Les filtres permettent aux objets de données de spécifier des critères de test. \nType: `Minecraft Filter`",
-                                    "$ref": "../../common.schema.json#/definitions/minecraft_filter"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/minecraft_filter"
                                 },
                                 "priority": {
                                     "description": "La priorité de l'objectif. \nType: `Integer`",
@@ -13099,11 +13099,11 @@
                                 },
                                 "on_start": {
                                     "description": "Événement à déclencher lorsque ce comportement démarre. \nType: `EventTrigger`",
-                                    "$ref": "../../common.schema.json#/definitions/event_trigger_type"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/event_trigger_type"
                                 },
                                 "on_end": {
                                     "description": "Événement à déclencher lorsque ce comportement se termine. \nType: `EventTrigger`",
-                                    "$ref": "../../common.schema.json#/definitions/event_trigger_type"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/event_trigger_type"
                                 },
                                 "priority": {
                                     "description": "La priorité de l'objectif. \nType: `Integer`",
@@ -13166,11 +13166,11 @@
                                 },
                                 "on_end": {
                                     "description": "Événement à déclencher lorsque ce comportement se termine. \nType: `EventTrigger`",
-                                    "$ref": "../../common.schema.json#/definitions/event_trigger_type"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/event_trigger_type"
                                 },
                                 "on_start": {
                                     "description": "Événement à déclencher lorsque ce comportement démarre. \nType: `EventTrigger`",
-                                    "$ref": "../../common.schema.json#/definitions/event_trigger_type"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/event_trigger_type"
                                 }
                             }
                         },
@@ -13200,11 +13200,11 @@
                                 },
                                 "on_end": {
                                     "description": "Événement à déclencher lorsque ce comportement se termine. \nType: `EventTrigger`",
-                                    "$ref": "../../common.schema.json#/definitions/event_trigger_type"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/event_trigger_type"
                                 },
                                 "on_start": {
                                     "description": "Événement à déclencher lorsque ce comportement démarre. \nType: `EventTrigger`",
-                                    "$ref": "../../common.schema.json#/definitions/event_trigger_type"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/event_trigger_type"
                                 }
                             }
                         },
@@ -13234,11 +13234,11 @@
                                 },
                                 "on_end": {
                                     "description": "Événement à déclencher lorsque ce comportement se termine. \nType: `EventTrigger`",
-                                    "$ref": "../../common.schema.json#/definitions/event_trigger_type"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/event_trigger_type"
                                 },
                                 "on_start": {
                                     "description": "Événement à déclencher lorsque ce comportement démarre. \nType: `EventTrigger`",
-                                    "$ref": "../../common.schema.json#/definitions/event_trigger_type"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/event_trigger_type"
                                 }
                             }
                         },
@@ -13283,7 +13283,7 @@
                             "properties": {
                                 "filters": {
                                     "description": "Les filtres permettent aux objets de données de spécifier des critères de test. \nType: `Minecraft Filter`",
-                                    "$ref": "../../common.schema.json#/definitions/minecraft_filter"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/minecraft_filter"
                                 },
                                 "max_distance_from_player": {
                                     "description": "La distance maximale à laquelle le joueur peut être de ce mob pour que le mob soit intéressé par le commerce. \nType: `Number`",
@@ -13311,7 +13311,7 @@
                                         },
                                         "filters": {
                                             "description": "Les filtres à appliquer pour sélectionner les entités à attaquer. \nType: `Minecraft Filter`",
-                                            "$ref": "../../common.schema.json#/definitions/minecraft_filter"
+                                            "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/minecraft_filter"
                                         },
                                         "max_dist": {
                                             "description": "Distance maximale à laquelle l'entité doit être pour être sélectionnée comme cible. \nType: `Number`",
@@ -13386,7 +13386,7 @@
                                         },
                                         "filters": {
                                             "description": "Les filtres à appliquer pour sélectionner les entités à attaquer. \nType: `Minecraft Filter`",
-                                            "$ref": "../../common.schema.json#/definitions/minecraft_filter"
+                                            "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/minecraft_filter"
                                         },
                                         "max_dist": {
                                             "description": "Distance maximale à laquelle l'entité doit être pour être sélectionnée comme cible. \nType: `Number`",
@@ -13447,7 +13447,7 @@
                                 },
                                 "on_arrival": {
                                     "description": "L'événement à déclencher lorsque l'entité atteint son lieu de travail. \nType: `EventTrigger`",
-                                    "$ref": "../../common.schema.json#/definitions/event_trigger_type"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/event_trigger_type"
                                 },
                                 "priority": {
                                     "description": "La priorité de l'objectif. \nType: `Integer`",
@@ -13521,7 +13521,7 @@
                                 },
                                 "on_arrival": {
                                     "description": "L'événement à déclencher lorsque l'entité atteint son lieu de travail. \nType: `EventTrigger`",
-                                    "$ref": "../../common.schema.json#/definitions/event_trigger_type"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/event_trigger_type"
                                 },
                                 "priority": {
                                     "description": "La priorité de l'objectif. \nType: `Integer`",
@@ -13564,11 +13564,11 @@
                     "propertyNames": {
                         "oneOf": [
                             {
-                                "$ref": "../../common.schema.json#/definitions/built_in_entity_events"
+                                "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/built_in_entity_events"
                             },
                             {
                                 "not": {
-                                    "$ref": "../../common.schema.json#/definitions/built_in_entity_events"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/built_in_entity_events"
                                 }
                             }
                         ]
@@ -13622,7 +13622,7 @@
                             },
                             "filters": {
                                 "description": "Principalement utilisé pour les réponses 'sequences'. Sert de conditions pour déterminer si l'événement doit être déclenché. \nType: `Minecraft Filter`",
-                                "$ref": "../../common.schema.json#/definitions/minecraft_filter"
+                                "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/minecraft_filter"
                             },
                             "play_sound": {
                                 "description": "Joue un son en tant que partie d'une réponse d'événement d'entité. \nType: `Object`",
@@ -13741,7 +13741,7 @@
                                 "properties": {
                                     "filters": {
                                         "description": "Les filtres permettent aux objets de données de spécifier des critères de test. \nType: `Minecraft Filter`",
-                                        "$ref": "../../common.schema.json#/definitions/minecraft_filter"
+                                        "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/minecraft_filter"
                                     },
                                     "event": {
                                         "description": "L'événement à déclencher. \nType: `String`",

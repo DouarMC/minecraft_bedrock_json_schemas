@@ -70,7 +70,7 @@
                         },
                         "fill_with": {
                             "description": "Le bloc à utiliser pour remplir la grotte. \nType: `BlockDescriptor`",
-                            "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                            "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                         },
                         "width_modifier": {
                             "description": "De combien de blocs augmenter la largeur de la grotte à partir du point central de la grotte. \nType: `Molang`",
@@ -134,7 +134,7 @@
                         },
                         "ore_block": {
                             "description": "Le bloc à utiliser pour les blocs de minerai. \nType: `BlockDescriptor`",
-                            "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                            "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                         },
                         "max_empty_corners": {
                             "description": "Le nombre maximum de coins vides autorisés dans la structure. \nType: `Integer`",
@@ -166,29 +166,29 @@
                         },
                         "filler": {
                             "description": "Le bloc à utiliser pour remplir l'intérieur de la géode. \nType: `BlockDescriptor`",
-                            "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                            "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                         },
                         "inner_layer": {
                             "description": "Le bloc à utiliser pour la couche intérieure de la géode. \nType: `BlockDescriptor`",
-                            "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                            "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                         },
                         "alternate_inner_layer": {
                             "description": "Le bloc qui a une chance de se générer à la place de 'inner_layer'. \nType: `BlockDescriptor`",
-                            "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                            "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                         },
                         "middle_layer": {
                             "description": "Le bloc à utiliser pour la couche intermédiaire de la géode. \nType: `BlockDescriptor`",
-                            "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                            "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                         },
                         "outer_layer": {
                             "description": "Le bloc qui forme la coquille extérieure de la géode. \nType: `BlockDescriptor`",
-                            "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                            "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                         },
                         "inner_placements": {
                             "description": "Une liste de blocs qui peuvent être replacés lors de la génération de la géode. Omettez ce champ pour autoriser n'importe quel bloc à être remplacé. \nType: `BlockDescriptor[]`",
                             "type": "array",
                             "items": {
-                                "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                             }
                         },
                         "min_outer_wall_distance": {
@@ -355,7 +355,7 @@
                                 "maxItems": 2,
                                 "items": [
                                     {
-                                        "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                        "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                     },
                                     {
                                         "type": "integer"
@@ -372,7 +372,7 @@
                                 "maxItems": 2,
                                 "items": [
                                     {
-                                        "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                        "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                     },
                                     {
                                         "type": "integer"
@@ -410,7 +410,7 @@
                         },
                         "places_block": {
                             "description": "Le bloc à placer. \nType: `BlockDescriptor`",
-                            "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                            "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                         },
                         "search_range": {
                             "description": "De combien de blocs cette Feature peut rechercher une position valide pour se placer. \nType: `Integer`",
@@ -441,7 +441,7 @@
                             "type": "array",
                             "minItems": 1,
                             "items": {
-                                "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                             }
                         }
                     }
@@ -470,7 +470,7 @@
                         },
                         "fill_with": {
                             "description": "Le bloc à utiliser pour remplir la grotte. \nType: `BlockDescriptor`",
-                            "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                            "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                         },
                         "width_modifier": {
                             "description": "De combien de blocs augmenter la largeur de la grotte à partir du point central de la grotte. \nType: `Molang`",
@@ -553,13 +553,13 @@
                                 "properties": {
                                     "places_block": {
                                         "description": "Le bloc à placer. \nType: `BlockDescriptor`",
-                                        "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                        "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                     },
                                     "may_replace": {
                                         "description": "Les blocs qui peuvent être remplacés par le bloc de cette règle. Omettez ce champ pour autoriser n'importe quel bloc à être remplacé. \nType: `BlockDescriptor[]`",
                                         "type": "array",
                                         "items": {
-                                            "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                            "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                         }
                                     }
                                 }
@@ -608,7 +608,7 @@
                         },
                         "places_block": {
                             "description": "Le bloc à placer. \nType: `BlockDescriptor`",
-                            "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                            "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                         }
                     }
                 }
@@ -874,7 +874,7 @@
                             "description": "Le bloc à placer. \nType: `BlockDescriptor | Object[]`",
                             "oneOf": [
                                 {
-                                    "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                 },
                                 {
                                     "type": "array",
@@ -883,7 +883,7 @@
                                         "required": ["block", "weight"],
                                         "properties": {
                                             "block": {
-                                                "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                                "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                             },
                                             "weight": {
                                                 "description": "Poids de chances du bloc. \nType: `Integer`",
@@ -920,12 +920,12 @@
                                     "description": "Le ou les blocs qui peuvent être placés au-dessus du bloc de cette Feature. \nType: `BlockDescriptor | BlockDescriptor[]`",
                                     "oneOf": [
                                         {
-                                            "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                            "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                         },
                                         {
                                             "type": "array",
                                             "items": {
-                                                "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                                "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                             }
                                         }
                                     ]
@@ -934,12 +934,12 @@
                                     "description": "Le ou les blocs qui peuvent être placés en dessous du bloc de cette Feature. \nType: `BlockDescriptor | BlockDescriptor[]`",
                                     "oneOf": [
                                         {
-                                            "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                            "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                         },
                                         {
                                             "type": "array",
                                             "items": {
-                                                "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                                "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                             }
                                         }
                                     ]
@@ -948,12 +948,12 @@
                                     "description": "Le ou les blocs qui peuvent être placés au nord du bloc de cette Feature. \nType: `BlockDescriptor | BlockDescriptor[]`",
                                     "oneOf": [
                                         {
-                                            "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                            "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                         },
                                         {
                                             "type": "array",
                                             "items": {
-                                                "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                                "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                             }
                                         }
                                     ]
@@ -962,12 +962,12 @@
                                     "description": "Le ou les blocs qui peuvent être placés à l'est du bloc de cette Feature. \nType: `BlockDescriptor | BlockDescriptor[]`",
                                     "oneOf": [
                                         {
-                                            "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                            "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                         },
                                         {
                                             "type": "array",
                                             "items": {
-                                                "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                                "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                             }
                                         }
                                     ]
@@ -976,12 +976,12 @@
                                     "description": "Le ou les blocs qui peuvent être placés au sud du bloc de cette Feature. \nType: `BlockDescriptor | BlockDescriptor[]`",
                                     "oneOf": [
                                         {
-                                            "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                            "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                         },
                                         {
                                             "type": "array",
                                             "items": {
-                                                "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                                "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                             }
                                         }
                                     ]
@@ -990,12 +990,12 @@
                                     "description": "Le ou les blocs qui peuvent être placés à l'ouest du bloc de cette Feature. \nType: `BlockDescriptor | BlockDescriptor[]`",
                                     "oneOf": [
                                         {
-                                            "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                            "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                         },
                                         {
                                             "type": "array",
                                             "items": {
-                                                "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                                "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                             }
                                         }
                                     ]
@@ -1004,12 +1004,12 @@
                                     "description": "Le ou les blocs qui peuvent être placés de tous les côtés du bloc de cette Feature. \nType: `BlockDescriptor | BlockDescriptor[]`",
                                     "oneOf": [
                                         {
-                                            "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                            "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                         },
                                         {
                                             "type": "array",
                                             "items": {
-                                                "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                                "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                             }
                                         }
                                     ]
@@ -1018,12 +1018,12 @@
                                     "description": "Le ou les blocs qui peuvent être placés sur les côtés du bloc de cette Feature. \nType: `BlockDescriptor | BlockDescriptor[]`",
                                     "oneOf": [
                                         {
-                                            "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                            "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                         },
                                         {
                                             "type": "array",
                                             "items": {
-                                                "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                                "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                             }
                                         }
                                     ]
@@ -1032,12 +1032,12 @@
                                     "description": "Le ou les blocs qui peuvent être placés en diagonale du bloc de cette Feature. \nType: `BlockDescriptor | BlockDescriptor[]`",
                                     "oneOf": [
                                         {
-                                            "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                            "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                         },
                                         {
                                             "type": "array",
                                             "items": {
-                                                "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                                "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                             }
                                         }
                                     ]
@@ -1048,7 +1048,7 @@
                             "description": "Les blocs qui peuvent être remplacés par le bloc de cette Feature. Omettez ce champ pour autoriser n'importe quel bloc à être remplacé. \nType: `BlockDescriptor[]`",
                             "type": "array",
                             "items": {
-                                "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                             }
                         },
                         "randomize_rotation": {
@@ -1063,12 +1063,12 @@
                                     "description": "Le ou les blocs qui ne peuvent pas être placés au-dessus du bloc de cette Feature. \nType: `BlockDescriptor | BlockDescriptor[]`",
                                     "oneOf": [
                                         {
-                                            "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                            "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                         },
                                         {
                                             "type": "array",
                                             "items": {
-                                                "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                                "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                             }
                                         }
                                     ]
@@ -1077,12 +1077,12 @@
                                     "description": "Le ou les blocs qui ne peuvent pas être placés en dessous du bloc de cette Feature. \nType: `BlockDescriptor | BlockDescriptor[]`",
                                     "oneOf": [
                                         {
-                                            "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                            "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                         },
                                         {
                                             "type": "array",
                                             "items": {
-                                                "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                                "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                             }
                                         }
                                     ]
@@ -1091,12 +1091,12 @@
                                     "description": "Le ou les blocs qui ne peuvent pas être placés au nord du bloc de cette Feature. \nType: `BlockDescriptor | BlockDescriptor[]`",
                                     "oneOf": [
                                         {
-                                            "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                            "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                         },
                                         {
                                             "type": "array",
                                             "items": {
-                                                "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                                "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                             }
                                         }
                                     ]
@@ -1105,12 +1105,12 @@
                                     "description": "Le ou les blocs qui ne peuvent pas être placés à l'est du bloc de cette Feature. \nType: `BlockDescriptor | BlockDescriptor[]`",
                                     "oneOf": [
                                         {
-                                            "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                            "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                         },
                                         {
                                             "type": "array",
                                             "items": {
-                                                "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                                "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                             }
                                         }
                                     ]
@@ -1119,12 +1119,12 @@
                                     "description": "Le ou les blocs qui ne peuvent pas être placés au sud du bloc de cette Feature. \nType: `BlockDescriptor | BlockDescriptor[]`",
                                     "oneOf": [
                                         {
-                                            "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                            "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                         },
                                         {
                                             "type": "array",
                                             "items": {
-                                                "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                                "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                             }
                                         }
                                     ]
@@ -1133,12 +1133,12 @@
                                     "description": "Le ou les blocs qui ne peuvent pas être placés à l'ouest du bloc de cette Feature. \nType: `BlockDescriptor | BlockDescriptor[]`",
                                     "oneOf": [
                                         {
-                                            "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                            "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                         },
                                         {
                                             "type": "array",
                                             "items": {
-                                                "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                                "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                             }
                                         }
                                     ]
@@ -1147,12 +1147,12 @@
                                     "description": "Le ou les blocs qui ne peuvent pas être placés de tous les côtés du bloc de cette Feature. \nType: `BlockDescriptor | BlockDescriptor[]`",
                                     "oneOf": [
                                         {
-                                            "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                            "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                         },
                                         {
                                             "type": "array",
                                             "items": {
-                                                "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                                "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                             }
                                         }
                                     ]
@@ -1161,12 +1161,12 @@
                                     "description": "Le ou les blocs qui ne peuvent pas être placés sur les côtés du bloc de cette Feature. \nType: `BlockDescriptor | BlockDescriptor[]`",
                                     "oneOf": [
                                         {
-                                            "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                            "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                         },
                                         {
                                             "type": "array",
                                             "items": {
-                                                "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                                "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                             }
                                         }
                                     ]
@@ -1175,12 +1175,12 @@
                                     "description": "Le ou les blocs qui ne peuvent pas être placés en diagonale du bloc de cette Feature. \nType: `BlockDescriptor | BlockDescriptor[]`",
                                     "oneOf": [
                                         {
-                                            "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                            "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                         },
                                         {
                                             "type": "array",
                                             "items": {
-                                                "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                                "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                             }
                                         }
                                     ]
@@ -1294,7 +1294,7 @@
                                             "description": "Les blocs qui peuvent être placés dans la structure. \nType: `BlockDescriptor[]`",
                                             "type": "array",
                                             "items": {
-                                                "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                                "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                             }
                                         }
                                     }
@@ -1362,12 +1362,12 @@
                             "description": "Le ou les blocs qui peuvent être placés en dessous du tronc de l'arbre. \nType: `BlockDescriptor | BlockDescriptor[]`",
                             "oneOf": [
                                 {
-                                    "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                 },
                                 {
                                     "type": "array",
                                     "items": {
-                                        "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                        "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                     }
                                 }
                             ]
@@ -1381,7 +1381,7 @@
                                     "description": "Les blocs qui peuvent être remplacés par le cluster de base de l'arbre. \nType: `BlockDescriptor[]`",
                                     "type": "array",
                                     "items": {
-                                        "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                        "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                     }
                                 },
                                 "num_clusters": {
@@ -1400,21 +1400,21 @@
                             "description": "Liste des blocs sur lesquels un arbre peut pousser. \nType: `BlockDescriptor[]`",
                             "type": "array",
                             "items": {
-                                "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                             }
                         },
                         "may_replace": {
                             "description": "Les blocs qui peuvent être remplacés par l'arbre. \nType: `BlockDescriptor[]`",
                             "type": "array",
                             "items": {
-                                "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                             }
                         },
                         "may_grow_through": {
                             "description": "Liste des blocs à travers lesquels un arbre peut pousser. \nType: `BlockDescriptor[]`",
                             "type": "array",
                             "items": {
-                                "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                             }
                         },
                         "acacia_trunk": {
@@ -1476,7 +1476,7 @@
                                 },
                                 "trunk_block": {
                                     "description": "Le bloc qui forme le tronc d'acacia. \nType: `BlockDescriptor`",
-                                    "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                 },
                                 "branches": {
                                     "description": "Configuration des branches de l'arbre d'acacia. \nType: `Object`",
@@ -1523,7 +1523,7 @@
                                                         },
                                                         "leaf_block": {
                                                             "description": "Le bloc qui forme la canopée. \nType: `BlockDescriptor`",
-                                                            "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                                            "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                                         },
                                                         "simplify_canopy": {
                                                             "description": "Si 'true', la canopée utilise un motif simple. \nType: `Boolean`",
@@ -1610,7 +1610,7 @@
                                                         },
                                                         "leaf_block": {
                                                             "description": "Le bloc qui forme la canopée. \nType: `BlockDescriptor`",
-                                                            "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                                            "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                                         },
                                                         "canopy_decoration": {
                                                             "description": "Configuration de la décoration de la canopée. \nType: `Object`",
@@ -1634,7 +1634,7 @@
                                                                 },
                                                                 "decoration_block": {
                                                                     "description": "Le bloc à utilisé pour la décoration de la canopée. \nType: `BlockDescriptor`",
-                                                                    "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                                                 },
                                                                 "num_steps": {
                                                                     "description": "Nombre de blocs de décoration à placer. \nType: `Integer`",
@@ -1656,7 +1656,7 @@
                                                     "properties": {
                                                         "leaf_block": {
                                                             "description": "Le bloc qui forme la canopée de cerisier. \nType: `BlockDescriptor`",
-                                                            "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                                            "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                                         },
                                                         "height": {
                                                             "description": "Nombre de couches pour la canopée. \nType: `Integer`",
@@ -1750,7 +1750,7 @@
                                                         },
                                                         "leaf_block": {
                                                             "description": "Le bloc qui forme la canopée fantaisie. \nType: `BlockDescriptor`",
-                                                            "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                                            "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                                         }
                                                     }
                                                 },
@@ -1781,7 +1781,7 @@
                                                                 "maxItems": 2,
                                                                 "items": [
                                                                     {
-                                                                        "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                                                        "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                                                     },
                                                                     {
                                                                         "type": "number"
@@ -1811,7 +1811,7 @@
                                                                 },
                                                                 "decoration_block": {
                                                                     "description": "Le bloc à utilisé pour la décoration de la canopée de mangrove. \nType: `BlockDescriptor`",
-                                                                    "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                                                 },
                                                                 "num_steps": {
                                                                     "description": "Nombre de blocs de décoration à placer. \nType: `Integer`",
@@ -1826,7 +1826,7 @@
                                                         },
                                                         "hanging_block": {
                                                             "description": "Le bloc à utiliser comme bloc suspendu. \nType: `BlockDescriptor`",
-                                                            "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                                            "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                                         },
                                                         "hanging_block_placement_chance": {
                                                             "description": "Probabilité de placer un bloc suspendu. \nType: `Object`",
@@ -1870,7 +1870,7 @@
                                                         },
                                                         "leaf_block": {
                                                             "description": "Le bloc qui forme la canopée géante. \nType: `BlockDescriptor`",
-                                                            "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                                            "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                                         }
                                                     }
                                                 },
@@ -1900,7 +1900,7 @@
                                                         },
                                                         "leaf_block": {
                                                             "description": "Le bloc qui forme la canopée de pin géant. \nType: `BlockDescriptor`",
-                                                            "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                                            "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                                         }
                                                     }
                                                 },
@@ -1920,7 +1920,7 @@
                                                         },
                                                         "leaf_block": {
                                                             "description": "Le bloc qui forme la canopée de pin. \nType: `BlockDescriptor`",
-                                                            "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                                            "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                                         }
                                                     }
                                                 },
@@ -1951,7 +1951,7 @@
                                                         },
                                                         "leaf_block": {
                                                             "description": "Le bloc qui forme la canopée de forêt sombre. \nType: `BlockDescriptor`",
-                                                            "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                                            "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                                         }
                                                     }
                                                 },
@@ -1975,7 +1975,7 @@
                                                         },
                                                         "leaf_block": {
                                                             "description": "Le bloc qui forme la canopée d'épicéa. \nType: `BlockDescriptor`",
-                                                            "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                                            "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                                         }
                                                     }
                                                 }
@@ -1992,7 +1992,7 @@
                             "properties": {
                                 "trunk_block": {
                                     "description": "Le bloc qui forme le tronc de cerisier. \nType: `BlockDescriptor`",
-                                    "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                 },
                                 "trunk_height": {
                                     "description": "Configuration de la hauteur du tronc de cerisier. \nType: `Object`",
@@ -2070,7 +2070,7 @@
                                                         },
                                                         "leaf_block": {
                                                             "description": "Le bloc qui forme la canopée. \nType: `BlockDescriptor`",
-                                                            "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                                            "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                                         },
                                                         "simplify_canopy": {
                                                             "description": "Si 'true', la canopée utilise un motif simple. \nType: `Boolean`",
@@ -2157,7 +2157,7 @@
                                                         },
                                                         "leaf_block": {
                                                             "description": "Le bloc qui forme la canopée. \nType: `BlockDescriptor`",
-                                                            "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                                            "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                                         },
                                                         "canopy_decoration": {
                                                             "description": "Configuration de la décoration de la canopée. \nType: `Object`",
@@ -2181,7 +2181,7 @@
                                                                 },
                                                                 "decoration_block": {
                                                                     "description": "Le bloc à utilisé pour la décoration de la canopée. \nType: `BlockDescriptor`",
-                                                                    "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                                                 },
                                                                 "num_steps": {
                                                                     "description": "Nombre de blocs de décoration à placer. \nType: `Integer`",
@@ -2203,7 +2203,7 @@
                                                     "properties": {
                                                         "leaf_block": {
                                                             "description": "Le bloc qui forme la canopée de cerisier. \nType: `BlockDescriptor`",
-                                                            "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                                            "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                                         },
                                                         "height": {
                                                             "description": "Nombre de couches pour la canopée. \nType: `Integer`",
@@ -2297,7 +2297,7 @@
                                                         },
                                                         "leaf_block": {
                                                             "description": "Le bloc qui forme la canopée fantaisie. \nType: `BlockDescriptor`",
-                                                            "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                                            "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                                         }
                                                     }
                                                 },
@@ -2328,7 +2328,7 @@
                                                                 "maxItems": 2,
                                                                 "items": [
                                                                     {
-                                                                        "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                                                        "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                                                     },
                                                                     {
                                                                         "type": "number"
@@ -2358,7 +2358,7 @@
                                                                 },
                                                                 "decoration_block": {
                                                                     "description": "Le bloc à utilisé pour la décoration de la canopée de mangrove. \nType: `BlockDescriptor`",
-                                                                    "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                                                 },
                                                                 "num_steps": {
                                                                     "description": "Nombre de blocs de décoration à placer. \nType: `Integer`",
@@ -2373,7 +2373,7 @@
                                                         },
                                                         "hanging_block": {
                                                             "description": "Le bloc à utiliser comme bloc suspendu. \nType: `BlockDescriptor`",
-                                                            "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                                            "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                                         },
                                                         "hanging_block_placement_chance": {
                                                             "description": "Probabilité de placer un bloc suspendu. \nType: `Object`",
@@ -2417,7 +2417,7 @@
                                                         },
                                                         "leaf_block": {
                                                             "description": "Le bloc qui forme la canopée géante. \nType: `BlockDescriptor`",
-                                                            "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                                            "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                                         }
                                                     }
                                                 },
@@ -2447,7 +2447,7 @@
                                                         },
                                                         "leaf_block": {
                                                             "description": "Le bloc qui forme la canopée de pin géant. \nType: `BlockDescriptor`",
-                                                            "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                                            "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                                         }
                                                     }
                                                 },
@@ -2467,7 +2467,7 @@
                                                         },
                                                         "leaf_block": {
                                                             "description": "Le bloc qui forme la canopée de pin. \nType: `BlockDescriptor`",
-                                                            "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                                            "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                                         }
                                                     }
                                                 },
@@ -2498,7 +2498,7 @@
                                                         },
                                                         "leaf_block": {
                                                             "description": "Le bloc qui forme la canopée de forêt sombre. \nType: `BlockDescriptor`",
-                                                            "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                                            "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                                         }
                                                     }
                                                 },
@@ -2522,7 +2522,7 @@
                                                         },
                                                         "leaf_block": {
                                                             "description": "Le bloc qui forme la canopée d'épicéa. \nType: `BlockDescriptor`",
-                                                            "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                                            "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                                         }
                                                     }
                                                 }
@@ -2551,7 +2551,7 @@
                                 },
                                 "trunk_block": {
                                     "description": "Le bloc qui forme le tronc tombé. \nType: `BlockDescriptor`",
-                                    "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                 },
                                 "log_decoration_feature": {
                                     "description": "Feature qui peut être utilisée pour décorer le tronc tombé. \nType: `String`",
@@ -2579,7 +2579,7 @@
                                         },
                                         "decoration_block": {
                                             "description": "Le bloc à utilisé pour la décoration du tronc tombé. \nType: `BlockDescriptor`",
-                                            "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                            "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                         },
                                         "num_steps": {
                                             "description": "Nombre de blocs de décoration à placer. \nType: `Integer`",
@@ -2649,7 +2649,7 @@
                                 },
                                 "trunk_block": {
                                     "description": "Le bloc qui forme le tronc de l'arbre fantaisie. \nType: `BlockDescriptor`",
-                                    "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                 },
                                 "width_scale": {
                                     "description": "Modificateur d'échelle pour le rayon de l'arbre. \nType: `Number`",
@@ -2697,7 +2697,7 @@
                                 },
                                 "trunk_block": {
                                     "description": "Le bloc qui forme le tronc de l'arbre de mangrove. \nType: `BlockDescriptor`",
-                                    "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                 },
                                 "branches": {
                                     "description": "Configuration de l'objet pour les branches de l'arbre de mangrove. \nType: `Object`",
@@ -2751,7 +2751,7 @@
                                         },
                                         "decoration_block": {
                                             "description": "Le bloc à utilisé pour la décoration du tronc de l'arbre de mangrove. \nType: `BlockDescriptor`",
-                                            "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                            "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                         },
                                         "num_steps": {
                                             "description": "Nombre de blocs de décoration à placer. \nType: `Integer`",
@@ -2797,7 +2797,7 @@
                                 },
                                 "trunk_block": {
                                     "description": "Le bloc qui forme le tronc de l'arbre géant. \nType: `BlockDescriptor`",
-                                    "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                 },
                                 "trunk_decoration": {
                                     "description": "Configuration de la décoration du tronc de l'arbre géant. \nType: `Object`",
@@ -2821,7 +2821,7 @@
                                         },
                                         "decoration_block": {
                                             "description": "Le bloc à utilisé pour la décoration du tronc. \nType: `BlockDescriptor`",
-                                            "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                            "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                         },
                                         "num_steps": {
                                             "description": "Nombre de blocs de décoration à placer. \nType: `Integer`",
@@ -2887,7 +2887,7 @@
                                                         },
                                                         "leaf_block": {
                                                             "description": "Le bloc qui forme la canopée. \nType: `BlockDescriptor`",
-                                                            "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                                            "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                                         },
                                                         "simplify_canopy": {
                                                             "description": "Si 'true', la canopée utilise un motif simple. \nType: `Boolean`",
@@ -2974,7 +2974,7 @@
                                                         },
                                                         "leaf_block": {
                                                             "description": "Le bloc qui forme la canopée. \nType: `BlockDescriptor`",
-                                                            "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                                            "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                                         },
                                                         "canopy_decoration": {
                                                             "description": "Configuration de la décoration de la canopée. \nType: `Object`",
@@ -2998,7 +2998,7 @@
                                                                 },
                                                                 "decoration_block": {
                                                                     "description": "Le bloc à utilisé pour la décoration de la canopée. \nType: `BlockDescriptor`",
-                                                                    "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                                                 },
                                                                 "num_steps": {
                                                                     "description": "Nombre de blocs de décoration à placer. \nType: `Integer`",
@@ -3020,7 +3020,7 @@
                                                     "properties": {
                                                         "leaf_block": {
                                                             "description": "Le bloc qui forme la canopée de cerisier. \nType: `BlockDescriptor`",
-                                                            "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                                            "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                                         },
                                                         "height": {
                                                             "description": "Nombre de couches pour la canopée. \nType: `Integer`",
@@ -3114,7 +3114,7 @@
                                                         },
                                                         "leaf_block": {
                                                             "description": "Le bloc qui forme la canopée fantaisie. \nType: `BlockDescriptor`",
-                                                            "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                                            "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                                         }
                                                     }
                                                 },
@@ -3145,7 +3145,7 @@
                                                                 "maxItems": 2,
                                                                 "items": [
                                                                     {
-                                                                        "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                                                        "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                                                     },
                                                                     {
                                                                         "type": "number"
@@ -3175,7 +3175,7 @@
                                                                 },
                                                                 "decoration_block": {
                                                                     "description": "Le bloc à utilisé pour la décoration de la canopée de mangrove. \nType: `BlockDescriptor`",
-                                                                    "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                                                 },
                                                                 "num_steps": {
                                                                     "description": "Nombre de blocs de décoration à placer. \nType: `Integer`",
@@ -3190,7 +3190,7 @@
                                                         },
                                                         "hanging_block": {
                                                             "description": "Le bloc à utiliser comme bloc suspendu. \nType: `BlockDescriptor`",
-                                                            "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                                            "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                                         },
                                                         "hanging_block_placement_chance": {
                                                             "description": "Probabilité de placer un bloc suspendu. \nType: `Object`",
@@ -3234,7 +3234,7 @@
                                                         },
                                                         "leaf_block": {
                                                             "description": "Le bloc qui forme la canopée géante. \nType: `BlockDescriptor`",
-                                                            "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                                            "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                                         }
                                                     }
                                                 },
@@ -3264,7 +3264,7 @@
                                                         },
                                                         "leaf_block": {
                                                             "description": "Le bloc qui forme la canopée de pin géant. \nType: `BlockDescriptor`",
-                                                            "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                                            "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                                         }
                                                     }
                                                 },
@@ -3284,7 +3284,7 @@
                                                         },
                                                         "leaf_block": {
                                                             "description": "Le bloc qui forme la canopée de pin. \nType: `BlockDescriptor`",
-                                                            "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                                            "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                                         }
                                                     }
                                                 },
@@ -3315,7 +3315,7 @@
                                                         },
                                                         "leaf_block": {
                                                             "description": "Le bloc qui forme la canopée de forêt sombre. \nType: `BlockDescriptor`",
-                                                            "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                                            "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                                         }
                                                     }
                                                 },
@@ -3339,7 +3339,7 @@
                                                         },
                                                         "leaf_block": {
                                                             "description": "Le bloc qui forme la canopée d'épicéa. \nType: `BlockDescriptor`",
-                                                            "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                                            "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                                         }
                                                     }
                                                 }
@@ -3381,7 +3381,7 @@
                                 },
                                 "trunk_block": {
                                     "description": "Le bloc qui forme le tronc. \nType: `BlockDescriptor`",
-                                    "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                 },
                                 "trunk_decoration": {
                                     "description": "Configuration de la décoration du tronc. \nType: `Object`",
@@ -3405,7 +3405,7 @@
                                         },
                                         "decoration_block": {
                                             "description": "Le bloc à utilisé pour la décoration du tronc. \nType: `BlockDescriptor`",
-                                            "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                            "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                         },
                                         "num_steps": {
                                             "description": "Nombre de blocs de décoration à placer. \nType: `Integer`",
@@ -3432,7 +3432,7 @@
                                 },
                                 "leaf_block": {
                                     "description": "Le bloc qui forme la canopée. \nType: `BlockDescriptor`",
-                                    "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                 },
                                 "simplify_canopy": {
                                     "description": "Si 'true', la canopée utilise un motif simple. \nType: `Boolean`",
@@ -3519,7 +3519,7 @@
                                 },
                                 "leaf_block": {
                                     "description": "Le bloc qui forme la canopée. \nType: `BlockDescriptor`",
-                                    "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                 },
                                 "canopy_decoration": {
                                     "description": "Configuration de la décoration de la canopée. \nType: `Object`",
@@ -3543,7 +3543,7 @@
                                         },
                                         "decoration_block": {
                                             "description": "Le bloc à utilisé pour la décoration de la canopée. \nType: `BlockDescriptor`",
-                                            "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                            "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                         },
                                         "num_steps": {
                                             "description": "Nombre de blocs de décoration à placer. \nType: `Integer`",
@@ -3565,7 +3565,7 @@
                             "properties": {
                                 "leaf_block": {
                                     "description": "Le bloc qui forme la canopée de cerisier. \nType: `BlockDescriptor`",
-                                    "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                 },
                                 "height": {
                                     "description": "Nombre de couches pour la canopée. \nType: `Integer`",
@@ -3659,7 +3659,7 @@
                                 },
                                 "leaf_block": {
                                     "description": "Le bloc qui forme la canopée fantaisie. \nType: `BlockDescriptor`",
-                                    "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                 }
                             }
                         },
@@ -3690,7 +3690,7 @@
                                         "maxItems": 2,
                                         "items": [
                                             {
-                                                "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                                "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                             },
                                             {
                                                 "type": "number"
@@ -3720,7 +3720,7 @@
                                         },
                                         "decoration_block": {
                                             "description": "Le bloc à utilisé pour la décoration de la canopée de mangrove. \nType: `BlockDescriptor`",
-                                            "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                            "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                         },
                                         "num_steps": {
                                             "description": "Nombre de blocs de décoration à placer. \nType: `Integer`",
@@ -3735,7 +3735,7 @@
                                 },
                                 "hanging_block": {
                                     "description": "Le bloc à utiliser comme bloc suspendu. \nType: `BlockDescriptor`",
-                                    "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                 },
                                 "hanging_block_placement_chance": {
                                     "description": "Probabilité de placer un bloc suspendu. \nType: `Object`",
@@ -3779,7 +3779,7 @@
                                 },
                                 "leaf_block": {
                                     "description": "Le bloc qui forme la canopée géante. \nType: `BlockDescriptor`",
-                                    "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                 }
                             }
                         },
@@ -3809,7 +3809,7 @@
                                 },
                                 "leaf_block": {
                                     "description": "Le bloc qui forme la canopée de pin géant. \nType: `BlockDescriptor`",
-                                    "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                 }
                             }
                         },
@@ -3829,7 +3829,7 @@
                                 },
                                 "leaf_block": {
                                     "description": "Le bloc qui forme la canopée de pin. \nType: `BlockDescriptor`",
-                                    "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                 }
                             }
                         },
@@ -3860,7 +3860,7 @@
                                 },
                                 "leaf_block": {
                                     "description": "Le bloc qui forme la canopée de forêt sombre. \nType: `BlockDescriptor`",
-                                    "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                 }
                             }
                         },
@@ -3884,7 +3884,7 @@
                                 },
                                 "leaf_block": {
                                     "description": "Le bloc qui forme la canopée d'épicéa. \nType: `BlockDescriptor`",
-                                    "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                 }
                             }
                         },
@@ -3915,7 +3915,7 @@
                                         "maxItems": 2,
                                         "items": [
                                             {
-                                                "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                                "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                             },
                                             {
                                                 "type": "number"
@@ -3942,7 +3942,7 @@
                                 },
                                 "root_block": {
                                     "description": "Le bloc qui forme les racines de mangrove. \nType: `BlockDescriptor`",
-                                    "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                 },
                                 "above_root": {
                                     "description": "Configuration des blocs décorant le dessus des racines.",
@@ -3965,17 +3965,17 @@
                                         },
                                         "above_root_block": {
                                             "description": "Le bloc à utilisé pour la décoration du dessus des racines. \nType: `BlockDescriptor`",
-                                            "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                            "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                         }
                                     }
                                 },
                                 "muddy_root_block": {
                                     "description": "Le bloc utilisé pour les racines boueuses.",
-                                    "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                 },
                                 "mud_block": {
                                     "description": "Le bloc utilisé pour la boue. \nType: `BlockDescriptor`",
-                                    "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                 },
                                 "y_offset": {
                                     "description": "Décalage de la racine par rapport au tronc. \nType: `Integer`",
@@ -3985,7 +3985,7 @@
                                     "description": "Liste des blocs à travers lesquels une racine peut pousser. \nType: `BlockDescriptor[]`",
                                     "type": "array",
                                     "items": {
-                                        "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                        "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                     }
                                 },
                                 "root_decoration": {
@@ -4010,7 +4010,7 @@
                                         },
                                         "decoration_block": {
                                             "description": "Le bloc à utilisé pour la décoration des racines. \nType: `BlockDescriptor`",
-                                            "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                            "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                         },
                                         "num_steps": {
                                             "description": "Nombre de blocs de décoration à placer. \nType: `Integer`",
@@ -4051,7 +4051,7 @@
                         },
                         "fill_with": {
                             "description": "Le bloc à utiliser pour remplir la grotte. \nType: `BlockDescriptor`",
-                            "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                            "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                         },
                         "width_modifier": {
                             "description": "De combien de blocs augmenter la largeur de la grotte à partir du point central de la grotte. \nType: `Molang`",
@@ -4091,7 +4091,7 @@
                         },
                         "replace_air_with": {
                             "description": "Le bloc à utiliser pour remplacer l'air. \nType: `BlockDescriptor`",
-                            "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                            "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                         }
                     }
                 }
@@ -4121,12 +4121,12 @@
                             "description": "Les blocs qui peuvent être remplacés par les blocs de sol sur le patch. \nType: `BlockDescriptor[]`",
                             "type": "array",
                             "items": {
-                                "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                             }
                         },
                         "ground_block": {
                             "description": "Le bloc utilisé pour créer une base pour le patch de végétation. \nType: `BlockDescriptor`",
-                            "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                            "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                         },
                         "vegetation_feature": {
                             "description": "La Feature qui sera placée par le patch. \nType: `String`",

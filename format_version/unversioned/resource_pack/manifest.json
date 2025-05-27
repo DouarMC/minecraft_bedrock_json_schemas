@@ -32,7 +32,7 @@
                 },
                 "uuid": {
                     "description": "L'identifiant du pack. \nType : String",
-                    "$ref": "../../common.schema.json#/definitions/uuid"
+                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/uuid"
                 },
                 "version": {
                     "description": "La version du pack.",
@@ -69,7 +69,7 @@
                     },
                     "uuid": {
                         "description": "L'UUID du module qui doit être différent de l'en-tête. \nType : String",
-                        "$ref": "../../common.schema.json#/definitions/uuid"
+                        "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/uuid"
                     },
                     "version": {
                         "description": "La version du module. \nType : Integer[3]",
@@ -92,7 +92,7 @@
                 "properties": {
                     "uuid": {
                         "description": "UUID du pack auquel ce Pack est dépendant à celui-ci. \nType : String",
-                        "$ref": "../../common.schema.json#/definitions/uuid"
+                        "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/uuid"
                     },
                     "version": {
                         "description": "Version de l'autre pack nécessaire à utiliser. \nType : Integer[3]",

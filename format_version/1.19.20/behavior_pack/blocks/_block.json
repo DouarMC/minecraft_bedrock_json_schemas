@@ -39,11 +39,11 @@
                                     "type": "string",
                                     "oneOf": [
                                         {
-                                            "$ref": "../../common.schema.json#/definitions/vanilla_item_groups_id"
+                                            "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/vanilla_item_groups_id"
                                         },
                                         {
                                             "not": {
-                                                "$ref": "../../common.schema.json#/definitions/vanilla_item_groups_id"
+                                                "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/vanilla_item_groups_id"
                                             }
                                         }
                                     ]

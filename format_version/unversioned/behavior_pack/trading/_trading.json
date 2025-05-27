@@ -189,7 +189,7 @@
                                                                                     "id": {
                                                                                         "description": "L'identifiant de la potion. \nType: `String`",
                                                                                         "type": "string",
-                                                                                        "$ref": "../../common.schema.json#/definitions/potion_effects_id"
+                                                                                        "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/potion_effects_id"
                                                                                     }
                                                                                 }
                                                                             },
@@ -206,7 +206,7 @@
                                                                                             "oneOf": [
                                                                                                 {
                                                                                                     "type": "string",
-                                                                                                    "$ref": "../../common.schema.json#/definitions/enchantments_id"
+                                                                                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/enchantments_id"
                                                                                                 },
                                                                                                 {
                                                                                                     "type": "object",
@@ -214,7 +214,7 @@
                                                                                                         "id": {
                                                                                                             "description": "L'identifiant de l'enchantement. \nType: `String`",
                                                                                                             "type": "string",
-                                                                                                            "$ref": "../../common.schema.json#/definitions/enchantments_id"
+                                                                                                            "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/enchantments_id"
                                                                                                         },
                                                                                                         "level": {
                                                                                                             "description": "Le niveau de l'enchantement. \nType: `Integer`",
@@ -540,12 +540,12 @@
                                                                                     "material": {
                                                                                         "description": "Le matériau de la personalisation de l'armure. \nType: `String`",
                                                                                         "type": "string",
-                                                                                        "$ref": "../../common.schema.json#/definitions/armor_trim_materials"
+                                                                                        "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/armor_trim_materials"
                                                                                     },
                                                                                     "pattern": {
                                                                                         "description": "Le motif de la personalisation de l'armure. \nType: `String`",
                                                                                         "type": "string",
-                                                                                        "$ref": "../../common.schema.json#/definitions/armor_trim_patterns"
+                                                                                        "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/armor_trim_patterns"
                                                                                     }
                                                                                 }
                                                                             }
@@ -554,7 +554,7 @@
                                                                 },
                                                                 "filters": {
                                                                     "description": "Filtre qui doit être validé pour que l'échange soit disponible. \nType: `MinecraftFilter`",
-                                                                    "$ref": "../../common.schema.json#/definitions/minecraft_filter"
+                                                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/minecraft_filter"
                                                                 }
                                                             }
                                                         },

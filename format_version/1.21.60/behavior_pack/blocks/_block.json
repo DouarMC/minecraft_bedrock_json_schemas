@@ -40,11 +40,11 @@
                                     "pattern": "^[a-zA-Z0-9_]+:[a-zA-Z0-9_.]+$",
                                     "oneOf": [
                                         {
-                                            "$ref": "../../common.schema.json#/definitions/vanilla_item_groups_id_with_namespace"
+                                            "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/vanilla_item_groups_id_with_namespace"
                                         },
                                         {
                                             "not": {
-                                                "$ref": "../../common.schema.json#/definitions/vanilla_item_groups_id_with_namespace"
+                                                "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/vanilla_item_groups_id_with_namespace"
                                             }
                                         }
                                     ]
@@ -251,7 +251,7 @@
                                                     },
                                                     "item": {
                                                         "description": "L'item ou les items qui seront associés à la vitesse de destruction. \n Type: `ItemDescriptor`",
-                                                        "$ref": "../../common.schema.json#/definitions/item_descriptor"
+                                                        "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/item_descriptor"
                                                     }
                                                 }
                                             }
@@ -337,7 +337,7 @@
                                     "type": "string",
                                     "oneOf": [
                                         {
-                                            "$ref": "../../common.schema.json#/definitions/vanilla_block_models_id"
+                                            "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/vanilla_block_models_id"
                                         },
                                         {
                                             "pattern": "^geometry.*"
@@ -594,7 +594,7 @@
                                                 "type": "array",
                                                 "maxItems": 64,
                                                 "items": {
-                                                    "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                                 }
                                             }
                                         }

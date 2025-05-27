@@ -181,7 +181,7 @@
                                                     "enchantment": {
                                                         "description": "Le type d'enchantement. \nType: `String`",
                                                         "type": "string",
-                                                        "$ref": "../../common.schema.json#/definitions/enchantments_id"
+                                                        "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/enchantments_id"
                                                     },
                                                     "levels": {
                                                         "description": "Le niveau de l'enchantement. \nType: `Integer | Object`",
@@ -218,11 +218,11 @@
                                                 "type": "string",
                                                 "oneOf": [
                                                     {
-                                                        "$ref": "../../common.schema.json#/definitions/vanilla_item_tags_id"
+                                                        "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/vanilla_item_tags_id"
                                                     },
                                                     {
                                                         "not": {
-                                                            "$ref": "../../common.schema.json#/definitions/vanilla_item_tags_id"
+                                                            "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/vanilla_item_tags_id"
                                                         }
                                                     }
                                                 ]
@@ -235,11 +235,11 @@
                                                 "type": "string",
                                                 "oneOf": [
                                                     {
-                                                        "$ref": "../../common.schema.json#/definitions/vanilla_item_tags_id"
+                                                        "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/vanilla_item_tags_id"
                                                     },
                                                     {
                                                         "not": {
-                                                            "$ref": "../../common.schema.json#/definitions/vanilla_item_tags_id"
+                                                            "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/vanilla_item_tags_id"
                                                         }
                                                     }
                                                 ]
@@ -252,11 +252,11 @@
                                                 "type": "string",
                                                 "oneOf": [
                                                     {
-                                                        "$ref": "../../common.schema.json#/definitions/vanilla_item_tags_id"
+                                                        "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/vanilla_item_tags_id"
                                                     },
                                                     {
                                                         "not": {
-                                                            "$ref": "../../common.schema.json#/definitions/vanilla_item_tags_id"
+                                                            "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/vanilla_item_tags_id"
                                                         }
                                                     }
                                                 ]

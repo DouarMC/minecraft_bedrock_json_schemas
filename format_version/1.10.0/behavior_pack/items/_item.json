@@ -89,7 +89,7 @@
                                             "name": {
                                                 "description": "Le nom de l'effet. \nType: `String`",
                                                 "type": "string",
-                                                "$ref": "../../common.schema.json#/definitions/potion_effects_id"
+                                                "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/potion_effects_id"
                                             },
                                             "chance": {
                                                 "description": "La chance que l'effet soit appliqué. \nType: `Number`",
@@ -128,7 +128,7 @@
                                     "type": "array",
                                     "items": {
                                         "type": "string",
-                                        "$ref": "../../common.schema.json#/definitions/potion_effects_id"
+                                        "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/potion_effects_id"
                                     }
                                 },
                                 "on_use_action": {

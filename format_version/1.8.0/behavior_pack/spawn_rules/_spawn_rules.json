@@ -43,11 +43,11 @@
                                     {
                                         "type": "array",
                                         "items": {
-                                            "$ref": "../../common.schema.json#/definitions/minecraft_filter"
+                                            "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/minecraft_filter"
                                         }
                                     },
                                     {
-                                        "$ref": "../../common.schema.json#/definitions/minecraft_filter"
+                                        "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/minecraft_filter"
                                     }
                                 ]
                             },
@@ -265,12 +265,12 @@
                                 "description": "Permet à une entité d'apparaître sur un bloc particulier. \nType: `BlockDescriptor | BlockDescriptor[]`",
                                 "oneOf": [
                                     {
-                                        "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                        "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                     },
                                     {
                                         "type": "array",
                                         "items": {
-                                            "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                            "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                         }
                                     }
                                 ]
@@ -283,12 +283,12 @@
                                         "description": "Les blocs en questions. \nType: `BlockDescriptor | BlockDescriptor[]`",
                                         "oneOf": [
                                             {
-                                                "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                                "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                             },
                                             {
                                                 "type": "array",
                                                 "items": {
-                                                    "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                                 }
                                             }
                                         ]
@@ -303,12 +303,12 @@
                                 "description": "Filtre les blocs où ne peuvent pas apparaitre les entités. \nType: `BlockDescriptor | BlockDescriptor[]`",
                                 "anyOf": [
                                     {
-                                        "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                        "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                     },
                                     {
                                         "type": "array",
                                         "items": {
-                                            "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                            "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                         }
                                     }
                                 ]

@@ -39,11 +39,11 @@
                                     "type": "string",
                                     "oneOf": [
                                         {
-                                            "$ref": "../../common.schema.json#/definitions/vanilla_item_groups_id"
+                                            "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/vanilla_item_groups_id"
                                         },
                                         {
                                             "not": {
-                                                "$ref": "../../common.schema.json#/definitions/vanilla_item_groups_id"
+                                                "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/vanilla_item_groups_id"
                                             }
                                         }
                                     ]
@@ -94,7 +94,7 @@
                                     "description": "Liste des blocs sur lesquels le bloc peut être placé. \nType: `BlockDescriptor[]` \nNote: Si cette propriété n'est pas défini ou laissé vide, tous les blocs sont acceptés.",
                                     "type": "array",
                                     "items": {
-                                        "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                        "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                     }
                                 }
                             }
@@ -127,11 +127,11 @@
                                     "type": "string",
                                     "oneOf": [
                                         {
-                                            "$ref": "../../common.schema.json#/definitions/vanilla_cooldown_categories_id"
+                                            "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/vanilla_cooldown_categories_id"
                                         },
                                         {
                                             "not": {
-                                                "$ref": "../../common.schema.json#/definitions/vanilla_cooldown_categories_id"
+                                                "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/vanilla_cooldown_categories_id"
                                             }
                                         }
                                     ]
@@ -158,7 +158,7 @@
                                 "absorbable_causes": {
                                     "description": "Les type de dégâts que cet Item doit absorber. \nType: String[]",
                                     "type": "string",
-                                    "$ref": "../../common.schema.json#/definitions/entity_damage_causes_id"
+                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/entity_damage_causes_id"
                                 }
                             }
                         },
@@ -193,7 +193,7 @@
                                         "properties": {
                                             "block": {
                                                 "description": "Le bloc impacté par la vitesse de cassage de blocs. \nType: `BlockDescriptor`",
-                                                "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                                "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                             },
                                             "speed": {
                                                 "description": "Le multiplicateur de vitesse appliqué au cassage de blocs. \nType: `Integer`",
@@ -307,7 +307,7 @@
                                     "description": "Liste des blocs sur lesquels l'entité peut être placée avec un distributeur. \nType: `BlockDescriptor[]` \nNote: Si cette propriété n'est pas défini ou laissé vide, tous les blocs sont acceptés.",
                                     "type": "array",
                                     "items": {
-                                        "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                        "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                     }
                                 },
                                 "entity": {
@@ -318,7 +318,7 @@
                                     "description": "Liste des blocs sur lesquels l'entité peut être placée. \nType: `BlockDescriptor[]` \nNote: Si cette propriété n'est pas défini ou laissé vide, tous les blocs sont acceptés.",
                                     "type": "array",
                                     "items": {
-                                        "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                        "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                     }
                                 }
                             }
@@ -584,7 +584,7 @@
                                     "items": {
                                         "oneOf": [
                                             {
-                                                "$ref": "../../common.schema.json#/definitions/item_descriptor"
+                                                "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/item_descriptor"
                                             },
                                             {
                                                 "type": "object",
@@ -593,7 +593,7 @@
                                                         "description": "Les items qui peuvent être utilisés pour réparer cet Item. \nType: `ItemDescriptor[]`",
                                                         "type": "array",
                                                         "items": {
-                                                            "$ref": "../../common.schema.json#/definitions/item_descriptor"
+                                                            "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/item_descriptor"
                                                         }
                                                     },
                                                     "repair_amount": {
@@ -642,11 +642,11 @@
                                                                 "type": "string",
                                                                 "oneOf": [
                                                                     {
-                                                                        "$ref": "../../common.schema.json#/definitions/vanilla_item_tags_id"
+                                                                        "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/vanilla_item_tags_id"
                                                                     },
                                                                     {
                                                                         "not": {
-                                                                            "$ref": "../../common.schema.json#/definitions/vanilla_item_tags_id"
+                                                                            "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/vanilla_item_tags_id"
                                                                         }
                                                                     }
                                                                 ]
@@ -810,11 +810,11 @@
                                     "items": {
                                         "oneOf": [
                                             {
-                                                "$ref": "../../common.schema.json#/definitions/vanilla_item_tags_id"
+                                                "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/vanilla_item_tags_id"
                                             },
                                             {
                                                 "not": {
-                                                    "$ref": "../../common.schema.json#/definitions/vanilla_item_tags_id"
+                                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/vanilla_item_tags_id"
                                                 }
                                             }
                                         ]

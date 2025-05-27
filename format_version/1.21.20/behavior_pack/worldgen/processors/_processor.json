@@ -68,7 +68,7 @@
                                                                 },
                                                                 "block": {
                                                                     "description": "Le bloc à évaluer. \nType: `BlockDescriptor`",
-                                                                    "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                                                 }
                                                             }
                                                         },
@@ -84,7 +84,7 @@
                                                                 },
                                                                 "block": {
                                                                     "description": "Le bloc à évaluer. \nType: `BlockDescriptor`",
-                                                                    "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                                                 },
                                                                 "probability": {
                                                                     "description": "Probabilité d'évaluation à vrai lorsque le bloc correspond. \nType: `Number`",
@@ -170,7 +170,7 @@
                                                                 },
                                                                 "block": {
                                                                     "description": "Le bloc à évaluer. \nType: `BlockDescriptor`",
-                                                                    "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                                                 }
                                                             }
                                                         },
@@ -186,7 +186,7 @@
                                                                 },
                                                                 "block": {
                                                                     "description": "Le bloc à évaluer. \nType: `BlockDescriptor`",
-                                                                    "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                                                 },
                                                                 "probability": {
                                                                     "description": "Probabilité d'évaluation à vrai lorsque le bloc correspond. \nType: `Number`",
@@ -265,7 +265,7 @@
                                                 },
                                                 "output_state": {
                                                     "description": "Bloc à remplacer le bloc du monde si tous les prédicats sont vrais. \nType: `BlockDescriptor`",
-                                                    "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                                 }
                                             }
                                         }
@@ -305,7 +305,7 @@
                                         "description": "Une liste de blocs évaluées sur tous les blocs d'un Modèle de Structure. Si un bloc correspond à la liste fournie, le bloc sera ignoré pour le traitement. \nType: `BlockDescriptor[]`",
                                         "type": "array",
                                         "items": {
-                                            "$ref": "../../common.schema.json#/definitions/block_descriptor"
+                                            "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                         }
                                     }
                                 }

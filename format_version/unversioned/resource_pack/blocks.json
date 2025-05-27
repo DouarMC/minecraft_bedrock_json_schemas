@@ -9,7 +9,7 @@
             "examples": ["1.21.40"],
             "oneOf": [
                 {
-                    "$ref": "../../common.schema.json#/definitions/minecraft_version"
+                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/minecraft_version"
                 },
                 {
                     "type": "array",

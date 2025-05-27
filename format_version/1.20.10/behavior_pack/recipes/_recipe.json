@@ -55,11 +55,11 @@
                                             "type": "string",
                                             "oneOf": [
                                                 {
-                                                    "$ref": "../../common.schema.json#/definitions/vanilla_item_tags_id"
+                                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/vanilla_item_tags_id"
                                                 },
                                                 {
                                                     "not": {
-                                                        "$ref": "../../common.schema.json#/definitions/vanilla_item_tags_id"
+                                                        "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/vanilla_item_tags_id"
                                                     }
                                                 }
                                             ]
@@ -142,11 +142,11 @@
                                             "type": "string",
                                             "oneOf": [
                                                 {
-                                                    "$ref": "../../common.schema.json#/definitions/vanilla_item_tags_id"
+                                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/vanilla_item_tags_id"
                                                 },
                                                 {
                                                     "not": {
-                                                        "$ref": "../../common.schema.json#/definitions/vanilla_item_tags_id"
+                                                        "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/vanilla_item_tags_id"
                                                     }
                                                 }
                                             ]
@@ -224,11 +224,11 @@
                                             "type": "string",
                                             "oneOf": [
                                                 {
-                                                    "$ref": "../../common.schema.json#/definitions/vanilla_item_tags_id"
+                                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/vanilla_item_tags_id"
                                                 },
                                                 {
                                                     "not": {
-                                                        "$ref": "../../common.schema.json#/definitions/vanilla_item_tags_id"
+                                                        "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/vanilla_item_tags_id"
                                                     }
                                                 }
                                             ]
@@ -259,11 +259,11 @@
                                             "type": "string",
                                             "oneOf": [
                                                 {
-                                                    "$ref": "../../common.schema.json#/definitions/vanilla_item_tags_id"
+                                                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/vanilla_item_tags_id"
                                                 },
                                                 {
                                                     "not": {
-                                                        "$ref": "../../common.schema.json#/definitions/vanilla_item_tags_id"
+                                                        "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/vanilla_item_tags_id"
                                                     }
                                                 }
                                             ]
@@ -404,11 +404,11 @@
                                                 "description": "Les items qui possèdent ce tag peuvent être utilisés pour cette recette. \n Type : `String | Molang String`",
                                                 "oneOf": [
                                                     {
-                                                        "$ref": "../../common.schema.json#/definitions/vanilla_item_tags_id"
+                                                        "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/vanilla_item_tags_id"
                                                     },
                                                     {
                                                         "not": {
-                                                            "$ref": "../../common.schema.json#/definitions/vanilla_item_tags_id"
+                                                            "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/vanilla_item_tags_id"
                                                         }
                                                     }
                                                 ]
@@ -545,11 +545,11 @@
                                                 "type": "string",
                                                 "oneOf": [
                                                     {
-                                                        "$ref": "../../common.schema.json#/definitions/vanilla_item_tags_id"
+                                                        "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/vanilla_item_tags_id"
                                                     },
                                                     {
                                                         "not": {
-                                                            "$ref": "../../common.schema.json#/definitions/vanilla_item_tags_id"
+                                                            "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/vanilla_item_tags_id"
                                                         }
                                                     }
                                                 ]
