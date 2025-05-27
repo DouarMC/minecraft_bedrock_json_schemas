@@ -1,0 +1,21 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "description": "Ce fichier permet de définir une Loot Table. \nType: `Object`",
+    "type": "object",
+    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/format_version/unversioned/behavior_pack/loot_tables/_loot_table.json",
+    "examples": [
+        {
+            "pools": [
+                {
+                    "rolls": 1,
+                    "entries": [
+                        {
+                            "type": "item",
+                            "name": "minecraft:stick"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

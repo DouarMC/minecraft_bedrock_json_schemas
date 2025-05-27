@@ -1,0 +1,23 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "description": "Ce fichier sert à définir les règles de culling de blocs pour un modèle de bloc. \nType: `Object`",
+    "type": "object",
+    "required": ["format_version"],
+    "properties": {
+        "format_version": {
+            "description": "La version du Format à utiliser. \nType: `String`",
+            "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/minecraft_version",
+            "examples": ["1.20.60", "1.20.70", "1.20.80", "1.21.0", "1.21.10", "1.21.20", "1.21.30", "1.21.40", "1.21.50", "1.21.60", "1.21.70", "1.21.80"]
+        }
+    },
+    "allOf": [
+        {
+            "if": {"properties": {"format_version": {"enum": ["1.20.60", "1.20.70", "1.20.80", "1.21.0", "1.21.10", "1.21.20", "1.21.30", "1.21.40", "1.21.50", "1.21.60", "1.21.70"]}}},
+            "then": {"$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/format_version/1.20.60/resource_pack/block_culling/_block_culling.json"}
+        },
+        {
+            "if": {"properties": {"format_version": {"enum": ["1.21.80"]}}},
+            "then": {"$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/format_version/1.21.80/resource_pack/block_culling/_block_culling.json"}
+        }
+    ]
+}

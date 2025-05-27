@@ -1,5 +1,0 @@
-{
-    "$schema": "http://json-schema.org/draft-07/schema#",
-    "description": "Ce fichier contient les propriétés Client des Biomes (les fichiers client biomes ont la priorité). \nType: `Object`",
-    "$ref": "../format_version/unversioned/RP-biomes_client.json.schema.json"
-}

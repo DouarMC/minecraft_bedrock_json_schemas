@@ -1,0 +1,80 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "description": "Ce fichier permet de créer un item custom. \nType: `Object`",
+    "type": "object",
+    "required": ["format_version"],
+    "properties": {
+        "format_version": {
+            "description": "La version du Format à utiliser. \nType: `String`",
+            "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/minecraft_version",
+            "examples": [
+                "1.10", "1.10.0", "1.20.0", "1.20.10", "1.20.20", "1.20.30", "1.20.40", "1.20.50", "1.20.60", "1.20.70", "1.20.80", "1.21.0", "1.21.10", "1.21.20", "1.21.30", "1.21.40", "1.21.50", "1.21.60", "1.21.70", "1.21.80"
+            ]
+        }
+    },
+    "allOf": [
+        {
+            "if": {"properties": {"format_version": {"enum": ["1.10", "1.10.0"]}}},
+            "then": {"$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/format_version/1.10.0/behavior_pack/items/_item.json"}
+        },
+        {
+            "if": {"properties": {"format_version": {"enum": ["1.20.0"]}}},
+            "then": {"$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/format_version/1.20.0/behavior_pack/items/_item.json"}
+        },
+        {
+            "if": {"properties": {"format_version": {"enum": ["1.20.10"]}}},
+            "then": {"$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/format_version/1.20.10/behavior_pack/items/_item.json"}
+        },
+        {
+            "if": {"properties": {"format_version": {"enum": ["1.20.20"]}}},
+            "then": {"$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/format_version/1.20.20/behavior_pack/items/_item.json"}
+        },
+        {
+            "if": {"properties": {"format_version": {"enum": ["1.20.30", "1.20.40"]}}},
+            "then": {"$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/format_version/1.20.30/behavior_pack/items/_item.json"}
+        },
+        {
+            "if": {"properties": {"format_version": {"enum": ["1.20.50"]}}},
+            "then": {"$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/format_version/1.20.50/behavior_pack/items/_item.json"}
+        },
+        {
+            "if": {"properties": {"format_version": {"enum": ["1.20.60", "1.20.70", "1.20.80", "1.21.0"]}}},
+            "then": {"$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/format_version/1.20.60/behavior_pack/items/_item.json"}
+        },
+        {
+            "if": {"properties": {"format_version": {"enum": ["1.21.10", "1.21.20"]}}},
+            "then": {"$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/format_version/1.21.10/behavior_pack/items/_item.json"}
+        },
+        {
+            "if": {"properties": {"format_version": {"enum": ["1.21.30"]}}},
+            "then": {"$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/format_version/1.21.30/behavior_pack/items/_item.json"}
+        },
+        {
+            "if": {"properties": {"format_version": {"enum": ["1.21.40"]}}},
+            "then": {"$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/format_version/1.21.40/behavior_pack/items/_item.json"}
+        },
+        {
+            "if": {"properties": {"format_version": {"enum": ["1.21.50"]}}},
+            "then": {"$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/format_version/1.21.50/behavior_pack/items/_item.json"}
+        },
+        {
+            "if": {"properties": {"format_version": {"enum": ["1.21.60", "1.21.70"]}}},
+            "then": {"$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/format_version/1.21.60/behavior_pack/items/_item.json"}
+        },
+        {
+            "if": {"properties": {"format_version": {"enum": ["1.21.80"]}}},
+            "then": {"$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/format_version/1.21.80/behavior_pack/items/_item.json"}
+        }
+    ],
+    "examples": [
+        {
+            "format_version": "1.21.60",
+            "minecraft:item": {
+                "description": {
+                    "identifier": "my_namespace:my_item"
+                },
+                "components": {}
+            }
+        }
+    ]
+}

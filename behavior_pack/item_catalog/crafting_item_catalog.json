@@ -1,0 +1,19 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "description": "Ce fichier sert à gérer la disposition des items/blocs dans le menu créatif et dans le livre de recettes. \nType: `Object`",
+    "type": "object",
+    "required": ["format_version"],
+    "properties": {
+        "format_version": {
+            "description": "La version du format à utiliser. \nType: `String`",
+            "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/minecraft_version",
+            "examples": ["1.21.60", "1.21.70", "1.21.80"]
+        }
+    },
+    "allOf": [
+        {
+            "if": {"properties": {"format_version": {"enum": ["1.21.60", "1.21.70", "1.21.80"]}}},
+            "then": {"$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/format_version/1.21.60/behavior_pack/item_catalog/crafting_item_catalog.json"}
+        }
+    ]
+}

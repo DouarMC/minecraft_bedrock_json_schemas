@@ -1,6 +1,0 @@
-{
-    "$schema": "http://json-schema.org/draft-07/schema#",
-    "description": "Ce fichier sert à définir les sons du jeu.",
-    "type": "object",
-    "$ref": "../format_version/unversioned/RP-sound_definitions.json.schema.json"
-}

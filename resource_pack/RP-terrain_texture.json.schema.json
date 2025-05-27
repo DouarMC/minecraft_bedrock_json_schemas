@@ -1,5 +1,0 @@
-{
-    "$schema": "http://json-schema.org/draft-07/schema#",
-    "description": "Ce fichier sert à créer des références de textures pour les Blocs. \n Type: `Object`",
-    "$ref": "../format_version/unversioned/RP-terrain_texture.json.schema.json"
-}

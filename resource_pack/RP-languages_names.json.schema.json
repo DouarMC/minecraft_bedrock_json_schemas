@@ -1,5 +1,0 @@
-{
-    "$schema": "http://json-schema.org/draft-07/schema#",
-    "description": "La liste de toutes les langues à ajouter ou modifier avec ce Pack. \nType: `Array[]`",
-    "$ref": "../format_version/unversioned/RP-languages_names.json.schema.json"
-}

@@ -1,0 +1,5 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "description": "Ce fichier sert à créer une animation de texture des blocs. \nType: `Object[]`",
+    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/format_version/unversioned/resource_pack/textures/flipbook_textures.json"
+}

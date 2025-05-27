@@ -1,0 +1,5 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "description": "Ce fichier sert à executer en boucle des fonctions de commandes. \n Type : Object",
+    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/format_version/unversioned/behavior_pack/functions/tick.json"
+}
