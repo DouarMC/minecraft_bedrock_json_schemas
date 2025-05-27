@@ -93,7 +93,7 @@
                                     }
                                 },
                                 "mirror": {
-                                    "description": "Inverse les UV de la texture sur l'axe X, ce qui retourne l'apparence du cube. Cela inverse également les faces est/ouest.",
+                                    "description": "Inverse les UV de la texture sur l'axe X, ce qui retourne l'apparence du cube. Cela inverse également les faces est/ouest. \nType: `Boolean`",
                                     "type": "boolean"
                                 },
                                 "inflate": {
