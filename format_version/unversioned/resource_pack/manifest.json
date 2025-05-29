@@ -159,6 +159,46 @@
                     }
                 }
             }
+        },
+        "metadata": {
+            "description": "Informations supplémentaires sur le pack. \nType: `Object`",
+            "type": "object",
+            "properties": {
+                "authors": {
+                    "description": "Liste des auteurs du pack. \nType: `String[]`",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "license": {
+                    "description": "Licence sous laquelle le pack est publié. \nType: `String`",
+                    "type": "string"
+                },
+                "generated_with": {
+                    "description": "Outil(s) utilisé(s) pour générer ou modifier ce manifest.json. \nType: `Object`",
+                    "type": "object",
+                    "patternProperties": {
+                        "^[A-Za-z0-9_-]{1,32}$": {
+                            "description": "Versions semver de l'outil ayant modifié le fichier. \nType: `String[]`",
+                            "type": "array",
+                            "items": {
+                                "type": "string",
+                                "pattern": "^\\d+\\.\\d+\\.\\d+$"
+                            }
+                        }
+                    }
+                },
+                "product_type": {
+                    "description": "Type de contexte ciblé pour ce pack. \nType: `String` \nNote: En mettant `addon`, les succès se seront pas désactivés.",
+                    "type": "string",
+                    "enum": ["addon"]
+                },
+                "url": {
+                    "description": "URL du site web du pack. \nType: `String`",
+                    "type": "string"
+                }
+            }
         }
     }
 }
