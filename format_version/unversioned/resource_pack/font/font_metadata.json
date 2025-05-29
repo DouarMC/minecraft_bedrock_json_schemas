@@ -1,0 +1,101 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "description": "Ce fichier sert à configurer des polices pour Minecraft Bedrock : liste des fontes (format, version, chemin, options), et définition d'alias combinant plusieurs fontes avec échelles et plages Unicode. \nType: `Object`",
+    "type": "object",
+    "required": ["version", "fonts"],
+    "properties": {
+        "version": {
+            "description": "La version du format de ce fichier de métadonnées de police. \nType: `Integer`",
+            "type": "integer",
+            "const": 1
+        },
+        "fonts": {
+            "description": "La liste des polices définies dans ce fichier, chacune avec son format, son nom, sa version, son chemin et ses options. \nType: `Object[]`",
+            "type": "array",
+            "items": {
+                "type": "object",
+                "required": ["font_format", "font_name", "font_file"],
+                "properties": {
+                    "font_format": {
+                        "description": "Le format de la police, par exemple 'ttf' ou 'msdf'. \nType: `String`",
+                        "type": "string",
+                        "enum": ["ttf", "msdf"]
+                    },
+                    "font_name": {
+                        "description": "Identifiant unique de la police, utilisé pour référencer cette fonte dans les alias (font_aliases) et la configuration interne du jeu. \nType: `String`",
+                        "type": "string"
+                    },
+                    "version": {
+                        "description": "Version spécifique de cette police, utilisée pour la gestion de cache et la compatibilité interne. \nType: `Integer`",
+                        "type": "integer",
+                        "default": 1
+                    },
+                    "font_file": {
+                        "description": "Chemin relatif vers le fichier de police dans le pack de ressources, sans extension. \nType: `String`",
+                        "type": "string"
+                    },
+                    "lowPerformanceCompatible": {
+                        "description": "Indique si cette police est compatible avec les performances réduites, par exemple sur des appareils moins puissants. \nType: `Boolean`",
+                        "type": "boolean"
+                    }
+                }
+            }
+        },
+        "font_aliases": {
+            "description": "Liste d'alias de police combinant plusieurs fontes, avec échelle et plages Unicode. \nType: `Object[]`",
+            "type": "array",
+            "items": {
+                "type": "object",
+                "required": ["alias", "fonts"],
+                "properties": {
+                    "alias": {
+                        "description": "Nom de l'alias utilisé pour référencer ce groupe de fontes. \nType: `String`",
+                        "type": "string"
+                    },
+                    "fonts": {
+                        "description": "Ordre et paramètres des fontes à utiliser pour cet alias. \nType: `Object[]`",
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "required": ["font_reference"],
+                            "properties": {
+                                "font_reference": {
+                                    "description": "Référence au champ `font_name` d'une police déclarée dans `fonts`. \nType: `String`",
+                                    "type": "string"
+                                },
+                                "font_scale": {
+                                    "description": "Échelle à appliquer à cette fonte (relative à sa taille native). \nType: `Number`",
+                                    "type": "number",
+                                    "default": 1.0
+                                },
+                                "font_ranges": {
+                                    "description": "Plages de points Unicode où cette fonte doit être utilisée. \nType: `Object[]`",
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "required": ["first", "last"],
+                                        "properties": {
+                                            "first": {
+                                                "description": "Premier point de code Unicode de la plage. \nType: `Integer`",
+                                                "type": "integer"
+                                            },
+                                            "last": {
+                                                "description": "Dernier point de code Unicode de la plage. \nType: `Integer`",
+                                                "type": "integer"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "font_scale_factor_override": {
+                        "description": "Facteur d'échelle global à appliquer à toutes les fontes de cet alias. \nType: `Number`",
+                        "type": "number",
+                        "default": 1.0
+                    }
+                }
+            }
+        }
+    }
+}
