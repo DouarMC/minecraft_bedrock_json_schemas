@@ -1,0 +1,83 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "description": "Ce fichier contient toutes les informations basiques d'un pack de skins que Minecraft utilise pour l'identifier. \nType: `Object`",
+    "type": "object",
+    "required": ["format_version", "header", "modules"],
+    "properties": {
+        "format_version": {
+            "description": "La version de la syntaxe à utiliser pour ce fichier. \nType: `Integer`",
+            "type": "integer",
+            "enum": [1, 2]
+        },
+        "header": {
+            "description": "Contient des informations sur le pack qui sont pour la plupart accessibles en public. \nType: `Object`",
+            "type": "object",
+            "required": ["name", "uuid", "version"],
+            "properties": {
+                "name": {
+                    "description": "Nom du pack affiché dans Minecraft. \nType: `Localization String`",
+                    "type": "string"
+                },
+                "uuid": {
+                    "description": "L'identifiant du pack. \nType: `String`",
+                    "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/uuid"
+                },
+                "version": {
+                    "description": "La version du pack. \nType: `Integer[3] | String`",
+                    "oneOf": [
+                        {
+                            "type": "array",
+                            "minItems": 3,
+                            "maxItems": 3,
+                            "items": {
+                                "type": "integer",
+                                "minimum": 0
+                            }
+                        },
+                        {
+                            "type": "string",
+                            "pattern": "^\\d+\\.\\d+\\.\\d+$"
+                        }
+                    ]
+                }
+            }
+        },
+        "modules": {
+            "description": "Contient les modules du pack. \nType: `Object[]`",
+            "type": "array",
+            "items": {
+                "type": "object",
+                "required": ["type", "uuid", "version"],
+                "properties": {
+                    "type": {
+                        "description": "Le type de module. \nType: `String`",
+                        "type": "string",
+                        "enum": ["skin_pack"]
+                    },
+                    "uuid": {
+                        "description": "L'identifiant du module. \nType: `String`",
+                        "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/uuid"
+                    },
+                    "version": {
+                        "description": "La version du module. \nType: `Integer[3] | String`",
+                        "oneOf": [
+                            {
+                                "type": "array",
+                                "minItems": 3,
+                                "maxItems": 3,
+                                "items": {
+                                    "type": "integer",
+                                    "minimum": 0
+                                }
+                            },
+                            {
+                                "type": "string",
+                                "pattern": "^\\d+\\.\\d+\\.\\d+$"
+                            }
+                        ]
+                    }
+                }
+            }
+        }
+    }
+}
