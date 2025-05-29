@@ -35,14 +35,22 @@
                     "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/uuid"
                 },
                 "version": {
-                    "description": "La version du pack.",
-                    "type": "array",
-                    "minItems": 3,
-                    "maxItems": 3,
-                    "items": {
-                        "type": "integer",
-                        "minimum": 0
-                    }
+                    "description": "La version du pack. \nType: `Integer[3] | String`",
+                    "oneOf": [
+                        {
+                            "type": "array",
+                            "minItems": 3,
+                            "maxItems": 3,
+                            "items": {
+                                "type": "integer",
+                                "minimum": 0
+                            }
+                        },
+                        {
+                            "type": "string",
+                            "pattern": "^\\d+\\.\\d+\\.\\d+$"
+                        }
+                    ]
                 },
                 "pack_scope": {
                     "description": "Définit où le pack peut être activé. \nType : String",
@@ -72,14 +80,22 @@
                         "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/uuid"
                     },
                     "version": {
-                        "description": "La version du module. \nType : Integer[3]",
-                        "type": "array",
-                        "minItems": 3,
-                        "maxItems": 3,
-                        "items": {
-                            "type": "integer",
-                            "minimum": 0
-                        }
+                        "description": "La version du module. \nType: `Integer[3] | String`",
+                        "oneOf": [
+                            {
+                                "type": "array",
+                                "minItems": 3,
+                                "maxItems": 3,
+                                "items": {
+                                    "type": "integer",
+                                    "minimum": 0
+                                }
+                            },
+                            {
+                                "type": "string",
+                                "pattern": "^\\d+\\.\\d+\\.\\d+$"
+                            }
+                        ]
                     }
                 }
             }
@@ -95,14 +111,22 @@
                         "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/uuid"
                     },
                     "version": {
-                        "description": "Version de l'autre pack nécessaire à utiliser. \nType : Integer[3]",
-                        "type": "array",
-                        "minItems": 3,
-                        "maxItems": 3,
-                        "items": {
-                            "type": "integer",
-                            "minimum": 0
-                        }
+                        "description": "Version de l'autre pack nécessaire à utiliser. \nType: `Integer[3] | String`",
+                        "oneOf": [
+                            {
+                                "type": "array",
+                                "minItems": 3,
+                                "maxItems": 3,
+                                "items": {
+                                    "type": "integer",
+                                    "minimum": 0
+                                }
+                            },
+                            {
+                                "type": "string",
+                                "pattern": "^\\d+\\.\\d+\\.\\d+$"
+                            }
+                        ]
                     }
                 }
             }
