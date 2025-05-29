@@ -1,6 +1,6 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema#",
-    "description": "La liste de toutes les langues utilisés pour le nom et la description de cette World Tamplate. \nType : String[]",
+    "description": "La liste de toutes les langues utilisés pour le nom et la description de cette World Tamplate. \nType: `String[]`",
     "type": "array",
     "items": {
         "type": "string",
