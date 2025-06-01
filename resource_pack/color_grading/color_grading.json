@@ -6,12 +6,12 @@
         "format_version": {
             "description": "La version du format à utiliser. \nType: `String`",
             "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/minecraft_version",
-            "examples": ["1.21.40"]
+            "examples": ["1.21.40", "1.21.50", "1.21.60", "1.21.70", "1.21.80"]
         }
     },
     "allOf": [
         {
-            "if": {"properties": {"format_version": {"enum": ["1.21.40"]}}},
+            "if": {"properties": {"format_version": {"enum": ["1.21.40", "1.21.50", "1.21.60", "1.21.70", "1.21.80"]}}},
             "then": {"$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/format_version/1.21.40/resource_pack/color_grading/color_grading.json"}
         }
     ]
