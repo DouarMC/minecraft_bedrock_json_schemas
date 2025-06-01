@@ -11,9 +11,9 @@
         "minecraft:lighting_settings": {
             "description": "Contient toute la définition des paramètres de lumière. \nType: `Object`",
             "type": "object",
-            "required": ["descripion"],
+            "required": ["description"],
             "properties": {
-                "descripion": {
+                "description": {
                     "description": "Contient les propriétés de description des paramètres de lumière. \nType: `Object`",
                     "type": "object",
                     "required": ["identifier"],
