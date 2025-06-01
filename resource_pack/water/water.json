@@ -1,0 +1,22 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "description": "[EXPERIMENTAL: Vibrant Visuals] Ce fichier sert à configurer les caractéristiques de l'eau dans Minecraft. \nType: `Object`",
+    "required": ["format_version"],
+    "properties": {
+        "format_version": {
+            "description": "La version du Format à utiliser. \nType: `String`",
+            "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/minecraft_version",
+            "examples": ["1.21.40", "1.21.50", "1.21.60", "1.21.70", "1.21.80"]
+        }
+    },
+    "allOf": [
+        {
+            "if": {"properties": {"format_version": {"enum": ["1.21.40", "1.21.50", "1.21.60", "1.21.70"]}}},
+            "then": {"$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/format_version/1.21.40/resource_pack/water/water.json"}
+        },
+        {
+            "if": {"properties": {"format_version": {"enum": ["1.21.80"]}}},
+            "then": {"$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/format_version/1.21.80/resource_pack/water/water.json"}
+        }
+    ]
+}
