@@ -1,0 +1,19 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "description": "[EXPERIMENTAL: Vibrant Visuals] Ce fichier sert à contrôler le style des Ombres. \nType: `Object`",
+    "type": "object",
+    "required": ["format_version"],
+    "properties": {
+        "format_version": {
+            "description": "La version du format à utiliser. \nType: `String`",
+            "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/minecraft_version",
+            "examples": ["1.21.80"]
+        }
+    },
+    "allOf": [
+        {
+            "if": {"properties": {"format_version": {"enum": ["1.21.80"]}}},
+            "then": {"$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/format_version/1.21.80/resource_pack/pbr/global.json"}
+        }
+    ]
+}
