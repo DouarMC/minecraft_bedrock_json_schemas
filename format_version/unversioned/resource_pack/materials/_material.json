@@ -1,0 +1,20 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "description": "Ce fichier sert à définir définir les matériaux ('materials') utilisés pour le rendu visuel des entités ou particules dans Minecraft Bedrock. Il permet de spécifier les shaders, états, et comportements graphiques tels que la transparence, le skinning ou les effets de lumière. Chaque material peut hériter d'un autre et ajouter ses propres paramètres pour contrôler l'apparence finale dans le jeu. \nType: `Object`",
+    "type": "object",
+    "required": ["materials"],
+    "properties": {
+        "materials": {
+            "description": "Objet principal contenant la version du fichier et la liste des matériaux définis. Chaque entrée représente un material unique, potentiellement basé sur un autre via l'héritage (format : 'nom:nom_parent'). Les matériaux spécifient des paramètres visuels tels que les shaders, états de transparence, filtres de texture, et options de skinning.\nType: `Object`",
+            "type": "object",
+            "required": ["version"],
+            "properties": {
+                "version": {
+                    "description": "Version du format de materials. Actuellement, seule la valeur '1.0.0' est reconnue.\nType: `String`",
+                    "type": "string",
+                    "enum": ["1.0.0"]
+                }
+            }
+        }
+    }
+}
