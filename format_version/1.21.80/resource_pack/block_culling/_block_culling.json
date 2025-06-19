@@ -57,10 +57,14 @@
                                 "enum": ["up", "down", "north", "east", "south", "west"]
                             },
                             "condition": {
-                                "description": "EXPÉRIMENTALE: Upcoming Creator Features \nDéfinit la condition avec les blocs voisins qui déclencheront la suppression de la face ou de la partie. \nType: `String` \n`default`: la condition est validée si le bloc voisin est plein et opaque. Toutes les autres conditions sont une extention de celle-ci, ce qui signifie qu'un voisin plein et opaque sera toujours une condition de réussite avant que la condition supplémentaire `same_*` ne soit vérifiée. \n`same_culling_layer`: la condition est validée si le bloc voisin possède la même valeur de `culling_layer` dans le composant `geometry` que le bloc qui subit le culling. Si l'un des culling_layer comparés est `minecraft:culling_layer.undefined`, la condition ne sera jamais validée. \n`same_block`: la condition est validée si le bloc voisin est le même que le bloc qui subit le culling. \n`same_block_permutation`: la condition est validée si le bloc voisin est le même qui subit le culling et possède la même permutation. \nType: `String`",
-                                "default": "default",
+                                "description": "Définit la condition avec les blocs voisins qui déclencheront la suppression de la face ou de la partie. \nType: `String` \n`same_culling_layer`: la condition est validée si le bloc voisin possède la même valeur de `culling_layer` dans le composant `geometry` que le bloc qui subit le culling. Si l'un des culling_layer comparés est `minecraft:culling_layer.undefined`, la condition ne sera jamais validée. \n`same_block`: la condition est validée si le bloc voisin est le même que le bloc qui subit le culling. \n`same_block_permutation`: la condition est validée si le bloc voisin est le même qui subit le culling et possède la même permutation.",
                                 "type": "string",
-                                "enum": ["default", "same_culling_layer", "same_block", "same_block_permutation"]
+                                "enum": ["same_culling_layer", "same_block", "same_block_permutation"]
+                            },
+                            "cull_against_full_and_opaque": {
+                                "description": "Indique si le culling doit être effectué contre les blocs pleins et opaques. \nType: `Boolean`",
+                                "default": true,
+                                "type": "boolean"
                             }
                         }
                     }
