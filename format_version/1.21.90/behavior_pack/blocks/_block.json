@@ -221,14 +221,6 @@
                                 }
                             }
                         },
-                        "minecraft:custom_components": {
-                            "description": "La listes des composants personnalisés du Bloc. \nType: `String[]`",
-                            "type": "array",
-                            "items": {
-                                "type": "string",
-                                "pattern": "^[a-zA-Z0-9_]+:[a-zA-Z0-9_]+$"
-                            }
-                        },
                         "minecraft:destructible_by_mining": {
                             "description": "Définit les propriétés de destruction par minage pour ce bloc. Si défini sur true, le bloc aura le temps de destruction par défaut. Si défini sur false, ce bloc est indestructible par minage. \nType: `Boolean | Object`",
                             "default": true,
@@ -283,6 +275,29 @@
                                     }
                                 }
                             ]
+                        },
+                        "minecraft:destruction_particles": {
+                            "description": "Définit les particules qui seront utilisé quand le Bloc est détruit. \nType: `Object`",
+                            "type": "object",
+                            "properties": {
+                                "texture": {
+                                    "description": "La référence de la texture utilisée pour les particules. \nType: `String`",
+                                    "type": "string"
+                                },
+                                "tint_method": {
+                                    "description": "La méthode de teinte à utiliser pour les particules. \nType: `String`",
+                                    "default": "none",
+                                    "type": "string",
+                                    "enum": ["none", "default_foliage", "birch_foliage", "evergreen_foliage", "dry_foliage", "grass", "water"]
+                                },
+                                "particle_count": {
+                                    "description": "[EXPÉRIMENTALE]: Upcoming Creator Features \nDéfinit le nombre de particules à générer lors de la destruction du bloc. \nType: `Integer`",
+                                    "default": 100,
+                                    "type": "integer",
+                                    "minimum": 0,
+                                    "maximum": 255
+                                }
+                            }
                         },
                         "minecraft:display_name": {
                             "description": "Le nom d'affichage de ce Bloc. \nType: `Localization String` \nNote: Si aucun nom n'est spécifié ici, le nom de l'identifiant sera utilisé sous la forme de 'tile.<block_identifier>.name'.",
@@ -372,7 +387,7 @@
                                             "pattern": "^[a-zA-Z0-9_]+:[a-zA-Z0-9_]+$"
                                         },
                                         "culling_layer": {
-                                            "description": "Permet à la règle de culling de regrouper plusieurs blocs lors de leur comparaison. Lors de l'utilisation de l'espace de noms minecraft, les seuls identifiants de couche de culling autorisés sont : `minecraft:culling_layer.undefined`, `minecraft:culling_layer.leaves`. Lorsqu'aucun espace de noms ou un espace de noms personnalisé est utilisé, les noms doivent commencer et se terminer par un caractère alphanumérique. \nType: `String`",
+                                            "description": "EXPÉRIMENTALE: Upcoming Creator Features \nPermet à la règle de culling de regrouper plusieurs blocs lors de leur comparaison. Lors de l'utilisation de l’espace de noms minecraft, les seuls identifiants de couche de culling autorisés sont : `minecraft:culling_layer.undefined`, `minecraft:culling_layer.leaves`. Lorsqu'aucun espace de noms ou un espace de noms personnalisé est utilisé, les noms doivent commencer et se terminer par un caractère alphanumérique. \nType: `String`",
                                             "default": "minecraft:culling_layer.undefined",
                                             "type": "string",
                                             "pattern": "^[a-zA-Z0-9_]+:[a-zA-Z0-9_]+$",
@@ -553,6 +568,11 @@
                                                     "default": true,
                                                     "type": "boolean"
                                                 },
+                                                "isotropic": {
+                                                    "description": "Les faces sur lesquelles ce matériau est appliqué doivent-elles randomiser leurs UV ? \nType: `Boolean`",
+                                                    "default": false,
+                                                    "type": "boolean"
+                                                },
                                                 "render_method": {
                                                     "description": "La méthode de rendu à utiliser. \n Type: `String` \n `opaque`: Utilisé pour une texture de bloc ordinaire sans couche alpha. Ne permet pas la transparence ou la translucidité. (Exemples: Terre, Pierre, Béton) \n `double_sided`: Utilisé pour désactiver complètement le culling des faces arrière. \n `blend`: `Utilisé pour un bloc comme le verre teinté. Permet la transparence et la translucidité (textures légèrement transparentes) (Exemples: Verre, Balise, Bloc de miel). \n `alpha_test`: Utilisé pour un bloc comme le générateur de monstres. Ne permet pas la translucidité, seulement des textures entièrement opaques ou entièrement transparentes. Désactive également le culling des faces arrière (Exemples: Vignes, Rails, Pousse d'arbres). \n `alpha_test_single_sided`: Utilisé pour un bloc comme le verre (non teinté). Ne permet pas la translucidité, seulement des textures entièrement opaques ou entièrement transparentes. Active également le culling des faces arrière (Exemples: Portes, trappes). \n`alpha_test_to_opaque`: Utilise la méthode `alpha_test` quand le joueur est à proximité du bloc, et la méthode `opaque` quand le joueur est éloigné comme les feuilles. \n`alpha_test_single_sided_to_opaque`: Utilise la méthode `alpha_test_single_sided` quand le joueur est à proximité du bloc, et la méthode `opaque` quand le joueur est éloigné comme le varech. \n`blend_to_opaque`: Utilise la méthode `blend` quand le joueur est à proximité du bloc, et la méthode `opaque` quand le joueur est éloigné.",
                                                     "default": "opaque",
@@ -597,6 +617,23 @@
                                 "$ref": "#/properties/minecraft:block/properties/components/properties/minecraft:material_instances/properties/*"
                             }
                         },
+                        "minecraft:movable": {
+                            "description": "[EXPÉRIMENTALE]: Upcoming Creator Features \nDéfinit comment le Bloc réagit lorsqu'il est poussé par un piston. \nType: `Object`",
+                            "type": "object",
+                            "required": ["movement_type"],
+                            "properties": {
+                                "movement_type": {
+                                    "description": "Spécifie comment le Bloc doit réagir lorsqu'il est pousée déplacé par un piston. \nType: `String` \n`push_pull`: le bloc sera poussé par le pistion/piston collant et sera retracté par le piston collant. \n`push`: le bloc sera poussé par le piston/piston collant. \n`immovable`: le bloc ne sera pas affecté par les pistons, il ne peut pas être poussé ni retracté. \n`popped`: le bloc sera poussé par le piston/piston collant et sera retiré du monde, laissant un item à sa place.",
+                                    "type": "string",
+                                    "enum": ["push_pull", "push", "immovable", "popped"]
+                                },
+                                "sticky": {
+                                    "description": "Spécifie comment le Bloc doit gérer les blocs adjacents lorsqu'il est déplacé par un piston. \nType: `String` \n`none`: n'ajoute pas de comportement spécial pour les blocs adjacents. \n`same`: bougera les blocs adjacents du même type que le Bloc.",
+                                    "type": "string",
+                                    "enum": ["none", "same"]
+                                }
+                            }
+                        },
                         "minecraft:placement_filter": {
                             "description": "Définit sur quelles blocs et sur quelles faces ce Bloc peut se placer. \nType: `Object`",
                             "type": "object",
@@ -624,6 +661,96 @@
                                                     "$ref": "https://douarmc.github.io/minecraft_bedrock_json_schemas/common.json#/definitions/block_descriptor"
                                                 }
                                             }
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "minecraft:random_offset": {
+                            "description": "[EXPÉRIMENTALE]: Upcoming Creator Features \nDéfinit un décalage aléatoire pour la position du Bloc. \nType: `Object`",
+                            "type": "object",
+                            "properties": {
+                                "x": {
+                                    "description": "Les paramètres de décalage aléatoire en X. \nType: `Object`",
+                                    "type": "object",
+                                    "properties": {
+                                        "range": {
+                                            "description": "La plage de décalage aléatoire. \nType: `Object`",
+                                            "type": "object",
+                                            "properties": {
+                                                "min": {
+                                                    "description": "La valeur minimale du décalage aléatoire. \nType: `Number`",
+                                                    "type": "number",
+                                                    "minimum": -8,
+                                                    "maximum": 8
+                                                },
+                                                "max": {
+                                                    "description": "La valeur maximale du décalage aléatoire. \nType: `Number`",
+                                                    "type": "number",
+                                                    "minimum": -8,
+                                                    "maximum": 8
+                                                }
+                                            }
+                                        },
+                                        "steps": {
+                                            "description": "Le noombre de pas/étapes pour le décalage aléatoire en X. \nType: `Integer`",
+                                            "type": "integer"
+                                        }
+                                    }
+                                },
+                                "y": {
+                                    "description": "Les paramètres de décalage aléatoire en Y. \nType: `Object`",
+                                    "type": "object",
+                                    "properties": {
+                                        "range": {
+                                            "description": "La plage de décalage aléatoire. \nType: `Object`",
+                                            "type": "object",
+                                            "properties": {
+                                                "min": {
+                                                    "description": "La valeur minimale du décalage aléatoire. \nType: `Number`",
+                                                    "type": "number",
+                                                    "minimum": -8,
+                                                    "maximum": 8
+                                                },
+                                                "max": {
+                                                    "description": "La valeur maximale du décalage aléatoire. \nType: `Number`",
+                                                    "type": "number",
+                                                    "minimum": -8,
+                                                    "maximum": 8
+                                                }
+                                            }
+                                        },
+                                        "steps": {
+                                            "description": "Le noombre de pas/étapes pour le décalage aléatoire en X. \nType: `Integer`",
+                                            "type": "integer"
+                                        }
+                                    }
+                                },
+                                "z": {
+                                    "description": "Les paramètres de décalage aléatoire en Z. \nType: `Object`",
+                                    "type": "object",
+                                    "properties": {
+                                        "range": {
+                                            "description": "La plage de décalage aléatoire. \nType: `Object`",
+                                            "type": "object",
+                                            "properties": {
+                                                "min": {
+                                                    "description": "La valeur minimale du décalage aléatoire. \nType: `Number`",
+                                                    "type": "number",
+                                                    "minimum": -8,
+                                                    "maximum": 8
+                                                },
+                                                "max": {
+                                                    "description": "La valeur maximale du décalage aléatoire. \nType: `Number`",
+                                                    "type": "number",
+                                                    "minimum": -8,
+                                                    "maximum": 8
+                                                }
+                                            }
+                                        },
+                                        "steps": {
+                                            "description": "Le noombre de pas/étapes pour le décalage aléatoire en X. \nType: `Integer`",
+                                            "type": "integer"
                                         }
                                     }
                                 }
@@ -945,7 +1072,11 @@
                             "description": "Donne le tag 'wood_pick_diggable' au bloc. \n Type: `Boolean`",
                             "type": "object"
                         }
-                    }
+                    },
+                    "patternProperties": {
+                        "^[a-z0-9_]+:[a-z0-9_/]+$": {}
+                    },
+                    "additionalProperties": false
                 },
                 "permutations": {
                     "description": "Définit les permutations de blocs. \nType: `Object[]`",

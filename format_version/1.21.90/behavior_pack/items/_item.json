@@ -172,14 +172,6 @@
                                 }
                             }
                         },
-                        "minecraft:custom_components": {
-                            "description": "Les composants personnalisés de cet Item. \nType: String[] \nNote: Ce composant est obsolète si l'option expérimentale `Custom Components V2` est activée.",
-                            "type": "array",
-                            "items": {
-                                "type": "string",
-                                "pattern": "^[a-zA-Z0-9_]+:[a-zA-Z0-9_]+$"
-                            }
-                        },
                         "minecraft:damage_absorption": {
                             "description": "Permet à l'Item d'absorber les dégâts destiné au porteur de cet item. \n Type: Object",
                             "type": "object",
@@ -984,11 +976,20 @@
                                         "slot.armor.head",
                                         "slot.armor.legs",
                                         "slot.weapon.offhand"
-                                    ]                                    
+                                    ]
+                                },
+                                "hides_player_location": {
+                                    "description": "Définit si cet Item cache la position du joueur dans les cartes et dans la barre de localisation des joueurs. \nType: `Boolean`",
+                                    "default": false,
+                                    "type": "boolean"
                                 }
                             }
                         }
-                    }
+                    },
+                    "patternProperties": {
+                        "^[a-z0-9_]+:[a-z0-9_/]+$": {}
+                    },
+                    "additionalProperties": false
                 }
             }
         }

@@ -1,6 +1,6 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema#",
-    "description": "[EXPERIMENTAL: Vibrant Visuals] Ce fichier sert à définir les valeurs PBR uniforms qui seront les valeurs par défaut des blocs, entités, particules, et les items. Les blocs, entités, particules et items qui n'ont pas de texture set PBR, utiliseront les valeurs définit ici. \nType: `Object`",
+    "description": "Ce fichier sert à définir les valeurs PBR uniforms qui seront les valeurs par défaut des blocs, entités, particules, et les items. Les blocs, entités, particules et items qui n'ont pas de texture set PBR, utiliseront les valeurs définit ici. \nType: `Object`",
     "type": "object",
     "required": ["format_version"],
     "properties": {

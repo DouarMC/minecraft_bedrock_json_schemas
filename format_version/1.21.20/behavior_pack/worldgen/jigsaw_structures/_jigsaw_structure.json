@@ -334,6 +334,12 @@
                             }
                         ]
                     }
+                },
+                "liquid_settings": {
+                    "description": "Comment gérer les blocs gorgés d'eau qui se chevauchent avec le liquide existant. \nType: `String`",
+                    "default": "apply_waterlogging",
+                    "type": "string",
+                    "enum": ["apply_waterlogging", "ignore_waterlogging"]
                 }
             }
         }

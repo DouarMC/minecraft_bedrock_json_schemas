@@ -329,6 +329,38 @@
                                                     }
                                                 ]
                                             }
+                                        },
+                                        "culling": {
+                                            "description": "L'identifiant des règles de Block Culling à utiliser pour ce Bloc. \nType: `String`",
+                                            "type": "string",
+                                            "pattern": "^[a-zA-Z0-9_]+:[a-zA-Z0-9_]+$"
+                                        },
+                                        "culling_layer": {
+                                            "description": "Permet à la règle de culling de regrouper plusieurs blocs lors de leur comparaison. Lors de l'utilisation de l'espace de noms minecraft, les seuls identifiants de couche de culling autorisés sont : `minecraft:culling_layer.undefined`, `minecraft:culling_layer.leaves`. Lorsqu'aucun espace de noms ou un espace de noms personnalisé est utilisé, les noms doivent commencer et se terminer par un caractère alphanumérique. \nType: `String`",
+                                            "default": "minecraft:culling_layer.undefined",
+                                            "type": "string",
+                                            "pattern": "^[a-zA-Z0-9_]+:[a-zA-Z0-9_]+$",
+                                            "oneOf": [
+                                                {
+                                                    "enum": [
+                                                        "minecraft:culling_layer.undefined",
+                                                        "minecraft:culling_layer.leaves"
+                                                    ]
+                                                },
+                                                {
+                                                    "not": {
+                                                        "enum": [
+                                                            "minecraft:culling_layer.undefined",
+                                                            "minecraft:culling_layer.leaves"
+                                                        ]
+                                                    }
+                                                }
+                                            ]
+                                        },
+                                        "uv_lock": {
+                                            "description": "[EXPÉRIMENTALE]: Upcoming Creator Features \nDéfinit si les UV du modèle doivent être vérouillés. Utile si le composant transformation est utilisé. \nType: `Boolean`",
+                                            "default": false,
+                                            "type": "boolean"
                                         }
                                     }
                                 }

@@ -1,6 +1,6 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema#",
-    "description": "[EXPERIMENTAL: Vibrant Visuals] Décrit les paramètres de lumière directionnelle, ambiante et émissive utilisés pour personnaliser l'apparence du ciel, du soleil, de la lune et de l'éclairage général dans Minecraft. Ces réglages influencent la couleur, l'intensité et l'ambiance lumineuse tout au long du cycle jour/nuit.\nType: `Object` \nNote: Si ce fichier se nomme `global.json`, il sera utilisé pour remplacer les paramètres de lumière par défaut du jeu.",
+    "description": "Décrit les paramètres de lumière directionnelle, ambiante et émissive utilisés pour personnaliser l'apparence du ciel, du soleil, de la lune et de l'éclairage général dans Minecraft. Ces réglages influencent la couleur, l'intensité et l'ambiance lumineuse tout au long du cycle jour/nuit.\nType: `Object` \nNote: Si ce fichier se nomme `global.json`, il sera utilisé pour remplacer les paramètres de lumière par défaut du jeu.",
     "type": "object",
     "required": ["format_version"],
     "properties": {

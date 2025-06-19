@@ -1,6 +1,6 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema#",
-    "description": "[EXPERIMENTAL: Vibrant Visuals] Ce fichier sert à configurer les caractéristiques de l'eau dans Minecraft. \nType: `Object`",
+    "description": "Ce fichier sert à configurer les caractéristiques de l'eau dans Minecraft. \nType: `Object`",
     "required": ["format_version"],
     "properties": {
         "format_version": {

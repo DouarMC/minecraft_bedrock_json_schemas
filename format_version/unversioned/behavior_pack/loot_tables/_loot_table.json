@@ -20,7 +20,7 @@
                                     "description": "Le type de condition. \nType: `String`",
                                     "type": "string",
                                     "enum": [
-                                        "killed_by_player", "killed_by_player_or_pets", "random_chance", "random_chance_with_looting", "random_difficulty_chance", "random_regional_difficulty_chance", "match_tool", "killed_by_entity", "entity_properties", "entity_killed"
+                                        "killed_by_player", "killed_by_player_or_pets", "random_chance", "random_chance_with_looting", "random_difficulty_chance", "random_regional_difficulty_chance", "match_tool", "killed_by_entity", "entity_properties", "entity_killed", "damaged_by_entity"
                                     ]
                                 }
                             },
@@ -268,7 +268,7 @@
                                     "required": ["condition", "entity_type"],
                                     "properties": {
                                         "condition": {
-                                            "enum": ["killed_by_entity", "entity_killed"]
+                                            "enum": ["killed_by_entity", "entity_killed", "damaged_by_entity"]
                                         },
                                         "entity_type": {
                                             "description": "Le type d'entité. \nType: `String`",

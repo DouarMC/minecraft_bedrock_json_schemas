@@ -1,6 +1,6 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema#",
-    "description": "[EXPERIMENTAL: Vibrant Visuals] Ce fichier sert à définir les paramètres de points de lumière. Un point de lumière sert à émettre de la lumière depuis un point unique au centre d'un bloc plutôt qu'une surface entière. Idéal pour les torches et les lampes. \nType: `Object` \nNote: Certains blocs sont déjà considérés comme des points de lumière par défaut dans le jeu, mais ce fichier permet de personnaliser ou d'ajouter de nouveaux points de lumière. \nNote: Pour régler la puissance de lumière émise paru un point de lumière, il faut utiliser le composant `light_emission` dans le fichier `block.json` du bloc concerné.",
+    "description": "Ce fichier sert à définir les paramètres de points de lumière. Un point de lumière sert à émettre de la lumière depuis un point unique au centre d'un bloc plutôt qu'une surface entière. Idéal pour les torches et les lampes. \nType: `Object` \nNote: Certains blocs sont déjà considérés comme des points de lumière par défaut dans le jeu, mais ce fichier permet de personnaliser ou d'ajouter de nouveaux points de lumière. \nNote: Pour régler la puissance de lumière émise paru un point de lumière, il faut utiliser le composant `light_emission` dans le fichier `block.json` du bloc concerné.",
     "type": "object",
     "properties": {
         "format_version": {

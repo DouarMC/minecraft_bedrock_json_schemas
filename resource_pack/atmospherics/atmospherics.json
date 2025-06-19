@@ -1,6 +1,6 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema#",
-    "description": "[EXPERIMENTAL: Vibrant Visuals] Ce fichier sert à définir les paramètres d'Atmosphères qui contrôlent tout ce qui touche à l'apparence du ciel et de la brume dans Minecraft Bedrock. \nType: `Object`",
+    "description": "Ce fichier sert à définir les paramètres d'Atmosphères qui contrôlent tout ce qui touche à l'apparence du ciel et de la brume dans Minecraft Bedrock. \nType: `Object`",
     "type": "object",
     "required": ["format_version"],
     "properties": {

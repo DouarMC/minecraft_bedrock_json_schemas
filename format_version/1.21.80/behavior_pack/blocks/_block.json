@@ -222,7 +222,7 @@
                             }
                         },
                         "minecraft:custom_components": {
-                            "description": "La listes des composants personnalisés du Bloc. \nType: `String[]` \nNote: Ce composant est obsolète si l'option expérimentale `Custom Components V2` est activée.",
+                            "description": "La listes des composants personnalisés du Bloc. \nType: `String[]`",
                             "type": "array",
                             "items": {
                                 "type": "string",
@@ -388,7 +388,7 @@
                                             "pattern": "^[a-zA-Z0-9_]+:[a-zA-Z0-9_]+$"
                                         },
                                         "culling_layer": {
-                                            "description": "EXPÉRIMENTALE: Upcoming Creator Features \nPermet à la règle de culling de regrouper plusieurs blocs lors de leur comparaison. Lors de l'utilisation de l’espace de noms minecraft, les seuls identifiants de couche de culling autorisés sont : `minecraft:culling_layer.undefined`, `minecraft:culling_layer.leaves`. Lorsqu'aucun espace de noms ou un espace de noms personnalisé est utilisé, les noms doivent commencer et se terminer par un caractère alphanumérique. \nType: `String`",
+                                            "description": "Permet à la règle de culling de regrouper plusieurs blocs lors de leur comparaison. Lors de l'utilisation de l'espace de noms minecraft, les seuls identifiants de couche de culling autorisés sont : `minecraft:culling_layer.undefined`, `minecraft:culling_layer.leaves`. Lorsqu'aucun espace de noms ou un espace de noms personnalisé est utilisé, les noms doivent commencer et se terminer par un caractère alphanumérique. \nType: `String`",
                                             "default": "minecraft:culling_layer.undefined",
                                             "type": "string",
                                             "pattern": "^[a-zA-Z0-9_]+:[a-zA-Z0-9_]+$",
@@ -408,6 +408,11 @@
                                                     }
                                                 }
                                             ]
+                                        },
+                                        "uv_lock": {
+                                            "description": "[EXPÉRIMENTALE]: Upcoming Creator Features \nDéfinit si les UV du modèle doivent être vérouillés. Utile si le composant transformation est utilisé. \nType: `Boolean`",
+                                            "default": false,
+                                            "type": "boolean"
                                         }
                                     }
                                 }
@@ -961,11 +966,7 @@
                             "description": "Donne le tag 'wood_pick_diggable' au bloc. \n Type: `Boolean`",
                             "type": "object"
                         }
-                    },
-                    "patternProperties": {
-                        "^[a-z0-9_]+:[a-z0-9_/]+$": {}
-                    },
-                    "additionalProperties": false
+                    }
                 },
                 "permutations": {
                     "description": "Définit les permutations de blocs. \nType: `Object[]`",

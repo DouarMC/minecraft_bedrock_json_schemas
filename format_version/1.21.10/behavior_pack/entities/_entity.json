@@ -686,6 +686,10 @@
                                 }
                             }
                         },
+                        "minecraft:body_rotation_always_follows_head": {
+                            "description": "Fait en sorte que le corps de l'Entité tourne toujours dans la direction de sa tête. Ne remplace pas `minecraft:body_rotation_blocked` s'il est présent. \nType: `Object`",
+                            "type": "object"
+                        },
                         "minecraft:body_rotation_axis_aligned": {
                             "description": "Fait tourner automatiquement le corps de l'entité pour s'aligner sur la direction cardinale la plus proche en fonction de sa direction de face actuelle. \nType: `Object` \nNote: Combiner cela avec le composant `minecraft:body_rotation_blocked` fera en sorte que l'entité s'aligne sur la direction cardinale la plus proche et reste fixe dans cette orientation, indépendamment des futurs changements de sa direction de face.",
                             "type": "object"
@@ -2662,7 +2666,7 @@
                             }
                         },
                         "minecraft:input_air_controlled": {
-                            "description": "[EXPERIMENTALE] : Doit avoir la propriété `use_beta_features` définit sur `true`. \nLorsque l'Entité est chevauchable, l'Entité sera controllée avec les touches du claiver et de la souris dans les 3 dimensions. \nType: `Object`",
+                            "description": "Lorsque l'Entité est chevauchable, l'Entité sera controllée avec les touches du claiver et de la souris dans les 3 dimensions. \nType: `Object`",
                             "type": "object",
                             "properties": {
                                 "backwards_movement_modifier": {
@@ -2837,6 +2841,11 @@
                                                     "table": {
                                                         "description": "Le chemin de la Loot Table. \nType: `String`",
                                                         "type": "string"
+                                                    },
+                                                    "y_offset": {
+                                                        "description": "Décalage vertical pour les items qui apparaissent. \nType: `Number`",
+                                                        "default": 1,
+                                                        "type": "number"
                                                     }
                                                 }
                                             },
@@ -2923,6 +2932,11 @@
                                         "table": {
                                             "description": "Le chemin de la Loot Table. \nType: `String`",
                                             "type": "string"
+                                        },
+                                        "y_offset": {
+                                            "description": "Décalage vertical pour les items qui apparaissent. \nType: `Number`",
+                                            "default": 1,
+                                            "type": "number"
                                         }
                                     }
                                 },
@@ -3107,6 +3121,11 @@
                             "description": "Permet à l'Entité d'être attachée à une laisse. \nType: `Object`",
                             "type": "object",
                             "properties": {
+                                "can_be_cut": {
+                                    "description": "Si définit sur true, les joueurs peuvent couper les laisses entrantes et sortantes en utilisant des cisailles sur l'Entité. \nType: `Boolean`",
+                                    "default": true,
+                                    "type": "boolean"
+                                },
                                 "can_be_stolen": {
                                     "description": "Définit si les joueurs peuvent attacher la laisse à l'Entité même si elle est déjà attaché à un autre mob. \nType: `Boolean`",
                                     "default": false,
@@ -3154,6 +3173,17 @@
                                                 "description": "Distance en blocs à laquelle la laisse peut s'étendre. \nType: `Number`",
                                                 "default": 10,
                                                 "type": "number"
+                                            },
+                                            "spring_type": {
+                                                "description": "Définit le type de ressort qui tire l'entité vers son détenteur de laisse. \nType: `String` \n`bouncy`: Simule un ressort très élastique qui n'atteint jamais un équilibre si l'entité attachée est suspendue dans les airs. \n`dampened`: Simule un ressort amorti attaché à l'avant de la collision de l'entité attachée. Il atteint un équilibre si l'entité est suspendue dans les airs et s'aligne avec la direction du mouvement. \n`quad_dampened`: Simule quatre ressorts amortis connectés au centre de chaque côté des collisions des entités. Il atteint un équilibre si l'entité est suspendue dans les airs et s'aligne progressivement avec le détenteur de la laisse au fil du temps.",
+                                                "default": "dampened",
+                                                "type": "string",
+                                                "enum": ["bouncy", "dampened", "quad_dampened"]
+                                            },
+                                            "rotation_adjustment": {
+                                                "description": "Ajuste la rotation à laquelle l'entité atteint l'équilibre, lorsque 'spring_type' est défini sur 'dampened' ou 'quad_dampened'. \nType: `Number`",
+                                                "default": 0,
+                                                "type": "number"
                                             }
                                         }
                                     }
@@ -3162,6 +3192,17 @@
                                     "description": "Distance en blocs à laquelle l'effet de 'ressort' commence à agir pour garder cette Entité proche de l'Entité qui l'a attachée. \nType: `Number`",
                                     "default": 4,
                                     "type": "number"
+                                }
+                            }
+                        },
+                        "minecraft:leashable_to": {
+                            "description": "Permet aux joueurs de lier cette Entité à une autre. \nType: `Object`",
+                            "type": "object",
+                            "properties": {
+                                "can_retrieve_from": {
+                                    "description": "Définit si les joueurs peuvent récupérer les entités liées à cette Entité. \nType: `Boolean`",
+                                    "default": false,
+                                    "type": "boolean"
                                 }
                             }
                         },
@@ -5432,6 +5473,10 @@
                                     "type": "string"
                                 }
                             }
+                        },
+                        "minecraft:remove_in_peaceful": {
+                            "description": "Définit que l'Entité sera supprimée en mode Pacifique. \nType: `Object`",
+                            "type": "object"
                         },
                         "minecraft:rideable": {
                             "description": "Définit si l'Entité peut être montée. Permet de spécifier les différentes places de la monture. \nType: `Object`",

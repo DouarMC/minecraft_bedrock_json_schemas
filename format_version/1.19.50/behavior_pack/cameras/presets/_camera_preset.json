@@ -161,7 +161,7 @@
                     "maximum": 180.0
                 },
                 "align_target_and_camera_forward": {
-                    "description": "Aligner la direction de la caméra avec la direction de la cible. \nType: `Boolean`",
+                    "description": "OBSOLETE. Aligner la direction de la caméra avec la direction de la cible. \nType: `Boolean`",
                     "type": "boolean"
                 },
                 "aim_assist": {
@@ -206,7 +206,7 @@
                     }
                 },
                 "control_scheme": {
-                    "description": "EXPERIMENTAL: Camera Creator Features \nDéfinit le schéma de controle par défaut à utiliser pour ce preset de Caméra. \nType: `String`",
+                    "description": "Définit le schéma de controle par défaut à utiliser pour ce preset de Caméra. \nType: `String`",
                     "type": "string",
                     "enum": [
                         "locked_player_relative_strafe",
