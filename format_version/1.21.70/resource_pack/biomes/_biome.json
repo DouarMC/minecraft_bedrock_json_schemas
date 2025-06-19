@@ -57,7 +57,7 @@
                             }
                         },
                         "minecraft:atmosphere_identifier": {
-                            "description": "[INTERNE - TRAVAIL EN COURS] Définit les paramètres d'atmosphère utilisés pendant le rendu différé. Les biomes sans ce composant auront des paramètres d'atmosphère par défaut. \nType: `Object`",
+                            "description": "Définit les paramètres d'atmosphère utilisés pendant le rendu différé. Les biomes sans ce composant auront des paramètres d'atmosphère par défaut. \nType: `Object`",
                             "type": "object",
                             "required": ["atmosphere_identifier"],
                             "properties": {
@@ -84,7 +84,7 @@
                             }
                         },
                         "minecraft:color_grading_identifier": {
-                            "description": "[INTERNE - TRAVAIL EN COURS] Définit les paramètres de color grading utilisés pendant le rendu différé. Les biomes sans ce composant auront des paramètres de color grading par défaut. \nType: `Object`",
+                            "description": "Définit les paramètres de color grading utilisés pendant le rendu différé. Les biomes sans ce composant auront des paramètres de color grading par défaut. \nType: `Object`",
                             "type": "object",
                             "required": ["color_grading_identifier"],
                             "properties": {
@@ -212,7 +212,7 @@
                             }
                         },
                         "minecraft:lighting_identifier": {
-                            "description": "[INTERNE - TRAVAIL EN COURS] Définit les paramètres d'éclairage utilisés pendant le rendu différé. Les biomes sans ce composant auront des paramètres d'éclairage par défaut. \nType: `Object`",
+                            "description": "Définit les paramètres d'éclairage utilisés pendant le rendu différé. Les biomes sans ce composant auront des paramètres d'éclairage par défaut. \nType: `Object`",
                             "type": "object",
                             "required": ["lighting_identifier"],
                             "properties": {
@@ -280,7 +280,7 @@
                             }
                         },
                         "minecraft:water_identifier": {
-                            "description": "[INTERNE - TRAVAIL EN COURS] Définit les paramètres de l'eau utilisés pendant le rendu différé. Les biomes sans ce composant auront des paramètres d'eau par défaut. \nType: `Object`",
+                            "description": "Définit les paramètres de l'eau utilisés pendant le rendu différé. Les biomes sans ce composant auront des paramètres d'eau par défaut. \nType: `Object`",
                             "type": "object",
                             "required": ["water_identifier"],
                             "properties": {
